@@ -1,0 +1,47 @@
+.inp {
+  width: 250px;
+  margin-left: 30px;
+  padding: 5px;
+  margin-top: 15px;
+}
+
+
+
+.tod {
+  margin: 0 auto;
+  margin-top: 5rem;
+  width: 400px;
+  padding: 40px;
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  text-align: center;
+  background: linear-gradient(#e66465, #9198e5);
+
+}
+
+.sele {
+  padding-top: 15px;
+}
+
+/*   
+  .inputpeq{
+   margin-bottom:30px ;
+} */
+img {
+  width: 17px;
+  height: 17px;
+}
+
+.btnn {
+  background-color: transparent;
+  border: none;
+}
+
+.btnn button:hover {
+  color: red;
+}
+
+.tableta a{
+  cursor: pointer;
+}

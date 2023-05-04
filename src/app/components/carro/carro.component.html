@@ -1,0 +1,184 @@
+<app-nav-bar></app-nav-bar>
+<div class="tod">
+  <div class="tit">
+    <h2>Registro Vehiculos</h2>
+  </div>
+  <div class="textt">
+    <div class="input-group mb-3 mt-3">
+      <input type="number"  class="form-control" placeholder="ID:"
+        aria-label="Recipient's username" aria-describedby="button-addon2"(keyup.enter)="idCompletar(idtxt)" [(ngModel)]="idtxt" />
+      <div class="inputpeq">
+        <button class="btn btn-dark" type="button" id="button-addon2"  data-toggle="modal" data-target=".bd-example-modal-lg">
+          <i class="fas fa-car-side"></i>
+        </button>
+      </div>
+    </div>
+<div class="inpu mb-3">
+  <input type="text" placeholder="Marca:" class="form-control" id="floatingInput" [(ngModel)]="marcatxt" (ngModelChange)="marcatxt = capitalize($event)" />
+</div>
+<div class="inpu2 mb-3">
+  <input type="text" placeholder="Modelo:" class="form-control" id="floatingInput" [(ngModel)]="modelotxt" (ngModelChange)="modelotxt = capitalize($event)"/>
+</div>
+<div class="inpu3 mb-3">
+  <input type="text" placeholder=" color:" class="form-control" id="floatingInput" [(ngModel)]="colortxt" (ngModelChange)="colortxt = capitalize($event)"/>
+</div>
+<div class="inpu4 mb-3">
+  <input type="text" placeholder=" Placa:" class="form-control" id="floatingInput" [(ngModel)]="placatxt" (ngModelChange)="placatxt = capitalize($event)"/>
+</div>
+
+<div class="inpu5 ">
+  <input type="text" placeholder=" precio:" class="form-control" id="floatingInput" [(ngModel)]="preciotxt" />
+</div>
+
+</div>
+<div class="option">
+
+<div class="año">
+  <select class="form-select" aria-label="Default select example" [(ngModel)]="numbertxt">
+    <option class="litle" value="0" disabled selected><b>Año:</b></option>
+    <option *ngFor="let year of years" [value]=year>{{ year }}</option>
+  </select>
+</div>
+
+
+    <div class="tipo">
+      <select class="form-select" aria-label="Default select example" [(ngModel)]="idtipotxt">
+        <option class="litle" value="0" disabled selected><b>Tipos:</b></option>
+        <option *ngFor="let item of tipoVehiculos" [value]="item.idtipo"> {{ item.tipo }} </option>
+      </select>
+    </div>
+
+    <div class="capacidad">
+      <select class="form-select" aria-label="Default select example" [(ngModel)]="asientostxt">
+        <option class="litle" value="0" disabled selected><b>Capacidad:</b></option>
+        <option value="2">2 Personas</option>
+        <option value="4">4 Personas</option>
+        <option value="5">5 Personas</option>
+      </select>
+    </div>
+
+    <div class="combustible">
+      <select class="form-select" aria-label="Default select example" [(ngModel)]="combustibletxt"  >
+        <option class="litle" value="0" disabled selected><b> Combustible:</b></option>
+        <option value="Gasolina">Gasolina</option>
+        <option value="Gasoil">Gasoil</option>
+        <option value="Gas">Gas</option>
+        <option value="Electrico">Electrico</option>
+      </select>
+    </div>
+
+    <div class="sele2">
+      <select class="form-select" aria-label="Default select example" [(ngModel)]="estadotxt">
+        <option class="litle" value="0" disabled selected><b>Estado:</b></option>
+        <option value="1">Activo</option>
+        <option value="0">inactivo</option>
+      </select>
+    </div>
+  </div>
+    <br />
+    <!-- mensajes -->
+    <div class="alert alert-success" role="alert" *ngIf="msgSucces">
+      Vehiculo Registrado Exitosamente!
+    </div>
+    <div class="alert alert-warning" role="alert" *ngIf="msgFail">
+      Lo sentimos Problema en el servidor!
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="msgMarca">
+      Vehiculo No registrado Marca vacio!
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="msgModelo">
+      Vehiculo No registrado Modelo vacio!
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="msgColor">
+      Vehiculo No registrado Color vacio!
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="msgAsientos">
+      Vehiculo No registrado Asiento vacio!
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="msgCombustible">
+      Vehiculo No registrado Combustible vacio!
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="msgPrecio">
+      Vehiculo No registrado Precio vacio!
+    </div>
+
+    <!-- botones -->
+    <button class="btn btn-secondary" (click)="limpiar()" style="margin-right: 2rem;">
+      Limpiar
+    </button>
+
+    <button type="button" class="btn btn-success" (click)=" guardarVehiculos()">
+      <i class="far fa-save"></i> Guardar
+    </button>
+    
+  </div>
+
+  <!-- Large modal -->
+
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      
+  <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Marca</th>
+              <th scope="col">Modelo</th>
+              <th scope="col">Color</th>
+              <th scope="col">Capacidad</th>
+              <th scope="col">Año</th>
+              <th scope="col">Placa</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">Combustile</th>
+              <th scope="col">Placa</th>
+              <th scope="col">Estado</th>
+
+            </tr>
+          </thead>
+          <tbody class="tableta">
+            <tr *ngFor="let txt of llenarAll" >
+              <td>
+                <a [routerLink]=""  data-dismiss="modal" (click)="seleccionarTxt(txt)" >{{ txt.idvehiculo }}</a>
+              </td>
+              <td>
+                <a [routerLink]="" data-dismiss="modal"(click)="seleccionarTxt(txt)" >{{ txt.marca}} </a>
+              </td>
+              <td>
+                <a [routerLink]="" data-dismiss="modal"(click)="seleccionarTxt(txt)" >{{txt.modelo }}</a>
+              </td>
+
+              <td>
+                <a [routerLink]="" data-dismiss="modal"(click)="seleccionarTxt(txt)" >{{txt.color }}</a>
+              </td>
+              <td>
+                <a [routerLink]="" data-dismiss="modal"(click)="seleccionarTxt(txt)" >{{txt.asiento }}</a>
+              </td>
+              <td>
+                <a [routerLink]="" data-dismiss="modal"(click)="seleccionarTxt(txt)" >{{txt.ano }}</a>
+              </td>
+              <td>
+                <a [routerLink]="" data-dismiss="modal"(click)="seleccionarTxt(txt)" >{{txt.placa }}</a>
+              </td>
+              <td>
+                <a [routerLink]="" data-dismiss="modal"(click)="seleccionarTxt(txt)" >{{txt.tipo }}</a>
+              </td>
+              <td>
+                <a [routerLink]="" data-dismiss="modal"(click)="seleccionarTxt(txt)" >{{txt.combustible }}</a>
+              </td>
+              <td>
+                <a [routerLink]="" data-dismiss="modal"(click)="seleccionarTxt(txt)" >{{txt.precio }}</a>
+              </td>
+              <td>
+                <a [routerLink]="" data-dismiss="modal"(click)="seleccionarTxt(txt)" >{{txt.estado }}</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+
+
+    </div>
+  </div>
+</div>

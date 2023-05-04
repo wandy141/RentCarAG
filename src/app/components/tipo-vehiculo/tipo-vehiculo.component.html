@@ -1,0 +1,92 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="tod">
+  <div class="tit">
+    <h2> Tipo-Vehiculos</h2>
+    <div class="input-group mb-1 mt-3">
+      <input type="number"  class="form-control" placeholder="ID:" (keyup.enter)="tipoId(idtxt)"
+        aria-label="Recipient's username" aria-describedby="button-addon2" [(ngModel)]="idtxt" />
+      <div class="inputpeq">
+        <button class="btn btn-dark" type="button" id="button-addon2" data-toggle="modal"
+          data-target="#exampleModalCenter">
+          <i class="fas fa-car-alt"></i>
+        </button>
+      </div>
+    </div>
+    <div form-floating mb-2 class="inp">
+      <input type="text" placeholder="Descripcion:" class="form-control" id="floatingInput" [(ngModel)]="tipotxt" />
+
+    </div>
+    <div class="sele">
+      <select class="form-select" aria-label="Default select example"[(ngModel)]="estadotxt">
+        <option disabled value= 2>Estado:</option>
+        <option value= 0>inactivo</option>
+        <option value= 1>activo</option>
+      </select>
+    </div>
+    <br>
+    <div class="alert alert-success" role="alert" *ngIf="msgSuccess">
+      Tipo de vehiculo Registrado Exitosamente!
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="msgTipo">
+      Error {{mensaje}} vacio!
+    </div>
+ 
+     <div class="button" >
+    <button class="btn btn-secondary" (click)="limpiar()" style="margin-right: 2rem;">
+      Limpiar
+    </button>
+     
+    <button type="button" class="btn btn-success" (click)="guadarTipo()">
+        <i class="far fa-save"></i> Guardar
+      </button>
+  </div>
+  </div>
+</div>
+  
+<!-- modal -->
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Tipo Vehiculos:</h5>
+        <div class="btn">
+      
+
+          <div class="buscador mt-2">
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Tipos</th>
+              <th scope="col">Estado</th>
+            </tr>
+          </thead>
+          <tbody class="tableta">
+            <tr *ngFor="let tipo of tablaTipo">
+              <td>
+                <a [routerLink]="" (click)="seleccionarTipo(tipo)" data-dismiss="modal">{{
+                  tipo.idtipo }}</a>
+              </td>
+              <td>
+                <a [routerLink]="" (click)="seleccionarTipo(tipo)" data-dismiss="modal">{{ tipo.tipo}}</a>
+              </td>
+              <td>
+                <a [routerLink]="" (click)="seleccionarTipo(tipo)" data-dismiss="modal">{{tipo.estado }}</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

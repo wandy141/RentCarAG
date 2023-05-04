@@ -1,0 +1,27 @@
+
+img{
+    width:11rem;
+    height: auto;
+    position: absolute;
+    margin-top: -5.5rem;
+
+
+}
+
+.nav-link{
+    color: white;
+    cursor: pointer;
+  
+}
+
+.navbar-nav{
+    margin-left: 12rem;
+}
+.nav-item:hover{
+    transform: scale(0.9);
+}
+
+.navbar {
+    padding: 1.9rem;
+}
+

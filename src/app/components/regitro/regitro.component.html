@@ -1,0 +1,31 @@
+
+  <div class="login-box">
+    <h2>Login</h2>
+
+    <div class="user-box">
+      <input name="usuario" type="text" (keyup.enter)="mesajeError()" [(ngModel)]="this.usuario" />
+      <label>Username</label>
+    </div>
+
+    <div class="alert alert-warning" role="alert" *ngIf="msgUsuario" >
+      El usuario esta en blanco!
+    </div>
+
+    <div class="user-box">
+      <input name="pass" type="password" (keyup.enter)="mesajeError()" [(ngModel)]="this.password" />
+      <label>Password</label>
+    </div>
+
+    <div class="alert alert-warning" role="alert" *ngIf="msgPassword">
+      La contraseña esta en blanco!
+    </div>
+
+    <div class="alert alert-danger" role="alert" *ngIf="msgFail">
+      usuario o contraseña incorrectos!
+    </div>
+
+    <button (click)="mesajeError()" type="button" class="buton">
+      {{ letrero }}
+    </button>
+  </div>
+
