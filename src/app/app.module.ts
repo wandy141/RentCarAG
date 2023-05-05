@@ -16,6 +16,7 @@ import { SliderComponent } from './components/slider/slider.component';
 import { TipoVehiculoComponent } from './components/tipo-vehiculo/tipo-vehiculo.component';
 import { ApiDBService } from './services/api-db.service';
 import { ConsultaEconomicoComponent } from './components/consulta-economico/consulta-economico.component';
+import { AlquilerComponent } from './components/alquiler/alquiler.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ConsultaEconomicoComponent } from './components/consulta-economico/cons
     SliderComponent,
     TipoVehiculoComponent,
     ConsultaEconomicoComponent,
+    AlquilerComponent,
 
   ],
   imports: [

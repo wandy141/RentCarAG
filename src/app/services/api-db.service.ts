@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { tipoVehiculo } from '../clasebd/tipoVehiculo';
 import { usuarios } from '../clasebd/usuarios';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { alquiler } from '../clasebd/alquiler';
 
 @Injectable({
   providedIn: 'root'
@@ -150,6 +151,10 @@ camion(): Observable<Array<vehiculo>> {
   return this.http.get<Array<vehiculo>>(this.server + 'tipoCamion',{});
 }
 
+
+insertarAlquiler(alquilerTemp:alquiler):Observable<Array<alquiler>>{
+return this.http.post<Array<alquiler>>(this.server + 'alquiler',{ 'alquiler':alquilerTemp} );
+}
 
 
 

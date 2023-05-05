@@ -1,0 +1,265 @@
+<app-nav-bar></app-nav-bar>
+<!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> -->
+
+<div class="tod">
+  <div class="tit">
+    <h2>Alquiler</h2>
+  </div>
+  <div class="textt">
+    <label for=""><b> Usuario:</b></label>
+    <div class="inpu5">
+      <input
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        [(ngModel)]="usuariotxt"
+      />
+    </div>
+
+    <label for=""><b> Fecha Actual:</b></label>
+    <div class="inpu">
+      <input
+        disabled=""
+        type="date"
+        class="form-control"
+        id="floatingInput"
+        [(ngModel)]="fechaActual"
+      />
+    </div>
+
+    <label for=""><b>ID Coche: </b></label>
+    <div class="input-group">
+      <input
+        type="number"
+        class="form-control"
+        aria-label="Recipient's username"
+        aria-describedby="button-addon2"
+        [(ngModel)]="idtxt"
+        (input)="handleInputChange()">
+      
+      <div class="inputpeq">
+        <button
+          class="btn btn-dark"
+          type="button"
+          id="button-addon2"
+          data-toggle="modal"
+          data-target=".bd-example-modal-lg"
+        >
+          <i class="fas fa-car-side"></i>
+        </button>
+      </div>
+    </div>
+  
+    <div 
+      id="descripcion"
+      class="toast fade show"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+      *ngIf="descripcion"
+      
+    >
+      <div class="toast-body">{{marca}} {{modelo}}</div>
+    </div>
+
+    <label for=""><b>Precio/Day</b></label>
+    <div class="input-group">
+      <span class="input-group-text">$</span>
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Amount (to the nearest dollar)"
+        (blur)="calcular()"
+        [(ngModel)]="preciotxt"
+        (ngModelChange)="calcular()"
+        (change)="calcular()"
+      />
+    </div>
+
+    <label for=""><b>Fecha Inicio:</b></label>
+    <div class="inpu2">
+      <input
+        type="date"
+        class="form-control"
+        id="floatingInput"
+        [(ngModel)]="fechaini"
+        (ngModelChange)="calculateDays()"
+      />
+    </div>
+    <label for=""><b>Fecha Fin </b></label>
+    <div class="inpu3">
+      <input
+        type="date"
+        class="form-control"
+        id="floatingInput"
+        (blur)="calculateDays()"
+        (change)="calcular()"
+        [(ngModel)]="fechafin"
+        (ngModelChange)="calculateDays()"
+      />
+    </div>
+    <label for=""><b> Dias Totales:</b></label>
+    <div class="inpu4">
+      <input
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        [(ngModel)]="diasTotales"
+        (change)="calcular()"
+        (ngModelChange)="calcular()"
+      />
+    </div>
+    <label for=""><b>Total a pagar:</b></label>
+    <div class="input-group">
+      <span class="input-group-text">$</span>
+      <input
+      disabled=""
+        type="text"
+        class="form-control"
+        aria-label="Amount (to the nearest dollar)"
+        [(ngModel)]="total"
+      />
+    </div>
+  </div>
+
+  <br />
+
+  <!-- botones -->
+  <button
+    class="btn btn-secondary"
+    (click)="limpiar()"
+    style="margin-right: 2rem"
+  >
+    Limpiar
+  </button>
+
+  <button type="button" class="btn btn-success" (click)="entrarAlquiler()">
+    <i class="far fa-save"></i> Alquilar
+  </button>
+</div>
+
+<!-- Large modal -->
+
+<div
+  class="modal fade bd-example-modal-lg"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myLargeModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Marca</th>
+            <th scope="col">Modelo</th>
+            <th scope="col">Color</th>
+            <th scope="col">Capacidad</th>
+            <th scope="col">Año</th>
+            <th scope="col">Placa</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Combustile</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Estado</th>
+          </tr>
+        </thead>
+        <tbody class="tableta">
+          <tr *ngFor="let txt of llenarAll">
+            <td>
+              <a
+                [routerLink]=""
+                data-dismiss="modal"
+                (click)="seleccionarTxt(txt)"
+                ><b>{{ txt.idvehiculo }}</b></a
+              >
+            </td>
+            <td>
+              <a
+                [routerLink]=""
+                data-dismiss="modal"
+                (click)="seleccionarTxt(txt)"
+                >{{ txt.marca }}
+              </a>
+            </td>
+            <td>
+              <a
+                [routerLink]=""
+                data-dismiss="modal"
+                (click)="seleccionarTxt(txt)"
+                >{{ txt.modelo }}</a
+              >
+            </td>
+
+            <td>
+              <a
+                [routerLink]=""
+                data-dismiss="modal"
+                (click)="seleccionarTxt(txt)"
+                >{{ txt.color }}</a
+              >
+            </td>
+            <td>
+              <a
+                [routerLink]=""
+                data-dismiss="modal"
+                (click)="seleccionarTxt(txt)"
+                >{{ txt.asiento }}</a
+              >
+            </td>
+            <td>
+              <a
+                [routerLink]=""
+                data-dismiss="modal"
+                (click)="seleccionarTxt(txt)"
+                >{{ txt.ano }}</a
+              >
+            </td>
+            <td>
+              <a
+                [routerLink]=""
+                data-dismiss="modal"
+                (click)="seleccionarTxt(txt)"
+                >{{ txt.placa }}</a
+              >
+            </td>
+            <td>
+              <a
+                [routerLink]=""
+                data-dismiss="modal"
+                (click)="seleccionarTxt(txt)"
+                >{{ txt.tipo }}</a
+              >
+            </td>
+            <td>
+              <a
+                [routerLink]=""
+                data-dismiss="modal"
+                (click)="seleccionarTxt(txt)"
+                >{{ txt.combustible }}</a
+              >
+            </td>
+            <td>
+              <a
+                [routerLink]=""
+                data-dismiss="modal"
+                (click)="seleccionarTxt(txt)"
+                >{{ txt.precio }}</a
+              >
+            </td>
+            <td>
+              <a
+                [routerLink]=""
+                data-dismiss="modal"
+                (click)="seleccionarTxt(txt)"
+                >{{ txt.estado }}</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

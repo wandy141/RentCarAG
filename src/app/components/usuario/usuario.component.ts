@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { usuarios } from "src/app/clasebd/usuarios";
+import { usuarios } from 'src/app/clasebd/usuarios';
 import { ApiDBService } from 'src/app/services/api-db.service';
 import Swal from 'sweetalert2';
 
@@ -9,7 +9,6 @@ import Swal from 'sweetalert2';
   styleUrls: ['./usuario.component.css'],
 })
 export class UsuarioComponent {
-
   usuarioid: string = '';
   contrasena: string = '';
   nombre: string = '';
@@ -24,8 +23,6 @@ export class UsuarioComponent {
 
   // check:boolean = false;
 
-
-
   listadoUsuarios: Array<usuarios> = [];
 
   constructor(public servicio: ApiDBService) {
@@ -35,7 +32,7 @@ export class UsuarioComponent {
   }
 
   getUsuarios() {
-    this.servicio.mostrarUsuario().subscribe(listado => {
+    this.servicio.mostrarUsuario().subscribe((listado) => {
       this.listadoUsuarios = listado;
     });
   }
@@ -45,11 +42,9 @@ export class UsuarioComponent {
     this.contrasena = objUsuario.contrasena;
     this.nombre = objUsuario.nombre;
     this.estado = objUsuario.estado;
-
   }
 
   guardarUsuario() {
-
     this.error = false;
 
     let usuariotmp: usuarios = new usuarios();
@@ -71,9 +66,7 @@ export class UsuarioComponent {
       this.msgNombre = true;
       setTimeout(() => {
         this.msgNombre = false;
-
       }, 3000);
-
     }
 
     if (this.contrasena == '') {
@@ -81,9 +74,7 @@ export class UsuarioComponent {
       this.msgContrasena = true;
       setTimeout(() => {
         this.msgContrasena = false;
-
       }, 3000);
-
     }
 
     if (this.estado == 2) {
@@ -92,30 +83,24 @@ export class UsuarioComponent {
       setTimeout(() => {
         this.msgEstado = false;
       }, 3000);
-
     }
 
     if (this.error) {
       return;
     }
 
-    this.servicio.insertarUsuario(usuariotmp).subscribe(resultado => {
+    this.servicio.insertarUsuario(usuariotmp).subscribe((resultado) => {
       console.log(resultado);
       if (resultado) {
-        // this.msgSuccess = true;
-
         this.limpiar();
         this.getUsuarios();
         this.msgExitoGuardar(usuariotmp.usuarioid);
-        // setTimeout(() => {
-        //   this.msgSuccess = false;
-        // }, 3000);
       }
     });
   }
 
   llenarUsuario(usuarioid: string) {
-    this.servicio.llenarTablaUser(usuarioid).subscribe(resultado => {
+    this.servicio.llenarTablaUser(usuarioid).subscribe((resultado) => {
       console.log(resultado);
       this.seleccionarUsuario;
 
@@ -124,74 +109,68 @@ export class UsuarioComponent {
         this.nombre = resultado.nombre;
         this.contrasena = resultado.contrasena;
         this.estado = resultado.estado;
-
-      };
-    })
-
+      }
+    });
   }
 
   limpiar() {
     this.usuarioid = '';
-    this.contrasena = '';
+    this.contrasena = ''; 
     this.nombre = '';
     this.estado = 2;
-
-
   }
-
-
-
 
   eliminar(usuarioid: string) {
-    if (usuarioid == null || usuarioid == '' || usuarioid == undefined) {
-      this.msgFallo();
-      return;
-    } else {
-
-      this.servicio.borrarUser(usuarioid).subscribe(response => {
-        this.limpiar();
-        this.getUsuarios();
-        this.msgExitoBorrar(usuarioid);
-      });
-    }
-
+    this.servicio.borrarUser(usuarioid).subscribe((response) => {
+      this.limpiar();
+      this.getUsuarios();
+      this.msgExitoBorrar(usuarioid);
+    });
   }
 
-
   msgExitoBorrar(usuarioid: string) {
-    Swal.fire('Éxito', '¡Se a eliminado el usuario ' + usuarioid + '!', 'success');
+    Swal.fire(
+      'Éxito',
+      '¡Se a eliminado el usuario ' + usuarioid + '!',
+      'success'
+    );
   }
 
   msgExitoGuardar(usuarioid: string) {
-    Swal.fire('Éxito', '¡Se a Registrado el usuario ' + usuarioid + '!', 'success');
+    Swal.fire(
+      'Éxito',
+      '¡Se a Registrado el usuario ' + usuarioid + '!',
+      'success'
+    );
   }
 
   msgFallo() {
-    Swal.fire('Oops...', '¡El usuario no existe y/o los campos estan vacios!', 'error');
-
+    Swal.fire(
+      'Oops...',
+      '¡El usuario no existe y/o los campos estan vacios!',
+      'error'
+    );
   }
 
-  msgPrecaucion() {
-
+  msgPrecaucion(usuarioid: string) {
+    if (usuarioid == null || usuarioid == '' || usuarioid == undefined) {
+      this.msgFallo();
+      return;
+    }
     Swal.fire({
-      title: "Usuario: " + this.usuarioid,
-      text: "¿Deseas eliminarlo?",
+      title: 'Usuario: ' + this.usuarioid,
+      text: '¿Deseas eliminarlo?',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: "Sí, eliminar",
-      cancelButtonText: "Cancelar",
-    })
-      .then(resultado => {
-        if (resultado.value) {
-          this.eliminar(this.usuarioid);
-        } else {
-
-        }
-      });
-
-
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+    }).then((resultado) => {
+      if (resultado.value) {
+        this.eliminar(this.usuarioid);
+      } else {
+      }
+    });
   }
-
 
   // expresiones = {
   // 	usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
@@ -210,6 +189,4 @@ export class UsuarioComponent {
   //     console.log('Inválido');
   //   }
   // }
-
 }
-

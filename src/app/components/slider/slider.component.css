@@ -29,7 +29,7 @@
   height: 100%;
   background-image:url(/assets/slider4.jpg) !important;
   height: 500px;
-  width: 79rem;
+  width: auto;
   background-repeat: no-repeat;
   background-size: cover;
   text-align: justify;

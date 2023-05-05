@@ -5,60 +5,46 @@ import { ApiDBService } from 'src/app/services/api-db.service';
 @Component({
   selector: 'app-vehiculo-consulta',
   templateUrl: './vehiculo-consulta.component.html',
-  styleUrls: ['./vehiculo-consulta.component.css']
+  styleUrls: ['./vehiculo-consulta.component.css'],
 })
 export class VehiculoConsultaComponent {
-
-
-
-
-
   constructor(public servicio: ApiDBService) {
     this.llenarTabla();
   }
   llenarAll: Array<vehiculo> = [];
 
-
-
-
-
-
   llenarTabla() {
-    this.servicio.getTodosVehiculos().subscribe(mostrarAll => {
+    this.servicio.getTodosVehiculos().subscribe((mostrarAll) => {
       this.llenarAll = mostrarAll;
-
     });
   }
-
-
 
   getDescripcionTipo(tipo: number) {
     let retorno: string = 'tipo';
     switch (tipo) {
       case 1:
-        retorno = 'Economico'
+        retorno = 'Economico';
         break;
 
       case 2:
-        retorno = 'Compacto'
+        retorno = 'Compacto';
         break;
 
       case 3:
-        retorno = 'Tamaño Normal'
+        retorno = 'Tamaño Normal';
         break;
 
       case 4:
-        retorno = 'Premium'
+        retorno = 'Premium';
         break;
 
       case 5:
-        retorno = 'Lujo'
+        retorno = 'Lujo';
         break;
 
       case 6:
-        retorno = 'Camion'
+        retorno = 'Camion';
         break;
-
     }
     return retorno;
   }
