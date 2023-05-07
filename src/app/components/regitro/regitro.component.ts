@@ -16,6 +16,8 @@ export class RegitroComponent {
   accediendo: boolean = false;
   hayerrores: boolean = false;
   letrero: string = 'acceder';
+  carga:boolean = false;
+  acceder:boolean = true;
 
   // el contructor se pone prrivada para que funcione dentro de esta pagina y el htp para la conexion con laravel
   // {route es para el cambio de pagina}
@@ -58,6 +60,8 @@ export class RegitroComponent {
     if (this.hayerrores) {
       return;
     }
+    this.acceder = false;
+    this.carga = true;
     this.accediendo = true;
     this.letrero = 'accediendo';
     //set timeout es para que el tiempo de carga dure mas
@@ -68,6 +72,7 @@ export class RegitroComponent {
           console.log(retorno);
           this.accediendo = false;
           this.letrero = 'acceder';
+          this.acceder = true;
           //aqui si el retorno que viene siendo la peticion a la api sal correcta te a mandar a otra pagina
           if (retorno.resultado == true) {
             this.servicio.token = retorno.token;
