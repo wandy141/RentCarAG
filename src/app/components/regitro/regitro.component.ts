@@ -29,6 +29,8 @@ export class RegitroComponent {
     this.msgPassword = false;
     this.accediendo = false;
     this.hayerrores = false;
+    this.acceder = true;
+    this.carga = false;
 
     if (this.usuario == '') {
       this.msgUsuario = true;
@@ -45,7 +47,6 @@ export class RegitroComponent {
       }, 3000);
       this.hayerrores = true;
     }
-    //esto es para si hay algun error el boton no cambie o recargue
     if (this.hayerrores) {
       return;
     }

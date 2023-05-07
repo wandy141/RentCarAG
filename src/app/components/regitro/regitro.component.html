@@ -26,7 +26,10 @@
       <input placeholder="Password"  name="input-name" type="password" class="input_field" id="password_field"  (keyup.enter)="mesajeError()" [(ngModel)]="password">
     </div>
     <button title="Sign In" type="button" class="sign-in_btn" (click)="mesajeError()">
-
+   <span *ngIf="acceder">Acceder</span>
+   <div class="spinner-border text-light spinner-border-sm" role="status" *ngIf="carga">
+    <span class="visually-hidden">Loading...</span>
+  </div>
     </button>  
 
     <div class="separator">
