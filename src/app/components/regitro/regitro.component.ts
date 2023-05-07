@@ -15,8 +15,8 @@ export class RegitroComponent {
   password: any = '';
   accediendo: boolean = false;
   hayerrores: boolean = false;
-
-  
+  acceder:boolean = true;
+  carga:boolean = false;
   constructor( public router: Router, public servicio: ApiDBService) {
   }
 
@@ -49,11 +49,14 @@ export class RegitroComponent {
     if (this.hayerrores) {
       return;
     }
+    this.acceder = false;
+    this.carga = true;
     this.accediendo = true;
     setTimeout(() => {
     
         this.servicio.login(this.usuario,this.password).subscribe((retorno) => {
           this.accediendo = false;
+         
           if (retorno.resultado == true) {
             this.servicio.token = retorno.token;
             localStorage.setItem('token', retorno.token);
