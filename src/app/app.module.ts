@@ -17,6 +17,8 @@ import { TipoVehiculoComponent } from './components/tipo-vehiculo/tipo-vehiculo.
 import { ApiDBService } from './services/api-db.service';
 import { ConsultaEconomicoComponent } from './components/consulta-economico/consulta-economico.component';
 import { AlquilerComponent } from './components/alquiler/alquiler.component';
+import { SlideBarComponent } from './components/slide-bar/slide-bar.component';
+import { PruebaComponent } from './components/prueba/prueba.component';
 
 
 @NgModule({
@@ -33,6 +35,8 @@ import { AlquilerComponent } from './components/alquiler/alquiler.component';
     TipoVehiculoComponent,
     ConsultaEconomicoComponent,
     AlquilerComponent,
+    SlideBarComponent,
+    PruebaComponent,
 
   ],
   imports: [

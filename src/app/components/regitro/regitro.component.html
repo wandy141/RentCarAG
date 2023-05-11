@@ -4,8 +4,8 @@
       <img src="/assets/logo.png" alt="">
     </div>
     <div class="title_container">
-      <p class="title">Login to your Account</p>
-      <span class="subtitle">Get started with our app, just create an account and enjoy the experience.</span>
+      <p class="title">Ingresa con tu cuenta</p>
+      <span class="subtitle">¡Bienvenido! Por favor ingresa tus credenciales para iniciar sesión.</span>
     </div>
     <br>
     <div class="input_container">
@@ -26,8 +26,12 @@
       <input placeholder="Password"  name="input-name" type="password" class="input_field" id="password_field"  (keyup.enter)="mesajeError()" [(ngModel)]="password">
     </div>
     <button title="Sign In" type="button" class="sign-in_btn" (click)="mesajeError()">
-      {{letrero}}
+   <span *ngIf="acceder">Acceder</span>
+   <div class="spinner-border text-light spinner-border-sm" role="status" *ngIf="carga">
+    <span class="visually-hidden">Loading...</span>
+  </div>
     </button>  
+
     <div class="separator">
       <hr class="line">
       <span>Or</span>
