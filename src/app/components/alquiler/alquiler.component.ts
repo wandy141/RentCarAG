@@ -7,7 +7,6 @@ import { ApiDBService } from 'src/app/services/api-db.service';
   selector: 'app-alquiler',
   templateUrl: './alquiler.component.html',
   styleUrls: ['./alquiler.component.css'],
-  
 })
 export class AlquilerComponent implements OnInit {
   nombreUsuario: string = '';
@@ -21,47 +20,29 @@ export class AlquilerComponent implements OnInit {
   total: number = 0;
   usuariotxt: string = '';
   pagoTotal: number = 0;
-  modelo:string = '';
-  marca:string = '';
-
+  modelo: string = '';
+  marca: string = '';
 
   descripcion: boolean = false;
 
   llenarAll: Array<vehiculo> = [];
 
-
   handleInputChange() {
     this.descripcion = false;
-   
-    if(this.idtxt == null || this.idtxt == ''){
+
+    if (this.idtxt == null || this.idtxt == '') {
       this.descripcion = false;
       return;
-    }else{
-
+    } else {
       if (this.modelo == null && this.marca == null) {
         this.descripcion = false;
-        
-      }else{
-      this.descripcion = true;
+      } else {
+        this.descripcion = true;
       }
-      
-      
-
     }
-
   }
 
-
-
-
-
-
-
-
-
-
   ngOnInit(): void {
-  
     const today = new Date();
     const yyyy = today.getFullYear();
     const mm = String(today.getMonth() + 1).padStart(2, '0');
@@ -73,11 +54,9 @@ export class AlquilerComponent implements OnInit {
 
     this.servicio.getNombreUser().subscribe((nombre) => {
       this.usuariotxt = nombre;
-      
     });
 
     this.fechaini = this.fechaActual;
-    
   }
 
   constructor(public servicio: ApiDBService) {
@@ -109,10 +88,9 @@ export class AlquilerComponent implements OnInit {
     this.idtxt = 0;
   }
 
-  entrarAlquiler(){
-
+  entrarAlquiler() {
     let alquilerTemp: alquiler = new alquiler();
-    alquilerTemp.usuario = this.nombreUsuario;
+    alquilerTemp.usuario = this.usuariotxt;
     alquilerTemp.fecha = this.fechaActual;
     alquilerTemp.idvehiculo = this.idtxt;
     alquilerTemp.precio = this.preciotxt;
@@ -120,30 +98,21 @@ export class AlquilerComponent implements OnInit {
     alquilerTemp.fechafin = this.fechafin;
     alquilerTemp.dias = this.diasTotales;
     alquilerTemp.total = this.total;
-    
-  
 
-
-    this.servicio.insertarAlquiler(alquilerTemp).subscribe((resultado) =>{
+    this.servicio.insertarAlquiler(alquilerTemp).subscribe((resultado) => {
       console.log(resultado);
-    })
-
-    
+    });
   }
-
 
   seleccionarTxt(objVehiculo: vehiculo) {
     this.idtxt = objVehiculo.idvehiculo;
     this.preciotxt = objVehiculo.precio;
     this.marca = objVehiculo.marca;
     this.modelo = objVehiculo.modelo;
- 
-   
+
     this.calcular();
-    
-    this.handleInputChange(); 
-      
-    
+
+    this.handleInputChange();
   }
 
   //eventos

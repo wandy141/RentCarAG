@@ -36,8 +36,9 @@
         aria-label="Recipient's username"
         aria-describedby="button-addon2"
         [(ngModel)]="idtxt"
-        (input)="handleInputChange()">
-      
+        (input)="handleInputChange()"
+      />
+
       <div class="inputpeq">
         <button
           class="btn btn-dark"
@@ -50,17 +51,16 @@
         </button>
       </div>
     </div>
-  
-    <div 
+
+    <div
       id="descripcion"
       class="toast fade show"
       role="alert"
       aria-live="assertive"
       aria-atomic="true"
       *ngIf="descripcion"
-      
     >
-      <div class="toast-body">{{marca}} {{modelo}}</div>
+      <div class="toast-body">{{ marca }} {{ modelo }}</div>
     </div>
 
     <label for=""><b>Precio/Day</b></label>
@@ -114,7 +114,7 @@
     <div class="input-group">
       <span class="input-group-text">$</span>
       <input
-      disabled=""
+        disabled=""
         type="text"
         class="form-control"
         aria-label="Amount (to the nearest dollar)"

@@ -18,6 +18,7 @@ import { ApiDBService } from './services/api-db.service';
 import { ConsultaEconomicoComponent } from './components/consulta-economico/consulta-economico.component';
 import { AlquilerComponent } from './components/alquiler/alquiler.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +43,8 @@ import { AlquilerComponent } from './components/alquiler/alquiler.component';
     FontAwesomeModule
   ],
   providers: [
-    ApiDBService
+    ApiDBService,
+  
   ],
   bootstrap: [AppComponent]
 })
