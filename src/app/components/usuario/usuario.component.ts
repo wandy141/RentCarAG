@@ -14,24 +14,25 @@ export class UsuarioComponent {
   nombre: string = '';
   estado: number = 2;
   error: boolean = false;
+  //mensajes
+  // msgSuccess: boolean = false;
   msgFail: boolean = false;
   msgNombre: boolean = false;
   msgContrasena: boolean = false;
   msgEstado: boolean = false;
-  modalOpen:boolean = false;
 
-
-  
+  // check:boolean = false;
 
   listadoUsuarios: Array<usuarios> = [];
 
   constructor(public servicio: ApiDBService) {
- 
+    // console.log('usuario..');
+    // console.log(servicio.miNombre);
     this.getUsuarios();
   }
 
   getUsuarios() {
-    this.servicio.mostrarUsuario().subscribe((listado:any) => {
+    this.servicio.mostrarUsuario().subscribe((listado) => {
       this.listadoUsuarios = listado;
     });
   }
@@ -88,7 +89,7 @@ export class UsuarioComponent {
       return;
     }
 
-    this.servicio.insertarUsuario(usuariotmp).subscribe((resultado:any) => {
+    this.servicio.insertarUsuario(usuariotmp).subscribe((resultado) => {
       console.log(resultado);
       if (resultado) {
         this.limpiar();
@@ -99,7 +100,7 @@ export class UsuarioComponent {
   }
 
   llenarUsuario(usuarioid: string) {
-    this.servicio.llenarTablaUser(usuarioid).subscribe((resultado:any) => {
+    this.servicio.llenarTablaUser(usuarioid).subscribe((resultado) => {
       console.log(resultado);
       this.seleccionarUsuario;
 
@@ -120,8 +121,7 @@ export class UsuarioComponent {
   }
 
   eliminar(usuarioid: string) {
-    this.servicio.borrarUser(usuarioid).subscribe((response:any) => {
-  
+    this.servicio.borrarUser(usuarioid).subscribe((response) => {
       this.limpiar();
       this.getUsuarios();
       this.msgExitoBorrar(usuarioid);
@@ -170,16 +170,6 @@ export class UsuarioComponent {
       } else {
       }
     });
-  }
-
-
-
-  openModal() {
-    this.modalOpen = true;
-  }
-
-  closeModal() {
-    this.modalOpen = false;
   }
 
   // expresiones = {

@@ -25,12 +25,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/sweetalert2/dist/sweetalert2.min.css"
+              "src/styles.css"
             ],
-            "scripts": [
-              
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -95,15 +92,11 @@
             ],
             "scripts": [
               "node_modules/sweetalert2@9/sweetalert2.all.min.js",
-              "node_modules/sweetalert2/dist/sweetalert2.min.js",
-              "node_modules/flowbite/dist/js/flowbite.js"
+              "node_modules/sweetalert2/dist/sweetalert2.min.js"
             ]
           }
         }
       }
     }
-  },
-  "cli": {
-    "analytics": false
   }
 }
