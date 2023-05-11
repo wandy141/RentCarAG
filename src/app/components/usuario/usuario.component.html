@@ -1,136 +1,115 @@
+<app-nav-bar></app-nav-bar>
 
-<app-slide-bar></app-slide-bar>
-<div class="todo">
-<div class="p-4 sm:ml-64 ">
-<div class="max-w-2xl p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700  " >
-  <button type="button" id="boton" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 " data-toggle="modal"
-  data-target="#exampleModalCenter">Agregar</button>
-<div class="relative overflow-x-auto">
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-                <th scope="col" class="px-6 py-3">
-                    Usuario
-                </th>
-                <th scope="col" class="px-6 py-3">
-                   Contraseña
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Nombre
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Estado
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" *ngFor="let usuario of listadoUsuarios">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"  (click)="seleccionarUsuario(usuario)"  data-toggle="modal"
-                data-target="#exampleModalCenter">
-                  {{ usuario.usuarioid  }}
-                </th>
-                <td class="px-6 py-4"  (click)="seleccionarUsuario(usuario)"  data-toggle="modal"
-                data-target="#exampleModalCenter">
-                  {{usuario.contrasena}}
-                </td>
-                <td class="px-6 py-4"  (click)="seleccionarUsuario(usuario)"  data-toggle="modal"
-                data-target="#exampleModalCenter">
-                   {{usuario.nombre}} 
-                </td>
-                <td class="px-6 py-4"  (click)="seleccionarUsuario(usuario)"  data-toggle="modal"
-                data-target="#exampleModalCenter">
-                    {{usuario.estado}}
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-</div>
-</div>
+<div class="tod">
+  <div class="tit">
+    <h2>Registro Usuarios</h2>
+    <div class="input-group mb-3 mt-3">
+      <input type="text" (keyup.enter)="llenarUsuario(usuarioid)" class="form-control" placeholder="Usuario "
+        aria-label="Recipient's username" aria-describedby="button-addon2" [(ngModel)]="usuarioid" />
+        
+      <!-- <i class="fas fa-check-circle" style="color: #016f2b;" *ngIf="check"></i> -->
+      <div class="inputpeq">
+        <button class="btn btn-dark" type="button" id="button-addon2" data-toggle="modal"
+          data-target="#exampleModalCenter">
+          <i class="fas fa-users-cog"></i>
+        </button>
+      </div>
+    </div>
+
+    <input type="password" placeholder=" Contraseña:" class="form-control" id="floatingInput"  
+      [(ngModel)]="contrasena" />
+      
+
+
+
+    <input type="text" placeholder=" Nombre:" class="form-control mt-3" id="floatingInput" [(ngModel)]="nombre" />
+    <div class="sele">
+      <select [(ngModel)]="estado" class="form-select" aria-label="Default select example" required="">
+        <option value= 2 disabled>Estado:</option>
+        <option value= 1>activo</option>
+        <option value= 0>inactivo</option>
+      </select>
+    </div>
+  </div>
+  <br />
+   <!-- mensajes -->
+  <!-- <div class="alert alert-success" role="alert" *ngIf="msgSuccess" >
+    Usuario Registrado Exitosamente!
+  </div> -->
+  <div class="alert alert-danger" role="alert" *ngIf="msgFail">
+    Usuario No Registrado 'Usuario' Vacio!
+  </div>
+  <div class="alert alert-danger" role="alert" *ngIf="msgContrasena">
+    Usuario No Registrado 'Contraseña' Vacio!
+  </div>
+  <div class="alert alert-danger" role="alert" *ngIf="msgNombre">
+    Usuario No Registrado 'Nombre' Vacio!
+  </div>
+  <div class="alert alert-danger" role="alert" *ngIf="msgEstado">
+    Usuario No Registrado 'Estado' Vacio!
+  </div>
+
+  <div class="button">
+    <button class="btn btn-secondary" (click)="limpiar()">
+      Limpiar
+    </button>
+
+    <button type="button" class="btn btn-success ms-4" (click)="guardarUsuario()">
+      <i class="far fa-save"></i> Guardar
+    </button>
+
+    <button type="button" class="btn btn-danger ms-4" (click)="msgPrecaucion(usuarioid)">Eliminar</button>
+  </div>
 </div>
 
-S
-<!-- Modal  funciona-->
+<!-- Modal 1 -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLongTitle">Registro Usuario</h3>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-       
-        <div class="tod">
-          <div class="tit">          
-            <div class="grid gap-6 mb-6 md:grid-cols-2">
-               <!-- 1- primer input -->
-              <div>
-                  <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left">Usuario</label>
-                  <input type="text"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Usuario"  (keyup.enter)="llenarUsuario(usuarioid) " [(ngModel)]="usuarioid">
-              </div>
-    
-              <!-- 2- primer input -->
-             <div>
-                 <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left">Contraseña</label>
-                 <input type="password"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Contraseña"  [(ngModel)]="contrasena" >
-             </div>
-           </div>
+        <h5 class="modal-title" id="exampleModalLongTitle">Usuarios:</h5>
+        <div class="btn">
 
-
-           <div class="grid gap-6 mb-6 md:grid-cols-2">
-            <!-- 3- primer input -->
-           <div>
-               <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left">Nombre</label>
-               <input type="text"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nombre" [(ngModel)]="nombre" >
-              </div>
-
-            <!-- 4- primer input -->
-            <div class="sele">
-              <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left">Estado</label>
-              <select [(ngModel)]="estado" class="form-select" aria-label="Default select example" id="sele" required>
-                <option value="2" disabled selected>Estado:</option>
-                <option value="1">activo</option>
-                <option value="0">inactivo</option>
-              </select>
-            </div>
-
-           </div>
-
-         </div>
-
-           <!-- mensajes -->
-          <!-- <div class="alert alert-success" role="alert" *ngIf="msgSuccess" >
-            Usuario Registrado Exitosamente!
-          </div> -->
-          <div class="alert alert-danger" role="alert" *ngIf="msgFail">
-            Usuario No Registrado 'Usuario' Vacio!
-          </div>
-          <div class="alert alert-danger" role="alert" *ngIf="msgContrasena">
-            Usuario No Registrado 'Contraseña' Vacio!
-          </div>
-          <div class="alert alert-danger" role="alert" *ngIf="msgNombre">
-            Usuario No Registrado 'Nombre' Vacio!
-          </div>
-          <div class="alert alert-danger" role="alert" *ngIf="msgEstado">
-            Usuario No Registrado 'Estado' Vacio!
-          </div>
-        
-          <div class="up">
-          
-            <button type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" (click)="limpiar()">Limpiar</button>
-        
-            <button type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" (click)="guardarUsuario()">  <i class="far fa-save"></i> Guardar</button>
-        
-            <button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" (click)="msgPrecaucion(usuarioid)">Eliminar</button>
-
+          <div class="buscador mt-2">
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
           </div>
         </div>
-        
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Usuario</th>
+              <th scope="col">Contraseña</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Estado</th>
+            </tr>
+          </thead>
+          <tbody class="tableta">
+            <tr *ngFor="let usuario of listadoUsuarios">
+              <td>
+                <a [routerLink]="" (click)="seleccionarUsuario(usuario)" data-dismiss="modal">{{
+                  usuario.usuarioid
+                  }}</a>
+              </td>
+              <td>
+                <a [routerLink]="" (click)="seleccionarUsuario(usuario)" data-dismiss="modal">{{ usuario.contrasena
+                  }}</a>
+              </td>
+              <td>
+                <a [routerLink]="" (click)="seleccionarUsuario(usuario)" data-dismiss="modal">{{ usuario.nombre }}</a>
+              </td>
+              <td>
+                <a [routerLink]="" (click)="seleccionarUsuario(usuario)" data-dismiss="modal">{{ usuario.estado }}</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
 </div>
-

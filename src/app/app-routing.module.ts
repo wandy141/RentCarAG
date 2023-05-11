@@ -10,24 +10,18 @@ import { TipoVehiculoComponent } from './components/tipo-vehiculo/tipo-vehiculo.
 import { ApiDBService } from './services/api-db.service';
 import { ConsultaEconomicoComponent } from './components/consulta-economico/consulta-economico.component';
 import { AlquilerComponent } from './components/alquiler/alquiler.component';
-import { SlideBarComponent } from './components/slide-bar/slide-bar.component';
-import { PruebaComponent } from './components/prueba/prueba.component';
 
 const routes: Routes = [
   {path: '', component :RegitroComponent, pathMatch:'full'},
   {path: 'login', component :RegitroComponent},
   {path: 'home', component :HomeComponent },
-  {path: 'cliente', component :ClienteComponent },
-  {path: 'carro', component :CarroComponent,canActivate: [ApiDBService]},
+  {path: 'cliente', component :ClienteComponent, canActivate: [ApiDBService]},
+  {path: 'carro', component :CarroComponent },
   {path: 'usuario', component :UsuarioComponent},
   {path: 'carroC', component :VehiculoConsultaComponent, },
   {path: 'carroT', component :TipoVehiculoComponent},
   {path: 'tipo', component :ConsultaEconomicoComponent },
   {path: 'alquiler', component :AlquilerComponent },
-  {path: 'slide', component :SlideBarComponent },
-  {path: 'pr', component :PruebaComponent },
-
-
 
 
   { path: '**', redirectTo: 'login'}
