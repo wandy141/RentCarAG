@@ -10,6 +10,8 @@ import { TipoVehiculoComponent } from './components/tipo-vehiculo/tipo-vehiculo.
 import { ApiDBService } from './services/api-db.service';
 import { ConsultaEconomicoComponent } from './components/consulta-economico/consulta-economico.component';
 import { AlquilerComponent } from './components/alquiler/alquiler.component';
+import { SlideBarComponent } from './components/slide-bar/slide-bar.component';
+import { PruebaComponent } from './components/prueba/prueba.component';
 
 const routes: Routes = [
   {path: '', component :RegitroComponent, pathMatch:'full'},
@@ -22,6 +24,9 @@ const routes: Routes = [
   {path: 'carroT', component :TipoVehiculoComponent},
   {path: 'tipo', component :ConsultaEconomicoComponent },
   {path: 'alquiler', component :AlquilerComponent },
+  {path: 'slide', component :SlideBarComponent },
+  {path: 'pr', component :PruebaComponent },
+
 
 
 

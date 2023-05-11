@@ -55,7 +55,7 @@ export class RegitroComponent {
     this.accediendo = true;
     setTimeout(() => {
     
-        this.servicio.login(this.usuario,this.password).subscribe((retorno) => {
+        this.servicio.login(this.usuario,this.password).subscribe((retorno:any) => {
           this.accediendo = false;
          
           if (retorno.resultado == true) {
