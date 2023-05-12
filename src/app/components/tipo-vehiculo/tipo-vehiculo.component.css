@@ -3,17 +3,17 @@
 }
 
 .tod {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 400px;
-  padding: 40px;
-  transform: translate(-50%, -50%);
+ 
+  margin: 0 auto;
+  width: auto;
   box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
   text-align: center;
-  background: linear-gradient(#e66465, #9198e5);
+  background: transparent;
+  padding: 2rem;
+  margin:1.5rem;
+  box-shadow: 0 0 1px 1px rgba(128, 128, 128, 0.5);
+
 
 }
 
@@ -24,3 +24,37 @@
 .tableta a{
   cursor: pointer;
 }
+
+
+
+.todo{
+
+  margin-top: 7.5rem;
+  margin-right: 5rem;
+
+}
+
+@media (min-width: 600px) {
+  .todo {
+      margin-left: 3rem;
+     margin-right: 4rem;
+
+  }
+}
+
+th{
+  cursor: pointer;
+}
+
+td{
+  cursor: pointer;
+}
+
+
+
+  #sele{
+    padding: 0.625rem;
+    margin-bottom: 2.2rem;
+    --tw-text-opacity: 1;
+      color: rgb(17 24 39/var(--tw-text-opacity));
+  }

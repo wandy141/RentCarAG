@@ -51,15 +51,6 @@ export class AlquilerComponent implements OnInit {
 
   }
 
-
-
-
-
-
-
-
-
-
   ngOnInit(): void {
   
     const today = new Date();

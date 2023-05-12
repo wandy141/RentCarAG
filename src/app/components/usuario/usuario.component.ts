@@ -14,24 +14,17 @@ export class UsuarioComponent {
   nombre: string = '';
   estado: number = 2;
   error: boolean = false;
-  msgFail: boolean = false;
-  msgNombre: boolean = false;
-  msgContrasena: boolean = false;
-  msgEstado: boolean = false;
-  modalOpen:boolean = false;
-
-
-  
+  activo: any = 1;
+  inactivo: any = 0;
 
   listadoUsuarios: Array<usuarios> = [];
 
   constructor(public servicio: ApiDBService) {
- 
     this.getUsuarios();
   }
 
   getUsuarios() {
-    this.servicio.mostrarUsuario().subscribe((listado:any) => {
+    this.servicio.mostrarUsuario().subscribe((listado: any) => {
       this.listadoUsuarios = listado;
     });
   }
@@ -54,52 +47,42 @@ export class UsuarioComponent {
 
     if (this.usuarioid == '') {
       this.error = true;
-      this.msgFail = true;
-      setTimeout(() => {
-        this.msgFail = false;
-      }, 3000);
+      this.msgNulo();
     }
 
     if (this.nombre == '') {
       this.error = true;
-      this.msgNombre = true;
-      setTimeout(() => {
-        this.msgNombre = false;
-      }, 3000);
+      this.msgNulo();
     }
 
     if (this.contrasena == '') {
       this.error = true;
-      this.msgContrasena = true;
-      setTimeout(() => {
-        this.msgContrasena = false;
-      }, 3000);
+      this.msgNulo();
     }
 
     if (this.estado == 2) {
       this.error = true;
-      this.msgEstado = true;
-      setTimeout(() => {
-        this.msgEstado = false;
-      }, 3000);
+      this.msgNulo();
     }
 
     if (this.error) {
       return;
     }
 
-    this.servicio.insertarUsuario(usuariotmp).subscribe((resultado:any) => {
+    this.servicio.insertarUsuario(usuariotmp).subscribe((resultado: any) => {
       console.log(resultado);
       if (resultado) {
         this.limpiar();
         this.getUsuarios();
         this.msgExitoGuardar(usuariotmp.usuarioid);
+      } else {
+        this.msgFail();
       }
     });
   }
 
   llenarUsuario(usuarioid: string) {
-    this.servicio.llenarTablaUser(usuarioid).subscribe((resultado:any) => {
+    this.servicio.llenarTablaUser(usuarioid).subscribe((resultado: any) => {
       console.log(resultado);
       this.seleccionarUsuario;
 
@@ -114,14 +97,13 @@ export class UsuarioComponent {
 
   limpiar() {
     this.usuarioid = '';
-    this.contrasena = ''; 
+    this.contrasena = '';
     this.nombre = '';
     this.estado = 2;
   }
 
   eliminar(usuarioid: string) {
-    this.servicio.borrarUser(usuarioid).subscribe((response:any) => {
-  
+    this.servicio.borrarUser(usuarioid).subscribe((response: any) => {
       this.limpiar();
       this.getUsuarios();
       this.msgExitoBorrar(usuarioid);
@@ -152,6 +134,20 @@ export class UsuarioComponent {
     );
   }
 
+  msgFail() {
+    Swal.fire({
+      title: 'Oops...',
+      text: 'Se produjo algun Error',
+      icon: 'warning',
+      iconColor: 'red',
+      confirmButtonText: 'OK',
+    });
+  }
+
+  msgNulo() {
+    Swal.fire('Oops...', '¡Ocurrio algo verfica los campos!', 'error');
+  }
+
   msgPrecaucion(usuarioid: string) {
     if (usuarioid == null || usuarioid == '' || usuarioid == undefined) {
       this.msgFallo();
@@ -170,16 +166,6 @@ export class UsuarioComponent {
       } else {
       }
     });
-  }
-
-
-
-  openModal() {
-    this.modalOpen = true;
-  }
-
-  closeModal() {
-    this.modalOpen = false;
   }
 
   // expresiones = {

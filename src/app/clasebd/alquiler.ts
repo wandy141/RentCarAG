@@ -9,11 +9,6 @@ fechafin:string;
 dias:number;
 total:number;
 
-
-
-
-
-
     constructor() {
         
         this.idalquiler = 0;

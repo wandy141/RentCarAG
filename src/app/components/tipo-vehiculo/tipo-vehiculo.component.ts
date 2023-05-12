@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { tipoVehiculo } from 'src/app/clasebd/tipoVehiculo';
 import { ApiDBService } from 'src/app/services/api-db.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-tipo-vehiculo',
@@ -16,7 +17,7 @@ export class TipoVehiculoComponent {
   msgEstado: boolean = false;
   error: boolean = false;
   idtxt: any = undefined;
-
+ 
   
 tablaTipo:Array<tipoVehiculo> = [];
   constructor( public servicio: ApiDBService) {
@@ -26,24 +27,15 @@ tablaTipo:Array<tipoVehiculo> = [];
 
   guadarTipo() {
     this.error = false;
-
     if (this.tipotxt == '') {
-      this.mensaje = 'tipo'
+      this.msgFallo();
       this.error = true;
-      this.msgTipo = true;
-      setTimeout(() => {
-        this.msgTipo = false
-      }, 3000);
 
     } 
     
     if (this.estadotxt == 2) {
-      this.mensaje = 'Estado'
+      this.msgFallo();
       this.error = true;
-      this.msgEstado = true;
-      setTimeout(() => {
-        this.msgEstado = false
-      }, 3000);
     }
 
     let tipoVehiculoTmp: tipoVehiculo = new tipoVehiculo();
@@ -56,16 +48,9 @@ tablaTipo:Array<tipoVehiculo> = [];
     }
     this.servicio.guardarTipos(tipoVehiculoTmp).subscribe(resultado => {
       
-      console.log(resultado);
-      this.msgSuccess = true;
-      setTimeout(() => {
-        this.msgSuccess = false;
-      }, 3000);
+      this.msgExitoGuardar(this.tipotxt);
       this.limpiar();
       this.llenarTabla();
-
-
-
     })
   }
 
@@ -101,10 +86,26 @@ tablaTipo:Array<tipoVehiculo> = [];
       this.tablaTipo = lista;
     });
   }
+
+
+
+msgExitoGuardar(tipotxt:string){
+
+  Swal.fire(
+    'Éxito',
+    '¡Se a Registrado el tipo ' + tipotxt + '!',
+    'success'
+  );
 }
 
 
-
-
+msgFallo() {
+  Swal.fire(
+    'Oops...',
+    '¡Ocurrio algo verfica los campos!',
+    'error'
+  );
+}
+}
 
 

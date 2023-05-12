@@ -20,6 +20,13 @@
 }
 
 
+.cover-heading{
+font-size: xx-large;
+font-weight: 700;
+font-family: 'Poppins', sans-serif;
+margin: 20px;
+}
+
 :root{
   --my-opacity:0.9;
 }
@@ -85,10 +92,7 @@
 }
 
 .lead{
-  font-family: 'Tilt Prism', cursive;
+  font-family: 'Poppins', sans-serif;
+margin-bottom: 10px;
 }
 
-
-h1{
-  font-weight: 700;
-}

@@ -1,16 +1,12 @@
-
-
 .tod {
   margin: 0 auto;
   width: auto;
   box-sizing: border-box;
-  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   text-align: center;
   background: transparent;
   padding: 2rem;
-  margin:1.5rem
-
+  margin: 1.5rem
 }
 
 .hidden {
@@ -32,12 +28,12 @@ img {
   color: red;
 }
 
-.tableta a{
+.tableta a {
   cursor: pointer;
 }
 
 
-.todo{
+.todo {
 
   margin-top: 7.5rem;
   margin-right: 5rem;
@@ -46,27 +42,25 @@ img {
 
 @media (min-width: 600px) {
   .todo {
-      margin-left: 3rem;
-     margin-right: 4rem;
+    margin-left: 3rem;
+    margin-right: 4rem;
 
   }
 }
 
-th{
+th {
   cursor: pointer;
 }
 
-td{
+td {
   cursor: pointer;
 }
 
 
 
-  #sele{
-    padding: 0.625rem;
-    margin-bottom: 2.2rem;
-    --tw-text-opacity: 1;
-      color: rgb(17 24 39/var(--tw-text-opacity));
-  }
-  
-  
+#sele {
+  padding: 0.625rem;
+  margin-bottom: 2.2rem;
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39/var(--tw-text-opacity));
+}
