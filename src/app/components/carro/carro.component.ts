@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { tipoVehiculo } from 'src/app/clasebd/tipoVehiculo';
 import { vehiculo } from 'src/app/clasebd/vehiculo';
 import { ApiDBService } from 'src/app/services/api-db.service';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-carro',
   templateUrl: './carro.component.html',
-  styleUrls: ['./carro.component.css']
+  styleUrls: ['./carro.component.css'],
 })
 export class CarroComponent {
   marcatxt: string = '';
@@ -21,17 +21,7 @@ export class CarroComponent {
   idtipotxt: number = 0;
   idtxt: any = undefined;
   error: boolean = false;
-  preciotxt:any = undefined;
-
-  //mensajes
-  msgSucces: boolean = false;
-  msgFail: boolean = false;
-  msgMarca: boolean = false;
-  msgModelo: boolean = false;
-  msgColor: boolean = false;
-  msgAsientos: boolean = false;
-  msgCombustible: boolean = false;
-  msgPrecio:boolean = false;
+  preciotxt: any = undefined;
 
   tipoVehiculos: Array<tipoVehiculo> = [];
 
@@ -40,8 +30,6 @@ export class CarroComponent {
   llenarAll: Array<vehiculo> = [];
 
   constructor(public servicio: ApiDBService) {
-
-
     let time = new Date();
     for (let index = time.getFullYear(); index > 2000; index--) {
       this.years.push(index);
@@ -51,24 +39,18 @@ export class CarroComponent {
   }
 
   llenarTabla() {
-    // this.http.post<Array<vehiculo>>('http://127.0.0.1:8000/api/allVehiculo',{}).subscribe(mostrarAll =>{
-    //   this.llenarAll = mostrarAll;
-    // });
-    this.servicio.getTodosVehiculos().subscribe(mostrarAll => {
+    this.servicio.getTodosVehiculos().subscribe((mostrarAll) => {
       this.llenarAll = mostrarAll;
     });
   }
 
-
   llenarTipoVehiculos() {
-    this.servicio.getTipoVehiculos().subscribe(lista => {
+    this.servicio.getTipoVehiculos().subscribe((lista) => {
       this.tipoVehiculos = lista;
     });
   }
 
-
   guardarVehiculos() {
-
     this.error = false;
 
     let vehiculotmp: vehiculo = new vehiculo();
@@ -81,87 +63,57 @@ export class CarroComponent {
     vehiculotmp.tipo = this.idtipotxt;
     vehiculotmp.ano = this.numbertxt;
     vehiculotmp.placa = this.placatxt;
-    vehiculotmp.precio = this.preciotxt,
-    vehiculotmp.estado = this.estadotxt
-
+    (vehiculotmp.precio = this.preciotxt),
+      (vehiculotmp.estado = this.estadotxt);
 
     if (this.marcatxt == '') {
       this.error = true;
-      this.msgMarca = true;
-      setTimeout(() => {
-        this.msgMarca = false
-      }, 3000);
+      this.msgFallo();
     }
 
     if (this.modelotxt == '') {
       this.error = true;
-      this.msgModelo = true;
-      setTimeout(() => {
-        this.msgModelo = false
-      }, 3000);
+      this.msgFallo();
     }
 
     if (this.colortxt == '') {
       this.error = true;
-      this.msgColor = true;
-      setTimeout(() => {
-        this.msgColor = false
-      }, 3000);
+      this.msgFallo();
     }
 
     if (this.asientostxt == 0) {
       this.error = true;
-      this.msgAsientos = true;
-      setTimeout(() => {
-        this.msgAsientos = false
-      }, 3000);
+      this.msgFallo();
     }
 
     if (this.preciotxt == 0) {
       this.error = true;
-      this.msgPrecio = true;
-      setTimeout(() => {
-        this.msgPrecio = false
-      }, 3000);
+      this.msgFallo();
     }
 
     if (this.combustibletxt == '0') {
       this.error = true;
-      this.msgCombustible = true;
-      setTimeout(() => {
-        this.msgCombustible = false
-      }, 3000);
+      this.msgFallo();
     }
 
     if (this.error) {
       return;
     }
 
-    this.servicio.insertarVehiculos(vehiculotmp).subscribe(resultado => {
+    this.servicio.insertarVehiculos(vehiculotmp).subscribe((resultado) => {
       console.log(resultado);
 
       if (resultado) {
-        this.msgSucces = true;
+        this.msgExitoGuardar(this.marcatxt, this.modelotxt);
         this.limpiar();
-        setTimeout(() => {
-          this.msgSucces = false;
-        }, 3000);
-
       } else {
-        this.msgFail = true;
-        setTimeout(() => {
-          this.msgFail = false;
-        }, 3000);
+        this.msgFallo();
       }
       this.llenarTabla();
-
-
-    })
-
+    });
   }
   idCompletar(idvehiculo: number) {
-    this.servicio.getIdVehiculo(idvehiculo).subscribe(lista => {
-
+    this.servicio.getIdVehiculo(idvehiculo).subscribe((lista) => {
       if (idvehiculo !== null) {
         this.marcatxt = lista.marca;
         this.modelotxt = lista.modelo;
@@ -172,10 +124,8 @@ export class CarroComponent {
         this.idtipotxt = lista.tipo;
         this.combustibletxt = lista.combustible;
         this.estadotxt = lista.estado;
-
-
       }
-    })
+    });
   }
   limpiar() {
     this.marcatxt = '';
@@ -190,8 +140,6 @@ export class CarroComponent {
     this.idtxt = 0;
   }
 
-
-
   seleccionarTxt(objVehiculo: vehiculo) {
     this.idtxt = objVehiculo.idvehiculo;
     this.marcatxt = objVehiculo.marca;
@@ -203,12 +151,23 @@ export class CarroComponent {
     this.placatxt = objVehiculo.placa;
     this.estadotxt = objVehiculo.estado;
     this.idtipotxt = objVehiculo.tipo;
-
   }
 
-//eventos
+  msgExitoGuardar(marca: string, modelo: string) {
+    Swal.fire(
+      'Éxito',
+      '¡Se a Registrado el Vehiculo ' + marca + modelo + '!',
+      'success'
+    );
+  }
 
-//para que la primera letra del input se vuelva Mayuscula
+  msgFallo() {
+    Swal.fire('Oops...', '¡Ocurrio algo verfica los campos!', 'error');
+  }
+
+  //eventos
+
+  //para que la primera letra del input se vuelva Mayuscula
   capitalize(texto: string) {
     return texto.charAt(0).toUpperCase() + texto.slice(1);
   }

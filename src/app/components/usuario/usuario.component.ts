@@ -69,13 +69,13 @@ export class UsuarioComponent {
       return;
     }
 
-    this.servicio.insertarUsuario(usuariotmp).subscribe((resultado: any) => {
+    this.servicio.insertarUsuario(usuariotmp).subscribe((resultado: boolean) => {
       console.log(resultado);
       if (resultado) {
         this.limpiar();
         this.getUsuarios();
         this.msgExitoGuardar(usuariotmp.usuarioid);
-      } else {
+      } else if (!resultado) {
         this.msgFail();
       }
     });
