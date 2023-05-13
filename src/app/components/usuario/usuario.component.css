@@ -6,7 +6,8 @@
   text-align: center;
   background: transparent;
   padding: 2rem;
-  margin: 1.5rem
+  margin: 1.5rem;
+  box-shadow: 0 0 1px 1px rgba(128, 128, 128, 0.5);
 }
 
 .hidden {

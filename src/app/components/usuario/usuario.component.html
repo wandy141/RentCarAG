@@ -64,7 +64,7 @@
               >
                 <span
                   class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300"
-                  *ngIf="usuario.estado === this.activo"
+                  *ngIf="usuario.estado === this.visita"
                   >Activo</span
                 >
                 <span
@@ -72,6 +72,11 @@
                   *ngIf="usuario.estado === this.inactivo"
                   >Inactivo</span
                 >
+
+                <span class="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300" *ngIf="usuario.estado === this.activo">Administrador</span>
+
+
+
               </td>
             </tr>
           </tbody>
@@ -176,9 +181,10 @@
                   id="estado"
                   required
                 >
-                  <option value="2" disabled selected>Estado:</option>
-                  <option value="1">activo</option>
-                  <option value="0">inactivo</option>
+                  <option value="3" disabled selected>Estado:</option>
+                  <option value="1">Administrador</option>
+                  <option value="2">Usuario</option>
+                  <option value="0">Inactivo</option>
                 </select>
               </div>
             </div>

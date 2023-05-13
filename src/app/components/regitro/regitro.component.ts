@@ -57,11 +57,16 @@ export class RegitroComponent {
     
         this.servicio.login(this.usuario,this.password).subscribe((retorno:any) => {
           this.accediendo = false;
-         
+         console.log(retorno);
           if (retorno.resultado == true) {
             this.servicio.token = retorno.token;
             localStorage.setItem('token', retorno.token);
-            this.router.navigate(['home']);
+            if (retorno.estado == 1) {
+              this.router.navigate(['dashboard']);
+            }else{
+              this.router.navigate(['home']);
+            }
+          
           } else  {
             this.msgFail = true;
             setTimeout(() => {
@@ -69,6 +74,6 @@ export class RegitroComponent {
             }, 3000);
           }
         });
-    }, 1000);
+    });
   }
 }

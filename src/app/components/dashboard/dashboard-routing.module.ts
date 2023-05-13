@@ -5,17 +5,27 @@ import { PruebaComponent } from '../prueba/prueba.component';
 import { AlquilerComponent } from '../alquiler/alquiler.component';
 import { ApiDBService } from 'src/app/services/api-db.service';
 import { CarroComponent } from '../carro/carro.component';
+import { DashboardComponent } from './dashboard.component';
+import { TipoVehiculoComponent } from '../tipo-vehiculo/tipo-vehiculo.component';
+
+
 
 const routes: Routes = [
-  {path: '', redirectTo:'usuario', pathMatch:'full'},
-  {path: 'usuario', component :UsuarioComponent},
-  {path: 'pr', component :PruebaComponent },
-  {path: 'rentar', component :AlquilerComponent },
-  {path: 'usuario', component :UsuarioComponent},
-  {path: 'carro', component :CarroComponent,canActivate: [ApiDBService]},
-  { path: '**', redirectTo: '/login'}
-
+  {
+    path: '',
+    component: DashboardComponent,
+    children: [
+      {path: 'usuario', component :UsuarioComponent},
+      {path: 'pr', component :PruebaComponent },
+      {path: 'rentar', component :AlquilerComponent },
+      {path: 'usuario', component :UsuarioComponent,canActivate: [ApiDBService]},
+      {path: 'carros', component :CarroComponent},
+      {path: 'carroT', component :TipoVehiculoComponent},
+      { path: '**', redirectTo: '/login'}
+    ]
+  }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

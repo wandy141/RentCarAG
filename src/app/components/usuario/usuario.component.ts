@@ -12,10 +12,11 @@ export class UsuarioComponent {
   usuarioid: string = '';
   contrasena: string = '';
   nombre: string = '';
-  estado: number = 2;
+  estado: number = 3;
   error: boolean = false;
   activo: any = 1;
   inactivo: any = 0;
+  visita: any = 2;
 
   listadoUsuarios: Array<usuarios> = [];
 
@@ -60,7 +61,7 @@ export class UsuarioComponent {
       this.msgNulo();
     }
 
-    if (this.estado == 2) {
+    if (this.estado == 3) {
       this.error = true;
       this.msgNulo();
     }
@@ -99,7 +100,7 @@ export class UsuarioComponent {
     this.usuarioid = '';
     this.contrasena = '';
     this.nombre = '';
-    this.estado = 2;
+    this.estado = 3;
   }
 
   eliminar(usuarioid: string) {

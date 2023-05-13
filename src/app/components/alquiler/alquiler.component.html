@@ -81,7 +81,7 @@
         type="submit"
         class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         data-toggle="modal"
-        data-target=".bd-example-modal-lg"
+        data-target="#exampleModalCenter"
       >
         <svg
           class="w-5 h-5"
@@ -107,7 +107,7 @@
       aria-atomic="true"
       *ngIf="descripcion"
     >
-      <div class="toast-body">{{ marca }} {{ modelo }}</div>
+    <div class="toast-body ">{{ marca }} {{ modelo }}</div>
     </div>
     </div>
   </div>
@@ -132,10 +132,6 @@
       />
     </div>
   </div>
-
-
-
-
 
 
   <div class="grid gap-6 mb-6 md:grid-cols-2">
@@ -219,126 +215,149 @@
 
 <!-- Large modal -->
 
+
 <div
-  class="modal fade bd-example-modal-lg"
+  class="modal fade "
+  id="exampleModalCenter"
   tabindex="-1"
   role="dialog"
-  aria-labelledby="myLargeModalLabel"
+  aria-labelledby="exampleModalCenterTitle"
   aria-hidden="true"
 >
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Marca</th>
-            <th scope="col">Modelo</th>
-            <th scope="col">Color</th>
-            <th scope="col">Capacidad</th>
-            <th scope="col">Año</th>
-            <th scope="col">Placa</th>
-            <th scope="col">Tipo</th>
-            <th scope="col">Combustile</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Estado</th>
-          </tr>
-        </thead>
-        <tbody class="tableta">
-          <tr *ngFor="let txt of llenarAll">
-            <td>
-              <a
-                [routerLink]=""
-                data-dismiss="modal"
-                (click)="seleccionarTxt(txt)"
-                ><b>{{ txt.idvehiculo }}</b></a
-              >
-            </td>
-            <td>
-              <a
-                [routerLink]=""
-                data-dismiss="modal"
-                (click)="seleccionarTxt(txt)"
-                >{{ txt.marca }}
-              </a>
-            </td>
-            <td>
-              <a
-                [routerLink]=""
-                data-dismiss="modal"
-                (click)="seleccionarTxt(txt)"
-                >{{ txt.modelo }}</a
-              >
-            </td>
-
-            <td>
-              <a
-                [routerLink]=""
-                data-dismiss="modal"
-                (click)="seleccionarTxt(txt)"
-                >{{ txt.color }}</a
-              >
-            </td>
-            <td>
-              <a
-                [routerLink]=""
-                data-dismiss="modal"
-                (click)="seleccionarTxt(txt)"
-                >{{ txt.asiento }}</a
-              >
-            </td>
-            <td>
-              <a
-                [routerLink]=""
-                data-dismiss="modal"
-                (click)="seleccionarTxt(txt)"
-                >{{ txt.ano }}</a
-              >
-            </td>
-            <td>
-              <a
-                [routerLink]=""
-                data-dismiss="modal"
-                (click)="seleccionarTxt(txt)"
-                >{{ txt.placa }}</a
-              >
-            </td>
-            <td>
-              <a
-                [routerLink]=""
-                data-dismiss="modal"
-                (click)="seleccionarTxt(txt)"
-                >{{ txt.tipo }}</a
-              >
-            </td>
-            <td>
-              <a
-                [routerLink]=""
-                data-dismiss="modal"
-                (click)="seleccionarTxt(txt)"
-                >{{ txt.combustible }}</a
-              >
-            </td>
-            <td>
-              <a
-                [routerLink]=""
-                data-dismiss="modal"
-                (click)="seleccionarTxt(txt)"
-                >{{ txt.precio }}</a
-              >
-            </td>
-            <td>
-              <a
-                [routerLink]=""
-                data-dismiss="modal"
-                (click)="seleccionarTxt(txt)"
-                >{{ txt.estado }}</a
-              >
-            </td>
-          </tr>
-        </tbody>
-      </table>
+<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 class="modal-title" id="exampleModalLongTitle">
+        Registro Vehiculos
+      </h3>
+      <button
+        type="button"
+        class="close"
+        data-dismiss="modal"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+  <div class="relative overflow-x-auto">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th scope="col" class="px-6 py-3">Id</th>
+          <th scope="col" class="px-6 py-3">Marca</th>
+          <th scope="col" class="px-6 py-3">Modelo</th>
+          <th scope="col" class="px-6 py-3">Color</th>
+          <th scope="col" class="px-6 py-3">Capacidad</th>
+          <th scope="col" class="px-6 py-3">Año</th>
+          <th scope="col" class="px-6 py-3">Placa</th>
+          <th scope="col" class="px-6 py-3">Tipo</th>
+          <th scope="col" class="px-6 py-3">Combustile</th>
+          <th scope="col" class="px-6 py-3">Placa</th>
+          <th scope="col" class="px-6 py-3">Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" *ngFor="let txt of llenarAll">
+          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <button type="button"  (click)="seleccionarTxt(txt)" data-toggle="modal" data-target="#exampleModalCenter">
+              {{ txt.idvehiculo }}
+            </button>
+          </th>
+          <td class="px-6 py-4">
+            <button type="button"  (click)="seleccionarTxt(txt)" data-toggle="modal" data-target="#exampleModalCenter">
+              {{ txt.marca }}
+            </button>
+          </td>
+          <td class="px-6 py-4">
+            <button type="button"  (click)="seleccionarTxt(txt)" data-toggle="modal" data-target="#exampleModalCenter">
+              {{ txt.modelo }}
+            </button>
+          </td>
+          
+        <td
+        class="px-6 py-4"
+      >
+      <button type="button"  (click)="seleccionarTxt(txt)" data-toggle="modal" data-target="#exampleModalCenter">
+        {{ txt.color }}
+      </button>
+      </td>
+
+      <td
+        class="px-6 py-4"
+      >
+      <button type="button"  (click)="seleccionarTxt(txt)" data-toggle="modal" data-target="#exampleModalCenter">
+        {{ txt.asiento }}
+      </button>
+      </td>
+
+      <td
+        class="px-6 py-4"
+      >
+      <button type="button"  (click)="seleccionarTxt(txt)" data-toggle="modal" data-target="#exampleModalCenter">
+        {{ txt.ano }}
+      </button>
+        
+      </td>
+
+      <td
+        class="px-6 py-4"
+      >
+      <button type="button"  (click)="seleccionarTxt(txt)" data-toggle="modal" data-target="#exampleModalCenter">
+        {{ txt.placa }}
+      </button>
+        
+      </td>
+
+      <td
+        class="px-6 py-4"
+      >
+      <button type="button"  (click)="seleccionarTxt(txt)" data-toggle="modal" data-target="#exampleModalCenter">
+        {{getDescripcionTipo(txt.tipo)}}
+      </button>
+       
+      </td>
+
+      <td
+        class="px-6 py-4"
+      >
+      <button type="button"  (click)="seleccionarTxt(txt)" data-toggle="modal" data-target="#exampleModalCenter">
+        {{ txt.combustible }}
+      </button>
+       
+      </td>
+
+      <td
+        class="px-6 py-4"
+      >
+      <button type="button"  (click)="seleccionarTxt(txt)" data-toggle="modal" data-target="#exampleModalCenter">
+        {{ txt.precio }}
+      </button>
+      </td>
+
+      <td
+        class="px-6 py-4"
+      >
+      <button type="button"  (click)="seleccionarTxt(txt)" data-toggle="modal" data-target="#exampleModalCenter">
+        <span
+          class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300"
+          *ngIf="txt.estado === 1"
+          >Activo</span
+        >
+        <span
+          class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300"
+          *ngIf="txt.estado === 0"
+          >Inactivo</span
+        >
+       </button>
+      </td>
+    </tr>
+      
+      </tbody>
+    </table>
   </div>
 </div>
-</div>
+
+
+
+  

@@ -26,12 +26,10 @@
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/sweetalert2/dist/sweetalert2.min.css",
-              "node_modules/flow-bite/dist/flow-bite.css"
+              "node_modules/sweetalert2/dist/sweetalert2.min.css"
 
             ],
             "scripts": [
-              "node_modules/flow-bite/dist/flow-bite.js"
             ]
           },
           "configurations": {
@@ -93,14 +91,12 @@
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/sweetalert2/dist/sweetalert2.min.css",
-              "node_modules/flow-bite/dist/flow-bite.css"
+              "node_modules/sweetalert2/dist/sweetalert2.min.css"
              
             ],
             "scripts": [
               "node_modules/sweetalert2@9/sweetalert2.all.min.js",
-              "node_modules/sweetalert2/dist/sweetalert2.min.js",
-              "node_modules/flow-bite/dist/flow-bite.js"
+              "node_modules/sweetalert2/dist/sweetalert2.min.js"
             ]
           }
         }

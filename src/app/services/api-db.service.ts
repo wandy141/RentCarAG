@@ -45,8 +45,16 @@ export class ApiDBService {
     return this.http.post<boolean>(this.server + 'tokenExpiration', { seccion : this.token });    
   }
 
-  async getValidacion() {
   
+
+
+  async getValidacion() {
+    this.validacionADM().subscribe((retorno:any) => {
+      if(retorno.estado != 1){
+        valor = false;
+        return;
+      }
+    })
     let valor: boolean = false;
     let valort = (await this.acceso()).toPromise().then(status => {
       if ( valor  == undefined) {
@@ -61,7 +69,6 @@ export class ApiDBService {
         return valor;
       }      
     });
-    console.log(valort);
     return valort;
   }
 
@@ -101,6 +108,13 @@ export class ApiDBService {
     });
   }
  
+  validacionADM() {
+    return this.http.post<any>(this.server + 'login', {
+     
+    });
+  }
+
+
   //usuario
   mostrarUsuario(): Observable<Array<usuarios>> {
     return this.http.post<Array<usuarios>>(this.server + 'users', {});

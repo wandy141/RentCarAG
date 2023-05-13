@@ -24,6 +24,7 @@ export class AlquilerComponent implements OnInit {
   usuariotxt: string = '';
   modelo:string = '';
   marca:string = '';
+  diferenciaDias: number = 0;
 
 
   descripcion: boolean = false;
@@ -87,7 +88,8 @@ export class AlquilerComponent implements OnInit {
       const start = new Date(this.fechaini);
       const end = new Date(this.fechafin);
       const timeDiff = Math.abs(end.getTime() - start.getTime());
-      this.diasTotales = Math.ceil(timeDiff / (1000 * 3600 * 24));
+      this.diferenciaDias = Math.ceil(timeDiff / (1000 * 3600 * 24) + 1);
+      this.diasTotales = this.diferenciaDias;
     }
   }
 
@@ -100,7 +102,7 @@ export class AlquilerComponent implements OnInit {
   limpiar() {
    this.idtxt = undefined;
    this.preciotxt = undefined;
-   this.diasTotales = 0;
+   this.diasTotales = this.diferenciaDias;
    this.total = undefined;
    this.descripcion = false;
   }
@@ -140,7 +142,7 @@ export class AlquilerComponent implements OnInit {
 
 
     let alquilerTemp: alquiler = new alquiler();
-    alquilerTemp.usuario = this.nombreUsuario;
+    alquilerTemp.usuario = this.usuariotxt;
     alquilerTemp.fecha = this.fechaActual;
     alquilerTemp.idvehiculo = this.idtxt;
     alquilerTemp.precio = this.preciotxt;
@@ -154,8 +156,9 @@ export class AlquilerComponent implements OnInit {
 
     this.servicio.insertarAlquiler(alquilerTemp).subscribe((resultado) =>{
       if (resultado) {
+      this.limpiar();
+      this.calculateDays();
       this.msgExitoGuardar(this.usuariotxt);  
-      this.limpiar 
         
       }else{
         this.msgFallo();
@@ -196,6 +199,39 @@ export class AlquilerComponent implements OnInit {
     this.handleInputChange(); 
     this.calcular();
     
+  }
+
+
+  
+  getDescripcionTipo(tipo: number) {
+    let retorno: string = 'tipo';
+    switch (tipo) {
+      case 1:
+        retorno = 'Economico'
+        break;
+
+      case 2:
+        retorno = 'Compacto'
+        break;
+
+      case 3:
+        retorno = 'Deportivo'
+        break;
+
+      case 4:
+        retorno = 'Premium'
+        break;
+
+      case 5:
+        retorno = 'Lujo'
+        break;
+
+      case 6:
+        retorno = 'Camion'
+        break;
+
+    }
+    return retorno;
   }
 
   //eventos

@@ -12,28 +12,21 @@ import { ConsultaEconomicoComponent } from './components/consulta-economico/cons
 import { AlquilerComponent } from './components/alquiler/alquiler.component';
 import { SlideBarComponent } from './components/slide-bar/slide-bar.component';
 import { PruebaComponent } from './components/prueba/prueba.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   {path: '', component :RegitroComponent, pathMatch:'full'},
   {path: 'login', component :RegitroComponent},
   {path: 'home', component :HomeComponent },
-  // {path: 'cliente', component :ClienteComponent },
-  // {path: 'carro', component :CarroComponent,canActivate: [ApiDBService]},
-  // {path: 'usuario', component :UsuarioComponent},
   {path: 'carroC', component :VehiculoConsultaComponent, },
-  // {path: 'carroT', component :TipoVehiculoComponent},
   {path: 'tipo', component :ConsultaEconomicoComponent },
-  // {path: 'alquiler', component :AlquilerComponent },
   {path: 'slide', component :SlideBarComponent },
-  // {path: 'pr', component :PruebaComponent },
+  {path: 'dashboard', component :DashboardComponent },
+
   {
     path: 'dashboard',
     loadChildren: () => import('./components/dashboard/dashboard.module').then(m => m.DashboardModule)
   },
-
-
-
-
   { path: '**', redirectTo: 'login'}
 
 ];
