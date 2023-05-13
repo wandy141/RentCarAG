@@ -1,123 +1,209 @@
-<app-nav-bar></app-nav-bar>
-<!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> -->
-
+<app-slide-bar></app-slide-bar>
+<div class="container">
 <div class="tod">
+
   <div class="tit">
     <h2>Alquiler</h2>
   </div>
-  <div class="textt">
-    <label for=""><b> Usuario:</b></label>
-    <div class="inpu5">
+
+  <div class="grid gap-6 mb-6 md:grid-cols-2">
+    <div>
+      <label
+        for="usuario"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+        >Usuario</label
+      >
       <input
+        id="usuario"
+        name="usuario"
         type="text"
-        class="form-control"
-        id="floatingInput"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Usuario"
         [(ngModel)]="usuariotxt"
       />
     </div>
 
-    <label for=""><b> Fecha Actual:</b></label>
-    <div class="inpu">
+    <div>
+      <label
+        for="fecha"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+        >Fecha</label
+      >
       <input
-        disabled=""
+        id="fecha"
+        name="fecha"
         type="date"
-        class="form-control"
-        id="floatingInput"
+        disabled=""
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Usuario"
         [(ngModel)]="fechaActual"
       />
     </div>
+  </div>
 
-    <label for=""><b>ID Coche: </b></label>
-    <div class="input-group">
-      <input
-        type="number"
-        class="form-control"
-        aria-label="Recipient's username"
-        aria-describedby="button-addon2"
-        [(ngModel)]="idtxt"
-        (input)="handleInputChange()">
+  <div class="grid gap-6 mb-6 md:grid-cols-2">
+    <div>
+    <label
+    for="simple-search"
+    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+    >Buscar Vehiculo</label
+  >
+    <div class="flex items-center">
       
-      <div class="inputpeq">
-        <button
-          class="btn btn-dark"
-          type="button"
-          id="button-addon2"
-          data-toggle="modal"
-          data-target=".bd-example-modal-lg"
+      <div class="relative w-full">
+        <div
+          class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
         >
-          <i class="fas fa-car-side"></i>
-        </button>
+          <svg
+            aria-hidden="true"
+            class="w-5 h-5 text-gray-500 dark:text-gray-400"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </div>
+        <input
+          type="text"
+          id="simple-search"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Vehiculo"
+          [(ngModel)]="idtxt"
+          (input)="handleInputChange()"
+        />
       </div>
-    </div>
-  
-    <div 
+      <button
+        type="submit"
+        class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        data-toggle="modal"
+        data-target=".bd-example-modal-lg"
+      >
+        <svg
+          class="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          ></path>
+        </svg>
+        <span class="sr-only">Search</span>
+      </button>
+      <div
       id="descripcion"
       class="toast fade show"
       role="alert"
       aria-live="assertive"
       aria-atomic="true"
       *ngIf="descripcion"
-      
     >
-      <div class="toast-body">{{marca}} {{modelo}}</div>
+      <div class="toast-body">{{ marca }} {{ modelo }}</div>
     </div>
+    </div>
+  </div>
+   
 
-    <label for=""><b>Precio/Day</b></label>
-    <div class="input-group">
-      <span class="input-group-text">$</span>
+    <div>
+      <label
+        for="Precio"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+        >Precio/Día</label
+      >
       <input
-        type="text"
-        class="form-control"
-        aria-label="Amount (to the nearest dollar)"
+        id="Precio"
+        name="Precio"
+        type="number"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Precio"
         (blur)="calcular()"
         [(ngModel)]="preciotxt"
         (ngModelChange)="calcular()"
         (change)="calcular()"
       />
     </div>
+  </div>
 
-    <label for=""><b>Fecha Inicio:</b></label>
-    <div class="inpu2">
+
+
+
+
+
+  <div class="grid gap-6 mb-6 md:grid-cols-2">
+    <div>
+      <label
+        for="Inicio"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+        >Fecha Inicio</label
+      >
       <input
+        id="Inicio"
+        name="Inicio"
         type="date"
-        class="form-control"
-        id="floatingInput"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         [(ngModel)]="fechaini"
         (ngModelChange)="calculateDays()"
       />
     </div>
-    <label for=""><b>Fecha Fin </b></label>
-    <div class="inpu3">
+
+    <div>
+      <label
+        for="Final"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+        >Fecha Final</label
+      >
       <input
+        id="Final"
+        name="Final"
         type="date"
-        class="form-control"
-        id="floatingInput"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         (blur)="calculateDays()"
         (change)="calcular()"
         [(ngModel)]="fechafin"
         (ngModelChange)="calculateDays()"
       />
     </div>
-    <label for=""><b> Dias Totales:</b></label>
-    <div class="inpu4">
+  </div>
+  <div class="grid gap-6 mb-6 md:grid-cols-2">
+    <div >
+      <label
+        for="Dias"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+        >Dias Totales</label
+      >
       <input
+        id="Dias"
+        name="Dias"
+        placeholder="Dias Totales"
         type="text"
-        class="form-control"
-        id="floatingInput"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         [(ngModel)]="diasTotales"
         (change)="calcular()"
         (ngModelChange)="calcular()"
       />
     </div>
-    <label for=""><b>Total a pagar:</b></label>
-    <div class="input-group">
-      <span class="input-group-text">$</span>
+
+    <div>
+      <label
+        for="Total a pagar"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+        >Total a pagar</label
+      >
       <input
-      disabled=""
-        type="text"
-        class="form-control"
-        aria-label="Amount (to the nearest dollar)"
+        id="Total a pagar"
+        name="Total a pagar"
+        placeholder="Total"
+        type="number"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         [(ngModel)]="total"
       />
     </div>
@@ -126,17 +212,9 @@
   <br />
 
   <!-- botones -->
-  <button
-    class="btn btn-secondary"
-    (click)="limpiar()"
-    style="margin-right: 2rem"
-  >
-    Limpiar
-  </button>
 
-  <button type="button" class="btn btn-success" (click)="entrarAlquiler()">
-    <i class="far fa-save"></i> Alquilar
-  </button>
+  <button type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" (click)="limpiar()">Limpiar</button>
+<button type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"  (click)="entrarAlquiler()">  <i class="far fa-save"></i> Guardar </button>
 </div>
 
 <!-- Large modal -->
@@ -262,4 +340,5 @@
       </table>
     </div>
   </div>
+</div>
 </div>

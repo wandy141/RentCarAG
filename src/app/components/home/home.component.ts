@@ -17,6 +17,6 @@ export class HomeComponent {
     { nombre: 'Camión', imagen: '/assets/kia picanto.png', ruta:'camion' },
     { nombre: 'Compacto', imagen: '/assets/kia picanto.png', ruta:'compacto' },
     { nombre: 'Premium', imagen: '/assets/kia picanto.png', ruta:'premium' },
-    { nombre: 'Deportivo', imagen: '/assets/kia picanto.png', ruta:'deportivo' },
+    { nombre: 'Normal', imagen: '/assets/kia picanto.png', ruta:'normal' },
   ];
 }

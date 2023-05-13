@@ -2,3 +2,8 @@
 @import '~flowbite/dist/flowbite.css';
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
+*{
+    font-family: 'Poppins', sans-serif;
+
+scroll-behavior: smooth;
+}

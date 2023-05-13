@@ -111,11 +111,13 @@
               <!-- 1- primer input -->
               <div>
                 <label
-                  for="first_name"
+                  for="usuario"
                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
                   >Usuario</label
                 >
                 <input
+                id="usuario"
+                name="usuario"
                   type="text"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Usuario"
@@ -127,11 +129,13 @@
               <!-- 2- primer input -->
               <div>
                 <label
-                  for="first_name"
+                  for="contrasena"
                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
                   >Contraseña</label
                 >
                 <input
+                id="contrasena"
+                name="contrasena"
                   type="password"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Contraseña"
@@ -144,11 +148,13 @@
               <!-- 3- primer input -->
               <div>
                 <label
-                  for="first_name"
+                  for="nombre"
                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
                   >Nombre</label
                 >
                 <input
+                id="nombre"
+                name="nombre"
                   type="text"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Nombre"
@@ -159,15 +165,16 @@
               <!-- 4- primer input -->
               <div class="sele">
                 <label
-                  for="first_name"
+                  for="estado"
                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
                   >Estado</label
                 >
                 <select
                   [(ngModel)]="estado"
                   class="form-select"
+                  name="estado"
                   aria-label="Default select example"
-                  id="sele"
+                  id="estado"
                   required
                 >
                   <option value="2" disabled selected>Estado:</option>

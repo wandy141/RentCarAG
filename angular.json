@@ -27,11 +27,11 @@
             "styles": [
               "src/styles.css",
               "node_modules/sweetalert2/dist/sweetalert2.min.css",
-              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
-              "node_modules/primeng/resources/primeng.min.css"
+              "node_modules/flow-bite/dist/flow-bite.css"
+
             ],
             "scripts": [
-              
+              "node_modules/flow-bite/dist/flow-bite.js"
             ]
           },
           "configurations": {
@@ -94,15 +94,13 @@
             "styles": [
               "src/styles.css",
               "node_modules/sweetalert2/dist/sweetalert2.min.css",
-              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
-              "node_modules/primeng/resources/primeng.min.css"
+              "node_modules/flow-bite/dist/flow-bite.css"
+             
             ],
             "scripts": [
               "node_modules/sweetalert2@9/sweetalert2.all.min.js",
               "node_modules/sweetalert2/dist/sweetalert2.min.js",
-              "node_modules/flowbite/dist/js/flowbite.js"
-              
-
+              "node_modules/flow-bite/dist/flow-bite.js"
             ]
           }
         }

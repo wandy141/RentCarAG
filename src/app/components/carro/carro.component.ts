@@ -19,9 +19,9 @@ export class CarroComponent {
   placatxt: string = '';
   estadotxt: number = 0;
   idtipotxt: number = 0;
-  idtxt: any = undefined;
+  idtxt: number = 0;
   error: boolean = false;
-  preciotxt: any = undefined;
+  preciotxt: number = 0.0;
 
   tipoVehiculos: Array<tipoVehiculo> = [];
 
@@ -63,8 +63,8 @@ export class CarroComponent {
     vehiculotmp.tipo = this.idtipotxt;
     vehiculotmp.ano = this.numbertxt;
     vehiculotmp.placa = this.placatxt;
-    (vehiculotmp.precio = this.preciotxt),
-      (vehiculotmp.estado = this.estadotxt);
+    vehiculotmp.precio = this.preciotxt
+    vehiculotmp.estado = this.estadotxt
 
     if (this.marcatxt == '') {
       this.error = true;
@@ -100,15 +100,18 @@ export class CarroComponent {
       return;
     }
 
-    this.servicio.insertarVehiculos(vehiculotmp).subscribe((resultado) => {
+    this.servicio.insertarVehiculos(vehiculotmp).subscribe((resultado:boolean) => {
       console.log(resultado);
 
       if (resultado) {
         this.msgExitoGuardar(this.marcatxt, this.modelotxt);
         this.limpiar();
-      } else {
+      } 
+
+      if(resultado == false){
         this.msgFallo();
       }
+      
       this.llenarTabla();
     });
   }
@@ -152,6 +155,41 @@ export class CarroComponent {
     this.estadotxt = objVehiculo.estado;
     this.idtipotxt = objVehiculo.tipo;
   }
+
+
+
+  getDescripcionTipo(tipo: number) {
+    let retorno: string = 'tipo';
+    switch (tipo) {
+      case 1:
+        retorno = 'Economico'
+        break;
+
+      case 2:
+        retorno = 'Compacto'
+        break;
+
+      case 3:
+        retorno = 'Deportivo'
+        break;
+
+      case 4:
+        retorno = 'Premium'
+        break;
+
+      case 5:
+        retorno = 'Lujo'
+        break;
+
+      case 6:
+        retorno = 'Camion'
+        break;
+
+    }
+    return retorno;
+  }
+
+
 
   msgExitoGuardar(marca: string, modelo: string) {
     Swal.fire(

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { BootstrapOptions, Component, OnInit } from '@angular/core';
 import { alquiler } from 'src/app/clasebd/alquiler';
 import { vehiculo } from 'src/app/clasebd/vehiculo';
 import { ApiDBService } from 'src/app/services/api-db.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-alquiler',
@@ -11,16 +12,16 @@ import { ApiDBService } from 'src/app/services/api-db.service';
 })
 export class AlquilerComponent implements OnInit {
   nombreUsuario: string = '';
-  idtxt: any = undefined;
   error: boolean = false;
+  idtxt: any = undefined;
   preciotxt: any = undefined;
   fechaActual: string = '';
   fechaini: string = '';
   fechafin: string = '';
   diasTotales: number = 0;
-  total: number = 0;
-  usuariotxt: string = '';
   pagoTotal: number = 0;
+  total: any = undefined;
+  usuariotxt: string = '';
   modelo:string = '';
   marca:string = '';
 
@@ -64,21 +65,21 @@ export class AlquilerComponent implements OnInit {
 
     this.servicio.getNombreUser().subscribe((nombre) => {
       this.usuariotxt = nombre;
-      
     });
 
     this.fechaini = this.fechaActual;
+    this.calculateDays()
     
   }
 
   constructor(public servicio: ApiDBService) {
     this.llenarTabla();
+
   }
 
   calcular() {
-    if (this.preciotxt && this.diasTotales) {
       this.total = this.preciotxt * this.diasTotales;
-    }
+    
   }
 
   calculateDays() {
@@ -97,10 +98,46 @@ export class AlquilerComponent implements OnInit {
   }
 
   limpiar() {
-    this.idtxt = 0;
+   this.idtxt = undefined;
+   this.preciotxt = undefined;
+   this.diasTotales = 0;
+   this.total = undefined;
+   this.descripcion = false;
   }
 
   entrarAlquiler(){
+
+    if (this.idtxt == null) {
+      this.msgFallo();
+      return;
+    }
+
+    if (this.preciotxt == null) {
+      this.msgFallo();
+      return;
+    }
+
+    
+    if (this.diasTotales == 0) {
+      this.msgFallo();
+      return;
+    }
+
+    if (this.total == null){
+      this.msgFallo();
+      return;
+    }
+
+    if(this.fechaActual > this.fechafin || this.fechaActual > this.fechaini){
+      this.msgFecha();
+      return;
+    }
+
+    if(this.fechaini > this.fechafin){
+      this.msgFecha();
+      return;
+    }
+
 
     let alquilerTemp: alquiler = new alquiler();
     alquilerTemp.usuario = this.nombreUsuario;
@@ -116,24 +153,48 @@ export class AlquilerComponent implements OnInit {
 
 
     this.servicio.insertarAlquiler(alquilerTemp).subscribe((resultado) =>{
-      console.log(resultado);
-    })
+      if (resultado) {
+      this.msgExitoGuardar(this.usuariotxt);  
+      this.limpiar 
+        
+      }else{
+        this.msgFallo();
+      }
+     })
 
     
   }
 
+  msgExitoGuardar(usuarioid: string) {
+    Swal.fire(
+      'Éxito',
+      '¡Se a Registrado el Alquiler de ' + usuarioid + '!',
+      'success'
+    );
+  }
 
+  msgFallo() {
+    Swal.fire(
+      'Oops...',
+      '¡Verique los campos  !',
+      'error'
+    );
+  }
+
+  msgFecha() {
+    Swal.fire(
+      'Oops...',
+      '¡Verifique las fechas!',
+      'error'
+    );
+  }
   seleccionarTxt(objVehiculo: vehiculo) {
     this.idtxt = objVehiculo.idvehiculo;
     this.preciotxt = objVehiculo.precio;
     this.marca = objVehiculo.marca;
     this.modelo = objVehiculo.modelo;
- 
-   
-    this.calcular();
-    
     this.handleInputChange(); 
-      
+    this.calcular();
     
   }
 

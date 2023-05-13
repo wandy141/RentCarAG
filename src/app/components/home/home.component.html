@@ -2,14 +2,14 @@
 
 <h2 id="texto">Tipos de carros</h2>
 <div class="carta">
-    <div class="card" style="width: 18rem;" *ngFor="let items of list">
-        <div class="card-body">
-            <div class="photos">
-                <img src={{items.imagen}} alt=""  [routerLink]="['/tipo', {data:items.ruta}]"
-                >
+    <div class="card-container">
+        <div class="card" style="width: 33.33%;" *ngFor="let items of list">
+            <div class="card-body">
+                <div class="photos">
+                    <img src={{items.imagen}} alt="" [routerLink]="['/tipo', {data:items.ruta}]" style="max-width: 70%;">
+                </div>
+                <h3 class="title">{{items.nombre}}</h3>
             </div>
-            <h4 class="title">{{items.nombre}}</h4>
         </div>
     </div>
 </div>
-

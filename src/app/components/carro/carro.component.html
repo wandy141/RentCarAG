@@ -107,7 +107,7 @@
                 data-toggle="modal"
                 data-target="#exampleModalCenter"
               >
-                {{ txt.tipo }}
+                {{getDescripcionTipo(txt.tipo)}}
               </td>
 
               <td
@@ -183,14 +183,17 @@
             <div class="grid gap-6 mb-6 md:grid-cols-2">
               <div>
                 <label
-                  for=""
+                for="Id"
+                  
                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
                   >ID</label
                 >
                 <input
+                id="Id"
+                name="id"
                   type="number"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Usuario"
+                  placeholder="id"
                   (keyup.enter)="idCompletar(idtxt)"
                   [(ngModel)]="idtxt"
                 />
@@ -198,11 +201,13 @@
 
               <div>
                 <label
-                  for=""
+                for="marca"             
                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
                   >Marca</label
                 >
                 <input
+                id="marca"
+                name="marca"
                   type="text"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Contraseña"
@@ -215,11 +220,13 @@
             <div class="grid gap-6 mb-6 md:grid-cols-2">
               <div>
                 <label
-                  for=""
+                for="modelo"
                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
                   >Modelo</label
                 >
                 <input
+                id="modelo"
+                name="modelo"
                   type="text"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Modelo"
@@ -230,14 +237,16 @@
 
               <div>
                 <label
-                  for=""
+                for="color"  
                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
                   >Color</label
                 >
                 <input
+                id="color"
+                name="color"
                   type="text"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Modelo"
+                  placeholder="color"
                   [(ngModel)]="colortxt"
                   (ngModelChange)="colortxt = capitalize($event)"
                 />
@@ -247,11 +256,13 @@
             <div class="grid gap-6 mb-6 md:grid-cols-2">
               <div>
                 <label
-                  for=""
+                  for="placa"
                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
                   >Placa</label
                 >
                 <input
+                id="placa"
+                name="placa"
                   type="text"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Modelo"
@@ -262,12 +273,14 @@
 
               <div>
                 <label
-                  for=""
+                  for="precio"
                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
                   >Precio</label
                 >
                 <input
-                  type="text"
+                id="precio"
+                name="precio"
+                  type="number"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Modelo"
                   [(ngModel)]="preciotxt"
@@ -278,6 +291,7 @@
             <div class="sele">
               <div class="grid gap-6 mb-6 md:grid-cols-2">
                 <select
+                name="ano"
                   class="form-select"
                   aria-label="Default select example"
                   [(ngModel)]="numbertxt"
@@ -291,6 +305,7 @@
                 </select>
 
                 <select
+                name="tipo"
                   class="form-select"
                   aria-label="Default select example"
                   [(ngModel)]="idtipotxt"
@@ -309,6 +324,7 @@
 
               <div class="grid gap-6 mb-6 md:grid-cols-2">
                 <select
+                name="capacidad"
                   class="form-select"
                   aria-label="Default select example"
                   [(ngModel)]="asientostxt"
@@ -322,6 +338,7 @@
                 </select>
 
                 <select
+                name="combustible"
                   class="form-select"
                   aria-label="Default select example"
                   [(ngModel)]="combustibletxt"
@@ -338,6 +355,7 @@
 
               <div class="sele2">
                 <select
+                name="estado"
                   class="form-select"
                   aria-label="Default select example"
                   [(ngModel)]="estadotxt"

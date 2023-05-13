@@ -33,7 +33,7 @@ export class ConsultaEconomicoComponent implements OnInit {
         break;
 
       case 3:
-        retorno = 'Tamaño Normal'
+        retorno = 'Deportivo'
         break;
 
       case 4:
@@ -71,7 +71,7 @@ export class ConsultaEconomicoComponent implements OnInit {
       case 'premium':
         this.todoPremium();
         break;
-      case 'normal':
+      case 'deportivo':
         this.todoNormal();
         break;
 

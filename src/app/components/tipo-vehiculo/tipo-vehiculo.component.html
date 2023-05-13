@@ -1,108 +1,185 @@
-
 <app-slide-bar></app-slide-bar>
 <div class="todo">
-<div class="p-4 sm:ml-64 ">
-<div class="max-w-2xl p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700  " >
-  <button type="button" id="boton" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 " data-toggle="modal"
-  data-target="#exampleModalCenter">Agregar</button>
-<div class="relative overflow-x-auto">
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+  <div class="p-4 sm:ml-64">
+    <div
+      class="max-w-2xl p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+    >
+      <button
+        type="button"
+        id="boton"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+        data-toggle="modal"
+        data-target="#exampleModalCenter"
+      >
+        Agregar
+      </button>
+      <div class="relative overflow-x-auto">
+        <table
+          class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+        >
+          <thead
+            class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+          >
             <tr>
-                <th scope="col" class="px-6 py-3">
-                  ID
-                </th>
-                <th scope="col" class="px-6 py-3">
-                  Tipos
-                </th>
-                <th scope="col" class="px-6 py-3">
-                  Estado
-                </th>
-                
+              <th scope="col" class="px-6 py-3">ID</th>
+              <th scope="col" class="px-6 py-3">Tipos</th>
+              <th scope="col" class="px-6 py-3">Estado</th>
             </tr>
-        </thead>
-        <tbody>
-              
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" *ngFor="let tipo of tablaTipo" >
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"  (click)="seleccionarTipo(tipo)"  data-toggle="modal"
-                data-target="#exampleModalCenter">
-                  {{   tipo.idtipo }}
-                </th>
-                <td class="px-6 py-4"   (click)="seleccionarTipo(tipo)" data-toggle="modal"
-                data-target="#exampleModalCenter">
-                   {{tipo.tipo}} 
-                </td>
-                <td class="px-6 py-4"   (click)="seleccionarTipo(tipo)"  data-toggle="modal"
-                data-target="#exampleModalCenter">
-                <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300" *ngIf="tipo.estado === 1" >Activo</span>
-                <span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300" *ngIf="tipo.estado === 0">Inactivo</span>
-                
-                </td>
+          </thead>
+          <tbody>
+            <tr
+              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+              *ngFor="let tipo of tablaTipo"
+            >
+              <th
+                scope="row"
+                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                (click)="seleccionarTipo(tipo)"
+                data-toggle="modal"
+                data-target="#exampleModalCenter"
+              >
+                {{ tipo.idtipo }}
+              </th>
+              <td
+                class="px-6 py-4"
+                (click)="seleccionarTipo(tipo)"
+                data-toggle="modal"
+                data-target="#exampleModalCenter"
+              >
+                {{ tipo.tipo }}
+              </td>
+              <td
+                class="px-6 py-4"
+                (click)="seleccionarTipo(tipo)"
+                data-toggle="modal"
+                data-target="#exampleModalCenter"
+              >
+                <span
+                  class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300"
+                  *ngIf="tipo.estado === 1"
+                  >Activo</span
+                >
+                <span
+                  class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300"
+                  *ngIf="tipo.estado === 0"
+                  >Inactivo</span
+                >
+              </td>
             </tr>
-        </tbody>
-    </table>
-</div>
-</div>
-</div>
-</div>
-
-
-<!-- Modal  funciona-->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLongTitle">Registro Tipos Vehiculo</h3>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-       
-        <div class="tod">
-          <div class="tit">          
-            <div class="grid gap-6 mb-6 md:grid-cols-2">
-               <!-- 1- primer input -->
-              <div>
-                  <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left">ID</label>
-                  <input type="text"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="ID"  (keyup.enter)="tipoId(idtxt)" [(ngModel)]="idtxt">
-              </div>
-    
-              <!-- 2- primer input -->
-             <div>
-                 <label for="" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left">Tipo</label>
-                 <input type="text"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Tipo"   [(ngModel)]="tipotxt" >
-             </div>
-           </div>
-
-
-           <div class="grid gap-6 mb-6 md:grid-cols-2">
-            <!-- 3- primer input -->
-      
-            <div class="sele">
-              <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left">Estado</label>
-              <select [(ngModel)]="estadotxt" class="form-select" aria-label="Default select example" id="sele" required>
-                <option value= 2 disabled selected>Estado:</option>
-                <option value= 1>activo</option>
-                <option value= 0 >inactivo</option>
-              </select>
-            </div>
-
-           </div>
-
-         </div>
-          <div class="up">
-          
-            <button type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" (click)="limpiar()">Limpiar</button>
-        
-            <button type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" (click)="guadarTipo()">  <i class="far fa-save"></i> Guardar</button>
-        
-          </div>
-        </div>
-        
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
 </div>
 
+<!-- Modal  funciona-->
+<div
+  class="modal fade"
+  id="exampleModalCenter"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLongTitle">
+          Registro Tipos Vehiculo
+        </h3>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="tod">
+          <div class="tit">
+            <div class="grid gap-6 mb-6 md:grid-cols-2">
+              <!-- 1- primer input -->
+              <div>
+                <label
+                  for="ID"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+                  >ID</label
+                >
+                <input
+                id="ID"
+                name="ID"
+                  type="text"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="ID"
+                  (keyup.enter)="tipoId(idtxt)"
+                  [(ngModel)]="idtxt"
+                />
+              </div>
+
+              <!-- 2- primer input -->
+              <div>
+                <label
+                  for="tipo"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+                  >Tipo</label
+                >
+                <input
+                id="tipo"
+                name="tipo"
+                  type="text"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Tipo"
+                  [(ngModel)]="tipotxt"
+                />
+              </div>
+            </div>
+
+            <div class="grid gap-6 mb-6 md:grid-cols-2">
+              <!-- 3- primer input -->
+
+              <div class="sele">
+                <label
+                  for="estado"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+                  >Estado</label
+                >
+                <select
+                name="estado"
+                  [(ngModel)]="estadotxt"
+                  class="form-select"
+                  aria-label="Default select example"
+                  id="estado"
+                  required
+                >
+                  <option value="2" disabled selected>Estado:</option>
+                  <option value="1">activo</option>
+                  <option value="0">inactivo</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="up">
+            <button
+              type="button"
+              class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+              (click)="limpiar()"
+            >
+              Limpiar
+            </button>
+
+            <button
+              type="button"
+              class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+              (click)="guadarTipo()"
+            >
+              <i class="far fa-save"></i> Guardar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
