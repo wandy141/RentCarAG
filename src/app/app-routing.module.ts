@@ -17,15 +17,19 @@ const routes: Routes = [
   {path: '', component :RegitroComponent, pathMatch:'full'},
   {path: 'login', component :RegitroComponent},
   {path: 'home', component :HomeComponent },
-  {path: 'cliente', component :ClienteComponent },
-  {path: 'carro', component :CarroComponent,canActivate: [ApiDBService]},
-  {path: 'usuario', component :UsuarioComponent},
+  // {path: 'cliente', component :ClienteComponent },
+  // {path: 'carro', component :CarroComponent,canActivate: [ApiDBService]},
+  // {path: 'usuario', component :UsuarioComponent},
   {path: 'carroC', component :VehiculoConsultaComponent, },
-  {path: 'carroT', component :TipoVehiculoComponent},
+  // {path: 'carroT', component :TipoVehiculoComponent},
   {path: 'tipo', component :ConsultaEconomicoComponent },
-  {path: 'alquiler', component :AlquilerComponent },
+  // {path: 'alquiler', component :AlquilerComponent },
   {path: 'slide', component :SlideBarComponent },
-  {path: 'pr', component :PruebaComponent },
+  // {path: 'pr', component :PruebaComponent },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./components/dashboard/dashboard.module').then(m => m.DashboardModule)
+  },
 
 
 
