@@ -62,7 +62,7 @@ export class RegitroComponent {
             this.servicio.token = retorno.token;
             localStorage.setItem('token', retorno.token);
             if (retorno.estado == 1) {
-              this.router.navigate(['dashboard']);
+              this.router.navigate(['dashboard/grafico']);
             }else{
               this.router.navigate(['home']);
             }

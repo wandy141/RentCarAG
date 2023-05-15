@@ -8,9 +8,11 @@ fechaini:string;
 fechafin:string;
 dias:number;
 total:number;
+idcliente:number;
+nombrecliente:string;
+
 
     constructor() {
-        
         this.idalquiler = 0;
         this.usuario = '';
         this.fecha = '';
@@ -20,8 +22,7 @@ total:number;
         this.fechafin = '';
         this.dias = 0;
         this.total = 0;
+        this.idcliente = 0;
+        this.nombrecliente = '';
     }
-
-
-
 }

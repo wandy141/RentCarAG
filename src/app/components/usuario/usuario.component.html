@@ -20,20 +20,20 @@
             class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
           >
             <tr>
-              <th scope="col" class="px-6 py-3">Usuario</th>
-              <th scope="col" class="px-6 py-3">Contraseña</th>
-              <th scope="col" class="px-6 py-3">Nombre</th>
-              <th scope="col" class="px-6 py-3">Estado</th>
+              <th scope="col" class="px-6 py-3 text-center">Usuario</th>
+              <th scope="col" class="px-6 py-3 text-center">Contraseña</th>
+              <th scope="col" class="px-6 py-3 text-center">Nombre</th>
+              <th scope="col" class="px-6 py-3 text-center">Estado</th>
             </tr>
           </thead>
           <tbody>
             <tr
-              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-center"
               *ngFor="let usuario of listadoUsuarios"
             >
               <th
                 scope="row"
-                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center"
                 (click)="seleccionarUsuario(usuario)"
                 data-toggle="modal"
                 data-target="#exampleModalCenter"
@@ -41,7 +41,7 @@
                 {{ usuario.usuarioid }}
               </th>
               <td
-                class="px-6 py-4"
+                class="px-6 py-4 text-center"
                 (click)="seleccionarUsuario(usuario)"
                 data-toggle="modal"
                 data-target="#exampleModalCenter"
@@ -49,7 +49,7 @@
                 {{ usuario.contrasena }}
               </td>
               <td
-                class="px-6 py-4"
+                class="px-6 py-4 text-center"
                 (click)="seleccionarUsuario(usuario)"
                 data-toggle="modal"
                 data-target="#exampleModalCenter"
@@ -57,23 +57,25 @@
                 {{ usuario.nombre }}
               </td>
               <td
-                class="px-6 py-4"
+                class="px-6 py-4 text-center"
                 (click)="seleccionarUsuario(usuario)"
                 data-toggle="modal"
                 data-target="#exampleModalCenter"
               >
                 <span
-                  class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300"
+                  class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300 text-center"
                   *ngIf="usuario.estado === this.visita"
                   >Activo</span
                 >
                 <span
-                  class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300"
+                  class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300 text-center"
                   *ngIf="usuario.estado === this.inactivo"
                   >Inactivo</span
                 >
 
-                <span class="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300" *ngIf="usuario.estado === this.activo">Administrador</span>
+                <span class="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300 text-center"
+                 *ngIf="usuario.estado === this.activo"
+                 >Administrador</span>
 
 
 

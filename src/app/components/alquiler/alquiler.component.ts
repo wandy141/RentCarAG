@@ -1,5 +1,6 @@
 import { BootstrapOptions, Component, OnInit } from '@angular/core';
 import { alquiler } from 'src/app/clasebd/alquiler';
+import { cliente } from 'src/app/clasebd/cliente';
 import { vehiculo } from 'src/app/clasebd/vehiculo';
 import { ApiDBService } from 'src/app/services/api-db.service';
 import Swal from 'sweetalert2';
@@ -25,11 +26,23 @@ export class AlquilerComponent implements OnInit {
   modelo:string = '';
   marca:string = '';
   diferenciaDias: number = 0;
-
+  listaClientes: Array<cliente> = [];
 
   descripcion: boolean = false;
 
   llenarAll: Array<vehiculo> = [];
+
+  idClientetxt:any = undefined;
+  nombreClientetxt:string = '';
+
+  getClientes() {
+    this.servicio.mostrarCliente().subscribe((listado: any) => {
+      this.listaClientes = listado;
+    });
+  }
+
+
+
 
 
   handleInputChange() {
@@ -75,6 +88,7 @@ export class AlquilerComponent implements OnInit {
 
   constructor(public servicio: ApiDBService) {
     this.llenarTabla();
+    this.getClientes();
 
   }
 
@@ -140,19 +154,29 @@ export class AlquilerComponent implements OnInit {
       return;
     }
 
+    if (this.idClientetxt == null || this.idClientetxt == undefined){
+      this.msgFallo();
+      return;
+    }
+     
+    if (this.nombreClientetxt == null || this.nombreClientetxt == ''){
+      this.msgFallo();
+      return;
+    }
+
 
     let alquilerTemp: alquiler = new alquiler();
     alquilerTemp.usuario = this.usuariotxt;
     alquilerTemp.fecha = this.fechaActual;
+    alquilerTemp.idcliente = this.idClientetxt;
+    alquilerTemp.nombrecliente = this.nombreClientetxt;
     alquilerTemp.idvehiculo = this.idtxt;
     alquilerTemp.precio = this.preciotxt;
     alquilerTemp.fechaini = this.fechaini;
     alquilerTemp.fechafin = this.fechafin;
     alquilerTemp.dias = this.diasTotales;
     alquilerTemp.total = this.total;
-    
-  
-
+      
 
     this.servicio.insertarAlquiler(alquilerTemp).subscribe((resultado) =>{
       if (resultado) {
@@ -160,8 +184,6 @@ export class AlquilerComponent implements OnInit {
       this.calculateDays();
       this.msgExitoGuardar(this.usuariotxt);  
         
-      }else{
-        this.msgFallo();
       }
      })
 
@@ -179,10 +201,11 @@ export class AlquilerComponent implements OnInit {
   msgFallo() {
     Swal.fire(
       'Oops...',
-      '¡Verique los campos  !',
+      '¡Verique si los campos no estan vacios!',
       'error'
     );
   }
+
 
   msgFecha() {
     Swal.fire(
@@ -191,7 +214,7 @@ export class AlquilerComponent implements OnInit {
       'error'
     );
   }
-  seleccionarTxt(objVehiculo: vehiculo) {
+  seleccionarTxt(objVehiculo: vehiculo, ) {
     this.idtxt = objVehiculo.idvehiculo;
     this.preciotxt = objVehiculo.precio;
     this.marca = objVehiculo.marca;
@@ -199,6 +222,10 @@ export class AlquilerComponent implements OnInit {
     this.handleInputChange(); 
     this.calcular();
     
+  }
+  seleccionarCliente(objCliente:cliente){
+    this.idClientetxt = objCliente.idcliente;
+    this.nombreClientetxt = objCliente.nombre;
   }
 
 

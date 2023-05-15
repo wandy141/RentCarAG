@@ -6,6 +6,7 @@ import { tipoVehiculo } from '../clasebd/tipoVehiculo';
 import { usuarios } from '../clasebd/usuarios';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { alquiler } from '../clasebd/alquiler';
+import { cliente } from '../clasebd/cliente';
 
 @Injectable({
   providedIn: 'root'
@@ -69,6 +70,7 @@ export class ApiDBService {
         return valor;
       }      
     });
+    console.log(valort);
     return valort;
   }
 
@@ -166,28 +168,28 @@ camion(): Observable<Array<vehiculo>> {
 }
 
 
-insertarAlquiler(alquilerTemp:alquiler):Observable<Array<alquiler>>{
-return this.http.post<Array<alquiler>>(this.server + 'alquiler',{ 'alquiler':alquilerTemp} );
+insertarAlquiler(alquilerTemp:alquiler):Observable<boolean>{
+return this.http.post<boolean>(this.server + 'alquiler',{ 'alquiler':alquilerTemp} );
+}
+
+mostrarAlquiler(): Observable<Array<alquiler>> {
+  return this.http.get<Array<alquiler>>(this.server + 'todoAlquiler',{});
+}
+
+insertarCliente(clientetmp: cliente): Observable<boolean> {
+  return this.http.post<boolean>(this.server + 'cliente', { 'cliente': clientetmp });
+}
+
+mostrarCliente():Observable<Array<cliente>>{
+  return this.http.get<Array<cliente>>(this.server + 'todoCliente',{});
+  
 }
 
 
+clientexId(idcliente:number):Observable<cliente>{
+  return this.http.post<cliente>( this.server + 'clienteId',{'idcliente':idcliente})
+}
 
-
-
-
-
-// convertObjetJsonToString(e:any){
-//   return JSON.stringify(e)
-// }
-
-// saveData(key: string, value: string) {
-//   localStorage.setItem(key, value);
-// }
-
-// getData(key: string) {
-//   return localStorage.getItem(key)
-  
-// }
 
 // removeData(key: string) {
 //   localStorage.removeItem(key);

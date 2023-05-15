@@ -20,9 +20,9 @@
             class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
           >
             <tr>
-              <th scope="col" class="px-6 py-3">ID</th>
-              <th scope="col" class="px-6 py-3">Tipos</th>
-              <th scope="col" class="px-6 py-3">Estado</th>
+              <th scope="col" class="px-6 py-3 text-center">ID</th>
+              <th scope="col" class="px-6 py-3 text-center">Tipos</th>
+              <th scope="col" class="px-6 py-3 text-center">Estado</th>
             </tr>
           </thead>
           <tbody>
@@ -32,7 +32,7 @@
             >
               <th
                 scope="row"
-                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center"
                 (click)="seleccionarTipo(tipo)"
                 data-toggle="modal"
                 data-target="#exampleModalCenter"
@@ -40,7 +40,7 @@
                 {{ tipo.idtipo }}
               </th>
               <td
-                class="px-6 py-4"
+                class="px-6 py-4 text-center"
                 (click)="seleccionarTipo(tipo)"
                 data-toggle="modal"
                 data-target="#exampleModalCenter"
@@ -48,18 +48,18 @@
                 {{ tipo.tipo }}
               </td>
               <td
-                class="px-6 py-4"
+                class="px-6 py-4 text-center"
                 (click)="seleccionarTipo(tipo)"
                 data-toggle="modal"
                 data-target="#exampleModalCenter"
               >
                 <span
-                  class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300"
+                  class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300 text-center"
                   *ngIf="tipo.estado === 1"
                   >Activo</span
                 >
                 <span
-                  class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300"
+                  class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300 text-center"
                   *ngIf="tipo.estado === 0"
                   >Inactivo</span
                 >

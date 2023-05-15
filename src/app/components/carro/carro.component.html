@@ -1,4 +1,3 @@
-<app-slide-bar></app-slide-bar>
 <div class="todo">
   <div class="p-4 sm:ml-64">
     <div
@@ -21,17 +20,17 @@
             class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
           >
             <tr>
-              <th scope="col" class="px-6 py-3">Id</th>
-              <th scope="col" class="px-6 py-3">Marca</th>
-              <th scope="col" class="px-6 py-3">Modelo</th>
-              <th scope="col" class="px-6 py-3">Color</th>
-              <th scope="col" class="px-6 py-3">Capacidad</th>
-              <th scope="col" class="px-6 py-3">Año</th>
-              <th scope="col" class="px-6 py-3">Placa</th>
-              <th scope="col" class="px-6 py-3">Tipo</th>
-              <th scope="col" class="px-6 py-3">Combustile</th>
-              <th scope="col" class="px-6 py-3">Placa</th>
-              <th scope="col" class="px-6 py-3">Estado</th>
+              <th scope="col" class="px-6 py-3 text-center">Id</th>
+              <th scope="col" class="px-6 py-3 text-center">Marca</th>
+              <th scope="col" class="px-6 py-3 text-center">Modelo</th>
+              <th scope="col" class="px-6 py-3 text-center">Color</th>
+              <th scope="col" class="px-6 py-3 text-center">Capacidad</th>
+              <th scope="col" class="px-6 py-3 text-center">Año</th>
+              <th scope="col" class="px-6 py-3 text-center">Placa</th>
+              <th scope="col" class="px-6 py-3 text-center">Tipo</th>
+              <th scope="col" class="px-6 py-3 text-center">Combustile</th>
+              <th scope="col" class="px-6 py-3 text-center">Placa</th>
+              <th scope="col" class="px-6 py-3 text-center">Estado</th>
             </tr>
           </thead>
           <tbody>
@@ -41,7 +40,7 @@
             >
               <th
                 scope="row"
-                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center"
                 (click)="seleccionarTxt(txt)"
                 data-toggle="modal"
                 data-target="#exampleModalCenter"
@@ -49,7 +48,7 @@
                 {{ txt.idvehiculo }}
               </th>
               <td
-                class="px-6 py-4"
+                class="px-6 py-4 text-center" 
                 (click)="seleccionarTxt(txt)"
                 data-toggle="modal"
                 data-target="#exampleModalCenter"
@@ -57,7 +56,7 @@
                 {{ txt.marca }}
               </td>
               <td
-                class="px-6 py-4"
+                class="px-6 py-4 text-center"
                 (click)="seleccionarTxt(txt)"
                 data-toggle="modal"
                 data-target="#exampleModalCenter"
@@ -66,7 +65,7 @@
               </td>
 
               <td
-                class="px-6 py-4"
+                class="px-6 py-4 text-center"
                 (click)="seleccionarTxt(txt)"
                 data-toggle="modal"
                 data-target="#exampleModalCenter"
@@ -75,7 +74,7 @@
               </td>
 
               <td
-                class="px-6 py-4"
+                class="px-6 py-4 text-center"
                 (click)="seleccionarTxt(txt)"
                 data-toggle="modal"
                 data-target="#exampleModalCenter"
@@ -84,7 +83,7 @@
               </td>
 
               <td
-                class="px-6 py-4"
+                class="px-6 py-4 text-center"
                 (click)="seleccionarTxt(txt)"
                 data-toggle="modal"
                 data-target="#exampleModalCenter"
@@ -93,7 +92,7 @@
               </td>
 
               <td
-                class="px-6 py-4"
+                class="px-6 py-4 text-center"
                 (click)="seleccionarTxt(txt)"
                 data-toggle="modal"
                 data-target="#exampleModalCenter"
@@ -102,7 +101,7 @@
               </td>
 
               <td
-                class="px-6 py-4"
+                class="px-6 py-4 text-center"
                 (click)="seleccionarTxt(txt)"
                 data-toggle="modal"
                 data-target="#exampleModalCenter"
@@ -111,7 +110,7 @@
               </td>
 
               <td
-                class="px-6 py-4"
+                class="px-6 py-4 text-center"
                 (click)="seleccionarTxt(txt)"
                 data-toggle="modal"
                 data-target="#exampleModalCenter"
@@ -120,7 +119,7 @@
               </td>
 
               <td
-                class="px-6 py-4"
+                class="px-6 py-4 text-center"
                 (click)="seleccionarTxt(txt)"
                 data-toggle="modal"
                 data-target="#exampleModalCenter"
@@ -129,18 +128,18 @@
               </td>
 
               <td
-                class="px-6 py-4"
+                class="px-6 py-4 text-center"
                 (click)="seleccionarTxt(txt)"
                 data-toggle="modal"
                 data-target="#exampleModalCenter"
               >
                 <span
-                  class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300"
+                  class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300 text-center"
                   *ngIf="txt.estado === 1"
                   >Activo</span
                 >
                 <span
-                  class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300"
+                  class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300 text-center"
                   *ngIf="txt.estado === 0"
                   >Inactivo</span
                 >
@@ -162,7 +161,7 @@
   aria-labelledby="exampleModalCenterTitle"
   aria-hidden="true"
 >
-  <div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h3 class="modal-title" id="exampleModalLongTitle">

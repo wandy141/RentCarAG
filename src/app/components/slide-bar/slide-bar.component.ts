@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiDBService } from 'src/app/services/api-db.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -7,10 +8,21 @@ import Swal from 'sweetalert2';
   templateUrl: './slide-bar.component.html',
   styleUrls: ['./slide-bar.component.css']
 })
-export class SlideBarComponent {
-  constructor(public router: Router){
+export class SlideBarComponent  implements OnInit{
+
+  administrador: string = '';
+  constructor(public router: Router, public servicio:ApiDBService){
 
   }
+
+  ngOnInit(){
+    this.servicio.getNombreUser().subscribe((nombre) => {
+      this.administrador = nombre;
+    });
+  }
+
+
+
 
   msgSalir(){
     

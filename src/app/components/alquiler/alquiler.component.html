@@ -1,363 +1,579 @@
-<!-- <app-slide-bar></app-slide-bar> -->
 <div class="container">
-<div class="tod">
-
-  <div class="tit">
-    <h2>Alquiler</h2>
-  </div>
-
-  <div class="grid gap-6 mb-6 md:grid-cols-2">
-    <div>
-      <label
-        for="usuario"
-        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
-        >Usuario</label
-      >
-      <input
-        id="usuario"
-        name="usuario"
-        type="text"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        placeholder="Usuario"
-        [(ngModel)]="usuariotxt"
-      />
+  <div class="tod">
+    <div class="tit">
+      <h2>Apartado de Despacho</h2>
     </div>
 
-    <div>
-      <label
-        for="fecha"
-        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
-        >Fecha</label
-      >
-      <input
-        id="fecha"
-        name="fecha"
-        type="date"
-        disabled=""
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        placeholder="Usuario"
-        [(ngModel)]="fechaActual"
-      />
-    </div>
-  </div>
-
-  <div class="grid gap-6 mb-6 md:grid-cols-2">
-    <div>
-    <label
-    for="simple-search"
-    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
-    >Buscar Vehiculo</label
-  >
-    <div class="flex items-center">
-      
-      <div class="relative w-full">
-        <div
-          class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+    <div class="grid gap-6 mb-6 md:grid-cols-2">
+      <div>
+        <label
+          for="usuario"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+          >Usuario</label
         >
-          <svg
-            aria-hidden="true"
-            class="w-5 h-5 text-gray-500 dark:text-gray-400"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-              clip-rule="evenodd"
-            ></path>
-          </svg>
-        </div>
         <input
+          disabled=""
+          id="usuario"
+          name="usuario"
           type="text"
-          id="simple-search"
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="Vehiculo"
-          [(ngModel)]="idtxt"
-          (input)="handleInputChange()"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Usuario"
+          [(ngModel)]="usuariotxt"
         />
       </div>
-      <button
-        type="submit"
-        class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        data-toggle="modal"
-        data-target="#exampleModalCenter"
-      >
-        <svg
-          class="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
+
+      <div>
+        <label
+          for="fecha"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+          >Fecha</label
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-          ></path>
-        </svg>
-        <span class="sr-only">Search</span>
-      </button>
-      <div
-      id="descripcion"
-      class="toast fade show"
-      role="alert"
-      aria-live="assertive"
-      aria-atomic="true"
-      *ngIf="descripcion"
+        <input
+          id="fecha"
+          name="fecha"
+          type="date"
+          disabled=""
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Usuario"
+          [(ngModel)]="fechaActual"
+        />
+      </div>
+    </div>
+
+    <div class="grid gap-6 mb-6 md:grid-cols-2">
+      <div>
+        <label
+          for="buscarclientes"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+          >Buscar Clientes</label
+        >
+        <div class="flex items-center">
+          <div class="relative w-full">
+            <div
+              class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+            >
+              <svg
+                aria-hidden="true"
+                class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </div>
+            <input
+              type="number"
+              id="buscarclientes"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Idcliente"
+              [(ngModel)]="idClientetxt"
+            />
+          </div>
+          <button
+            type="button"
+            class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            data-toggle="modal"
+            data-target="#modalCliente"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <label
+          for="Cliente"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+          >Nombre Cliente</label
+        >
+        <input
+          id="Cliente"
+          name="Cliente"
+          type="text"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Cliente"
+          [(ngModel)]="nombreClientetxt"
+        />
+      </div>
+    </div>
+
+    <div class="grid gap-6 mb-6 md:grid-cols-2">
+      <div>
+        <label
+          for="simple-search"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+          >Buscar Vehiculo</label
+        >
+        <div class="flex items-center">
+          <div class="relative w-full">
+            <div
+              class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+            >
+              <svg
+                aria-hidden="true"
+                class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </div>
+            <input
+              type="text"
+              id="simple-search"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Idvehiculo"
+              [(ngModel)]="idtxt"
+              (input)="handleInputChange()"
+            />
+          </div>
+          <button
+            type="button"
+            class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            data-toggle="modal"
+            data-target="#exampleModalCenter"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              ></path>
+            </svg>
+          </button>
+          <div
+            id="descripcion"
+            class="toast fade show"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+            *ngIf="descripcion"
+          >
+            <div class="toast-body">{{ marca }} {{ modelo }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label
+          for="Precio"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+          >Precio/Día</label
+        >
+        <input
+          id="Precio"
+          name="Precio"
+          type="number"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Precio"
+          (blur)="calcular()"
+          [(ngModel)]="preciotxt"
+          (ngModelChange)="calcular()"
+          (change)="calcular()"
+        />
+      </div>
+    </div>
+
+    <div class="grid gap-6 mb-6 md:grid-cols-2">
+      <div>
+        <label
+          for="Inicio"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+          >Fecha Inicio</label
+        >
+        <input
+          id="Inicio"
+          name="Inicio"
+          type="date"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          [(ngModel)]="fechaini"
+          (ngModelChange)="calculateDays()"
+        />
+      </div>
+
+      <div>
+        <label
+          for="Final"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+          >Fecha Final</label
+        >
+        <input
+          id="Final"
+          name="Final"
+          type="date"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          (blur)="calculateDays()"
+          (change)="calcular()"
+          [(ngModel)]="fechafin"
+          (ngModelChange)="calculateDays()"
+        />
+      </div>
+    </div>
+    <div class="grid gap-6 mb-6 md:grid-cols-2">
+      <div hidden>
+        <label
+          for="Dias"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+          >Dias Totales</label
+        >
+        <input
+          id="Dias"
+          name="Dias"
+          placeholder="Dias Totales"
+          type="text"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          [(ngModel)]="diasTotales"
+          (change)="calcular()"
+          (ngModelChange)="calcular()"
+        />
+      </div>
+
+      <div>
+        <label
+          for="Total a pagar"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+          >Total a pagar</label
+        >
+        <input
+        disabled=""
+          id="Total a pagar"
+          name="Total a pagar"
+          placeholder="Total"
+          type="number"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          [(ngModel)]="total"
+        />
+      </div>
+    </div>
+
+    <br />
+
+    <!-- botones -->
+
+    <button
+      type="button"
+      class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+      (click)="limpiar()"
     >
-    <div class="toast-body ">{{ marca }} {{ modelo }}</div>
-    </div>
-    </div>
-  </div>
-   
-
-    <div>
-      <label
-        for="Precio"
-        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
-        >Precio/Día</label
-      >
-      <input
-        id="Precio"
-        name="Precio"
-        type="number"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        placeholder="Precio"
-        (blur)="calcular()"
-        [(ngModel)]="preciotxt"
-        (ngModelChange)="calcular()"
-        (change)="calcular()"
-      />
-    </div>
+      Limpiar
+    </button>
+    <button
+      type="button"
+      class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+      (click)="entrarAlquiler()"
+    >
+      <i class="far fa-save"></i> Guardar
+    </button>
   </div>
 
+  <!-- Modal Vehiculo -->
 
-  <div class="grid gap-6 mb-6 md:grid-cols-2">
-    <div>
-      <label
-        for="Inicio"
-        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
-        >Fecha Inicio</label
-      >
-      <input
-        id="Inicio"
-        name="Inicio"
-        type="date"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        [(ngModel)]="fechaini"
-        (ngModelChange)="calculateDays()"
-      />
-    </div>
+  <div
+    class="modal fade"
+    id="exampleModalCenter"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLongTitle">
+            Registro Vehiculos
+          </h3>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="relative overflow-x-auto">
+            <table
+              class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+            >
+              <thead
+                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+              >
+                <tr>
+                  <th scope="col" class="px-6 py-3 text-center">Id</th>
+                  <th scope="col" class="px-6 py-3 text-center">Marca</th>
+                  <th scope="col" class="px-6 py-3 text-center">Modelo</th>
+                  <th scope="col" class="px-6 py-3 text-center">Color</th>
+                  <th scope="col" class="px-6 py-3 text-center">Capacidad</th>
+                  <th scope="col" class="px-6 py-3 text-center">Año</th>
+                  <th scope="col" class="px-6 py-3 text-center">Placa</th>
+                  <th scope="col" class="px-6 py-3 text-center">Tipo</th>
+                  <th scope="col" class="px-6 py-3 text-center">Combustile</th>
+                  <th scope="col" class="px-6 py-3 text-center">Placa</th>
+                  <th scope="col" class="px-6 py-3 text-center">Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-center"
+                  *ngFor="let txt of llenarAll"
+                >
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    <button
+                      type="button"
+                      (click)="seleccionarTxt(txt)"
+                      data-toggle="modal"
+                      data-target="#exampleModalCenter"
+                    >
+                      {{ txt.idvehiculo }}
+                    </button>
+                  </th>
+                  <td class="px-6 py-4 text-center">
+                    <button
+                      type="button"
+                      (click)="seleccionarTxt(txt)"
+                      data-toggle="modal"
+                      data-target="#exampleModalCenter"
+                    >
+                      {{ txt.marca }}
+                    </button>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <button
+                      type="button"
+                      (click)="seleccionarTxt(txt)"
+                      data-toggle="modal"
+                      data-target="#exampleModalCenter"
+                    >
+                      {{ txt.modelo }}
+                    </button>
+                  </td>
 
-    <div>
-      <label
-        for="Final"
-        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
-        >Fecha Final</label
-      >
-      <input
-        id="Final"
-        name="Final"
-        type="date"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        (blur)="calculateDays()"
-        (change)="calcular()"
-        [(ngModel)]="fechafin"
-        (ngModelChange)="calculateDays()"
-      />
+                  <td class="px-6 py-4 text-center">
+                    <button
+                      type="button"
+                      (click)="seleccionarTxt(txt)"
+                      data-toggle="modal"
+                      data-target="#exampleModalCenter"
+                    >
+                      {{ txt.color }}
+                    </button>
+                  </td>
+
+                  <td class="px-6 py-4 text-center">
+                    <button
+                      type="button"
+                      (click)="seleccionarTxt(txt)"
+                      data-toggle="modal"
+                      data-target="#exampleModalCenter"
+                    >
+                      {{ txt.asiento }}
+                    </button>
+                  </td>
+
+                  <td class="px-6 py-4 text-center">
+                    <button
+                      type="button"
+                      (click)="seleccionarTxt(txt)"
+                      data-toggle="modal"
+                      data-target="#exampleModalCenter"
+                    >
+                      {{ txt.ano }}
+                    </button>
+                  </td>
+
+                  <td class="px-6 py-4 text-center">
+                    <button
+                      type="button"
+                      (click)="seleccionarTxt(txt)"
+                      data-toggle="modal"
+                      data-target="#exampleModalCenter"
+                    >
+                      {{ txt.placa }}
+                    </button>
+                  </td>
+
+                  <td class="px-6 py-4 text-center">
+                    <button
+                      type="button"
+                      (click)="seleccionarTxt(txt)"
+                      data-toggle="modal"
+                      data-target="#exampleModalCenter"
+                    >
+                      {{ getDescripcionTipo(txt.tipo) }}
+                    </button>
+                  </td>
+
+                  <td class="px-6 py-4 text-center">
+                    <button
+                      type="button"
+                      (click)="seleccionarTxt(txt)"
+                      data-toggle="modal"
+                      data-target="#exampleModalCenter"
+                    >
+                      {{ txt.combustible }}
+                    </button>
+                  </td>
+
+                  <td class="px-6 py-4 text-center">
+                    <button
+                      type="button"
+                      (click)="seleccionarTxt(txt)"
+                      data-toggle="modal"
+                      data-target="#exampleModalCenter"
+                    >
+                      {{ txt.precio }}
+                    </button>
+                  </td>
+
+                  <td class="px-6 py-4 text-center">
+                    <button
+                      type="button"
+                      (click)="seleccionarTxt(txt)"
+                      data-toggle="modal"
+                      data-target="#exampleModalCenter"
+                    >
+                      <span
+                        class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300"
+                        *ngIf="txt.estado === 1"
+                        >Activo</span
+                      >
+                      <span
+                        class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300"
+                        *ngIf="txt.estado === 0"
+                        >Inactivo</span
+                      >
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="grid gap-6 mb-6 md:grid-cols-2">
-    <div >
-      <label
-        for="Dias"
-        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
-        >Dias Totales</label
-      >
-      <input
-        id="Dias"
-        name="Dias"
-        placeholder="Dias Totales"
-        type="text"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        [(ngModel)]="diasTotales"
-        (change)="calcular()"
-        (ngModelChange)="calcular()"
-      />
-    </div>
 
-    <div>
-      <label
-        for="Total a pagar"
-        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
-        >Total a pagar</label
-      >
-      <input
-        id="Total a pagar"
-        name="Total a pagar"
-        placeholder="Total"
-        type="number"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        [(ngModel)]="total"
-      />
+  <!-- Modla Cliente -->
+
+  <div
+    class="modal fade"
+    id="modalCliente"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalCenterTitle">
+            Clientes registrados
+          </h3>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="relative overflow-x-auto">
+            <table
+              class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+            >
+              <thead
+                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+              >
+                <tr>
+                  <th scope="col" class="px-6 py-3 text-center">IdCliente</th>
+                  <th scope="col" class="px-6 py-3 text-center">Nombre</th>
+                  <th scope="col" class="px-6 py-3 text-center">Correo</th>
+                  <th scope="col" class="px-6 py-3 text-center">Cedula</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let cliente of listaClientes">
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center"
+                  >
+                    <button
+                      type="button"
+                      (click)="seleccionarCliente(cliente)"
+                      data-dismiss="modal"
+                    >
+                      {{ cliente.idcliente }}
+                    </button>
+                  </th>
+                  <td scope="row" class="px-6 py-4 text-center">
+                    <button
+                      type="button"
+                      (click)="seleccionarCliente(cliente)"
+                      data-dismiss="modal"
+                    >
+                      {{ cliente.nombre }}
+                    </button>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <button
+                      type="button"
+                      (click)="seleccionarCliente(cliente)"
+                      data-dismiss="modal"
+                    >
+                      {{ cliente.correo }}
+                    </button>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <button
+                      type="button"
+                      (click)="seleccionarCliente(cliente)"
+                      data-dismiss="modal"
+                    >
+                      {{ cliente.cedula }}
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
-  <br />
-
-  <!-- botones -->
-
-  <button type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" (click)="limpiar()">Limpiar</button>
-<button type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"  (click)="entrarAlquiler()">  <i class="far fa-save"></i> Guardar </button>
 </div>
-
-<!-- Large modal -->
-
-
-<div
-  class="modal fade "
-  id="exampleModalCenter"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="exampleModalCenterTitle"
-  aria-hidden="true"
->
-<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h3 class="modal-title" id="exampleModalLongTitle">
-        Registro Vehiculos
-      </h3>
-      <button
-        type="button"
-        class="close"
-        data-dismiss="modal"
-        aria-label="Close"
-      >
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-  <div class="relative overflow-x-auto">
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-        <tr>
-          <th scope="col" class="px-6 py-3">Id</th>
-          <th scope="col" class="px-6 py-3">Marca</th>
-          <th scope="col" class="px-6 py-3">Modelo</th>
-          <th scope="col" class="px-6 py-3">Color</th>
-          <th scope="col" class="px-6 py-3">Capacidad</th>
-          <th scope="col" class="px-6 py-3">Año</th>
-          <th scope="col" class="px-6 py-3">Placa</th>
-          <th scope="col" class="px-6 py-3">Tipo</th>
-          <th scope="col" class="px-6 py-3">Combustile</th>
-          <th scope="col" class="px-6 py-3">Placa</th>
-          <th scope="col" class="px-6 py-3">Estado</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" *ngFor="let txt of llenarAll">
-          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-            <button type="button"  (click)="seleccionarTxt(txt)" data-toggle="modal" data-target="#exampleModalCenter">
-              {{ txt.idvehiculo }}
-            </button>
-          </th>
-          <td class="px-6 py-4">
-            <button type="button"  (click)="seleccionarTxt(txt)" data-toggle="modal" data-target="#exampleModalCenter">
-              {{ txt.marca }}
-            </button>
-          </td>
-          <td class="px-6 py-4">
-            <button type="button"  (click)="seleccionarTxt(txt)" data-toggle="modal" data-target="#exampleModalCenter">
-              {{ txt.modelo }}
-            </button>
-          </td>
-          
-        <td
-        class="px-6 py-4"
-      >
-      <button type="button"  (click)="seleccionarTxt(txt)" data-toggle="modal" data-target="#exampleModalCenter">
-        {{ txt.color }}
-      </button>
-      </td>
-
-      <td
-        class="px-6 py-4"
-      >
-      <button type="button"  (click)="seleccionarTxt(txt)" data-toggle="modal" data-target="#exampleModalCenter">
-        {{ txt.asiento }}
-      </button>
-      </td>
-
-      <td
-        class="px-6 py-4"
-      >
-      <button type="button"  (click)="seleccionarTxt(txt)" data-toggle="modal" data-target="#exampleModalCenter">
-        {{ txt.ano }}
-      </button>
-        
-      </td>
-
-      <td
-        class="px-6 py-4"
-      >
-      <button type="button"  (click)="seleccionarTxt(txt)" data-toggle="modal" data-target="#exampleModalCenter">
-        {{ txt.placa }}
-      </button>
-        
-      </td>
-
-      <td
-        class="px-6 py-4"
-      >
-      <button type="button"  (click)="seleccionarTxt(txt)" data-toggle="modal" data-target="#exampleModalCenter">
-        {{getDescripcionTipo(txt.tipo)}}
-      </button>
-       
-      </td>
-
-      <td
-        class="px-6 py-4"
-      >
-      <button type="button"  (click)="seleccionarTxt(txt)" data-toggle="modal" data-target="#exampleModalCenter">
-        {{ txt.combustible }}
-      </button>
-       
-      </td>
-
-      <td
-        class="px-6 py-4"
-      >
-      <button type="button"  (click)="seleccionarTxt(txt)" data-toggle="modal" data-target="#exampleModalCenter">
-        {{ txt.precio }}
-      </button>
-      </td>
-
-      <td
-        class="px-6 py-4"
-      >
-      <button type="button"  (click)="seleccionarTxt(txt)" data-toggle="modal" data-target="#exampleModalCenter">
-        <span
-          class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300"
-          *ngIf="txt.estado === 1"
-          >Activo</span
-        >
-        <span
-          class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300"
-          *ngIf="txt.estado === 0"
-          >Inactivo</span
-        >
-       </button>
-      </td>
-    </tr>
-      
-      </tbody>
-    </table>
-  </div>
-</div>
-
-
-
-  
