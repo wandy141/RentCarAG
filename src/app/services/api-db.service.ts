@@ -140,6 +140,10 @@ borrarUser(usuarioid:string){
   return this.http.delete(this.server + 'eliminarUser/'+ usuarioid, {})
 }
 
+devolucionAlquiler(idalquiler:number){
+  return this.http.delete(this.server + 'eliminarAlquiler/'+ idalquiler, {})
+}
+
 
 
 
