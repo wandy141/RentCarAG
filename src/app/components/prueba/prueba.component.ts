@@ -9,7 +9,39 @@ import Swal from 'sweetalert2';
   styleUrls: ['./prueba.component.css']
 })
 export class PruebaComponent {
+  
+idrenta:any = undefined;
+usuario:string = '';
+fecha:string = '';
+idcliente:any = undefined;
+nombrecliente:string = '';
+idvehiculo:any = undefined;
+costodia:any = undefined;
+inicia:string = '';
+termina:string = '';
+totaldia:any = undefined;
+total:any = undefined;
 alquileres: Array<alquiler> = [];
+
+
+seleccionarRenta(objUsuario: alquiler) {
+  this.idrenta = objUsuario.idalquiler;
+  this.usuario = objUsuario.usuario;
+  this.fecha = objUsuario.fecha;
+  this.idcliente = objUsuario.idcliente;
+  this.nombrecliente = objUsuario.nombrecliente;
+  this.idvehiculo = objUsuario.idvehiculo;
+  this.costodia = objUsuario.precio;
+  this.inicia = objUsuario.fechaini;
+  this.termina = objUsuario.fechafin;
+  this.totaldia = objUsuario.dias;
+  this.total = objUsuario.total
+
+}
+
+
+
+
   constructor(public servicio: ApiDBService){
     this.tablaAlquiler();
   }
@@ -20,6 +52,27 @@ alquileres: Array<alquiler> = [];
   this.alquileres = resultado;
   });
 }
+
+venceManana(){
+  this.servicio.venceUno().subscribe(resultado => {
+  this.alquileres = resultado;
+  });
+}
+
+vencePasado(){
+  this.servicio.venceDos().subscribe(resultado => {
+  this.alquileres = resultado;
+  });
+}
+
+venceTrasPasado(){
+  this.servicio.venceTres().subscribe(resultado => {
+  this.alquileres = resultado;
+  });
+}
+
+
+
 
 
 devolucion(idalquiler: number) {
@@ -36,5 +89,9 @@ mesgDevolucion(idalquiler: number) {
     'success'
   );
 }
+
+
+
+
 
 }

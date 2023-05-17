@@ -23,14 +23,6 @@
   }
 }
 
-th {
-  cursor: pointer;
-}
-
-td {
-  cursor: pointer;
-}
-
 .up {
   display: flex;
   justify-content: center;

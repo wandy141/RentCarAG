@@ -21,13 +21,14 @@ export class CarroComponent {
   idtipotxt: number = 0;
   idtxt: number = 0;
   error: boolean = false;
-  preciotxt: number = 0.0;
-
+  preciotxt: unknown = '';
   tipoVehiculos: Array<tipoVehiculo> = [];
-
   years: Array<number> = [];
+  cambioPrecio: Array<vehiculo> = [];
+  mostrarDropdown:boolean =false;
 
-  llenarAll: Array<vehiculo> = [];
+
+
 
   constructor(public servicio: ApiDBService) {
     let time = new Date();
@@ -40,9 +41,38 @@ export class CarroComponent {
 
   llenarTabla() {
     this.servicio.getTodosVehiculos().subscribe((mostrarAll) => {
-      this.llenarAll = mostrarAll;
+      this.cambioPrecio = mostrarAll;
     });
   }
+
+
+
+   bajo() {
+    this.servicio.bajoPrecio().subscribe((mostrarAll) => {
+      this.cambioPrecio = mostrarAll;
+
+    });
+  }
+
+  medio() {
+    this.servicio.medioPrecio().subscribe((mostrarAll) => {
+      this.cambioPrecio = mostrarAll;
+
+    });
+  }
+
+  
+  mayor() {
+    this.servicio.mayorPrecio().subscribe((mostrarAll) => {
+      this.cambioPrecio = mostrarAll;
+      // this.bajoCarro = false;
+      // this.todoCarro = false;
+      // this.medioCarro = false;
+      // this.mayorCarro  = true;
+
+    });
+  }
+  
 
   llenarTipoVehiculos() {
     this.servicio.getTipoVehiculos().subscribe((lista) => {
@@ -101,18 +131,13 @@ export class CarroComponent {
     }
 
     this.servicio.insertarVehiculos(vehiculotmp).subscribe((resultado:boolean) => {
-      console.log(resultado);
 
       if (resultado) {
         this.msgExitoGuardar(this.marcatxt, this.modelotxt);
         this.limpiar();
+       this.llenarTabla();
       } 
 
-      if(resultado == false){
-        this.msgFallo();
-      }
-      
-      this.llenarTabla();
     });
   }
   idCompletar(idvehiculo: number) {
@@ -141,6 +166,7 @@ export class CarroComponent {
     this.estadotxt = 0;
     this.idtipotxt = 0;
     this.idtxt = 0;
+    this.preciotxt = '';
   }
 
   seleccionarTxt(objVehiculo: vehiculo) {
@@ -153,6 +179,7 @@ export class CarroComponent {
     this.numbertxt = objVehiculo.ano;
     this.placatxt = objVehiculo.placa;
     this.estadotxt = objVehiculo.estado;
+    this.preciotxt = objVehiculo.precio;
     this.idtipotxt = objVehiculo.tipo;
   }
 

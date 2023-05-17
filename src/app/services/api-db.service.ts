@@ -195,6 +195,34 @@ clientexId(idcliente:number):Observable<cliente>{
 }
 
 
+bajoPrecio(): Observable<Array<vehiculo>> {
+  return this.http.get<Array<vehiculo>>(this.server + 'bajoPrecio',{});
+}
+
+medioPrecio(): Observable<Array<vehiculo>> {
+  return this.http.get<Array<vehiculo>>(this.server + 'medioPrecio',{});
+}
+
+mayorPrecio(): Observable<Array<vehiculo>> {
+  return this.http.get<Array<vehiculo>>(this.server + 'mayorPrecio',{});
+}
+
+
+
+venceUno(): Observable<Array<alquiler>> {
+  return this.http.get<Array<alquiler>>(this.server + 'casiUno',{});
+}
+
+venceDos(): Observable<Array<alquiler>> {
+  return this.http.get<Array<alquiler>>(this.server + 'casiDo',{});
+}
+
+venceTres(): Observable<Array<alquiler>> {
+  return this.http.get<Array<alquiler>>(this.server + 'casiTre',{});
+}
+
+
+
 // removeData(key: string) {
 //   localStorage.removeItem(key);
 // }

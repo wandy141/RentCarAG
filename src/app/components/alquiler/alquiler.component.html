@@ -202,6 +202,24 @@
           (change)="calcular()"
         />
       </div>
+
+      <div hidden>
+        <label
+          for="estado"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+          >Estado</label
+        >
+        <input
+        disabled=""
+          id="estado"
+          name="estado"
+          type="text"
+          [(ngModel)]="estadotxt"
+
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        />
+      </div>
+
     </div>
 
     <div class="grid gap-6 mb-6 md:grid-cols-2">
@@ -260,14 +278,14 @@
 
       <div>
         <label
-          for="Total a pagar"
+          for="Total"
           class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
           >Total a pagar</label
         >
         <input
         disabled=""
-          id="Total a pagar"
-          name="Total a pagar"
+          id="Total "
+          name="Total"
           placeholder="Total"
           type="number"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -320,6 +338,31 @@
           >
             <span aria-hidden="true">&times;</span>
           </button>
+
+          <div class=" space-x-2 flex justify-end">
+
+            <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" 
+            type="button"
+            >Filtrar <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+            <!-- Dropdown menu -->
+            <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 flex justify-center">
+                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton text-center ">
+                  <li>
+                    <button (click)="llenarTabla()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" >Todos</button>
+                  </li>
+                  <li>
+                    <button (click)="bajo()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" >Menor de 50</button>
+                  </li>
+                  <li>
+                    <button (click)="medio()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Menor de 60</button>
+                  </li>
+                  <li>
+                    <button (click)="mayor()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mayor de 60</button>
+                  </li>
+                  
+                </ul>
+            </div>
+          </div>
         </div>
         <div class="modal-body">
           <div class="relative overflow-x-auto">
@@ -346,7 +389,7 @@
               <tbody>
                 <tr
                   class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-center"
-                  *ngFor="let txt of llenarAll"
+                  *ngFor="let txt of cambioPrecio"
                 >
                   <th
                     scope="row"
@@ -469,11 +512,14 @@
                       <span
                         class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300"
                         *ngIf="txt.estado === 1"
+                        (click)="seleccionarTxt(txt)"
+                       
                         >Activo</span
                       >
                       <span
                         class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300"
                         *ngIf="txt.estado === 0"
+                        (click)="seleccionarTxt(txt)"
                         >Inactivo</span
                       >
                     </button>
@@ -577,3 +623,5 @@
     </div>
   </div>
 </div>
+
+

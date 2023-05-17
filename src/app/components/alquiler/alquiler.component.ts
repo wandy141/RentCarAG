@@ -1,8 +1,9 @@
-import { BootstrapOptions, Component, OnInit } from '@angular/core';
+import {  Component, OnInit } from '@angular/core';
 import { alquiler } from 'src/app/clasebd/alquiler';
 import { cliente } from 'src/app/clasebd/cliente';
 import { vehiculo } from 'src/app/clasebd/vehiculo';
 import { ApiDBService } from 'src/app/services/api-db.service';
+
 import Swal from 'sweetalert2';
 
 @Component({
@@ -26,45 +27,14 @@ export class AlquilerComponent implements OnInit {
   modelo:string = '';
   marca:string = '';
   diferenciaDias: number = 0;
+  estadotxt:any = undefined;
   listaClientes: Array<cliente> = [];
-
+  cambioPrecio: Array<vehiculo> = [];
   descripcion: boolean = false;
-
-  llenarAll: Array<vehiculo> = [];
-
   idClientetxt:any = undefined;
   nombreClientetxt:string = '';
 
-  getClientes() {
-    this.servicio.mostrarCliente().subscribe((listado: any) => {
-      this.listaClientes = listado;
-    });
-  }
 
-
-
-
-
-  handleInputChange() {
-    this.descripcion = false;
-   
-    if(this.idtxt == null || this.idtxt == ''){
-      this.descripcion = false;
-      return;
-    }else{
-
-      if (this.modelo == null && this.marca == null) {
-        this.descripcion = false;
-        
-      }else{
-      this.descripcion = true;
-      }
-      
-      
-
-    }
-
-  }
 
   ngOnInit(): void {
   
@@ -89,8 +59,62 @@ export class AlquilerComponent implements OnInit {
   constructor(public servicio: ApiDBService) {
     this.llenarTabla();
     this.getClientes();
+  }
+
+
+
+
+  getClientes() {
+    this.servicio.mostrarCliente().subscribe((listado: any) => {
+      this.listaClientes = listado;
+    });
+  }
+
+
+ 
+  bajo() {
+    this.servicio.bajoPrecio().subscribe((mostrarAll) => {
+      this.cambioPrecio = mostrarAll;
+
+    });
+  }
+
+  medio() {
+    this.servicio.medioPrecio().subscribe((mostrarAll) => {
+      this.cambioPrecio = mostrarAll;
+
+    });
+  }
+
+  
+  mayor() {
+    this.servicio.mayorPrecio().subscribe((mostrarAll) => {
+      this.cambioPrecio = mostrarAll;
+
+    });
+  }
+
+  handleInputChange() {
+    this.descripcion = false;
+   
+    if(this.idtxt == null || this.idtxt == ''){
+      this.descripcion = false;
+      return;
+    }else{
+
+      if (this.modelo == null && this.marca == null) {
+        this.descripcion = false;
+        
+      }else{
+      this.descripcion = true;
+      }
+      
+      
+
+    }
 
   }
+
 
   calcular() {
       this.total = this.preciotxt * this.diasTotales;
@@ -108,8 +132,8 @@ export class AlquilerComponent implements OnInit {
   }
 
   llenarTabla() {
-    this.servicio.getTodosVehiculos().subscribe((mostrarAll) => {
-      this.llenarAll = mostrarAll;
+    this.servicio.getTodosVehiculos().subscribe((  mostrarAll) => {
+      this.cambioPrecio = mostrarAll;
     });
   }
 
@@ -122,6 +146,12 @@ export class AlquilerComponent implements OnInit {
   }
 
   entrarAlquiler(){
+
+ 
+    if (this.estadotxt == 0) {
+      this.msgCocheUso()
+      return; 
+    } 
 
     if (this.idtxt == null) {
       this.msgFallo();
@@ -183,6 +213,7 @@ export class AlquilerComponent implements OnInit {
       this.limpiar();
       this.calculateDays();
       this.msgExitoGuardar(this.usuariotxt);  
+      this.llenarTabla();
         
       }
      })
@@ -205,7 +236,14 @@ export class AlquilerComponent implements OnInit {
       'error'
     );
   }
+  msgCocheUso(){
 
+    Swal.fire(
+      'Oops...',
+      '¡Este coche esta siendo utilizado por otro cliente!',
+      'error'
+    );
+  }
 
   msgFecha() {
     Swal.fire(
@@ -219,6 +257,8 @@ export class AlquilerComponent implements OnInit {
     this.preciotxt = objVehiculo.precio;
     this.marca = objVehiculo.marca;
     this.modelo = objVehiculo.modelo;
+    this.estadotxt = objVehiculo.estado;
+
     this.handleInputChange(); 
     this.calcular();
     
