@@ -24,20 +24,7 @@ total:any = undefined;
 alquileres: Array<alquiler> = [];
 
 
-seleccionarRenta(objUsuario: alquiler) {
-  this.idrenta = objUsuario.idalquiler;
-  this.usuario = objUsuario.usuario;
-  this.fecha = objUsuario.fecha;
-  this.idcliente = objUsuario.idcliente;
-  this.nombrecliente = objUsuario.nombrecliente;
-  this.idvehiculo = objUsuario.idvehiculo;
-  this.costodia = objUsuario.precio;
-  this.inicia = objUsuario.fechaini;
-  this.termina = objUsuario.fechafin;
-  this.totaldia = objUsuario.dias;
-  this.total = objUsuario.total
 
-}
 
 
 
@@ -46,6 +33,20 @@ seleccionarRenta(objUsuario: alquiler) {
     this.tablaAlquiler();
   }
 
+  seleccionarRenta(objUsuario: alquiler) {
+    this.idrenta = objUsuario.idalquiler;
+    this.usuario = objUsuario.usuario;
+    this.fecha = objUsuario.fecha;
+    this.idcliente = objUsuario.idcliente;
+    this.nombrecliente = objUsuario.nombrecliente;
+    this.idvehiculo = objUsuario.idvehiculo;
+    this.costodia = objUsuario.precio;
+    this.inicia = objUsuario.fechaini;
+    this.termina = objUsuario.fechafin;
+    this.totaldia = objUsuario.dias;
+    this.total = objUsuario.total
+  
+  }
 
   tablaAlquiler(){
   this.servicio.mostrarAlquiler().subscribe(resultado => {
@@ -53,9 +54,18 @@ seleccionarRenta(objUsuario: alquiler) {
   });
 }
 
+
+vencieron(){
+  this.servicio.vencio().subscribe(resultado => {
+  this.alquileres = resultado;
+  });
+}
+
+
 venceManana(){
   this.servicio.venceUno().subscribe(resultado => {
   this.alquileres = resultado;
+
   });
 }
 

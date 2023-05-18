@@ -208,6 +208,9 @@ mayorPrecio(): Observable<Array<vehiculo>> {
 }
 
 
+vencio(): Observable<Array<alquiler>> {
+  return this.http.get<Array<alquiler>>(this.server + 'vencieron',{});
+}
 
 venceUno(): Observable<Array<alquiler>> {
   return this.http.get<Array<alquiler>>(this.server + 'casiUno',{});
