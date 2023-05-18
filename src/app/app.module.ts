@@ -12,6 +12,7 @@ import { VehiculoConsultaComponent } from './components/vehiculo-consulta/vehicu
 import { SliderComponent } from './components/slider/slider.component';
 import { ApiDBService } from './services/api-db.service';
 import { ConsultaEconomicoComponent } from './components/consulta-economico/consulta-economico.component';
+import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotros.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +22,7 @@ import { ConsultaEconomicoComponent } from './components/consulta-economico/cons
     VehiculoConsultaComponent,
     SliderComponent,
     ConsultaEconomicoComponent,
+    SobreNosotrosComponent,
   ],
   imports: [
     BrowserModule,

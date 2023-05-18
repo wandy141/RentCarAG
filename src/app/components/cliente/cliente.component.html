@@ -1,205 +1,210 @@
 <div class="todo">
-    <div class="p-4 sm:ml-64">
-      <div
-        class="max-w-2xl p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+  <div class="p-4 sm:ml-64">
+    <div
+      class="max-w-2xl p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+    >
+      <button
+        type="button"
+        id="boton"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+        data-toggle="modal"
+        data-target="#exampleModalCenter"
       >
-        <button
-          type="button"
-          id="boton"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-          data-toggle="modal"
-          data-target="#exampleModalCenter"
+        Agregar
+      </button>
+      <h2 class="font-bold text-2xl text-center my-4">Listado de clientes</h2>
+      <div class="relative overflow-x-auto">
+        <table
+          class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
         >
-          Agregar
-        </button>
-    <h2 class="font-bold text-2xl text-center my-4">Listado de clientes</h2>
-        <div class="relative overflow-x-auto">
-          <table
-            class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+          <thead
+            class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
           >
-            <thead
-              class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+            <tr>
+              <th scope="col" class="px-6 py-3">IdCliente</th>
+              <th scope="col" class="px-6 py-3">Nombre</th>
+              <th scope="col" class="px-6 py-3">Correo</th>
+              <th scope="col" class="px-6 py-3">Cedula</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+              *ngFor="let cliente of listaClientes"
             >
-              <tr>
-                <th scope="col" class="px-6 py-3">IdCliente</th>
-                <th scope="col" class="px-6 py-3">Nombre</th>
-                <th scope="col" class="px-6 py-3">Correo</th>
-                <th scope="col" class="px-6 py-3">Cedula</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr
-                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-                *ngFor="let cliente of listaClientes"
+              <th
+                scope="row"
+                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
               >
-                <th
-                  scope="row"
-                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                <button
+                  (click)="seleccionarCliente(cliente)"
+                  data-toggle="modal"
+                  data-target="#exampleModalCenter"
                 >
-                <button  (click)="seleccionarCliente(cliente)"
-                data-toggle="modal"
-                data-target="#exampleModalCenter"> {{ cliente.idcliente }}</button>
-                 
-                </th>
-                <td
-                  class="px-6 py-4"
+                  {{ cliente.idcliente }}
+                </button>
+              </th>
+              <td class="px-6 py-4">
+                <button
+                  (click)="seleccionarCliente(cliente)"
+                  data-toggle="modal"
+                  data-target="#exampleModalCenter"
                 >
-                <button  (click)="seleccionarCliente(cliente)"
-                data-toggle="modal"
-                data-target="#exampleModalCenter"> {{ cliente.nombre }}</button>
-                 
-                </td>
-                <td
-                  class="px-6 py-4"
-                >
-                 <button  (click)="seleccionarCliente(cliente)"
-                 data-toggle="modal"
-                 data-target="#exampleModalCenter"> {{ cliente.correo }}</button>
-                </td>
-
-                <td
-                class="px-6 py-4"
-              >
-               <button  (click)="seleccionarCliente(cliente)"
-               data-toggle="modal"
-               data-target="#exampleModalCenter"> {{ cliente.cedula }}</button>
+                  {{ cliente.nombre }}
+                </button>
               </td>
-                
-              </tr>
-            </tbody>
-          </table>
-        </div>
+              <td class="px-6 py-4">
+                <button
+                  (click)="seleccionarCliente(cliente)"
+                  data-toggle="modal"
+                  data-target="#exampleModalCenter"
+                >
+                  {{ cliente.correo }}
+                </button>
+              </td>
+
+              <td class="px-6 py-4">
+                <button
+                  (click)="seleccionarCliente(cliente)"
+                  data-toggle="modal"
+                  data-target="#exampleModalCenter"
+                >
+                  {{ cliente.cedula }}
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
-  
-  <!-- Modal  funciona-->
-  <div
-    class="modal fade"
-    id="exampleModalCenter"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title" id="exampleModalLongTitle">Registro Cliente</h3>
-          <button
-            type="button"
-            class="close"
-            data-dismiss="modal"
-            aria-label="Close"
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="tod">
-            <div class="tit">
-              <div class="grid gap-6 mb-6 md:grid-cols-2">
-                <!-- 1- primer input -->
-                <div>
-                  <label
-                    for="Cliente"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
-                    >Cliente</label
-                  >
-                  <input
-                  id="Cliente"
-                  name="Cliente"
-                    type="text"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Idcliente"
-                    (keyup.enter)="llenarCliente(idclientetxt)"
-                    [(ngModel)]="idclientetxt"
-                  />
-                </div>
-  
-                <!-- 2- primer input -->
-                <div>
-                  <label
-                    for="Nombre"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
-                    >Nombre</label
-                  >
-                  <input
-                  id="Nombre"
-                  name="Nombre"
-                    type="text"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Nombre"
-                    [(ngModel)]="nombretxt"
-                  />
-                </div>
-              </div>
-  
-              <div class="grid gap-6 mb-6 md:grid-cols-2">
-                <!-- 3- primer input -->
-                <div>
-                  <label
-                    for="Correo"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
-                    >Correo</label
-                  >
-                  <input
-                  id="Correo"
-                  name="Correo"
-                    type="text"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Fulanito@gmail.com"
-                    [(ngModel)]="correotxt"
-                  />
-                </div>
+</div>
 
-                <div>
-                    <label
-                      for="Cedula"
-                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
-                      >Cedula</label
-                    >
-                    <input
-                    id="Cedula"
-                    name="Cedula"
-                      type="text"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Cedula/Pasaporte"
-                      [(ngModel)]="cedulatxt"
-                    />
-                  </div>
-  
+<!-- Modal  funciona-->
+<div
+  class="modal fade"
+  id="exampleModalCenter"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLongTitle">Registro Cliente</h3>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="tod">
+          <div class="tit">
+            <div class="grid gap-6 mb-6 md:grid-cols-2">
+              <!-- 1- primer input -->
+              <div>
+                <label
+                  for="idclientetxt"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+                  >Cliente</label
+                >
+                <input
+                  id="idclientetxt"
+                  name="idclientetxt"
+                  type="text"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Idcliente"
+                  (keyup.enter)="llenarCliente(idclientetxt)"
+                  [(ngModel)]="idclientetxt"
+                />
+              </div>
+
+              <!-- 2- primer input -->
+              <div>
+                <label
+                  for="nombretxt"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+                  >Nombre</label
+                >
+                <input
+                  id="nombretxt"
+                  name="nombretxt"
+                  type="text"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="nombretxt"
+                  [(ngModel)]="nombretxt"
+                  (ngModelChange)="nombretxt = capitalize($event)"
+                />
               </div>
             </div>
-            <div class="up">
-              <button
-                type="button"
-                class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
-                (click)="limpiar()"
-              >
-                Limpiar
-              </button>
-  
-              <button
-                type="button"
-                class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-                (click)="guardarCliente()"
-              >
-                <i class="far fa-save"></i> Guardar
-              </button>
-  
-              <button
-                type="button"
-                class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
-                (click)="msgPrecaucion(nombretxt)"
-              >
-                Eliminar
-              </button>
+
+            <div class="grid gap-6 mb-6 md:grid-cols-2">
+              <!-- 3- primer input -->
+              <div>
+                <label
+                  for="correotxt"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+                  >Correo</label
+                >
+                <input
+                  id="correotxt"
+                  name="correotxt"
+                  type="text"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Fulanito@gmail.com"
+                  [(ngModel)]="correotxt"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="cedulatxt"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+                  >Cedula</label
+                >
+                <input
+                  id="cedulatxt"
+                  name="cedulatxt"
+                  type="text"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Cedula/Pasaporte"
+                  [(ngModel)]="cedulatxt"
+                />
+              </div>
             </div>
+          </div>
+          <div class="up">
+            <button
+              type="button"
+              class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+              (click)="limpiar()"
+            >
+              Limpiar
+            </button>
+
+            <button
+              type="button"
+              class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+              (click)="guardarCliente()"
+            >
+              <i class="far fa-save"></i> Guardar
+            </button>
+
+            <button
+              type="button"
+              class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+              (click)="msgPrecaucion(nombretxt)"
+            >
+              Eliminar
+            </button>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
-
+</div>

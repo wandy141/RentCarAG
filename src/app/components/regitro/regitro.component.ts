@@ -8,15 +8,14 @@ import { ApiDBService } from 'src/app/services/api-db.service';
   styleUrls: ['./regitro.component.css'],
 })
 export class RegitroComponent {
-  msgUsuario: boolean = false;
   msgPassword: boolean = false;
-  msgFail: boolean = false;
   usuario: any = '';
   password: any = '';
   accediendo: boolean = false;
   hayerrores: boolean = false;
   acceder:boolean = true;
   carga:boolean = false;
+  msgError:boolean = false;
   constructor( public router: Router, public servicio: ApiDBService) {
   }
 
@@ -25,7 +24,6 @@ export class RegitroComponent {
       return;
     }
 
-    this.msgUsuario = false;
     this.msgPassword = false;
     this.accediendo = false;
     this.hayerrores = false;
@@ -33,9 +31,9 @@ export class RegitroComponent {
     this.carga = false;
 
     if (this.usuario == '') {
-      this.msgUsuario = true;
+      this.msgPassword = true;
       setTimeout(() => {
-      this.msgUsuario = false;
+      this.msgPassword = false;
       }, 3000);
       this.hayerrores = true;
     }
@@ -53,12 +51,13 @@ export class RegitroComponent {
     this.acceder = false;
     this.carga = true;
     this.accediendo = true;
-    setTimeout(() => {
+    
     
         this.servicio.login(this.usuario,this.password).subscribe((retorno:any) => {
           this.accediendo = false;
-         console.log(retorno);
           if (retorno.resultado == true) {
+            this.carga =false;
+            this.acceder = true;
             this.servicio.token = retorno.token;
             localStorage.setItem('token', retorno.token);
             if (retorno.estado == 1) {
@@ -68,12 +67,13 @@ export class RegitroComponent {
             }
           
           } else  {
-            this.msgFail = true;
+            this.carga =false;
+            this.acceder = true;
+            this.msgError = true;
             setTimeout(() => {
-            this.msgFail = false;
+            this.msgError = false;
             }, 3000);
           }
         });
-    });
   }
 }

@@ -25,10 +25,7 @@ export class CarroComponent {
   tipoVehiculos: Array<tipoVehiculo> = [];
   years: Array<number> = [];
   cambioPrecio: Array<vehiculo> = [];
-  mostrarDropdown:boolean =false;
-
-
-
+  mostrarDropdown: boolean = false;
 
   constructor(public servicio: ApiDBService) {
     let time = new Date();
@@ -45,34 +42,23 @@ export class CarroComponent {
     });
   }
 
-
-
-   bajo() {
+  bajo() {
     this.servicio.bajoPrecio().subscribe((mostrarAll) => {
       this.cambioPrecio = mostrarAll;
-
     });
   }
 
   medio() {
     this.servicio.medioPrecio().subscribe((mostrarAll) => {
       this.cambioPrecio = mostrarAll;
-
     });
   }
 
-  
   mayor() {
     this.servicio.mayorPrecio().subscribe((mostrarAll) => {
       this.cambioPrecio = mostrarAll;
-      // this.bajoCarro = false;
-      // this.todoCarro = false;
-      // this.medioCarro = false;
-      // this.mayorCarro  = true;
-
     });
   }
-  
 
   llenarTipoVehiculos() {
     this.servicio.getTipoVehiculos().subscribe((lista) => {
@@ -93,8 +79,8 @@ export class CarroComponent {
     vehiculotmp.tipo = this.idtipotxt;
     vehiculotmp.ano = this.numbertxt;
     vehiculotmp.placa = this.placatxt;
-    vehiculotmp.precio = this.preciotxt
-    vehiculotmp.estado = this.estadotxt
+    vehiculotmp.precio = this.preciotxt;
+    vehiculotmp.estado = this.estadotxt;
 
     if (this.marcatxt == '') {
       this.error = true;
@@ -130,15 +116,15 @@ export class CarroComponent {
       return;
     }
 
-    this.servicio.insertarVehiculos(vehiculotmp).subscribe((resultado:boolean) => {
-
-      if (resultado) {
-        this.msgExitoGuardar(this.marcatxt, this.modelotxt);
-        this.limpiar();
-       this.llenarTabla();
-      } 
-
-    });
+    this.servicio
+      .insertarVehiculos(vehiculotmp)
+      .subscribe((resultado: boolean) => {
+        if (resultado) {
+          this.msgExitoGuardar(this.marcatxt, this.modelotxt);
+          this.limpiar();
+          this.llenarTabla();
+        }
+      });
   }
   idCompletar(idvehiculo: number) {
     this.servicio.getIdVehiculo(idvehiculo).subscribe((lista) => {
@@ -183,40 +169,35 @@ export class CarroComponent {
     this.idtipotxt = objVehiculo.tipo;
   }
 
-
-
   getDescripcionTipo(tipo: number) {
     let retorno: string = 'tipo';
     switch (tipo) {
       case 1:
-        retorno = 'Economico'
+        retorno = 'Economico';
         break;
 
       case 2:
-        retorno = 'Compacto'
+        retorno = 'Compacto';
         break;
 
       case 3:
-        retorno = 'Deportivo'
+        retorno = 'Deportivo';
         break;
 
       case 4:
-        retorno = 'Premium'
+        retorno = 'Premium';
         break;
 
       case 5:
-        retorno = 'Lujo'
+        retorno = 'Lujo';
         break;
 
       case 6:
-        retorno = 'Camion'
+        retorno = 'Camion';
         break;
-
     }
     return retorno;
   }
-
-
 
   msgExitoGuardar(marca: string, modelo: string) {
     Swal.fire(
@@ -230,9 +211,6 @@ export class CarroComponent {
     Swal.fire('Oops...', '¡Ocurrio algo verfica los campos!', 'error');
   }
 
-  //eventos
-
-  //para que la primera letra del input se vuelva Mayuscula
   capitalize(texto: string) {
     return texto.charAt(0).toUpperCase() + texto.slice(1);
   }

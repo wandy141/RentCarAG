@@ -143,6 +143,8 @@ export class AlquilerComponent implements OnInit {
    this.diasTotales = this.diferenciaDias;
    this.total = undefined;
    this.descripcion = false;
+   this.idClientetxt = undefined;
+  this.nombreClientetxt = '';
   }
 
   entrarAlquiler(){
@@ -215,6 +217,8 @@ export class AlquilerComponent implements OnInit {
       this.msgExitoGuardar(this.usuariotxt);  
       this.llenarTabla();
         
+      } else if(resultado == false){
+       this. msgRentado();
       }
      })
 
@@ -236,6 +240,15 @@ export class AlquilerComponent implements OnInit {
       'error'
     );
   }
+
+  msgRentado() {
+    Swal.fire(
+      'Oops...',
+      '¡Este vehiculo esta rentado en este periodo!',
+      'error'
+    );
+  }
+
   msgCocheUso(){
 
     Swal.fire(
@@ -301,9 +314,5 @@ export class AlquilerComponent implements OnInit {
     return retorno;
   }
 
-  //eventos
-  //para que la primera letra del input se vuelva Mayuscula
-  capitalize(texto: string) {
-    return texto.charAt(0).toUpperCase() + texto.slice(1);
-  }
+ 
 }
