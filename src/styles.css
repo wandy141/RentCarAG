@@ -1,8 +1,17 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
 /* You can add global styles to this file, and also import other style files */
 @import '~flowbite/dist/flowbite.css';
 
 *{
-    font-family: 'Poppins', sans-serif;
 
+font-family: 'Poppins', sans-serif;
 scroll-behavior: smooth;
 }
+
+
+/* .buttom-wandy {
+    @apply bg-sky-500 m-2 rounded-full pr-12 pl-12 pt-2 pb-2 text-white;
+} */

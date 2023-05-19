@@ -10,6 +10,7 @@ dias:number;
 total:number;
 idcliente:number;
 nombrecliente:string;
+estado:number;
 
 
     constructor() {
@@ -24,5 +25,6 @@ nombrecliente:string;
         this.total = 0;
         this.idcliente = 0;
         this.nombrecliente = '';
+        this.estado = 0;
     }
 }

@@ -6,6 +6,7 @@ import { VehiculoConsultaComponent } from './components/vehiculo-consulta/vehicu
 import { ConsultaEconomicoComponent } from './components/consulta-economico/consulta-economico.component';
 import { SlideBarComponent } from './components/slide-bar/slide-bar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ApiDBService } from './services/api-db.service';
 
 const routes: Routes = [
   {path: '', component :RegitroComponent, pathMatch:'full'},
@@ -14,10 +15,11 @@ const routes: Routes = [
   {path: 'carroC', component :VehiculoConsultaComponent, },
   {path: 'tipo', component :ConsultaEconomicoComponent },
   {path: 'slide', component :SlideBarComponent },
-  {path: 'dashboard', component :DashboardComponent,},
+  {path: 'dashboard', component :DashboardComponent},
   {
     path: 'dashboard',
     loadChildren: () => import('./components/dashboard/dashboard.module').then(m => m.DashboardModule)
+    , canActivate: [ApiDBService]
   },
   { path: '**', redirectTo: 'login'}
 

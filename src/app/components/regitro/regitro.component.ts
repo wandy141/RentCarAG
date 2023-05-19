@@ -53,18 +53,23 @@ export class RegitroComponent {
     this.accediendo = true;
     
     
+
         this.servicio.login(this.usuario,this.password).subscribe((retorno:any) => {
           this.accediendo = false;
+
           if (retorno.resultado == true) {
             this.carga =false;
             this.acceder = true;
             this.servicio.token = retorno.token;
             localStorage.setItem('token', retorno.token);
+
+            this.servicio.getValidacion();
+
             if (retorno.estado == 1) {
               this.router.navigate(['dashboard/grafico']);
-            }else{
-              this.router.navigate(['home']);
-            }
+             }else{
+               this.router.navigate(['home']);
+             }
           
           } else  {
             this.carga =false;

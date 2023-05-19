@@ -4,230 +4,255 @@ import { vehiculo } from '../clasebd/vehiculo';
 import { Observable } from 'rxjs';
 import { tipoVehiculo } from '../clasebd/tipoVehiculo';
 import { usuarios } from '../clasebd/usuarios';
-import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  Router,
+  RouterStateSnapshot,
+  UrlTree,
+} from '@angular/router';
 import { alquiler } from '../clasebd/alquiler';
 import { cliente } from '../clasebd/cliente';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiDBService {
-
   server = 'http://127.0.0.1:8000/api/';
   token = '';
 
-
   constructor(public http: HttpClient, private router: Router) {
     let token = localStorage.getItem('token');
-    if ( token == null ) {
+    if (token == null) {
       token = '';
     }
     this.token = token;
   }
 
+  validacionADM() {
+    return this.http.post<any>(this.server + 'login', {});
+  }
 
-  
-  canActivate(route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean|UrlTree>|Promise<boolean|UrlTree>|boolean|UrlTree {
-      
-    let status = false;    
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
+    let status = false;
 
-    return this.getValidacion().then(data => {
-      if ( data ) {
+    return this.getValidacion().then((data) => {
+      if (data) {
         return true;
       } else {
         return this.router.parseUrl('login');
       }
     });
-    
   }
 
   async acceso() {
-    return this.http.post<boolean>(this.server + 'tokenExpiration', { seccion : this.token });    
+    return this.http.post<boolean>(this.server + 'tokenExpiration', {
+      seccion: this.token,
+    });
   }
 
-  
-
-
   async getValidacion() {
-    this.validacionADM().subscribe((retorno:any) => {
-      if(retorno.estado != 1){
-        valor = false;
-        return;
-      }
-    })
+    console.log('object');
+    // this.validacionADM().subscribe((retorno: any) => {
+    //   if (retorno.estado != 1) {
+    //     valor = false;
+    //     return;
+    //   }
+    // });
     let valor: boolean = false;
-    let valort = (await this.acceso()).toPromise().then(status => {
-      if ( valor  == undefined) {
+    let valort = (await this.acceso()).toPromise().then((status) => {
+      if (valor == undefined) {
         valor = false;
         return valor;
       } else {
-        if ( status == true ) {
+        if (status == true) {
           valor = true;
         } else {
           valor = false;
         }
         return valor;
-      }      
+      }
     });
     console.log(valort);
     return valort;
   }
 
-  getTodosVehiculos(): Observable<Array<vehiculo>> {
-    return this.http.post<Array<vehiculo>>(this.server + 'allVehiculo', {});
+  //usuario
+
+  mostrarUsuario(): Observable<Array<usuarios>> {
+    return this.http.post<Array<usuarios>>(this.server + 'users', {});
   }
 
-  getTipoVehiculos(): Observable<Array<tipoVehiculo>> {
-    return this.http.post<Array<tipoVehiculo>>(this.server + 'tipoAll', {});
+  insertarUsuario(usuariotmp: usuarios): Observable<boolean> {
+    return this.http.post<boolean>(this.server + 'storeUser', {
+      usuario: usuariotmp,
+    });
   }
 
-
-  insertarVehiculos(vehiculotmp: vehiculo): Observable<boolean> {
-    return this.http.post<boolean>(this.server + 'storeVehiculos', { 'vehiculo': vehiculotmp });
+  llenarTablaUser(usuarioid: string): Observable<usuarios> {
+    return this.http.post<usuarios>(this.server + 'users/id', {
+      usuarioid: usuarioid,
+    });
   }
 
-  getIdVehiculo(idvehiculo: number): Observable<vehiculo> {
-    return this.http.post<vehiculo>(this.server + 'idVehiculo', { 'idvehiculo': idvehiculo });
-
+  getNombreUser() {
+    return this.http.post<string>(this.server + 'nombreUser', {
+      token: this.token,
+    });
   }
 
-  //tipos de vehiculo:
-
-  guardarTipos(tipoVehiculoTmp: tipoVehiculo): Observable<boolean> {
-    return this.http.post<boolean>(this.server + 'tipoVehiculos', { 'tipovehiculo': tipoVehiculoTmp });
-  }
-
-
-  getTipoId(idtipo: number): Observable<tipoVehiculo> {
-    return this.http.post<tipoVehiculo>(this.server + 'tipoId', { 'idtipo': idtipo });
+  borrarUser(usuarioid: string) {
+    return this.http.delete(this.server + 'eliminarUser/' + usuarioid, {});
   }
 
   login(usuarioid: string, contrasena: string) {
     return this.http.post<any>(this.server + 'login', {
       usuarioid: usuarioid,
-      contrasena: contrasena
-    });
-  }
- 
-  validacionADM() {
-    return this.http.post<any>(this.server + 'login', {
-     
+      contrasena: contrasena,
     });
   }
 
+  //vehiculo
 
-  //usuario
-  mostrarUsuario(): Observable<Array<usuarios>> {
-    return this.http.post<Array<usuarios>>(this.server + 'users', {});
+  getTodosVehiculos(): Observable<Array<vehiculo>> {
+    return this.http.post<Array<vehiculo>>(this.server + 'allVehiculo', {});
   }
 
-
-  insertarUsuario(usuariotmp: usuarios): Observable<boolean> {
-    return this.http.post<boolean>(this.server + 'storeUser', { 'usuario': usuariotmp });
+  insertarVehiculos(vehiculotmp: vehiculo): Observable<boolean> {
+    return this.http.post<boolean>(this.server + 'storeVehiculos', {
+      vehiculo: vehiculotmp,
+    });
   }
 
+  getIdVehiculo(idvehiculo: number): Observable<vehiculo> {
+    return this.http.post<vehiculo>(this.server + 'idVehiculo', {
+      idvehiculo: idvehiculo,
+    });
+  }
 
-llenarTablaUser(usuarioid:string):Observable<usuarios>{
-  return this.http.post<usuarios>( this.server + 'users/id',{'usuarioid':usuarioid})
-}
+  economico(): Observable<Array<vehiculo>> {
+    return this.http.get<Array<vehiculo>>(this.server + 'tipoEconomico', {});
+  }
 
-getNombreUser(){
-  return this.http.post<string>(this.server + 'nombreUser',{'token':this.token});
-}
+  lujo(): Observable<Array<vehiculo>> {
+    return this.http.get<Array<vehiculo>>(this.server + 'tipoLujo', {});
+  }
 
-borrarUser(usuarioid:string){
-  return this.http.delete(this.server + 'eliminarUser/'+ usuarioid, {})
-}
+  compacto(): Observable<Array<vehiculo>> {
+    return this.http.get<Array<vehiculo>>(this.server + 'tipoCompacto', {});
+  }
 
-devolucionAlquiler(idalquiler:number){
-  return this.http.delete(this.server + 'eliminarAlquiler/'+ idalquiler, {})
-}
+  normal(): Observable<Array<vehiculo>> {
+    return this.http.get<Array<vehiculo>>(this.server + 'tipoNormal', {});
+  }
 
+  premium(): Observable<Array<vehiculo>> {
+    return this.http.get<Array<vehiculo>>(this.server + 'tipoPremium', {});
+  }
 
+  camion(): Observable<Array<vehiculo>> {
+    return this.http.get<Array<vehiculo>>(this.server + 'tipoCamion', {});
+  }
 
+  carrosActivos(): Observable<Array<vehiculo>> {
+    return this.http.get<Array<vehiculo>>(this.server + 'carrosActivos', {});
+  }
 
-economico(): Observable<Array<vehiculo>> {
-  return this.http.get<Array<vehiculo>>(this.server + 'tipoEconomico',{});
-}
+  bajoPrecio(): Observable<Array<vehiculo>> {
+    return this.http.get<Array<vehiculo>>(this.server + 'bajoPrecio', {});
+  }
 
-lujo(): Observable<Array<vehiculo>> {
-  return this.http.get<Array<vehiculo>>(this.server + 'tipoLujo',{});
-}
+  medioPrecio(): Observable<Array<vehiculo>> {
+    return this.http.get<Array<vehiculo>>(this.server + 'medioPrecio', {});
+  }
 
-compacto(): Observable<Array<vehiculo>> {
-  return this.http.get<Array<vehiculo>>(this.server + 'tipoCompacto',{});
-}
+  mayorPrecio(): Observable<Array<vehiculo>> {
+    return this.http.get<Array<vehiculo>>(this.server + 'mayorPrecio', {});
+  }
 
-normal(): Observable<Array<vehiculo>> {
-  return this.http.get<Array<vehiculo>>(this.server + 'tipoNormal',{});
-}
+  bajoPrecioAc(): Observable<Array<vehiculo>> {
+    return this.http.get<Array<vehiculo>>(this.server + 'bajoPrecioAc', {});
+  }
 
-premium(): Observable<Array<vehiculo>> {
-  return this.http.get<Array<vehiculo>>(this.server + 'tipoPremium',{});
-}
+  medioPrecioAc(): Observable<Array<vehiculo>> {
+    return this.http.get<Array<vehiculo>>(this.server + 'medioPrecioAc', {});
+  }
 
-camion(): Observable<Array<vehiculo>> {
-  return this.http.get<Array<vehiculo>>(this.server + 'tipoCamion',{});
-}
+  mayorPrecioAc(): Observable<Array<vehiculo>> {
+    return this.http.get<Array<vehiculo>>(this.server + 'mayorPrecioAc', {});
+  }
+  //tipos de vehiculo:
 
+  guardarTipos(tipoVehiculoTmp: tipoVehiculo): Observable<boolean> {
+    return this.http.post<boolean>(this.server + 'tipoVehiculos', {
+      tipovehiculo: tipoVehiculoTmp,
+    });
+  }
 
-insertarAlquiler(alquilerTemp:alquiler):Observable<boolean>{
-return this.http.post<boolean>(this.server + 'alquiler',{ 'alquiler':alquilerTemp} );
-}
+  getTipoId(idtipo: number): Observable<tipoVehiculo> {
+    return this.http.post<tipoVehiculo>(this.server + 'tipoId', {
+      idtipo: idtipo,
+    });
+  }
 
-mostrarAlquiler(): Observable<Array<alquiler>> {
-  return this.http.get<Array<alquiler>>(this.server + 'todoAlquiler',{});
-}
+  getTipoVehiculos(): Observable<Array<tipoVehiculo>> {
+    return this.http.post<Array<tipoVehiculo>>(this.server + 'tipoAll', {});
+  }
+  //cliente
+  insertarCliente(clientetmp: cliente): Observable<boolean> {
+    return this.http.post<boolean>(this.server + 'cliente', {
+      cliente: clientetmp,
+    });
+  }
 
-insertarCliente(clientetmp: cliente): Observable<boolean> {
-  return this.http.post<boolean>(this.server + 'cliente', { 'cliente': clientetmp });
-}
+  mostrarCliente(): Observable<Array<cliente>> {
+    return this.http.get<Array<cliente>>(this.server + 'todoCliente', {});
+  }
 
-mostrarCliente():Observable<Array<cliente>>{
-  return this.http.get<Array<cliente>>(this.server + 'todoCliente',{});
-  
-}
+  clientexId(idcliente: number): Observable<cliente> {
+    return this.http.post<cliente>(this.server + 'clienteId', {
+      idcliente: idcliente,
+    });
+  }
+  //alquiler
 
+  insertarAlquiler(alquilerTemp: alquiler): Observable<boolean> {
+    return this.http.post<boolean>(this.server + 'alquiler', {
+      alquiler: alquilerTemp,
+    });
+  }
 
-clientexId(idcliente:number):Observable<cliente>{
-  return this.http.post<cliente>( this.server + 'clienteId',{'idcliente':idcliente})
-}
+  mostrarAlquiler(): Observable<Array<alquiler>> {
+    return this.http.get<Array<alquiler>>(this.server + 'todoAlquiler', {});
+  }
 
+  vencio(): Observable<Array<alquiler>> {
+    return this.http.get<Array<alquiler>>(this.server + 'vencieron', {});
+  }
 
-bajoPrecio(): Observable<Array<vehiculo>> {
-  return this.http.get<Array<vehiculo>>(this.server + 'bajoPrecio',{});
-}
+  venceUno(): Observable<Array<alquiler>> {
+    return this.http.get<Array<alquiler>>(this.server + 'casiUno', {});
+  }
 
-medioPrecio(): Observable<Array<vehiculo>> {
-  return this.http.get<Array<vehiculo>>(this.server + 'medioPrecio',{});
-}
+  venceDos(): Observable<Array<alquiler>> {
+    return this.http.get<Array<alquiler>>(this.server + 'casiDo', {});
+  }
 
-mayorPrecio(): Observable<Array<vehiculo>> {
-  return this.http.get<Array<vehiculo>>(this.server + 'mayorPrecio',{});
-}
+  venceTres(): Observable<Array<alquiler>> {
+    return this.http.get<Array<alquiler>>(this.server + 'casiTre', {});
+  }
 
+  devolucionAlquiler(idalquiler: number) {
+    return this.http.delete(this.server + 'eliminarAlquiler/' + idalquiler, {});
+  }
 
-vencio(): Observable<Array<alquiler>> {
-  return this.http.get<Array<alquiler>>(this.server + 'vencieron',{});
-}
-
-venceUno(): Observable<Array<alquiler>> {
-  return this.http.get<Array<alquiler>>(this.server + 'casiUno',{});
-}
-
-venceDos(): Observable<Array<alquiler>> {
-  return this.http.get<Array<alquiler>>(this.server + 'casiDo',{});
-}
-
-venceTres(): Observable<Array<alquiler>> {
-  return this.http.get<Array<alquiler>>(this.server + 'casiTre',{});
-}
-
-
-
-// removeData(key: string) {
-//   localStorage.removeItem(key);
-// }
-
+  // removeData(key: string) {
+  //   localStorage.removeItem(key);
+  // }
 }

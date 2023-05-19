@@ -27,7 +27,7 @@ export class AlquilerComponent implements OnInit {
   modelo:string = '';
   marca:string = '';
   diferenciaDias: number = 0;
-  estadotxt:any = undefined;
+  estadotxt:number = 1;
   listaClientes: Array<cliente> = [];
   cambioPrecio: Array<vehiculo> = [];
   descripcion: boolean = false;
@@ -53,6 +53,7 @@ export class AlquilerComponent implements OnInit {
 
     this.fechaini = this.fechaActual;
     this.calculateDays()
+  
     
   }
 
@@ -73,14 +74,14 @@ export class AlquilerComponent implements OnInit {
 
  
   bajo() {
-    this.servicio.bajoPrecio().subscribe((mostrarAll) => {
+    this.servicio.bajoPrecioAc().subscribe((mostrarAll) => {
       this.cambioPrecio = mostrarAll;
 
     });
   }
 
   medio() {
-    this.servicio.medioPrecio().subscribe((mostrarAll) => {
+    this.servicio.medioPrecioAc().subscribe((mostrarAll) => {
       this.cambioPrecio = mostrarAll;
 
     });
@@ -88,7 +89,7 @@ export class AlquilerComponent implements OnInit {
 
   
   mayor() {
-    this.servicio.mayorPrecio().subscribe((mostrarAll) => {
+    this.servicio.mayorPrecioAc().subscribe((mostrarAll) => {
       this.cambioPrecio = mostrarAll;
 
     });
@@ -132,7 +133,7 @@ export class AlquilerComponent implements OnInit {
   }
 
   llenarTabla() {
-    this.servicio.getTodosVehiculos().subscribe((  mostrarAll) => {
+    this.servicio.carrosActivos().subscribe((  mostrarAll) => {
       this.cambioPrecio = mostrarAll;
     });
   }
@@ -149,12 +150,12 @@ export class AlquilerComponent implements OnInit {
 
   entrarAlquiler(){
 
- 
-    if (this.estadotxt == 0) {
-      this.msgCocheUso()
-      return; 
-    } 
+    if (this.estadotxt == null || this.estadotxt == 0) {
+      this.msgFallo();
+      return;
+    }
 
+   
     if (this.idtxt == null) {
       this.msgFallo();
       return;
@@ -208,10 +209,14 @@ export class AlquilerComponent implements OnInit {
     alquilerTemp.fechafin = this.fechafin;
     alquilerTemp.dias = this.diasTotales;
     alquilerTemp.total = this.total;
+    alquilerTemp.estado = this.estadotxt;
+
       
 
     this.servicio.insertarAlquiler(alquilerTemp).subscribe((resultado) =>{
+
       if (resultado) {
+        
       this.limpiar();
       this.calculateDays();
       this.msgExitoGuardar(this.usuariotxt);  
@@ -253,7 +258,7 @@ export class AlquilerComponent implements OnInit {
 
     Swal.fire(
       'Oops...',
-      '¡Este coche esta siendo utilizado por otro cliente!',
+      '¡Este coche no esta disponible en ese momento!',
       'error'
     );
   }
@@ -270,7 +275,6 @@ export class AlquilerComponent implements OnInit {
     this.preciotxt = objVehiculo.precio;
     this.marca = objVehiculo.marca;
     this.modelo = objVehiculo.modelo;
-    this.estadotxt = objVehiculo.estado;
 
     this.handleInputChange(); 
     this.calcular();
