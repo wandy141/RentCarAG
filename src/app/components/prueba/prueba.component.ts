@@ -22,10 +22,13 @@ termina:string = '';
 totaldia:any = undefined;
 total:any = undefined;
 alquileres: Array<alquiler> = [];
+sele:boolean = false;
+filtroDes:string = '';
 
 
-
-
+despliega() {
+  this.sele = !this.sele;
+}
 
 
 
@@ -51,6 +54,7 @@ alquileres: Array<alquiler> = [];
   tablaAlquiler(){
   this.servicio.mostrarAlquiler().subscribe(resultado => {
   this.alquileres = resultado;
+  this.filtroDes = 'Todos los Rentados';
   });
 }
 
@@ -58,6 +62,7 @@ alquileres: Array<alquiler> = [];
 vencieron(){
   this.servicio.vencio().subscribe(resultado => {
   this.alquileres = resultado;
+  this.filtroDes = 'Finalizados';
   });
 }
 
@@ -65,19 +70,21 @@ vencieron(){
 venceManana(){
   this.servicio.venceUno().subscribe(resultado => {
   this.alquileres = resultado;
-
+  this.filtroDes = 'Cumple su plazo 1 dia';
   });
 }
 
 vencePasado(){
   this.servicio.venceDos().subscribe(resultado => {
   this.alquileres = resultado;
+  this.filtroDes = 'Cumple su plazo 2 dias';
   });
 }
 
 venceTrasPasado(){
   this.servicio.venceTres().subscribe(resultado => {
   this.alquileres = resultado;
+  this.filtroDes = 'Cumple su plazo 3 dias';
   });
 }
 

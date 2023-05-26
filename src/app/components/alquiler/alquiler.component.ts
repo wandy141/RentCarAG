@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   selector: 'app-alquiler',
   templateUrl: './alquiler.component.html',
   styleUrls: ['./alquiler.component.css'],
-  
+
 })
 export class AlquilerComponent implements OnInit {
   nombreUsuario: string = '';
@@ -33,11 +33,12 @@ export class AlquilerComponent implements OnInit {
   descripcion: boolean = false;
   idClientetxt:any = undefined;
   nombreClientetxt:string = '';
+  sele: boolean = false;
 
 
 
   ngOnInit(): void {
-  
+
     const today = new Date();
     const yyyy = today.getFullYear();
     const mm = String(today.getMonth() + 1).padStart(2, '0');
@@ -53,8 +54,8 @@ export class AlquilerComponent implements OnInit {
 
     this.fechaini = this.fechaActual;
     this.calculateDays()
-  
-    
+
+
   }
 
   constructor(public servicio: ApiDBService) {
@@ -62,7 +63,9 @@ export class AlquilerComponent implements OnInit {
     this.getClientes();
   }
 
-
+  despliega() {
+    this.sele = !this.sele;
+  }
 
 
   getClientes() {
@@ -72,7 +75,7 @@ export class AlquilerComponent implements OnInit {
   }
 
 
- 
+
   bajo() {
     this.servicio.bajoPrecioAc().subscribe((mostrarAll) => {
       this.cambioPrecio = mostrarAll;
@@ -87,7 +90,7 @@ export class AlquilerComponent implements OnInit {
     });
   }
 
-  
+
   mayor() {
     this.servicio.mayorPrecioAc().subscribe((mostrarAll) => {
       this.cambioPrecio = mostrarAll;
@@ -97,7 +100,7 @@ export class AlquilerComponent implements OnInit {
 
   handleInputChange() {
     this.descripcion = false;
-   
+
     if(this.idtxt == null || this.idtxt == ''){
       this.descripcion = false;
       return;
@@ -105,12 +108,12 @@ export class AlquilerComponent implements OnInit {
 
       if (this.modelo == null && this.marca == null) {
         this.descripcion = false;
-        
+
       }else{
       this.descripcion = true;
       }
-      
-      
+
+
 
     }
 
@@ -119,7 +122,7 @@ export class AlquilerComponent implements OnInit {
 
   calcular() {
       this.total = this.preciotxt * this.diasTotales;
-    
+
   }
 
   calculateDays() {
@@ -155,7 +158,7 @@ export class AlquilerComponent implements OnInit {
       return;
     }
 
-   
+
     if (this.idtxt == null) {
       this.msgFallo();
       return;
@@ -166,7 +169,7 @@ export class AlquilerComponent implements OnInit {
       return;
     }
 
-    
+
     if (this.diasTotales == 0) {
       this.msgFallo();
       return;
@@ -191,12 +194,16 @@ export class AlquilerComponent implements OnInit {
       this.msgFallo();
       return;
     }
-     
+
     if (this.nombreClientetxt == null || this.nombreClientetxt == ''){
       this.msgFallo();
       return;
     }
 
+    if(this.total == 0){
+      this.msgTotalCero();
+      return;
+    }
 
     let alquilerTemp: alquiler = new alquiler();
     alquilerTemp.usuario = this.usuariotxt;
@@ -211,25 +218,33 @@ export class AlquilerComponent implements OnInit {
     alquilerTemp.total = this.total;
     alquilerTemp.estado = this.estadotxt;
 
-      
+
+
 
     this.servicio.insertarAlquiler(alquilerTemp).subscribe((resultado) =>{
 
       if (resultado) {
-        
+
       this.limpiar();
       this.calculateDays();
-      this.msgExitoGuardar(this.usuariotxt);  
+      this.msgExitoGuardar(this.usuariotxt);
       this.llenarTabla();
-        
+
       } else if(resultado == false){
        this. msgRentado();
       }
      })
 
-    
+
   }
 
+  msgTotalCero(){
+    Swal.fire(
+      'Oops...',
+      '¡Verique que el totoal no este en cero!',
+      'error'
+    );
+  }
   msgExitoGuardar(usuarioid: string) {
     Swal.fire(
       'Éxito',
@@ -263,7 +278,33 @@ export class AlquilerComponent implements OnInit {
     );
   }
 
+msgFechaInvalido(){
+
+  if(this.fechaActual > this.fechafin){
+
+    this.fechaini = this.fechaActual
+    this.fechafin = this.fechaActual;
+    this.calculateDays();
+    this.msgFecha();
+  }
+
+  if(this.fechaini > this.fechafin){
+    this.fechaini = this.fechaActual
+    this.fechafin = this.fechaActual;
+    this.msgFecha();
+    this.calculateDays();
+
+  }
+if(this.fechaini< this.fechaActual){
+  this.fechaini = this.fechaActual
+  this.fechafin = this.fechaActual;
+  this.msgFecha();
+  this.calculateDays();
+}
+}
+
   msgFecha() {
+
     Swal.fire(
       'Oops...',
       '¡Verifique las fechas!',
@@ -276,9 +317,9 @@ export class AlquilerComponent implements OnInit {
     this.marca = objVehiculo.marca;
     this.modelo = objVehiculo.modelo;
 
-    this.handleInputChange(); 
+    this.handleInputChange();
     this.calcular();
-    
+
   }
   seleccionarCliente(objCliente:cliente){
     this.idClientetxt = objCliente.idcliente;
@@ -286,7 +327,7 @@ export class AlquilerComponent implements OnInit {
   }
 
 
-  
+
   getDescripcionTipo(tipo: number) {
     let retorno: string = 'tipo';
     switch (tipo) {
@@ -318,5 +359,5 @@ export class AlquilerComponent implements OnInit {
     return retorno;
   }
 
- 
+
 }

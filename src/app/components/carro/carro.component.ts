@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { tipoVehiculo } from 'src/app/clasebd/tipoVehiculo';
 import { vehiculo } from 'src/app/clasebd/vehiculo';
 import { ApiDBService } from 'src/app/services/api-db.service';
@@ -26,8 +27,13 @@ export class CarroComponent {
   years: Array<number> = [];
   cambioPrecio: Array<vehiculo> = [];
   mostrarDropdown: boolean = false;
+  sele:boolean = false;
+  filtroDes:string = '';
+  imagen:any = '';
 
-  constructor(public servicio: ApiDBService) {
+
+
+  constructor(public servicio: ApiDBService, private router: Router) {
     let time = new Date();
     for (let index = time.getFullYear(); index > 2000; index--) {
       this.years.push(index);
@@ -36,6 +42,14 @@ export class CarroComponent {
     this.llenarTabla();
   }
 
+
+  despliega() {
+    this.sele = !this.sele;
+  }
+  subirArchivo(filePath: string) {
+    console.log(filePath);
+
+  }
   llenarTabla() {
     this.servicio.getTodosVehiculos().subscribe((mostrarAll) => {
       this.cambioPrecio = mostrarAll;
@@ -80,6 +94,7 @@ export class CarroComponent {
     vehiculotmp.ano = this.numbertxt;
     vehiculotmp.placa = this.placatxt;
     vehiculotmp.precio = this.preciotxt;
+    vehiculotmp.imagen = this.imagen;
     vehiculotmp.estado = this.estadotxt;
 
     if (this.marcatxt == '') {
@@ -166,6 +181,7 @@ export class CarroComponent {
     this.placatxt = objVehiculo.placa;
     this.estadotxt = objVehiculo.estado;
     this.preciotxt = objVehiculo.precio;
+    this.imagen = objVehiculo.imagen;
     this.idtipotxt = objVehiculo.tipo;
   }
 
@@ -213,5 +229,11 @@ export class CarroComponent {
 
   capitalize(texto: string) {
     return texto.charAt(0).toUpperCase() + texto.slice(1);
+  }
+
+
+  visualizar(obj: any) {
+    this.servicio.data = obj;
+    this.router.navigate(['recepcion']);
   }
 }

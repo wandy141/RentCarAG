@@ -1,0 +1,457 @@
+<div
+  class="tod rounded-t-lg w-60 h-60 box-border text-center shadow-sm text-gray-500 p-6 pb-1 pl-6 pr-6"
+>
+  <h2 class="font-medium text-2xl mb-4">Informacion de la Renta</h2>
+  <div class="flex justify-end">
+    <button
+      type="button"
+      class="p-2.5  ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      data-toggle="modal"
+      data-target="#modalCliente"
+      title="Buscar Alquiler"
+    >
+      <svg
+        class="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+        ></path>
+      </svg>
+    </button>
+  </div>
+  <div class="grid gap-6 mb-6 md:grid-cols-2">
+    <div>
+      <label
+        for="usuario"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+        >Usuario</label
+      >
+      <input
+        disabled=""
+        id="usuario"
+        name="usuario"
+        type="text"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Usuario"
+        [(ngModel)]="usuariotxt"
+      />
+    </div>
+
+    <div>
+      <label
+        for="idVehiculo"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+        >ID_Vehiculo</label
+      >
+      <input
+        id="idVehiculo"
+        name="idVehiculo"
+        type="text"
+        disabled=""
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="ID_Vehiculo"
+        [(ngModel)]="idVehiculotxt"
+      />
+    </div>
+  </div>
+
+  <div class="grid gap-6 mb-6 md:grid-cols-2">
+    <div>
+      <label
+        for="Cliente"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+        >Nombre Cliente</label
+      >
+      <input
+        id="Cliente"
+        name="Cliente"
+        type="text"
+        disabled
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Cliente"
+        [(ngModel)]="clientetxt"
+      />
+    </div>
+
+    <div>
+      <label
+        for="Dias"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+        >Dias/totales</label
+      >
+      <input
+        id="Dias"
+        name="Dias"
+        type="text"
+        disabled
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Dias"
+        [(ngModel)]="diatxt"
+      />
+    </div>
+  </div>
+
+  <div class="grid gap-6 mb-6 md:grid-cols-2">
+    <div>
+      <label
+        for="Inicio"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+        >Fecha Inicio</label
+      >
+      <input
+        id="Inicio"
+        name="Inicio"
+        type="date"
+        disabled
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Inicio"
+        [(ngModel)]="fechainitxt"
+      />
+    </div>
+    <div>
+      <label
+        for="Fin"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+        >Fecha Fin</label
+      >
+      <input
+        id="Fin"
+        name="Fin"
+        type="date"
+        disabled
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Fin"
+        [(ngModel)]="fechafintxt"
+      />
+    </div>
+  </div>
+</div>
+
+<div
+  class="todo rounded-b-lg w-60 h-60 box-border text-center p-4 mt-0 ml-6 mb-6 mr-80 shadow-lg"
+>
+  <h2 class="font-medium text-2xl mb-4">Entrega del vehiculo</h2>
+  <div class="grid gap-6 mb-6 md:grid-cols-2">
+    <div>
+      <label
+        for="buscarclientes"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+        >Buscar Alquiler</label
+      >
+      <div class="flex items-center">
+        <div class="relative w-full">
+          <div
+            class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+          >
+            <svg
+              aria-hidden="true"
+              class="w-5 h-5 text-gray-500 dark:text-gray-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </div>
+          <input
+            type="number"
+            id="buscarclientes"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Idcliente"
+            [(ngModel)]="idAlquilertxt"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <label
+        for="fecha"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+        >Fecha Y Hora</label
+      >
+      <input
+        id="fecha"
+        name="fecha"
+        type="datetime-local"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Fecha y hora  de Entrega"
+        [(ngModel)]="fechahoratxt"
+      />
+    </div>
+  </div>
+
+  <div class="grid gap-6 mb-6 md:grid-cols-2">
+    <div>
+      <label
+        for="Persona"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+        >Persona en Recibir</label
+      >
+      <input
+        id="Persona"
+        name="Persona"
+        type="text"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Persona"
+        [(ngModel)]="personatxt"
+      />
+    </div>
+
+    <div>
+      <label
+        for="Cedula"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+        >Cedula de la persona</label
+      >
+      <input
+        id="Cedula"
+        name="Cedula"
+        type="text"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Cedula"
+        [(ngModel)]="cedulaPersonatxt"
+      />
+    </div>
+  </div>
+
+  <div class="grid gap-6 mb-6 md:grid-cols-2">
+    <div>
+      <label
+        for="Kilometraje"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+        >Kilometraje del Vehiculo</label
+      >
+      <input
+        id="Kilometraje"
+        name="Kilometraje"
+        type="text"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Kilometraje"
+        [(ngModel)]="kilometrajetxt"
+      />
+    </div>
+
+    <div>
+      <label
+        for="Observacion"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+        >Nota o Observacion</label
+      >
+      <input
+        id="Observacion"
+        name="Observacion"
+        type="text"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Nota"
+        [(ngModel)]="notatxt"
+      />
+    </div>
+  </div>
+
+  <br />
+
+  <!-- botones -->
+
+  <button
+    type="button"
+    class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+  >
+    Limpiar
+  </button>
+  <button
+    type="button"
+    (click)="guardarEntrega()"
+    class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+
+    >
+    <i class="far fa-save"></i> Guardar
+  </button>
+</div>
+
+<!-- modal alquileres -->
+
+<div
+  class="modal fade"
+  id="modalCliente"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalCenterTitle">
+          Clientes registrados
+        </h3>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="relative overflow-x-auto">
+          <table
+            class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+          >
+            <thead
+              class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+            >
+              <tr>
+                <th scope="col" class="px-6 py-3 text-center">Id</th>
+                <th scope="col" class="px-6 py-3 text-center">Usuario</th>
+                <th scope="col" class="px-6 py-3 text-center">Fecha</th>
+                <th scope="col" class="px-6 py-3 text-center">IdCliente</th>
+                <th scope="col" class="px-6 py-3 text-center">Nombre</th>
+                <th scope="col" class="px-6 py-3 text-center">Idvehiculo</th>
+                <th scope="col" class="px-6 py-3 text-center">Costo/Día</th>
+                <th scope="col" class="px-6 py-3 text-center">Inicia</th>
+                <th scope="col" class="px-6 py-3 text-center">Termina</th>
+                <th scope="col" class="px-6 py-3 text-center">Total/Días</th>
+                <th scope="col" class="px-6 py-3 text-center">
+                  Ganancia Total
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                *ngFor="let txt of arrayAlquilerAc"
+              >
+                <th
+                  class="text-center"
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                    (click)="seleccionarRenta(txt)"
+                  >
+                    {{ txt.idalquiler }}
+                  </button>
+                </th>
+
+                <td class="text-center">
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                    (click)="seleccionarRenta(txt)"
+                  >
+                    {{ txt.usuario }}
+                  </button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                    (click)="seleccionarRenta(txt)"
+                  >
+                    {{ txt.fecha }}
+                  </button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                    (click)="seleccionarRenta(txt)"
+                  >
+                    {{ txt.idcliente }}
+                  </button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                    (click)="seleccionarRenta(txt)"
+                  >
+                    {{ txt.nombrecliente }}
+                  </button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                    (click)="seleccionarRenta(txt)"
+                  >
+                    {{ txt.idvehiculo }}
+                  </button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                    (click)="seleccionarRenta(txt)"
+                  >
+                    {{ txt.precio }}
+                  </button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                    (click)="seleccionarRenta(txt)"
+                  >
+                    {{ txt.fechaini }}
+                  </button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                    (click)="seleccionarRenta(txt)"
+                  >
+                    {{ txt.fechafin }}
+                  </button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                    (click)="seleccionarRenta(txt)"
+                  >
+                    {{ txt.dias }}
+                  </button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                    (click)="seleccionarRenta(txt)"
+                  >
+                    {{ txt.total }}
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

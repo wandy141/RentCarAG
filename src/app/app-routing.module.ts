@@ -7,6 +7,7 @@ import { ConsultaEconomicoComponent } from './components/consulta-economico/cons
 import { SlideBarComponent } from './components/slide-bar/slide-bar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ApiDBService } from './services/api-db.service';
+import { RecepcionComponent } from './components/recepcion/recepcion.component';
 
 const routes: Routes = [
   {path: '', component :RegitroComponent, pathMatch:'full'},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'carroC', component :VehiculoConsultaComponent, },
   {path: 'tipo', component :ConsultaEconomicoComponent },
   {path: 'slide', component :SlideBarComponent },
+  {path: 'recepcion', component :RecepcionComponent },
   {path: 'dashboard', component :DashboardComponent},
   {
     path: 'dashboard',

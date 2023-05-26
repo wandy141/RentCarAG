@@ -12,6 +12,7 @@ import {
 } from '@angular/router';
 import { alquiler } from '../clasebd/alquiler';
 import { cliente } from '../clasebd/cliente';
+import { entrega } from '../clasebd/entrega';
 
 @Injectable({
   providedIn: 'root',
@@ -19,6 +20,7 @@ import { cliente } from '../clasebd/cliente';
 export class ApiDBService {
   server = 'http://127.0.0.1:8000/api/';
   token = '';
+  data: any;
 
   constructor(public http: HttpClient, private router: Router) {
     let token = localStorage.getItem('token');
@@ -58,13 +60,6 @@ export class ApiDBService {
   }
 
   async getValidacion() {
-    console.log('object');
-    // this.validacionADM().subscribe((retorno: any) => {
-    //   if (retorno.estado != 1) {
-    //     valor = false;
-    //     return;
-    //   }
-    // });
     let valor: boolean = false;
     let valort = (await this.acceso()).toPromise().then((status) => {
       if (valor == undefined) {
@@ -211,6 +206,18 @@ export class ApiDBService {
     });
   }
 
+
+
+  insertarEntrega(entregatmp: entrega): Observable<boolean> {
+    return this.http.post<boolean>(this.server + 'InsertEntrega', {
+      entrega: entregatmp,
+    });
+  }
+
+
+
+
+
   mostrarCliente(): Observable<Array<cliente>> {
     return this.http.get<Array<cliente>>(this.server + 'todoCliente', {});
   }
@@ -232,6 +239,10 @@ export class ApiDBService {
     return this.http.get<Array<alquiler>>(this.server + 'todoAlquiler', {});
   }
 
+  mostrarAlquilerActivos(): Observable<Array<alquiler>> {
+    return this.http.get<Array<alquiler>>(this.server + 'AlquilerActivo', {});
+  }
+
   vencio(): Observable<Array<alquiler>> {
     return this.http.get<Array<alquiler>>(this.server + 'vencieron', {});
   }
@@ -250,6 +261,16 @@ export class ApiDBService {
 
   devolucionAlquiler(idalquiler: number) {
     return this.http.delete(this.server + 'eliminarAlquiler/' + idalquiler, {});
+  }
+
+  setData(data: any){
+    localStorage.setItem('data', JSON.stringify(data));
+  }
+
+  getData(): any{
+    let valor: any = localStorage.getItem('data');
+    let data: any = JSON.parse(valor);
+    return data;
   }
 
   // removeData(key: string) {

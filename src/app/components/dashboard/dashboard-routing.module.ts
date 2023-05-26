@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard.component';
 import { TipoVehiculoComponent } from '../tipo-vehiculo/tipo-vehiculo.component';
 import { ClienteComponent } from '../cliente/cliente.component';
 import { GraficoComponent } from '../grafico/grafico.component';
+import { EntregaComponent } from '../entrega/entrega.component';
 
 
 
@@ -24,6 +25,8 @@ const routes: Routes = [
       {path: 'carros', component :CarroComponent},
       {path: 'carroT', component :TipoVehiculoComponent},
       {path: 'cliente', component :ClienteComponent},
+      {path: 'entrega', component :EntregaComponent},
+
 
 
       { path: '**', redirectTo: '/login'}

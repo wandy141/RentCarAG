@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { vehiculo } from 'src/app/clasebd/vehiculo';
 import { ApiDBService } from 'src/app/services/api-db.service';
 
@@ -8,7 +9,7 @@ import { ApiDBService } from 'src/app/services/api-db.service';
   styleUrls: ['./vehiculo-consulta.component.css'],
 })
 export class VehiculoConsultaComponent {
-  constructor(public servicio: ApiDBService) {
+  constructor(public servicio: ApiDBService, private router: Router) {
     this.llenarTabla();
   }
   llenarAll: Array<vehiculo> = [];
@@ -47,5 +48,10 @@ export class VehiculoConsultaComponent {
         break;
     }
     return retorno;
+  }
+
+  visualizar(obj: any) {
+    this.servicio.setData(obj);
+    this.router.navigate(['recepcion']);
   }
 }

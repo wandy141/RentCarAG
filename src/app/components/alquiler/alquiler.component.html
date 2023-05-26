@@ -235,7 +235,7 @@
           type="date"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           [(ngModel)]="fechaini"
-          (ngModelChange)="calculateDays()"
+          (ngModelChange)="msgFechaInvalido()"
           (change)="calcular()"
         />
       </div>
@@ -253,6 +253,7 @@
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           (blur)="calculateDays()"
           (change)="calcular()"
+          (change)="msgFechaInvalido()"
           [(ngModel)]="fechafin"
           (ngModelChange)="calculateDays()"
         />
@@ -279,18 +280,19 @@
 
       <div>
         <label
-          for="Total"
+          for="total"
           class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
           >Total a pagar</label
         >
         <input
-        disabled=""
-          id="Total "
-          name="Total"
+          id="total"
+          name="total"
           placeholder="Total"
           type="number"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           [(ngModel)]="total"
+        disabled=""
+
         />
       </div>
     </div>
@@ -340,29 +342,38 @@
             <span aria-hidden="true">&times;</span>
           </button>
 
-          <div class=" space-x-2 flex justify-end">
+          <div class="space-x-2 flex justify-end ">
+            <div class="relative">
+              <button  class="text-white bg-black hover:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mr-8"
+                type="button"
+                (click)="despliega()"
+                (blur)="despliega()">Filtrar
+                <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
 
-            <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white  bg-black hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" 
-            type="button"
-            >Filtrar <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
-            <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 flex justify-center">
-                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton text-center ">
-                  <li>
-                    <button (click)="llenarTabla()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" >Todos</button>
-                  </li>
-                  <li>
-                    <button (click)="bajo()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" >Menor de 50</button>
-                  </li>
-                  <li>
-                    <button (click)="medio()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Menor de 60</button>
-                  </li>
-                  <li>
-                    <button (click)="mayor()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mayor de 60</button>
-                  </li>
-                  
-                </ul>
+              <ul  class="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 absolute top-10 right-0 mt-2" *ngIf="sele">
+                <li>
+                  <button (click)="llenarTabla()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full text-center text-sm" (click)="despliega()">Todos</button>
+                </li>
+                <li>
+                  <button (click)="bajo()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full text-center text-sm" (click)="despliega()">Menor de 50</button>
+                </li>
+                <li>
+                  <button (click)="medio()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full text-center text-sm" (click)="despliega()">Entre 50 y 60</button>
+                </li>
+                <li>
+                  <button (click)="mayor()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full text-center text-sm" (click)="despliega()">Mayor de 60</button>
+                </li>
+              </ul>
+
             </div>
-          </div>
+            </div>
+
+
+
+
         </div>
         <div class="modal-body">
           <div class="relative overflow-x-auto">
@@ -382,7 +393,6 @@
                   <th scope="col" class="px-6 py-3 text-center">Placa</th>
                   <th scope="col" class="px-6 py-3 text-center">Tipo</th>
                   <th scope="col" class="px-6 py-3 text-center">Combustile</th>
-                  <th scope="col" class="px-6 py-3 text-center">Placa</th>
                   <th scope="col" class="px-6 py-3 text-center">Estado</th>
                 </tr>
               </thead>
@@ -498,22 +508,11 @@
                       data-toggle="modal"
                       data-target="#exampleModalCenter"
                     >
-                      {{ txt.precio }}
-                    </button>
-                  </td>
-
-                  <td class="px-6 py-4 text-center">
-                    <button
-                      type="button"
-                      (click)="seleccionarTxt(txt)"
-                      data-toggle="modal"
-                      data-target="#exampleModalCenter"
-                    >
                       <span
                         class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300"
                         *ngIf="txt.estado === 1"
                         (click)="seleccionarTxt(txt)"
-                       
+
                         >Activo</span
                       >
                       <span

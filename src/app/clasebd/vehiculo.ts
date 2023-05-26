@@ -10,6 +10,7 @@ export class vehiculo {
   ano:number;
   placa:string;
   precio:any ;
+  imagen:any;
   estado:number;
 
   constructor() {
@@ -23,6 +24,7 @@ export class vehiculo {
     this.ano = 0;
     this.placa = '';
     this.precio = undefined;
+    this.imagen = ''
     this.estado = 0;
   }
 }

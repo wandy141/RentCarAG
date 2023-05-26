@@ -9,7 +9,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./slide-bar.component.css']
 })
 export class SlideBarComponent  implements OnInit{
-
+  sele:boolean = false;
+  burger:boolean = true;
   administrador: string = '';
   constructor(public router: Router, public servicio:ApiDBService){
 
@@ -21,9 +22,13 @@ export class SlideBarComponent  implements OnInit{
     });
   }
 
-
-
-
+despliega() {
+  this.sele = !this.sele;
+}
+despliegaBurger(){
+  
+this.burger = !this.burger;
+}
   msgSalir(){
     
     Swal.fire({
@@ -36,8 +41,8 @@ export class SlideBarComponent  implements OnInit{
       cancelButtonText: 'Regresar'
          }).then((resultado) => {
       if (resultado.value) {
-        sessionStorage.removeItem('loggedIn');
-        this.router.navigate(['']);
+        localStorage.removeItem('token');
+        this.router.navigate(['']);  
       } else {
 
       }
