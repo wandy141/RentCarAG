@@ -92,7 +92,7 @@
             "styles": [
               "src/styles.css",
               "node_modules/sweetalert2/dist/sweetalert2.min.css"
-             
+
             ],
             "scripts": [
               "node_modules/sweetalert2@9/sweetalert2.all.min.js",

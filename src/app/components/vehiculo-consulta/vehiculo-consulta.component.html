@@ -2,7 +2,7 @@
 <div class="contenedor">
   <div class=" blog-card" *ngFor="let item of llenarAll">
     <div class="meta">
-      <div class="photo" style="background-image: url(/assets/crv\ 2021.jpg)"></div>
+      <div class="photo" style="background-image: url(/assets/{{item.imagen}})"></div>
     </div>
     <div class="description">
       <h1>{{ item.marca + ' ' + item.modelo }}</h1>
@@ -14,7 +14,7 @@
         <i class="fas fa-gas-pump"></i> {{ item.combustible }} <br> <br>
       </p>
       <p class="read-more">
-     <a >Ver</a>
+     <button (click)="visualizar(item)" >Ver</button>
 
       </p>
       <div class="price"> <span class="dinero"><i class="fas fa-dollar-sign"></i> {{item.precio}}/Day</span> </div>

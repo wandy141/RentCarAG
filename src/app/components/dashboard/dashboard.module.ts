@@ -14,6 +14,7 @@ import { DashboardComponent } from './dashboard.component';
 import { SlideBarComponent } from '../slide-bar/slide-bar.component';
 import { ClienteComponent } from '../cliente/cliente.component';
 import { GraficoComponent } from '../grafico/grafico.component';
+import { EntregaComponent } from '../entrega/entrega.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { GraficoComponent } from '../grafico/grafico.component';
     AlquilerComponent,
     PruebaComponent,
     ClienteComponent,
-    GraficoComponent
+    GraficoComponent,
+    EntregaComponent
   ],
   imports: [
     CommonModule,

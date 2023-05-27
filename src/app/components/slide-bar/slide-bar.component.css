@@ -3,4 +3,18 @@
     height: 1.5rem;
   }
 
- 
+ .lapi{
+  border: none;
+  color: transparent;
+  text-decoration: none;
+  cursor: pointer;
+ }
+
+ .lapi:focus{
+  outline: none;
+
+ }
+
+ .custom-select:focus {
+  outline: none;
+}

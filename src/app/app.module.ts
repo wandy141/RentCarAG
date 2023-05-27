@@ -13,6 +13,7 @@ import { SliderComponent } from './components/slider/slider.component';
 import { ApiDBService } from './services/api-db.service';
 import { ConsultaEconomicoComponent } from './components/consulta-economico/consulta-economico.component';
 import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotros.component';
+import { RecepcionComponent } from './components/recepcion/recepcion.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +24,7 @@ import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotr
     SliderComponent,
     ConsultaEconomicoComponent,
     SobreNosotrosComponent,
+    RecepcionComponent,
   ],
   imports: [
     BrowserModule,
