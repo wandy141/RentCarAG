@@ -13,11 +13,10 @@ export class RegitroComponent {
   password: any = '';
   accediendo: boolean = false;
   hayerrores: boolean = false;
-  acceder:boolean = true;
-  carga:boolean = false;
-  msgError:boolean = false;
-  constructor( public router: Router, public servicio: ApiDBService) {
-  }
+  acceder: boolean = true;
+  carga: boolean = false;
+  msgError: boolean = false;
+  constructor(public router: Router, public servicio: ApiDBService) {}
 
   mesajeError() {
     if (this.accediendo) {
@@ -33,7 +32,7 @@ export class RegitroComponent {
     if (this.usuario == '') {
       this.msgPassword = true;
       setTimeout(() => {
-      this.msgPassword = false;
+        this.msgPassword = false;
       }, 3000);
       this.hayerrores = true;
     }
@@ -41,7 +40,7 @@ export class RegitroComponent {
     if (this.password == '') {
       this.msgPassword = true;
       setTimeout(() => {
-        this.msgPassword = false;  
+        this.msgPassword = false;
       }, 3000);
       this.hayerrores = true;
     }
@@ -51,34 +50,33 @@ export class RegitroComponent {
     this.acceder = false;
     this.carga = true;
     this.accediendo = true;
-    
-    
 
-        this.servicio.login(this.usuario,this.password).subscribe((retorno:any) => {
-          this.accediendo = false;
+    this.servicio
+      .login(this.usuario, this.password)
+      .subscribe((retorno: any) => {
+        this.accediendo = false;
 
-          if (retorno.resultado == true) {
-            this.carga =false;
-            this.acceder = true;
-            this.servicio.token = retorno.token;
-            localStorage.setItem('token', retorno.token);
-
-            this.servicio.getValidacion();
-
+        if (retorno.resultado == true) {
+          this.servicio.token = retorno.token;
+          localStorage.setItem('token', retorno.token);
             if (retorno.estado == 1) {
-              this.router.navigate(['dashboard/grafico']);
-             }else{
+               this.router.navigate(['dashboard/grafico']);
+            } else {
                this.router.navigate(['home']);
-             }
-          
-          } else  {
-            this.carga =false;
-            this.acceder = true;
-            this.msgError = true;
+            }
             setTimeout(() => {
-            this.msgError = false;
+              this.carga = false;
+              this.acceder = true;
             }, 3000);
-          }
-        });
+         
+        } else {
+          this.carga = false;
+          this.acceder = true;
+          this.msgError = true;
+          setTimeout(() => {
+            this.msgError = false;
+          }, 3000);
+        }
+      });
   }
 }
