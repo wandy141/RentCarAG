@@ -12,12 +12,13 @@
         <i class="fas fa-users"></i> {{ item.asiento }} Personas <br>
         <i class="fas fa-spray-can"></i> {{ item.color }} <br>
         <i class="fas fa-gas-pump"></i> {{ item.combustible }} <br> <br>
-      </p>
-      <p class="read-more">
-     <button (click)="visualizar(item)" >Ver</button>
+      <i class="price"> <span class="dinero"><i class="fas fa-dollar-sign"></i> {{item.precio}}/Day</span> </i>
 
       </p>
-      <div class="price"> <span class="dinero"><i class="fas fa-dollar-sign"></i> {{item.precio}}/Day</span> </div>
+      <p class="read-more"
+      (click)="visualizar(item)" >
+
+      </p>
     </div>
   </div>
 </div>

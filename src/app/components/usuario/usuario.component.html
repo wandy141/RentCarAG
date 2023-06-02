@@ -3,7 +3,7 @@
     <div
       class="max-w-2xl p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
     >
-    <h2 class="font-bold text-2xl text-center my-4">Listado de usuarios</h2>
+      <h2 class="font-bold text-2xl text-center my-4">Listado de usuarios</h2>
 
       <button
         type="button"
@@ -14,7 +14,7 @@
       >
         Agregar
       </button>
-   
+
       <div class="relative overflow-x-auto">
         <table
           class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
@@ -37,27 +37,32 @@
               <th
                 scope="row"
                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center"
-                (click)="seleccionarUsuario(usuario)"
-                data-toggle="modal"
-                data-target="#exampleModalCenter"
               >
-                {{ usuario.usuarioid }}
+                <button
+                  (click)="seleccionarUsuario(usuario)"
+                  data-toggle="modal"
+                  data-target="#exampleModalCenter"
+                >
+                  {{ usuario.usuarioid }}
+                </button>
               </th>
-              <td
-                class="px-6 py-4 text-center"
-                (click)="seleccionarUsuario(usuario)"
-                data-toggle="modal"
-                data-target="#exampleModalCenter"
-              >
-                {{ usuario.contrasena }}
+              <td class="px-6 py-4 text-center">
+                <button
+                  (click)="seleccionarUsuario(usuario)"
+                  data-toggle="modal"
+                  data-target="#exampleModalCenter"
+                >
+                  {{ usuario.contrasena }}
+                </button>
               </td>
-              <td
-                class="px-6 py-4 text-center"
-                (click)="seleccionarUsuario(usuario)"
-                data-toggle="modal"
-                data-target="#exampleModalCenter"
-              >
-                {{ usuario.nombre }}
+              <td class="px-6 py-4 text-center">
+                <button
+                  (click)="seleccionarUsuario(usuario)"
+                  data-toggle="modal"
+                  data-target="#exampleModalCenter"
+                >
+                  {{ usuario.nombre }}
+                </button>
               </td>
               <td
                 class="px-6 py-4 text-center"
@@ -76,12 +81,11 @@
                   >Inactivo</span
                 >
 
-                <span class="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300 text-center"
-                 *ngIf="usuario.estado === this.activo"
-                 >Administrador</span>
-
-
-
+                <span
+                  class="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300 text-center"
+                  *ngIf="usuario.estado === this.activo"
+                  >Administrador</span
+                >
               </td>
             </tr>
           </tbody>
@@ -125,8 +129,8 @@
                   >Usuario</label
                 >
                 <input
-                id="usuario"
-                name="usuario"
+                  id="usuario"
+                  name="usuario"
                   type="text"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Usuario"
@@ -143,8 +147,8 @@
                   >Contraseña</label
                 >
                 <input
-                id="contrasena"
-                name="contrasena"
+                  id="contrasena"
+                  name="contrasena"
                   type="password"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Contraseña"
@@ -162,8 +166,8 @@
                   >Nombre</label
                 >
                 <input
-                id="nombre"
-                name="nombre"
+                  id="nombre"
+                  name="nombre"
                   type="text"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Nombre"

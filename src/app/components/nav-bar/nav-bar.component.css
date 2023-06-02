@@ -1,27 +1,99 @@
 
-img{
-    width:11rem;
-    height: auto;
-    position: absolute;
-    margin-top: -5.5rem;
+.btn-secondary
+ {
+  color: #000000;
+  text-shadow: none;
+  background-color: #fff;
+  border: .05rem solid #fff;
+  transition: 0.4s;
+  position: relative;
+  text-transform: uppercase;
+
+}
+.btn-secondary:hover{
+
+  border-color: rgb(0, 0, 0);
+  transform: scaley(1.1);
+  margin-right: 30px;
+  box-shadow: 3px 5px 5px rgb(0, 0, 0);
+
+}
+
+
+.cover-heading{
+font-size: xx-large;
+font-weight: 700;
+font-family: 'Poppins', sans-serif;
+margin: 20px;
+}
+
+:root{
+  --my-opacity:0.9;
+}
+
+.todo {
+
+  height: 100%;
+  background-image:url(/assets/slider5.webp) !important;
+  background-position: center top 10%;
+  height: 500px;
+  width: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: justify;
+  display: flex;
+  -ms-flex-pack: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5)
+}
+
+.cover-container {
+  max-width: 50em;
+}
+
+
+.nav-masthead .nav-link {
+  padding: .25rem 0;
+  font-weight: 700;
+  color: rgb(255, 255, 255);
+  background-color: transparent;
+  border-bottom: .25rem solid transparent;
+}
+
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+  border-bottom-color: rgb(255, 255, 255);
+}
+
+.nav-masthead .nav-link + .nav-link {
+  margin-left: 1rem;
+}
+
+@media (min-width: 70rem) {
+  .nav-masthead {
+    margin-left: 30rem;
+  }
+}
+
+.cover {
+  padding: 0 1.5rem;
+}
+.cover .btn-lg {
+  padding: .75rem 1.25rem;
+  font-weight: 700;
+}
+
+.masthead-brand{
+  color: #000000;
 
 
 }
 
-.nav-link{
-    color: white;
-    cursor: pointer;
-  
-}
-
-.navbar-nav{
-    margin-left: 12rem;
-}
-.nav-item:hover{
-    transform: scale(0.9);
-}
-
-.navbar {
-    padding: 1.9rem;
+.lead{
+  font-family: 'Poppins', sans-serif;
+margin-bottom: 10px;
 }
 
