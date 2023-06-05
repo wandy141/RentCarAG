@@ -1,8 +1,23 @@
-<div class="" >
-<div></div>
-<div></div>
+<div class="contenedor">
+  <div class=" blog-card">
+    <div class="meta">
+      <div class="photo" style="background-image: url(/assets/{{data.imagen}})"></div>
+    </div>
+    <div class="description">
+      <h1>{{ data.marca + ' ' + data.modelo }}</h1>
+      <h2>{{ data.ano }} </h2>
+      <p>
+        {{ getDescripcionTipo(data.tipo) }} <br>
+        <i class="fas fa-users"></i> {{ data.asiento }} Personas <br>
+        <i class="fas fa-spray-can"></i> {{ data.color }} <br>
+        <i class="fas fa-gas-pump"></i> {{ data.combustible }} <br> <br>
+      </p>
+      <p class="read-more">
+     
+
+      </p>
+      <div class="price"> <span class="dinero"><i class="fas fa-dollar-sign"></i> {{data.precio}}/Day</span> </div>
+    </div>
+  </div>
 </div>
 
-<p>
-  {{ data.marca }}
-</p>
