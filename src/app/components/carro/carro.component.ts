@@ -4,6 +4,7 @@ import { tipoVehiculo } from 'src/app/clasebd/tipoVehiculo';
 import { vehiculo } from 'src/app/clasebd/vehiculo';
 import { ApiDBService } from 'src/app/services/api-db.service';
 import Swal from 'sweetalert2';
+import { __values } from 'tslib';
 
 @Component({
   selector: 'app-carro',
@@ -46,10 +47,8 @@ export class CarroComponent {
   despliega() {
     this.sele = !this.sele;
   }
-  subirArchivo(filePath: string) {
-    console.log(filePath);
 
-  }
+
   llenarTabla() {
     this.servicio.getTodosVehiculos().subscribe((mostrarAll) => {
       this.cambioPrecio = mostrarAll;
@@ -79,6 +78,8 @@ export class CarroComponent {
       this.tipoVehiculos = lista;
     });
   }
+
+
 
   guardarVehiculos() {
     this.error = false;

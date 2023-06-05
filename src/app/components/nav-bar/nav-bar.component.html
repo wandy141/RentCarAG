@@ -1,25 +1,28 @@
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" [routerLink]="['/home']" role="button">
-        <img src="assets/2.png" alt="" type ="x-icon">
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-       <div class="navbar-nav">
-            <a class="nav-item nav-link"   href="" [routerLink]="['/carro']">Carros</a>
-          
-            <a class="nav-item nav-link "  href=""[routerLink]="['/usuario']">Usuario</a>
-
-            <a class="nav-item nav-link " href="" [routerLink]="['/carroT']">Tipo de Vehiculo</a>
-
-            <a class="nav-item nav-link"  href=""[routerLink]="['/carroC']">Consultar Vehiculos</a>
-
-            <a class="nav-item nav-link"  href=""[routerLink]="['/alquiler']">Alquiler</a>
-
+<div class="todo">
+  <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+      <div class="inner">
+        <nav class="nav nav-masthead justify-content-center">
+          <a class="nav-link " routerLink="/dashboard/rentar" >Dashboard</a>
+          <a class="nav-link" routerLink="/carro">Carros</a>
+          <a class="nav-link" routerLink="/carroC">Consulta Carro</a>
+        </nav>
       </div>
-    </div>
+    </header>
+    <main role="main" class="inner cover">
+      <h1 class="cover-heading">Rent Cars Nuñez</h1>
+      <p class="lead">Nuestros Carros son lo mejor en calidad precio en el mercado que esperas para rentarlos!</p>
+      <p class="lead">
+        <a routerLink="/carroC" class="btn btn-lg btn-secondary">Ver Carros</a>
+      </p>
+    </main>
 
-  </nav>
+    <footer class="mastfoot mt-auto">
+      <div class="inner">
+      </div>
+    </footer>
+  </div>
+</div>
 
- 
+
+

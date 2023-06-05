@@ -10,8 +10,8 @@ import { ApiDBService } from 'src/app/services/api-db.service';
 export class EntregaComponent {
   arrayAlquilerAc: Array<alquiler> = [];
 
-  idVehiculotxt: number = 0;
-  diatxt: number = 0;
+  idVehiculotxt: any = undefined;
+  diatxt: any = undefined;
   clientetxt: string = '';
   usuariotxt: string = '';
   fechainitxt: string = '';
@@ -74,6 +74,12 @@ export class EntregaComponent {
       });
   }
 
+llavesBox:boolean = false;
+ok(){
+console.log(this.llavesBox);
+
+}
+
   limpiar() {
     this.idAlquilertxt = 0;
     this.fechahoratxt = '';
@@ -89,4 +95,11 @@ export class EntregaComponent {
     this.fechainitxt = '';
     this.fechafintxt = '';
   }
+
+menuCheckbox:boolean = false;
+  despliegaCheckbox(){
+    console.log('hola');
+this.menuCheckbox = !this.menuCheckbox;
+  }
+
 }

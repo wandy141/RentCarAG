@@ -26,8 +26,8 @@ margin-left: 8rem;
 }
 @media (max-width: 700px){
 .carta{
-    grid-template-columns: repeat(1, 1fr); 
-    grid-auto-flow: row; 
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-flow: row;
     align-items: center;
 
 }
@@ -37,7 +37,7 @@ margin-left: 8rem;
 
 img {
     display: block;
-     
+
     width: 20rem;
     height: 20rem;
     align-items: center;
@@ -71,23 +71,28 @@ img:hover {
 }
 
 .carta {
-    margin-left: 8rem;
+    margin-left: 10rem;
 }
 
 @media (max-width: 700px) {
     .carta {
-        margin-left: 0;
+        margin-left: 10rem;
     }
-    
+
     .card {
         width: 100%;
+    }
+
+    .img{
+      width: 16rem;
+      height: 16rem;
     }
 }
 
 img {
     display: block;
-    width: 10rem;
-    height: 10rem;
+    width: 13rem;
+    height: 13rem;
     align-items: center;
     justify-content: center;
     padding-top: 35px;
