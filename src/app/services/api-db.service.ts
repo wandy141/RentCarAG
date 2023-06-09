@@ -125,6 +125,18 @@ export class ApiDBService {
     });
   }
 
+  insertarVehiculosImagen(vehiculotmp: vehiculo, data: FormData): Observable<any> {
+    // return this.http.post<boolean>(this.server + 'storeVehiculos', data, {
+    //   vehiculo: vehiculotmp,
+    // });
+    // return this.http.post<any>(this.server + 'Imagen', data, {
+    //   vehiculo: vehiculotmp,
+    // });
+    return this.http.post<any>(this.server + 'storeVehiculos', {
+      data, vehiculotmp
+    });
+  }
+
   getIdVehiculo(idvehiculo: number): Observable<vehiculo> {
     return this.http.post<vehiculo>(this.server + 'idVehiculo', {
       idvehiculo: idvehiculo,
@@ -276,4 +288,11 @@ export class ApiDBService {
   // removeData(key: string) {
   //   localStorage.removeItem(key);
   // }
+  public subirImagen(formData: FormData) {
+
+    return this.http.post<any>(this.server + 'Imagen', formData, {
+        reportProgress: true,
+        observe: 'events'
+      });
+  }
 }
