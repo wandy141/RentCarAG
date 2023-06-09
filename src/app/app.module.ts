@@ -14,6 +14,7 @@ import { ApiDBService } from './services/api-db.service';
 import { ConsultaEconomicoComponent } from './components/consulta-economico/consulta-economico.component';
 import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotros.component';
 import { RecepcionComponent } from './components/recepcion/recepcion.component';
+import { RecibirComponent } from './components/recibir/recibir.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,7 @@ import { RecepcionComponent } from './components/recepcion/recepcion.component';
     ConsultaEconomicoComponent,
     SobreNosotrosComponent,
     RecepcionComponent,
+    RecibirComponent,
   ],
   imports: [
     BrowserModule,

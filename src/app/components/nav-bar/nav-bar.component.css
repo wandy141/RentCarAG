@@ -1,24 +1,4 @@
 
-.btn-secondary
- {
-  color: #000000;
-  text-shadow: none;
-  background-color: #fff;
-  border: .05rem solid #fff;
-  transition: 0.4s;
-  position: relative;
-  text-transform: uppercase;
-
-}
-.btn-secondary:hover{
-
-  border-color: rgb(0, 0, 0);
-  transform: scaley(1.1);
-  margin-right: 30px;
-  box-shadow: 3px 5px 5px rgb(0, 0, 0);
-
-}
-
 
 .cover-heading{
 font-size: xx-large;
@@ -33,9 +13,9 @@ margin: 20px;
 
 .todo {
 
-  height: 100%;
-  background-image:url(/assets/slider5.webp) !important;
-  background-position: center top 10%;
+  background-image:url(/assets/car.webp) !important;
+  background-position: center top 70%;
+  background-position-y: -180px;
   height: 500px;
   width: auto;
   background-repeat: no-repeat;
@@ -45,7 +25,6 @@ margin: 20px;
   -ms-flex-pack: center;
   -webkit-box-pack: center;
   justify-content: center;
-  color: #ffffff;
   text-align: center;
   text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5)
 }

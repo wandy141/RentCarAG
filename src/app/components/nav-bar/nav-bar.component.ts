@@ -1,6 +1,5 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
@@ -8,7 +7,11 @@ import { Router } from '@angular/router';
 })
 export class NavBarComponent {
 
-  constructor(public router: Router) {
+
+
+
+  constructor(private http: HttpClient) {
+
   }
 
 

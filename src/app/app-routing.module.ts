@@ -18,6 +18,7 @@ const routes: Routes = [
   {path: 'slide', component :SlideBarComponent },
   {path: 'recepcion', component :RecepcionComponent },
   {path: 'dashboard', component :DashboardComponent},
+
   {
     path: 'dashboard',
     loadChildren: () => import('./components/dashboard/dashboard.module').then(m => m.DashboardModule)

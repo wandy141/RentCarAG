@@ -6,33 +6,35 @@
       <h2 class="font-bold text-3xl text-center">Carros en renta</h2>
       <div class="space-x-2 flex justify-end">
         <div class="relative">
-          <button  class="text-white bg-black hover:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mr-8 mt-4" 
+          <button  class="text-white bg-black hover:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mr-8 mt-4"
             type="button"
             (click)="despliega()"
-            (blur)="despliega()">Filtrar 
+
+           >Filtrar
             <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </button>
 
-          <ul 
-           class="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 absolute top-10 right-0 mt-2"
+          <ul
+           class="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 absolute top-10 right-0 mt-4"
            *ngIf="sele"
+           (blur)="despliega()"
           >
             <li>
-              <button (click)="tablaAlquiler()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full text-center text-sm" (click)="despliega()">Todos</button>
+              <button (click)="tablaAlquiler()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full text-center text-sm" (click)="despliega()"  >Todos</button>
             </li>
             <li>
-              <button (click)="vencieron()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full text-center text-sm" (click)="despliega()">Vencidos</button>
+              <button (click)="vencieron()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full text-center text-sm" (click)="despliega()"  >Vencidos</button>
             </li>
             <li>
-              <button (click)="venceManana()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full text-center text-sm" (click)="despliega()">Vence en un día</button>
+              <button (click)="venceManana()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full text-center text-sm" (click)="despliega()"  >Vence en un día</button>
             </li>
             <li>
-              <button (click)="vencePasado()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full text-center text-sm" (click)="despliega()">Vence en dos días</button>
+              <button (click)="vencePasado()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full text-center text-sm" (click)="despliega()"  >Vence en dos días</button>
             </li>
             <li>
-              <button (click)="venceTrasPasado()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full text-center text-sm" (click)="despliega()">Vence en tres días</button>
+              <button (click)="venceTrasPasado()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full text-center text-sm" (click)="despliega()"  >Vence en tres días</button>
             </li>
           </ul>
 
@@ -45,9 +47,9 @@
 <br>
 <br>
         <div class="relative overflow-x-auto">
-  
 
-       
+
+
 
           <table
             class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
@@ -73,20 +75,20 @@
               <tr
                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                 *ngFor="let txt of alquileres">
-                
+
                 <th class="text-center"
                   scope="row"
                   class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white "
-                  
+
                 >
                 <button
                 data-toggle="modal"
                 data-target="#exampleModalCenter"
                 (click)="seleccionarRenta(txt)"
                 > {{ txt.idalquiler }}</button>
-                 
+
                 </th>
-                
+
                 <td class="text-center">
                   <button
                   data-toggle="modal"
@@ -119,7 +121,7 @@
                   (click)="seleccionarRenta(txt)"
                   > {{ txt.nombrecliente }}</button>
                 </td>
-  
+
                 <td class="text-center">
                   <button
                   data-toggle="modal"
@@ -127,7 +129,7 @@
                   (click)="seleccionarRenta(txt)"
                   > {{ txt.idvehiculo }}</button>
                 </td>
-  
+
                 <td class="text-center">
                   <button
                   data-toggle="modal"
@@ -135,7 +137,7 @@
                   (click)="seleccionarRenta(txt)"
                   > {{ txt.precio }}</button>
                 </td>
-  
+
                 <td class="text-center">
                   <button
                   data-toggle="modal"
@@ -143,7 +145,7 @@
                   (click)="seleccionarRenta(txt)"
                   > {{ txt.fechaini }}</button>
                 </td>
-  
+
                 <td class="text-center">
                   <button
                   data-toggle="modal"
@@ -151,7 +153,7 @@
                   (click)="seleccionarRenta(txt)"
                   > {{ txt.fechafin }}</button>
                 </td>
-  
+
                 <td class="text-center">
                   <button
                   data-toggle="modal"
@@ -159,7 +161,7 @@
                   (click)="seleccionarRenta(txt)"
                   > {{ txt.dias }}</button>
                 </td>
-  
+
                 <td class="text-center">
                   <button
                   data-toggle="modal"
@@ -167,7 +169,7 @@
                   (click)="seleccionarRenta(txt)"
                   > {{ txt.total }}</button>
                 </td>
-              
+
               </tr>
             </tbody>
 
@@ -175,7 +177,7 @@
         </div>
       </div>
     </div>
-  </div> 
+  </div>
 
 
 
@@ -203,7 +205,7 @@
       <div class="modal-body">
          <div class="tod">
             <div class="grid gap-6 mb-6 md:grid-cols-2">
-              
+
               <div>
                 <label
                   for="ID"
@@ -287,7 +289,7 @@
                 />
               </div>
 
-             
+
                <div>
                 <label
                   for="idvehiculo"
@@ -414,12 +416,12 @@
                 >
                   Devolucion
                 </button>
-              </div> 
+              </div>
           </div>
 
 
 
-         
+
         </div>
       </div>
     </div>
