@@ -136,23 +136,10 @@ export class CarroComponent {
     }
 
 
-    // let files: FileList = this.file_input?.nativeElement.files;
-    // console.log(files);
-    // const file: any = files[0];
-    // const formData = new FormData();
-    // formData.append('file', file);
-
-    // this.servicio.subirImagen(formData).subscribe((data) => {
-    //   console.log('Imagen Cargada..>');
-    //   console.log(data);
-    // }, (error) => {
-    //   console.log('Error Cargando Imagen..>');
-    // });
 
     this.servicio
       .insertarVehiculos(vehiculotmp )
       .subscribe((resultado: any) => {
-        console.log(resultado);
         if (resultado.resultado) {
 
           this.guardarImagen(resultado.id);
@@ -269,15 +256,12 @@ export class CarroComponent {
 
     for (let index: number = 0; index < files.length; index++) {
       const file: any = files[index];
-      console.log(file.data);
 
       const formData = new FormData();
       formData.append('file', file);
       formData.append('id', id);
 
       this.servicio.subirImagen(formData).subscribe((data) => {
-        console.log('Imagen Cargada..>');
-        console.log(data);
       }, (error) => {
         console.log('Error Cargando Imagen..>');
       });

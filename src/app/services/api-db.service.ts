@@ -74,7 +74,6 @@ export class ApiDBService {
         return valor;
       }
     });
-    console.log(valort);
     return valort;
   }
 

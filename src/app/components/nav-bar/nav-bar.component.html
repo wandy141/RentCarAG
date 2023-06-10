@@ -1,70 +1,42 @@
-
-<div class="todo ">
-<img src="/assets/logo.png" alt="" class=" flex justify-start ml-12 w-28 h-28 cursor-pointer" routerLink="/home" >
+<div class="todo">
+  <img src="/assets/logo.png" alt="" class="flex justify-start ml-12 w-28 h-28 cursor-pointer" routerLink="/home" />
 
   <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-
     <header class="masthead mb-auto">
       <div class="inner">
         <nav class="nav nav-masthead justify-content-center">
-          <a class="nav-link " routerLink="/dashboard/rentar" >Dashboard</a>
+          <a class="nav-link" routerLink="/dashboard/rentar">Dashboard</a>
           <a class="nav-link" routerLink="/carro">Carros</a>
           <a class="nav-link" routerLink="/carroC">Consulta Carro</a>
         </nav>
       </div>
     </header>
-    <main role="main" class="inner cover">
 
-
-      <div class="flex justify-center">
-      <div class="float-left">
-        <label
-        for="inicio"
-        class="block  text-base font-medium  dark:text-white text-white text-center"
-        >Fecha y hora de entrega</label
-      >
-      <input
-      id="inicio"
-      name="fecha"
-      type="datetime-local"
-      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-    />
-
+    <main role="main" class="inner cover d-flex flex-column align-items-center justify-content-center">
+      <div class="mb-3">
+        <label for="inicio" class="block text-base font-medium dark:text-white text-white text-center">
+          Fecha y hora de entrega
+        </label>
+        <input id="inicio" name="fecha" type="datetime-local" class="form-control">
       </div>
-
-
-
-
-     <div class="float-left">
-
-     <label
-     for="fin"
-     class="block text-base font-medium dark:text-white text-center text-white"
-     >Fecha y hora de devuelta</label
-   >
-   <input
-   id="fin"
-   name="fecha"
-   type="datetime-local"
-   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
- />
-    </div>
-  </div>
-<br>
-      <select name="" id="">
-        <option selected>Lugar de entrega</option>
-      </select>
-      <select name="" id="">
-        <option selected>Lugar de devolución</option>
-      </select>
+      <div class="mb-3">
+        <label for="fin" class="block text-base font-medium dark:text-white text-center text-white">
+          Fecha y hora de devuelta
+        </label>
+        <input id="fin" name="fecha" type="datetime-local" class="form-control">
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <select name="" id="" class="mb-2">
+          <option selected>Lugar de entrega</option>
+        </select>
+        <select name="" id="">
+          <option selected>Lugar de devolución</option>
+        </select>
+      </div>
     </main>
+
     <footer class="mastfoot mt-auto">
-      <div class="inner">
-      </div>
+      <div class="inner"></div>
     </footer>
   </div>
 </div>
-
-
-
-
