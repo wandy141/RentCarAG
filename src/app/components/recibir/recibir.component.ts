@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./recibir.component.css']
 })
 export class RecibirComponent {
+  nombreCliente: string = '';
+  numeroReserva: number = 0;
+  fechaDevolucion: string = '';
+  kilometrajeActual: number = 0;
+  estadoVehiculo: string = '';
+  nivelCombustible: string = '';
+  comentarios: string = '';
 
 }
