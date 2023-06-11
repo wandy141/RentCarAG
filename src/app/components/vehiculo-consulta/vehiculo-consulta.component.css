@@ -191,6 +191,22 @@ p {
 .blog-card:hover .details {
   left: 0%;
 }
+@media (max-width: 640px) {
+  
+    .contenedor {
+      flex-direction: column; /* Cambiamos la dirección del contenedor a columna */
+    }
+  
+    .blog-card {
+      width: 90%; /* Cambiamos el ancho a 90% para ocupar toda la pantalla */
+    }
+  
+    .blog-card:nth-child(2n) {
+      margin-left: 0; /* Quitamos el margen izquierdo para los elementos pares */
+      margin-right: 1rem; /* Agregamos margen derecho para separar los elementos */
+    }
+}
+
 
 @media (min-width: 640px) {
   .blog-card {
@@ -241,4 +257,10 @@ p {
 
 span{
   font-size: 20px;
+}
+
+@media (max-width: 900px) {
+  .blog-card {
+    width: 90%; 
+  }
 }

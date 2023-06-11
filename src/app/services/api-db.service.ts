@@ -74,7 +74,6 @@ export class ApiDBService {
         return valor;
       }
     });
-    console.log(valort);
     return valort;
   }
 
@@ -122,6 +121,18 @@ export class ApiDBService {
   insertarVehiculos(vehiculotmp: vehiculo): Observable<boolean> {
     return this.http.post<boolean>(this.server + 'storeVehiculos', {
       vehiculo: vehiculotmp,
+    });
+  }
+
+  insertarVehiculosImagen(vehiculotmp: vehiculo, data: FormData): Observable<any> {
+    // return this.http.post<boolean>(this.server + 'storeVehiculos', data, {
+    //   vehiculo: vehiculotmp,
+    // });
+    // return this.http.post<any>(this.server + 'Imagen', data, {
+    //   vehiculo: vehiculotmp,
+    // });
+    return this.http.post<any>(this.server + 'storeVehiculos', {
+      data, vehiculotmp
     });
   }
 
@@ -276,4 +287,11 @@ export class ApiDBService {
   // removeData(key: string) {
   //   localStorage.removeItem(key);
   // }
+  public subirImagen(formData: FormData) {
+
+    return this.http.post<any>(this.server + 'Imagen', formData, {
+        reportProgress: true,
+        observe: 'events'
+      });
+  }
 }
