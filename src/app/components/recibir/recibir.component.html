@@ -26,39 +26,109 @@ class="tod rounded-t-lg w-60 h-60 box-border text-center shadow-sm text-gray-500
       </svg>
     </button>
     </div>
-    <div>
-        <label 
-        for="nombre_cliente"
-        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
-        >Nombre del cliente:</label
-        >
+      <div class="grid gap-6 mb-6 md:grid-cols-2">
+        <div>
+            <label 
+            for="nombre_cliente"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+            >Nombre del cliente:</label
+            >
+            <input 
+            disabled=""
+            type="text" 
+            id="nombre_cli" 
+            name="nombre_cli"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+            placeholder="Nombre Cliente"
+            [(ngModel)]="nombreCliente" 
+            required>
+        </div>
+        <div>
+            <label 
+            for="numero_reserva"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+            >Número de reserva:</label>
         <input 
-        disabled=""
         type="text" 
-        id="nombre_cli" 
-        name="nombre_cli"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-        placeholder="Nombre Cliente"
-        [(ngModel)]="nombreCliente" 
-        required>
-    </div>
-        <label for="numero_reserva">Número de reserva:</label>
-        <input type="text" id="numero_reserva" name="numero_reserva" [(ngModel)]="numeroReserva" required>
-      
-        <label for="fecha_devolucion">Fecha y hora de devolución:</label>
-        <input type="datetime-local" id="fecha_devolucion" name="fecha_devolucion" [(ngModel)]="fechaDevolucion" required>
-      
-        <label for="kilometraje_actual">Kilometraje actual:</label>
-        <input type="number" id="kilometraje_actual" name="kilometraje_actual" [(ngModel)]="kilometrajeActual" required>
-      
-        <label for="estado_vehiculo">Estado del vehículo:</label>
-        <textarea id="estado_vehiculo" name="estado_vehiculo" [(ngModel)]="estadoVehiculo" required></textarea>
-      
-        <label for="nivel_combustible">Nivel de combustible:</label>
-        <input type="text" id="nivel_combustible" name="nivel_combustible" [(ngModel)]="nivelCombustible" required>
-      
-        <label for="comentarios">Comentarios adicionales:</label>
-        <textarea id="comentarios" name="comentarios" [(ngModel)]="comentarios"></textarea>
-      
-        <button type="submit">Enviar</button>  
+        id="numero_reserva" 
+        name="numero_reserva"
+        disabled=""
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Numero de reserva"
+        [(ngModel)]="numeroReserva" required>
+        </div>
+      </div>
+        <div class="grid gap-6 mb-6 md:grid-cols-2">
+          <div>
+            <label for="fecha_devolucion"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+            >Fecha y hora de devolución:</label>
+            <input 
+            type="datetime-local" 
+            id="fecha_devolucion" 
+            name="fecha_devolucion"
+            disabled=""
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Fecha de la devolución"
+            [(ngModel)]="fechaDevolucion">
+          </div>
+          <div>
+            <label 
+            for="kilometraje_actual"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+            >Kilometraje actual:</label>
+            <input 
+            type="number" 
+            id="kilometraje_actual" 
+            name="kilometraje_actual"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Kilometraje Actual"
+            [(ngModel)]="kilometrajeActual" required>
+          </div>
+        </div>
+        <div class="grid gap-6 mb-6 md:grid-cols-2">
+          <label 
+          for="estado_vehiculo"
+          class="mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+          >Estado del vehículo:</label>
+          <textarea 
+          id="estado_vehiculo" 
+          name="estado_vehiculo" 
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Estado En El Que Se Encuentra El Vehiculo"
+          [(ngModel)]="estadoVehiculo" 
+          ></textarea>
+          <div>
+            <label 
+            for="nivel_combustible"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+            >Nivel de combustible:</label>
+            <input 
+            type="text" 
+            id="nivel_combustible" 
+            name="nivel_combustible" 
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Nivel d combustible actual"
+            [(ngModel)]="nivelCombustible" 
+            required>
+          </div>
+        </div>
+        <div class="grid gap-6 mb-6 md:grid-cols-2">
+          <label 
+          for="comentarios"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+          >Comentarios adicionales:</label>
+          <textarea 
+          id="comentarios" 
+          name="comentarios"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Comentario"
+          [(ngModel)]="comentarios"
+          ></textarea>
+        </div>
+        <br>
+        <button 
+        type="submit"
+        class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+        >Enviar</button>  
 </div>
