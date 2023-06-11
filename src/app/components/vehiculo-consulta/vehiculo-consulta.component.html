@@ -11,15 +11,17 @@
         {{ getDescripcionTipo(item.tipo) }} <br>
         <i class="fas fa-users"></i> {{ item.asiento }} Personas <br>
         <i class="fas fa-spray-can"></i> {{ item.color }} <br>
-        <i class="fas fa-gas-pump"></i> {{ item.combustible }} <br> <br>
-      <i class="price"> <span class="dinero"><i class="fas fa-dollar-sign"></i> {{item.precio}}/Day</span> </i>
+        <i class="fas fa-gas-pump"></i> {{ item.combustible }} <br>
+      <i class="price mt-4"> <span class="dinero"><i class="fas fa-dollar-sign"></i> {{item.precio}}/Día</span> </i>
 
       </p>
-      <p class="read-more"
-      (click)="visualizar(item)" >
 
-      </p>
+      <div class="read-more">
+       <button type="button" (click)="visualizar(item)" class="text-white bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-3.5 py-2 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 ">
+        Rentar
+       </button>
+      </div>
+      
     </div>
   </div>
 </div>
-

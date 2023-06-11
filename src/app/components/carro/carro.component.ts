@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { tipoVehiculo } from 'src/app/clasebd/tipoVehiculo';
 import { vehiculo } from 'src/app/clasebd/vehiculo';
@@ -31,10 +31,12 @@ export class CarroComponent {
   sele:boolean = false;
   filtroDes:string = '';
   imagen:any = '';
+  imagendata: any;
 
-
+  @ViewChild("file_input") file_input: ElementRef | undefined;
 
   constructor(public servicio: ApiDBService, private router: Router) {
+
     let time = new Date();
     for (let index = time.getFullYear(); index > 2000; index--) {
       this.years.push(index);
@@ -53,6 +55,7 @@ export class CarroComponent {
     this.servicio.getTodosVehiculos().subscribe((mostrarAll) => {
       this.cambioPrecio = mostrarAll;
     });
+
   }
 
   bajo() {
@@ -132,16 +135,25 @@ export class CarroComponent {
       return;
     }
 
+
+
     this.servicio
-      .insertarVehiculos(vehiculotmp)
-      .subscribe((resultado: boolean) => {
-        if (resultado) {
+      .insertarVehiculos(vehiculotmp )
+      .subscribe((resultado: any) => {
+        if (resultado.resultado) {
+
+          this.guardarImagen(resultado.id);
+
           this.msgExitoGuardar(this.marcatxt, this.modelotxt);
           this.limpiar();
           this.llenarTabla();
         }
       });
+
+
   }
+
+
   idCompletar(idvehiculo: number) {
     this.servicio.getIdVehiculo(idvehiculo).subscribe((lista) => {
       if (idvehiculo !== null) {
@@ -236,5 +248,24 @@ export class CarroComponent {
   visualizar(obj: any) {
     this.servicio.data = obj;
     this.router.navigate(['recepcion']);
+  }
+
+  guardarImagen(id: string) {
+    let files: FileList = this.file_input?.nativeElement.files;
+    console.log(files);
+
+    for (let index: number = 0; index < files.length; index++) {
+      const file: any = files[index];
+
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('id', id);
+
+      this.servicio.subirImagen(formData).subscribe((data) => {
+      }, (error) => {
+        console.log('Error Cargando Imagen..>');
+      });
+    }
+    // console.log(this.file_input?.nativeElement.files);
   }
 }

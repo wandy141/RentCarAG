@@ -1,40 +1,42 @@
+<div class="todo">
+  <img src="/assets/logo.png" alt="" class="flex justify-start ml-12 w-28 h-28 cursor-pointer" routerLink="/home" />
 
-<div class="todo ">
   <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
     <header class="masthead mb-auto">
       <div class="inner">
         <nav class="nav nav-masthead justify-content-center">
-          <a class="nav-link " routerLink="/dashboard/rentar" >Dashboard</a>
+          <a class="nav-link" routerLink="/dashboard/rentar">Dashboard</a>
           <a class="nav-link" routerLink="/carro">Carros</a>
           <a class="nav-link" routerLink="/carroC">Consulta Carro</a>
         </nav>
       </div>
     </header>
-    <main role="main" class="inner cover mb-40">
-      <h1 class="cover-heading text-white">Rent Cars Nuñez</h1>
-      <div class="check">
-     <input type="datetime-local" name="" id="inicio">
 
-     <input type="datetime-local" name="" id="fin">
-    </div>
-
-    <br>
-
-
-      <select name="" id="">
-        <option selected>Lugar de Recojida</option>
-      </select>
-      <select name="" id="">
-        <option selected>Lugar de entrega</option>
-      </select>
-    </main>
-    <footer class="mastfoot mt-auto">
-      <div class="inner">
+    <main role="main" class="inner cover d-flex flex-column align-items-center justify-content-center">
+      <div class="mb-3">
+        <label for="inicio" class="block text-base font-medium dark:text-white text-white text-center">
+          Fecha y hora de entrega
+        </label>
+        <input id="inicio" name="fecha" type="datetime-local" class="form-control">
       </div>
+      <div class="mb-3">
+        <label for="fin" class="block text-base font-medium dark:text-white text-center text-white">
+          Fecha y hora de devuelta
+        </label>
+        <input id="fin" name="fecha" type="datetime-local" class="form-control">
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <select name="" id="" class="mb-2">
+          <option selected>Lugar de entrega</option>
+        </select>
+        <select name="" id="">
+          <option selected>Lugar de devolución</option>
+        </select>
+      </div>
+    </main>
+
+    <footer class="mastfoot mt-auto">
+      <div class="inner"></div>
     </footer>
   </div>
 </div>
-
-
-
-
