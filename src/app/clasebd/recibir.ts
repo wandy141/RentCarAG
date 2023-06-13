@@ -1,4 +1,6 @@
-export class entrega{
+export class recibir{
+  idrecibir:number;
+  idcliente:number;
     NombreCli:string;
     NoReserva:number;
     FechHoraDev:string;
@@ -8,6 +10,8 @@ export class entrega{
 
 
       constructor(){
+        this.idrecibir = 0;
+    this.idcliente = 0;
     this.NombreCli = '';
     this.NoReserva = 0;
     this.FechHoraDev = '';

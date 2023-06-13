@@ -1,5 +1,4 @@
-<div
-class="tod rounded-t-lg w-60 h-60 box-border text-center shadow-sm text-gray-500 p-6 pb-1 pl-6 pr-6"
+<div class="tod rounded-t-lg w-60 h-60 box-border text-center shadow-sm text-gray-500 p-6 pb-1 pl-6 pr-6"
 >
     <h2 class="font-medium text-2xl mb-4">Solicitud de Devolución</h2>
     <div class="flex justify-end">
@@ -34,7 +33,6 @@ class="tod rounded-t-lg w-60 h-60 box-border text-center shadow-sm text-gray-500
             >Nombre del cliente:</label
             >
             <input 
-            disabled=""
             type="text" 
             id="nombre_cli" 
             name="nombre_cli"
@@ -52,10 +50,9 @@ class="tod rounded-t-lg w-60 h-60 box-border text-center shadow-sm text-gray-500
         type="text" 
         id="numero_reserva" 
         name="numero_reserva"
-        disabled=""
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         placeholder="Numero de reserva"
-        [(ngModel)]="numeroReserva" required>
+        [(ngModel)]="numeroReserva" >
         </div>
       </div>
         <div class="grid gap-6 mb-6 md:grid-cols-2">
@@ -67,7 +64,6 @@ class="tod rounded-t-lg w-60 h-60 box-border text-center shadow-sm text-gray-500
             type="datetime-local" 
             id="fecha_devolucion" 
             name="fecha_devolucion"
-            disabled=""
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Fecha de la devolución"
             [(ngModel)]="fechaDevolucion">
@@ -83,7 +79,7 @@ class="tod rounded-t-lg w-60 h-60 box-border text-center shadow-sm text-gray-500
             name="kilometraje_actual"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Kilometraje Actual"
-            [(ngModel)]="kilometrajeActual" required>
+            [(ngModel)]="kilometrajeActual" >
           </div>
         </div>
         <div class="grid gap-6 mb-6 md:grid-cols-2">
@@ -112,7 +108,7 @@ class="tod rounded-t-lg w-60 h-60 box-border text-center shadow-sm text-gray-500
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Nivel de combustible actual"
             [(ngModel)]="nivelCombustible" 
-            required>
+            >
           </div>
         </div>
         <br>
@@ -120,4 +116,169 @@ class="tod rounded-t-lg w-60 h-60 box-border text-center shadow-sm text-gray-500
         type="submit"
         class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
         >Enviar</button>  
+</div>
+
+
+
+<div
+  class="modal fade"
+  id="modalCliente"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalCenterTitle">
+          Clientes registrados
+        </h3>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="relative overflow-x-auto">
+          <table
+            class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+          >
+            <thead
+              class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+            >
+              <tr>
+                <th scope="col" class="px-6 py-3 text-center">Id</th>
+                <th scope="col" class="px-6 py-3 text-center">Usuario</th>
+                <th scope="col" class="px-6 py-3 text-center">Fecha</th>
+                <th scope="col" class="px-6 py-3 text-center">IdCliente</th>
+                <th scope="col" class="px-6 py-3 text-center">Nombre</th>
+                <th scope="col" class="px-6 py-3 text-center">Idvehiculo</th>
+                <th scope="col" class="px-6 py-3 text-center">Costo/Día</th>
+                <th scope="col" class="px-6 py-3 text-center">Inicia</th>
+                <th scope="col" class="px-6 py-3 text-center">Termina</th>
+                <th scope="col" class="px-6 py-3 text-center">Total/Días</th>
+                <th scope="col" class="px-6 py-3 text-center">
+                  Ganancia Total
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                *ngFor="let txt of arrayAlquilerAc"
+              >
+                <th
+                  class="text-center"
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                  >
+                    {{ txt.idalquiler }}
+                  </button>
+                </th>
+
+                <td class="text-center">
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                  >
+                    {{ txt.usuario }}
+                  </button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                  >
+                    {{ txt.fecha }}
+                  </button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                  >
+                    {{ txt.idcliente }}
+                  </button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                  >
+                    {{ txt.nombrecliente }}
+                  </button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                  >
+                    {{ txt.idvehiculo }}
+                  </button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                  >
+                    {{ txt.precio }}
+                  </button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                  >
+                    {{ txt.fechaini }}
+                  </button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                  >
+                    {{ txt.fechafin }}
+                  </button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                  >
+                    {{ txt.dias }}
+                  </button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                  >
+                    {{ txt.total }}
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
