@@ -28,13 +28,50 @@ class="tod rounded-t-lg w-60 h-60 box-border text-center shadow-sm text-gray-500
     </div>
       <div class="grid gap-6 mb-6 md:grid-cols-2">
         <div>
+          <label for="idrecibir"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+          >Identificacion de la devolucion:</label>
+          <input 
+          type="text" 
+          id="id_recibir" 
+          name="idrecibir"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Id de la devolucion"
+          [(ngModel)]="idrecibir">
+        </div>
+        <div>
+          <label for="idcliente"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+          >Identificacion del cliente:</label>
+          <input 
+          type="text" 
+          id="id_cliente" 
+          name="idcliente"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Id del cliente"
+          [(ngModel)]="Idcliente">
+        </div>
+      </div>
+        <div class="grid gap-6 mb-6 md:grid-cols-2">
+          <div>
+            <label for="fecha_devolucion"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+            >Identificacion del alquiler</label>
+            <input 
+            type="text" 
+            id="fecha_devolucion" 
+            name="fecha_devolucion"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Id de alquiler"
+            [(ngModel)]="idalquiler">
+          </div>
+          <div>
             <label 
-            for="nombre_cliente"
+            for="nombre_cli"
             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
             >Nombre del cliente:</label
             >
             <input 
-            disabled=""
             type="text" 
             id="nombre_cli" 
             name="nombre_cli"
@@ -43,81 +80,163 @@ class="tod rounded-t-lg w-60 h-60 box-border text-center shadow-sm text-gray-500
             [(ngModel)]="nombreCliente" 
             required>
         </div>
-        <div>
-            <label 
-            for="numero_reserva"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
-            >Número de reserva:</label>
-        <input 
-        type="text" 
-        id="numero_reserva" 
-        name="numero_reserva"
-        disabled=""
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        placeholder="Numero de reserva"
-        [(ngModel)]="numeroReserva" required>
-        </div>
-      </div>
-        <div class="grid gap-6 mb-6 md:grid-cols-2">
-          <div>
-            <label for="fecha_devolucion"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
-            >Fecha y hora de devolución:</label>
-            <input 
-            type="datetime-local" 
-            id="fecha_devolucion" 
-            name="fecha_devolucion"
-            disabled=""
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Fecha de la devolución"
-            [(ngModel)]="fechaDevolucion">
-          </div>
-          <div>
-            <label 
-            for="kilometraje_actual"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
-            >Kilometraje actual:</label>
-            <input 
-            type="number" 
-            id="kilometraje_actual" 
-            name="kilometraje_actual"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Kilometraje Actual"
-            [(ngModel)]="kilometrajeActual" required>
-          </div>
         </div>
         <div class="grid gap-6 mb-6 md:grid-cols-2">
-          <div>
-            <label 
-            for="comentarios"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
-            >Comentarios adicionales:</label>
-            <textarea 
-            id="comentarios" 
-            name="comentarios"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Comentario"
-            [(ngModel)]="comentarios"
-            ></textarea>
-          </div>
-          <div>
-            <label 
-            for="nivel_combustible"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
-            >Nivel de combustible:</label>
-            <input 
-            type="text" 
-            id="nivel_combustible" 
-            name="nivel_combustible" 
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Nivel de combustible actual"
-            [(ngModel)]="nivelCombustible" 
-            required>
-          </div>
+            <div>
+              <label for="fecha_devolucion"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+              >Fecha y hora de devolución:</label>
+              <input 
+              type="datetime-local" 
+              id="fecha_devolucion" 
+              name="fecha_devolucion"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Fecha de la devolución"
+              [(ngModel)]="fechaDevolucion">
+            </div>
+            <div>
+              <label 
+              for="comentarios"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+              >Comentarios adicionales:</label>
+              <textarea 
+              id="comentarios" 
+              name="comentarios"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Comentario"
+              [(ngModel)]="comentarios"
+              ></textarea>
+            </div>
         </div>
         <br>
         <button 
         type="submit"
         class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-        >Enviar</button>  
+      (click)="guardarEntrega()"  >Enviar</button>  
+</div>
+
+
+<div
+  class="modal fade"
+  id="modalCliente"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalCenterTitle">
+          Carros alquilados
+        </h3>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="relative overflow-x-auto">
+          <table
+            class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+          >
+            <thead
+              class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+            >
+              <tr>
+                <th scope="col" class="px-6 py-3 text-center">Id entrega</th>
+                <th scope="col" class="px-6 py-3 text-center">Id alquiler</th>
+                <th scope="col" class="px-6 py-3 text-center">Fecha</th>
+                <th scope="col" class="px-6 py-3 text-center">Receptor</th>
+                <th scope="col" class="px-6 py-3 text-center">Cedula</th>
+                <th scope="col" class="px-6 py-3 text-center">Kilometraje</th>
+                <th scope="col" class="px-6 py-3 text-center">Nota</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                *ngFor="let txt of arrayEntrega"
+              >
+                <th
+                  class="text-center"
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                    (click)="seleccionarEntrega(txt)"
+                  >
+                    {{ txt.identrega }}
+                  </button>
+                </th>
+
+                <td class="text-center">
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                    (click)="seleccionarEntrega(txt)"
+                  >
+                    {{ txt.idalquiler }}
+                  </button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                  >
+                    {{ txt.fechahora }}
+                  </button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                    (click)="seleccionarEntrega(txt)"
+                  >
+                    {{ txt.persona_recibe }}
+                  </button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                  >
+                    {{ txt.cedula_persona }}
+                  </button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                  >
+                    {{ txt.kilometraje }}
+                  </button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                  >
+                    {{ txt.nota }}
+                  </button>
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

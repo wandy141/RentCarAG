@@ -1,18 +1,18 @@
-export class entrega{
+export class recibir{
     NombreCli:string;
-    NoReserva:number;
     FechHoraDev:string;
-    KMactual:number;
+    idrecibir:number;
     Comentarios:string;
-    NCombustible:number;
-
+    id_alquiler:number;
+    id_cliente: number;
 
       constructor(){
+        this.idrecibir = 0;
     this.NombreCli = '';
-    this.NoReserva = 0;
     this.FechHoraDev = '';
-    this.KMactual = 0;
+    this.idrecibir = 0;
     this.Comentarios = '';
-    this.NCombustible = 0;
+    this.id_alquiler = 0;
+    this.id_cliente = 0;
       }
 }

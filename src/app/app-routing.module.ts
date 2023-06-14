@@ -9,8 +9,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ApiDBService } from './services/api-db.service';
 import { RecepcionComponent } from './components/recepcion/recepcion.component';
 
+
 const routes: Routes = [
-  {path: '', component :RegitroComponent, pathMatch:'full'},
+  {path: '', component :HomeComponent},
   {path: 'login', component :RegitroComponent},
   {path: 'home', component :HomeComponent },
   {path: 'carroC', component :VehiculoConsultaComponent, },

@@ -21,7 +21,12 @@ export class SlideBarComponent  implements OnInit{
       this.administrador = nombre;
     });
   }
+seleADM:boolean = false;
+despliegaADM(){
+  this.seleADM = !this.seleADM;
 
+
+}
 despliega() {
   this.sele = !this.sele;
 }

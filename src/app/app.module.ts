@@ -15,6 +15,8 @@ import { ConsultaEconomicoComponent } from './components/consulta-economico/cons
 import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotros.component';
 import { RecepcionComponent } from './components/recepcion/recepcion.component';
 import { RecibirComponent } from './components/recibir/recibir.component';
+import { MantenimientoComponent } from './components/mantenimiento/mantenimiento.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { DevolucionComponent } from './components/devolucion/devolucion.component';
 @NgModule({
   declarations: [
@@ -28,7 +30,6 @@ import { DevolucionComponent } from './components/devolucion/devolucion.componen
     SobreNosotrosComponent,
     RecepcionComponent,
     RecibirComponent,
-    DevolucionComponent,
   ],
   imports: [
     BrowserModule,
