@@ -10,6 +10,7 @@ import { ClienteComponent } from '../cliente/cliente.component';
 import { GraficoComponent } from '../grafico/grafico.component';
 import { EntregaComponent } from '../entrega/entrega.component';
 import { RecibirComponent } from '../recibir/recibir.component';
+import { MantenimientoComponent } from '../mantenimiento/mantenimiento.component';
 
 
 
@@ -28,6 +29,7 @@ const routes: Routes = [
       {path: 'cliente', component :ClienteComponent},
       {path: 'entrega', component :EntregaComponent},
       {path: 'recibir', component :RecibirComponent},
+      {path: 'mantenimiento', component :MantenimientoComponent},
 
 
       { path: '**', redirectTo: '/login'}
