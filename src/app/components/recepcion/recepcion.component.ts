@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { alquiler } from 'src/app/clasebd/alquiler';
 import { vehiculo } from 'src/app/clasebd/vehiculo';
 import { ApiDBService } from 'src/app/services/api-db.service';
 
@@ -10,13 +11,24 @@ import { ApiDBService } from 'src/app/services/api-db.service';
 export class RecepcionComponent {
   data: any;
   listaVehiculos:Array<vehiculo> = [];
-
+  idalquiler: number= 0;
+  usuario: string='';
+  idcliente: number= 0;
+  nombrecliente: string='';
+  fecha: string='';
+  idvehiculo: number= 0;
+  seguro: string='';
+  precio: number= 0;
+  fechaini:string='';
+  fechafin:string='';
+  dias: number=0 ;
+  total: number= 0;
 constructor(private servicio: ApiDBService){
   this.data = this.servicio.getData();
 }
 
 
-
+      
 
 getDescripcionTipo(tipo: number) {
   let retorno: string = 'tipo';
