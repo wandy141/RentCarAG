@@ -1,4 +1,4 @@
-export class entrega{
+export class recibir{
     NombreCli:string;
     FechHoraDev:string;
     idrecibir:number;
