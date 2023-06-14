@@ -60,7 +60,6 @@ img:hover {
    .card-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
 }
 
 .card {
@@ -68,19 +67,15 @@ img:hover {
     margin-bottom: .8rem;
     background: transparent;
     border: none;
+align-items: center;
 }
 
-.carta {
-    margin-left: 10rem;
-}
 
 @media (max-width: 700px) {
-    .carta {
-        margin-left: 10rem;
-    }
+  
 
     .card {
-        width: 100%;
+        width: 50%;
     }
 
     .img{
@@ -105,7 +100,7 @@ img:hover {
 }
 
 .photos img {
-    width: 10rem;
+    width: 11.3rem;
     height: auto;
 }
 
