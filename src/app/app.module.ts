@@ -15,6 +15,7 @@ import { ConsultaEconomicoComponent } from './components/consulta-economico/cons
 import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotros.component';
 import { RecepcionComponent } from './components/recepcion/recepcion.component';
 import { RecibirComponent } from './components/recibir/recibir.component';
+import { MantenimientoComponent } from './components/mantenimiento/mantenimiento.component';
 import { FooterComponent } from './components/footer/footer.component';
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { FooterComponent } from './components/footer/footer.component';
     SobreNosotrosComponent,
     RecepcionComponent,
     RecibirComponent,
+    MantenimientoComponent,
     FooterComponent,
   ],
   imports: [

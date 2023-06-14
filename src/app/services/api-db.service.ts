@@ -13,6 +13,8 @@ import {
 import { alquiler } from '../clasebd/alquiler';
 import { cliente } from '../clasebd/cliente';
 import { entrega } from '../clasebd/entrega';
+import { recibir } from '../clasebd/recibir';
+import { mantenimiento } from '../clasebd/mantenimiento';
 
 @Injectable({
   providedIn: 'root',
@@ -225,6 +227,11 @@ export class ApiDBService {
     });
   }
 
+  insertarRecibir(recibirtmp: recibir): Observable<boolean> {
+    return this.http.post<boolean>(this.server + 'InsertRecibir', {
+      recibir: recibirtmp,
+    });
+  }
 
 
 
@@ -293,5 +300,19 @@ export class ApiDBService {
         reportProgress: true,
         observe: 'events'
       });
+  }
+
+  todoRecibir(): Observable<Array<entrega>> {
+    return this.http.get<Array<entrega>>(this.server + 'todoRecibir', {});
+  }
+
+  todoMantenimiento(): Observable<Array<mantenimiento>> {
+    return this.http.get<Array<mantenimiento>>(this.server + 'todoMantenimiento', {});
+  }
+
+  insertarMantenimiento(mantenimientotmp: mantenimiento): Observable<boolean> {
+    return this.http.post<boolean>(this.server + 'insertarMantenimiento', {
+      mantenimiento: mantenimientotmp,
+    });
   }
 }
