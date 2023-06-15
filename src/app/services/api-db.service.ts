@@ -117,7 +117,15 @@ export class ApiDBService {
   //vehiculo
 
   getTodosVehiculos(): Observable<Array<vehiculo>> {
-    return this.http.post<Array<vehiculo>>(this.server + 'allVehiculo', {});
+    return this.http.get<Array<vehiculo>>(this.server + 'allVehiculo', {});
+  }
+
+  vehiManteniemiento(): Observable<Array<vehiculo>> {
+    return this.http.get<Array<vehiculo>>(this.server + 'vehiculoMantenimiento', {});
+  }
+
+  vehiInactivo(): Observable<Array<vehiculo>> {
+    return this.http.get<Array<vehiculo>>(this.server + 'vehiculoInactivo', {});
   }
 
   insertarVehiculos(vehiculotmp: vehiculo): Observable<boolean> {

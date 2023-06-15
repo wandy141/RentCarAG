@@ -41,16 +41,14 @@
   <div class="signupFrm" style="float: right; width: -50; margin-right: 32%; margin-top: 2%;">
    
     <form action="" class="form">
-    <h1 class="title2 justify-center text-center">Arrendamiento</h1>
 
       <h4 class="title">Datos del cliente</h4>
       <div class="flex gap-10">
 
         <div class="inputContainer"> 
-          <input type="text" class="input" placeholder="a"  >
+          <input type="text" class="input" placeholder="a" id="idcliente" name="idcliente"   >
           <label for="" class="label">idcliente</label>
         </div>
-  
         <div class="inputContainer">
           <input type="text" class="input" placeholder="a"  >
           <label for="" class="label">nombre</label>
@@ -64,7 +62,7 @@
         </div> <div class="flex gap-10">
 
           <div class="inputContainer"> 
-            <input type="text" class="input" placeholder="a"  >
+            <input type="text" class="input" placeholder="a"   >
             <label for="" class="label">cedula</label>
           </div>
     
@@ -83,7 +81,7 @@
       <div class="flex gap-10">
 
       <div class="inputContainer"> 
-        <input type="text" class="input" placeholder="a" [(ngModel)]="idalquiler"  >
+        <input type="text" id="idalquiler" name="idalquiler" class="input" placeholder="a" [(ngModel)]="idalquiler"  >
         <label for="" class="label">idalquiler</label>
       </div>
 
@@ -93,22 +91,22 @@
       </div>
 
       <div class="inputContainer">
-        <input type="text" class="input" placeholder="a"   >
+        <input type="text" class="input" placeholder="a" id="idcleinte" name="idcliente" [(ngModel)]="idcliente"  >
         <label for="" class="label">idcliente</label>
       </div>
 
       </div>
       <div class="flex gap-10">
       <div class="inputContainer">
-        <input type="text" class="input" placeholder="a"  >
+        <input type="text" class="input" placeholder="a" id="nombrecliente" name="nombrecliente"   [(ngModel)]="nombrecliente"  >
         <label for="" class="label">nombrecliente</label>
       </div>
       <div class="inputContainer">
-        <input type="text" class="input" placeholder="a"  >
+        <input type="text" class="input" placeholder="a" id="fecha" name="fecha" [(ngModel)]="fecha"  >
         <label for="" class="label">fecha</label>
       </div>
       <div class="inputContainer">
-        <input type="text" class="input" placeholder="a"  >
+        <input type="text" class="input" placeholder="a" id="vehiculo" name="idvehiculo" [(ngModel)]="idvehiculo"  >
         <label for="" class="label">idvehiculo</label>
       </div>
     </div>
@@ -119,26 +117,26 @@
         <label for="" class="label">seguro</label>
       </div>
       <div class="inputContainer">
-        <input type="text" class="input" placeholder="a"   >
+        <input type="text" class="input" placeholder="a" id="precio" name="precio" [(ngModel)]="precio" >
         <label for="" class="label">precio</label>
       </div>
       <div class="inputContainer">
-        <input type="text" class="input" placeholder="a"   > 
+        <input type="datetime-local" class="input" placeholder="a" id="fechaini" name="fechaini" [(ngModel)]="fechaini"  > 
         <label for="" class="label">fechaini</label>
       </div>
     </div>
     <div class="flex gap-10">
 
       <div class="inputContainer">
-        <input type="text" class="input" placeholder="a"  >
+        <input type="datetime-local" class="input" placeholder="a" id="fechafin" name="fechafin" >
         <label for="" class="label">fechafin</label>
       </div>
       <div class="inputContainer">
-        <input type="text" class="input" placeholder="a"  >
+        <input type="text" class="input" placeholder="a" id="dias" name="dias" [(ngModel)]="dias"  >
         <label for="" class="label">dias</label>
       </div>
       <div class="inputContainer">
-        <input type="text" class="input" placeholder="a"   >
+        <input type="text" class="input" placeholder="a"  id="total" name="total"  [(ngModel)]="total"  >
         <label for="" class="label">total</label>
       </div>
     </div>

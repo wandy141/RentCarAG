@@ -14,8 +14,6 @@ import { ApiDBService } from './services/api-db.service';
 import { ConsultaEconomicoComponent } from './components/consulta-economico/consulta-economico.component';
 import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotros.component';
 import { RecepcionComponent } from './components/recepcion/recepcion.component';
-import { RecibirComponent } from './components/recibir/recibir.component';
-import { MantenimientoComponent } from './components/mantenimiento/mantenimiento.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DevolucionComponent } from './components/devolucion/devolucion.component';
 @NgModule({
@@ -29,7 +27,8 @@ import { DevolucionComponent } from './components/devolucion/devolucion.componen
     ConsultaEconomicoComponent,
     SobreNosotrosComponent,
     RecepcionComponent,
-    RecibirComponent,
+    DevolucionComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
