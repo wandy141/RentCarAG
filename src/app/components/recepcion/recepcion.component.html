@@ -1,9 +1,169 @@
-<div class="contenedor">
-  <div class=" blog-card">
+
+<div class="todo">
+  <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+      <div class="inner">
+        <nav class="nav nav-masthead justify-content-center">
+          <a class="nav-link " routerLink="/dashboard/rentar" >Dashboard</a>
+          <a class="nav-link" routerLink="/carro">Carros</a>
+          <a class="nav-link" routerLink="/carroC">Consulta Carro</a>
+        </nav>
+      </div>
+    </header>
+    <main role="main" class="inner cover">
+      <h1 class="cover-heading">Rent Cars Nuñez</h1>
+      <p class="lead">"Descubre nuestro excepcional servicio de alquiler de coches con precios sonrientes, donde cada sonrisa es el reflejo de la satisfacción de nuestros clientes. 
+      </p>
+      <p class="lead">
+        <a class="fancy" routerLink="/carroC">
+<span class="top-key"></span>
+<span class="text">Ver Autos</span>
+<span class="bottom-key-1"></span>
+<span class="bottom-key-2"></span>
+</a>
+      </p>
+    </main>
+
+    <footer class="mastfoot mt-auto">
+      <div class="inner">
+      </div>
+    </footer>
+  </div>
+</div>
+
+
+
+
+
+<div style="display: inline-block; width: 100%;">
+
+
+  <div class="signupFrm" style="float: right; width: -50; margin-right: 32%; margin-top: 2%;">
+   
+    <form action="" class="form">
+    <h1 class="title2 justify-center text-center">Arrendamiento</h1>
+
+      <h4 class="title">Datos del cliente</h4>
+      <div class="flex gap-10">
+
+        <div class="inputContainer"> 
+          <input type="text" class="input" placeholder="a"  >
+          <label for="" class="label">idcliente</label>
+        </div>
+  
+        <div class="inputContainer">
+          <input type="text" class="input" placeholder="a"  >
+          <label for="" class="label">nombre</label>
+        </div>
+  
+        <div class="inputContainer">
+          <input type="text" class="input" placeholder="a"   >
+          <label for="" class="label">correo</label>
+        </div>
+  
+        </div> <div class="flex gap-10">
+
+          <div class="inputContainer"> 
+            <input type="text" class="input" placeholder="a"  >
+            <label for="" class="label">cedula</label>
+          </div>
+    
+          <div class="inputContainer">
+            <input type="text" class="input" placeholder="a"  >
+            <label for="" class="label">direccion</label>
+          </div>
+    
+          <div class="inputContainer " >
+            <input type="text" class="input" placeholder="a"   >
+            <label for="" class="label">nacionalidad</label>
+          </div>
+    
+          </div>
+      <h4 class="title">Datos para rentar vehiculo</h4>
+      <div class="flex gap-10">
+
+      <div class="inputContainer"> 
+        <input type="text" class="input" placeholder="a" [(ngModel)]="idalquiler"  >
+        <label for="" class="label">idalquiler</label>
+      </div>
+
+      <div class="inputContainer">
+        <input type="text" class="input" placeholder="a"  >
+        <label for="" class="label">usuario</label>
+      </div>
+
+      <div class="inputContainer">
+        <input type="text" class="input" placeholder="a"   >
+        <label for="" class="label">idcliente</label>
+      </div>
+
+      </div>
+      <div class="flex gap-10">
+      <div class="inputContainer">
+        <input type="text" class="input" placeholder="a"  >
+        <label for="" class="label">nombrecliente</label>
+      </div>
+      <div class="inputContainer">
+        <input type="text" class="input" placeholder="a"  >
+        <label for="" class="label">fecha</label>
+      </div>
+      <div class="inputContainer">
+        <input type="text" class="input" placeholder="a"  >
+        <label for="" class="label">idvehiculo</label>
+      </div>
+    </div>
+    <div class="flex gap-10">
+
+      <div class="inputContainer">
+        <input type="text" class="input" placeholder="a"  >
+        <label for="" class="label">seguro</label>
+      </div>
+      <div class="inputContainer">
+        <input type="text" class="input" placeholder="a"   >
+        <label for="" class="label">precio</label>
+      </div>
+      <div class="inputContainer">
+        <input type="text" class="input" placeholder="a"   > 
+        <label for="" class="label">fechaini</label>
+      </div>
+    </div>
+    <div class="flex gap-10">
+
+      <div class="inputContainer">
+        <input type="text" class="input" placeholder="a"  >
+        <label for="" class="label">fechafin</label>
+      </div>
+      <div class="inputContainer">
+        <input type="text" class="input" placeholder="a"  >
+        <label for="" class="label">dias</label>
+      </div>
+      <div class="inputContainer">
+        <input type="text" class="input" placeholder="a"   >
+        <label for="" class="label">total</label>
+      </div>
+    </div>
+  
+
+
+
+      <input type="submit" class="submitBtn justify-center" value="Reservar ">
+    </form>
+  </div>
+
+
+
+<div class="vertical-line"></div>
+
+  <div class="form-container">
+
+
+
+
+  <div class=" blog-card" style="float: right; width: 50; margin-right: -100%; margin-top: -140%;">
     <div class="meta">
       <div class="photo" style="background-image: url(/assets/{{data.imagen}})"></div>
     </div>
-    <div class="description">
+    <div class="description"> 
       <h1>{{ data.marca + ' ' + data.modelo }}</h1>
       <h2>{{ data.ano }} </h2>
       <p>
@@ -19,5 +179,5 @@
       <div class="price"> <span class="dinero"><i class="fas fa-dollar-sign"></i> {{data.precio}}/Day</span> </div>
     </div>
   </div>
-</div>
 
+</div>
