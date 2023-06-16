@@ -4,6 +4,8 @@ usuario:string;
 fecha:string;
 idvehiculo:number;
 seguro:string;
+lugar_entrega:string;
+lugar_recibir:string;
 precio:number;
 fechaini:string;
 fechafin:string;
@@ -28,5 +30,7 @@ estado:number;
         this.idcliente = 0;
         this.nombrecliente = '';
         this.estado = 0;
+        this.lugar_entrega= '';
+        this.lugar_recibir='';
     }
 }
