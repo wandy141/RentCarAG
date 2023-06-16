@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { alquiler } from 'src/app/clasebd/alquiler';
+import { Component, OnInit } from '@angular/core';
 import { vehiculo } from 'src/app/clasebd/vehiculo';
 import { ApiDBService } from 'src/app/services/api-db.service';
 
@@ -8,7 +7,7 @@ import { ApiDBService } from 'src/app/services/api-db.service';
   templateUrl: './recepcion.component.html',
   styleUrls: ['./recepcion.component.css']
 })
-export class RecepcionComponent {
+export class RecepcionComponent implements OnInit{
   data: any;
   listaVehiculos:Array<vehiculo> = [];
   idalquiler: number= 0;
@@ -26,10 +25,15 @@ export class RecepcionComponent {
 constructor(private servicio: ApiDBService){
   this.data = this.servicio.getData();
 }
-
-
-      
-
+ngOnInit(): void {
+ const fechas = this.servicio.getInputValue();
+ console.log(fechas.fechaIni);
+ console.log(fechas.fechaFin);
+ 
+ this.fechaini = fechas.fechaIni;
+ this.fechafin = fechas.fechaFin;
+    
+}
 getDescripcionTipo(tipo: number) {
   let retorno: string = 'tipo';
   switch (tipo) {

@@ -221,8 +221,8 @@ export class ApiDBService {
     return this.http.post<Array<tipoVehiculo>>(this.server + 'tipoAll', {});
   }
   //cliente
-  insertarCliente(clientetmp: cliente): Observable<boolean> {
-    return this.http.post<boolean>(this.server + 'cliente', {
+  insertarCliente(clientetmp: cliente): Observable<any> {
+    return this.http.post<any>(this.server + 'cliente', {
       cliente: clientetmp,
     });
   }
@@ -322,5 +322,16 @@ export class ApiDBService {
     return this.http.post<boolean>(this.server + 'insertarMantenimiento', {
       mantenimiento: mantenimientotmp,
     });
+  }
+
+  private fechas: { fechaIni: string, fechaFin: string } = { fechaIni: '', fechaFin: '' };
+
+  setInputValue(value1: string, value2: string) {
+    this.fechas.fechaIni = value1;
+    this.fechas.fechaFin = value2;
+  }
+  
+  getInputValue() {
+    return this.fechas;
   }
 }

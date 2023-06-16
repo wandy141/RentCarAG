@@ -12,18 +12,34 @@
       </div>
     </header>
 
-    <main role="main" class="inner cover d-flex flex-column align-items-center justify-content-center">
+    <main role="main" class="bg- flex inner cover d-flex flex-column align-items-center justify-content-center">
       <div class="mb-3">
         <label for="inicio" class="block text-base font-medium dark:text-white text-white text-center">
           Fecha y hora de entrega
         </label>
-        <input id="inicio" name="fecha" type="datetime-local" class="form-control">
+        <input
+        id="fechaini"
+        name="fechaini"
+        type="datetime-local"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="fechaini"
+        [(ngModel)]="fechaini"
+        (input)="onClickEnviarValores()"
+      />
       </div>
       <div class="mb-3">
         <label for="fin" class="block text-base font-medium dark:text-white text-center text-white">
           Fecha y hora de devuelta
         </label>
-        <input id="fin" name="fecha" type="datetime-local" class="form-control">
+        <input
+        id="fechafin"
+        name="fechafin"
+        type="datetime-local"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="fechafin"
+        [(ngModel)]= "fechafin"
+        (input)="onClickEnviarValores()"
+      />
       </div>
       <div class="d-flex flex-column align-items-center">
         <select name="" id="" class="mb-2">
