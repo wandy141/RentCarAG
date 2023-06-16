@@ -15,6 +15,8 @@ import { SlideBarComponent } from '../slide-bar/slide-bar.component';
 import { ClienteComponent } from '../cliente/cliente.component';
 import { GraficoComponent } from '../grafico/grafico.component';
 import { EntregaComponent } from '../entrega/entrega.component';
+import { MantenimientoComponent } from '../mantenimiento/mantenimiento.component';
+import { RecibirComponent } from '../recibir/recibir.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { EntregaComponent } from '../entrega/entrega.component';
     PruebaComponent,
     ClienteComponent,
     GraficoComponent,
-    EntregaComponent
+    EntregaComponent,
+    MantenimientoComponent,
+    RecibirComponent
   ],
   imports: [
     CommonModule,

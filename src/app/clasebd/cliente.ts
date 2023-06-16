@@ -3,12 +3,16 @@ idcliente:number;
 nombre:string;
 correo:string;
 cedula:string;
+direccion:string;
+telefono:string;
 
 constructor(){
     this.idcliente = 0;
     this.nombre = '';
     this.correo = '';
     this.cedula = '';
+    this.direccion = '';
+    this.telefono = '';
 }
 
 

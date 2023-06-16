@@ -57,6 +57,20 @@ export class CarroComponent {
     });
 
   }
+  
+  manteniemiento() {
+    this.servicio.vehiManteniemiento().subscribe((mostrarAll) => {
+      this.cambioPrecio = mostrarAll;
+    });
+
+  }
+
+  inactivo() {
+    this.servicio.vehiInactivo().subscribe((mostrarAll) => {
+      this.cambioPrecio = mostrarAll;
+    });
+
+  }
 
   bajo() {
     this.servicio.bajoPrecio().subscribe((mostrarAll) => {
@@ -252,7 +266,6 @@ export class CarroComponent {
 
   guardarImagen(id: string) {
     let files: FileList = this.file_input?.nativeElement.files;
-    console.log(files);
 
     for (let index: number = 0; index < files.length; index++) {
       const file: any = files[index];
@@ -262,10 +275,13 @@ export class CarroComponent {
       formData.append('id', id);
 
       this.servicio.subirImagen(formData).subscribe((data) => {
+        if(data){
+          this.llenarTabla();
+        }
       }, (error) => {
         console.log('Error Cargando Imagen..>');
       });
     }
-    // console.log(this.file_input?.nativeElement.files);
   }
+  
 }
