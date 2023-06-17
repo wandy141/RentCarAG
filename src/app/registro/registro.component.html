@@ -7,10 +7,10 @@
     <title>Sign Up Form by Colorlib</title>
 
     <!-- Font Icon -->
-    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="material-design-iconic-font.min.css">
 
     <!-- Main css -->
-    <link rel="stylesheet" href="registro/registro.component.css">
+    <link rel="stylesheet" href="registro.component.css">
 </head>
 <body>
 
@@ -25,7 +25,7 @@
                         <form method="POST" class="register-form" id="register-form">
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="name" id="name" placeholder="Nombre completo" [(ngModel)]="nombre"/>
+                                <input type="text" name="name" id="name" placeholder="Nombre completo" [(ngModel)]="nombreCom"/>
                             </div>
                             <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-email"></i></label>
@@ -33,11 +33,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="pass" id="pass" placeholder="Contraseña" [(ngModel)]="contraseña"/>
+                                <input type="password" name="pass" id="pass" placeholder="Contraseña" [(ngModel)]="contrasena"/>
                             </div>
                             <div class="form-group">
                                 <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="password" name="re_pass" id="re_pass" placeholder="Repite la contraseña" [(ngModel)]="RepiteContra"/>
+                                <input type="password" name="re_pass" id="re_pass" placeholder="Repite la contraseña" [(ngModel)]="confirmacionContra"/>
                             </div>
                             <div class="form-group">
                                 <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />

@@ -15,6 +15,7 @@ import { cliente } from '../clasebd/cliente';
 import { entrega } from '../clasebd/entrega';
 import { recibir } from '../clasebd/recibir';
 import { mantenimiento } from '../clasebd/mantenimiento';
+import { registro } from '../clasebd/registro';
 
 @Injectable({
   providedIn: 'root',
@@ -313,6 +314,12 @@ export class ApiDBService {
   insertarMantenimiento(mantenimientotmp: mantenimiento): Observable<boolean> {
     return this.http.post<boolean>(this.server + 'insertarMantenimiento', {
       mantenimiento: mantenimientotmp,
+    });
+  }
+
+  insertarRegistro(registrotmp: registro): Observable<boolean> {
+    return this.http.post<boolean>(this.server + 'insertarRegistro', {
+      registro: registrotmp,
     });
   }
 }
