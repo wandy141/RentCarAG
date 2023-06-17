@@ -8,11 +8,12 @@ import { SlideBarComponent } from './components/slide-bar/slide-bar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ApiDBService } from './services/api-db.service';
 import { RecepcionComponent } from './components/recepcion/recepcion.component';
-
+import { RegistroComponent } from './registro/registro.component';
 
 const routes: Routes = [
   {path: '', component :HomeComponent},
   {path: 'login', component :RegitroComponent},
+  {path: 'registro', component :RegistroComponent},
   {path: 'home', component :HomeComponent },
   {path: 'carroC', component :VehiculoConsultaComponent, },
   {path: 'tipo', component :ConsultaEconomicoComponent },

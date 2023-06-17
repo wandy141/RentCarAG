@@ -17,6 +17,7 @@ import { RecepcionComponent } from './components/recepcion/recepcion.component';
 import { RecibirComponent } from './components/recibir/recibir.component';
 import { MantenimientoComponent } from './components/mantenimiento/mantenimiento.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { RegistroComponent } from './registro/registro.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +32,7 @@ import { FooterComponent } from './components/footer/footer.component';
     RecibirComponent,
     MantenimientoComponent,
     FooterComponent,
+    RegistroComponent,
   ],
   imports: [
     BrowserModule,
