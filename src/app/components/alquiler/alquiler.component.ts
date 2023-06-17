@@ -26,7 +26,6 @@ export class AlquilerComponent implements OnInit {
   modelo: string = '';
   marca: string = '';
   diferenciaDias: number = 0;
-  estadotxt: number = 1;
   seguroValue: number = 20;
   listaClientes: Array<cliente> = [];
   cambioPrecio: Array<vehiculo> = [];
@@ -34,7 +33,8 @@ export class AlquilerComponent implements OnInit {
   idClientetxt: any = undefined;
   nombreClientetxt: string = '';
   sele: boolean = false;
-
+  entrega: string = '';
+  devolucion: string = '';
   seguroSi: string = 'normal';
   seleccionadoSi: boolean = false;
   seleccionadoNo: boolean = false;
@@ -55,13 +55,13 @@ export class AlquilerComponent implements OnInit {
     const yyyy = today.getFullYear();
     const mm = String(today.getMonth() + 1).padStart(2, '0');
     const dd = String(today.getDate()).padStart(2, '0');
-    const dia = String(today.getDate()+ 1).padStart(2, '0');
+    const dia = String(today.getDate() + 1).padStart(2, '0');
     const hora = String(today.getHours()).padStart(2, '0');
 
     const minutos = String(today.getMinutes()).padStart(2, '0');
 
     this.fechaActual = `${yyyy}-${mm}-${dd} ${hora}:${minutos}`;
-this.fechafin =  `${yyyy}-${mm}-${dia} ${hora}:${minutos}`;
+    this.fechafin = `${yyyy}-${mm}-${dia} ${hora}:${minutos}`;
     this.servicio.getNombreUser().subscribe((nombre) => {
       this.usuariotxt = nombre;
     });
@@ -151,11 +151,6 @@ this.fechafin =  `${yyyy}-${mm}-${dia} ${hora}:${minutos}`;
   }
 
   entrarAlquiler() {
-    if (this.estadotxt == null || this.estadotxt == 0) {
-      this.msgFallo();
-      return;
-    }
-
     if (this.idtxt == null) {
       this.msgFallo();
       return;
@@ -167,6 +162,15 @@ this.fechafin =  `${yyyy}-${mm}-${dia} ${hora}:${minutos}`;
     }
 
     if (this.diasTotales == 0) {
+      this.msgFallo();
+      return;
+    }
+    if (this.devolucion == null || this.devolucion == '') {
+      this.msgFallo();
+      return;
+    }
+
+    if (this.entrega == null || this.entrega == '') {
       this.msgFallo();
       return;
     }
@@ -207,13 +211,14 @@ this.fechafin =  `${yyyy}-${mm}-${dia} ${hora}:${minutos}`;
     alquilerTemp.idcliente = this.idClientetxt;
     alquilerTemp.nombrecliente = this.nombreClientetxt;
     alquilerTemp.idvehiculo = this.idtxt;
+    alquilerTemp.lugar_entrega = this.entrega;
+    alquilerTemp.lugar_recibir = this.devolucion;
     alquilerTemp.seguro = this.seguroSi;
     alquilerTemp.precio = this.preciotxt;
     alquilerTemp.fechaini = this.fechaini;
     alquilerTemp.fechafin = this.fechafin;
     alquilerTemp.dias = this.diasTotales;
     alquilerTemp.total = this.total;
-    alquilerTemp.estado = this.estadotxt;
 
     this.servicio.insertarAlquiler(alquilerTemp).subscribe((resultado) => {
       if (resultado) {

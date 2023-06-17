@@ -201,24 +201,39 @@
           (change)="calcular()"
         />
       </div>
-
-      <div hidden>
+    </div>
+    <div class="grid gap-6 mb-6 md:grid-cols-2">
+      <div>
         <label
-          for="estado"
+          for="Entrega"
           class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
-          >Estado</label
+          >Lugar Entrega</label
         >
         <input
-        disabled=""
-          id="estado"
-          name="estado"
+          id="Entrega"
+          name="Entrega"
           type="text"
-          [(ngModel)]="estadotxt"
-
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          [(ngModel)]="entrega"
+          placeholder="lugar de entrega"
         />
       </div>
 
+      <div>
+        <label
+          for="Devolución"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+          >Lugar Devolución</label
+        >
+        <input
+          id="Devolución"
+          name="Devolución"
+          type="text"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          [(ngModel)]="devolucion"
+          placeholder="lugar de devolucion"
+        />
+      </div>
     </div>
 
     <div class="grid gap-6 mb-6 md:grid-cols-2">
@@ -258,40 +273,63 @@
           (ngModelChange)="calculateDays()"
         />
       </div>
-
-
     </div>
     <h3 class="mb-2 font-semibold text-gray-900 dark:text-white">Seguros</h3>
     <div class="grid gap-6 mb-6 md:grid-cols-1">
-<ul class="items-center w-full text-sm font-medium h-11 text-gray-900 bg-gray-50 border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-    <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-        <div class="flex items-center pl-3">
-            <input id="horizontal-list-radio-license" type="radio" [(ngModel)]="seguroSi"  (ngModelChange)="seguro()" value="full" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-            <label for="horizontal-list-radio-license" class="w-full py-3 ml-2 text-sm font-semibold text-gray-500 dark:text-gray-300">Seguro Full</label>
-        </div>
-    </li>
+      <ul
+        class="items-center w-full text-sm font-medium h-11 text-gray-900 bg-gray-50 border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+      >
+        <li
+          class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600"
+        >
+          <div class="flex items-center pl-3">
+            <input
+              id="horizontal-list-radio-license"
+              type="radio"
+              [(ngModel)]="seguroSi"
+              (ngModelChange)="seguro()"
+              value="full"
+              name="list-radio"
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+            />
+            <label
+              for="horizontal-list-radio-license"
+              class="w-full py-3 ml-2 text-sm font-semibold text-gray-500 dark:text-gray-300"
+              >Seguro Full</label
+            >
+          </div>
+        </li>
 
-    <li class="w-full dark:border-gray-600">
-        <div class="flex items-center pl-3">
-            <input id="horizontal-list-radio-passport"  type="radio" value="normal" name="list-radio" [(ngModel)]="seguroSi" (ngModelChange)="seguro()" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-            <label for="horizontal-list-radio-passport" class="w-full py-3 ml-2 text-sm font-semibold text-gray-500 dark:text-gray-300">Seguro Normal</label>
-        </div>
-    </li>
-</ul>
+        <li class="w-full dark:border-gray-600">
+          <div class="flex items-center pl-3">
+            <input
+              id="horizontal-list-radio-passport"
+              type="radio"
+              value="normal"
+              name="list-radio"
+              [(ngModel)]="seguroSi"
+              (ngModelChange)="seguro()"
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+            />
+            <label
+              for="horizontal-list-radio-passport"
+              class="w-full py-3 ml-2 text-sm font-semibold text-gray-500 dark:text-gray-300"
+              >Seguro Normal</label
+            >
+          </div>
+        </li>
+      </ul>
     </div>
 
-
-
-
     <div class="grid gap-6 mb-6 md:grid-cols-2">
-      <div >
+      <div>
         <label
           for="Dias"
           class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
           >Dias Totales</label
         >
         <input
-        disabled=""
+          disabled=""
           id="Dias"
           name="Dias"
           placeholder="Dias Totales"
@@ -316,11 +354,9 @@
           type="number"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           [value]="getTotal()"
-        disabled=""
-
+          disabled=""
         />
       </div>
-
     </div>
 
     <br />
@@ -361,45 +397,81 @@
           </h3>
           <button
             type="button"
-            class="close "
+            class="close"
             data-dismiss="modal"
             aria-label="Close"
           >
             <span aria-hidden="true">&times;</span>
           </button>
 
-          <div class="space-x-2 flex justify-end ">
+          <div class="space-x-2 flex justify-end">
             <div class="relative">
-              <button  class="text-white bg-black hover:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mr-8"
+              <button
+                class="text-white bg-black hover:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mr-8"
                 type="button"
                 (click)="despliega()"
-               >Filtrar
-                <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              >
+                Filtrar
+                <svg
+                  class="w-4 h-4 ml-2"
+                  aria-hidden="true"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
                 </svg>
               </button>
 
-              <ul  class="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 absolute top-10 right-0 mt-2" *ngIf="sele">
+              <ul
+                class="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 absolute top-10 right-0 mt-2"
+                *ngIf="sele"
+              >
                 <li>
-                  <button (click)="llenarTabla()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full text-center text-sm" (click)="despliega()">Todos</button>
+                  <button
+                    (click)="llenarTabla()"
+                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full text-center text-sm"
+                    (click)="despliega()"
+                  >
+                    Todos
+                  </button>
                 </li>
                 <li>
-                  <button (click)="bajo()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full text-center text-sm" (click)="despliega()">Menor de 50</button>
+                  <button
+                    (click)="bajo()"
+                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full text-center text-sm"
+                    (click)="despliega()"
+                  >
+                    Menor de 50
+                  </button>
                 </li>
                 <li>
-                  <button (click)="medio()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full text-center text-sm" (click)="despliega()">Entre 50 y 60</button>
+                  <button
+                    (click)="medio()"
+                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full text-center text-sm"
+                    (click)="despliega()"
+                  >
+                    Entre 50 y 60
+                  </button>
                 </li>
                 <li>
-                  <button (click)="mayor()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full text-center text-sm" (click)="despliega()">Mayor de 60</button>
+                  <button
+                    (click)="mayor()"
+                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full text-center text-sm"
+                    (click)="despliega()"
+                  >
+                    Mayor de 60
+                  </button>
                 </li>
               </ul>
-
             </div>
-            </div>
-
-
-
-
+          </div>
         </div>
         <div class="modal-body">
           <div class="relative overflow-x-auto">
@@ -538,7 +610,6 @@
                         class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300"
                         *ngIf="txt.estado === 1"
                         (click)="seleccionarTxt(txt)"
-
                         >Activo</span
                       >
                       <span
@@ -596,6 +667,8 @@
                   <th scope="col" class="px-6 py-3 text-center">Nombre</th>
                   <th scope="col" class="px-6 py-3 text-center">Correo</th>
                   <th scope="col" class="px-6 py-3 text-center">Cedula</th>
+                  <th scope="col" class="px-6 py-3 text-center">Telefono</th>
+                  <th scope="col" class="px-6 py-3 text-center">Dirección</th>
                 </tr>
               </thead>
               <tbody>
@@ -639,6 +712,26 @@
                       {{ cliente.cedula }}
                     </button>
                   </td>
+
+                  <td class="px-6 py-4 text-center">
+                    <button
+                      type="button"
+                      (click)="seleccionarCliente(cliente)"
+                      data-dismiss="modal"
+                    >
+                      {{ cliente.telefono }}
+                    </button>
+                  </td>
+
+                  <td class="px-6 py-4 text-center">
+                    <button
+                      type="button"
+                      (click)="seleccionarCliente(cliente)"
+                      data-dismiss="modal"
+                    >
+                      {{ cliente.direccion }}
+                    </button>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -648,5 +741,3 @@
     </div>
   </div>
 </div>
-
-

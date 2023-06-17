@@ -28,7 +28,7 @@ import { DevolucionComponent } from './components/devolucion/devolucion.componen
     SobreNosotrosComponent,
     RecepcionComponent,
     DevolucionComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

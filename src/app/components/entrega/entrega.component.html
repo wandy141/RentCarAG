@@ -5,7 +5,7 @@
   <div class="flex justify-end">
     <button
       type="button"
-      class="p-2.5  ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
       data-toggle="modal"
       data-target="#modalCliente"
       title="Buscar Alquiler"
@@ -244,225 +244,22 @@
     </div>
 
     <div>
-      <label 
-      for="nota"
-      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
-      >Comentarios adicionales:</label>
-      <textarea 
-      id="nota" 
-      name="nota"
-      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-      placeholder="Describe algo"
-      [(ngModel)]="notatxt"
+      <label
+        for="nota"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+        >Comentarios adicionales:</label
+      >
+      <textarea
+        id="nota"
+        name="nota"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Describe algo"
+        [(ngModel)]="notatxt"
       ></textarea>
     </div>
-
-
-
-
-
   </div>
 
-
-  <!-- <h3 class="mb-4 font-semibold text-gray-900 dark:text-white">Articulos que tiene el vehiculo</h3>
-<div class="border border-gray-200 mb-1 w-full text-sm font-medium text-gray-900 bg-white  rounded-lg">
-
-   <ul class="items-center w-full text-sm font-medium mb-1 text-gray-900 bg-white sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white border-b-2 border-gray-200">
-
-      <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-          <div class="flex items-center pl-3">
-              <input id="vue-checkbox-list" type="checkbox"(change)="ok()"  value="" [(ngModel)]="llavesBox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-              <label for="vue-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Llaves</label>
-          </div>
-      </li>
-
-      <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-          <div class="flex items-center pl-3">
-              <input id="react-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-              <label for="react-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">React</label>
-          </div>
-      </li>
-
-    <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-      <div class="flex items-center pl-3">
-          <input id="react-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-          <label for="react-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">React</label>
-      </div>
-  </li>
-
-  <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-    <div class="flex items-center pl-3">
-        <input id="react-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-        <label for="react-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">React</label>
-    </div>
-</li>
-
-      <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-          <div class="flex items-center pl-3">
-              <input id="angular-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-              <label for="angular-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Angular</label>
-          </div>
-      </li>
-
-      <li class="w-full dark:border-gray-600">
-          <div class="flex items-center pl-3">
-              <input id="laravel-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-              <label for="laravel-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Laravel</label>
-          </div>
-      </li>
-
-
-
-  </ul>
-
-
-  <ul class="items-center w-full text-sm font-medium mb-1 text-gray-900 bg-white sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white border-b-2 border-gray-200">
-
-      <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-          <div class="flex items-center pl-3">
-              <input id="vue-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-              <label for="vue-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Vue JS</label>
-          </div>
-      </li>
-
-      <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-          <div class="flex items-center pl-3">
-              <input id="react-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-              <label for="react-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">React</label>
-          </div>
-      </li>
-
-    <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-      <div class="flex items-center pl-3">
-          <input id="react-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-          <label for="react-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">React</label>
-      </div>
-  </li>
-
-  <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-    <div class="flex items-center pl-3">
-        <input id="react-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-        <label for="react-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">React</label>
-    </div>
-</li>
-
-      <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-          <div class="flex items-center pl-3">
-              <input id="angular-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-              <label for="angular-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Angular</label>
-          </div>
-      </li>
-
-      <li class="w-full dark:border-gray-600">
-          <div class="flex items-center pl-3">
-              <input id="laravel-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-              <label for="laravel-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Laravel</label>
-          </div>
-      </li>
-
-
-
-  </ul>
-
-
-  <ul class="items-center w-full text-sm font-medium mb-1 text-gray-900 bg-white sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white border-b-2 border-gray-200">
-    <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-        <div class="flex items-center pl-3">
-            <input id="vue-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-            <label for="vue-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Vue JS</label>
-        </div>
-    </li>
-
-    <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-        <div class="flex items-center pl-3">
-            <input id="react-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-            <label for="react-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">React</label>
-        </div>
-    </li>
-
-  <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-    <div class="flex items-center pl-3">
-        <input id="react-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-        <label for="react-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">React</label>
-    </div>
-</li>
-
-<li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-  <div class="flex items-center pl-3">
-      <input id="react-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-      <label for="react-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">React</label>
-  </div>
-</li>
-
-    <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-        <div class="flex items-center pl-3">
-            <input id="angular-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-            <label for="angular-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Angular</label>
-        </div>
-    </li>
-
-    <li class="w-full dark:border-gray-600">
-        <div class="flex items-center pl-3">
-            <input id="laravel-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-            <label for="laravel-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Laravel</label>
-        </div>
-    </li>
-
-
-
-</ul>
-
-
-<ul class="items-center w-full  text-sm font-medium mb-1 text-gray-900 bg-white  rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-  <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-      <div class="flex items-center pl-3">
-          <input id="vue-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-          <label for="vue-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Vue JS</label>
-      </div>
-  </li>
-
-  <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-      <div class="flex items-center pl-3">
-          <input id="react-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-          <label for="react-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">React</label>
-      </div>
-  </li>
-
-<li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-  <div class="flex items-center pl-3">
-      <input id="react-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-      <label for="react-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">React</label>
-  </div>
-</li>
-
-<li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-<div class="flex items-center pl-3">
-    <input id="react-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-    <label for="react-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">React</label>
-</div>
-</li>
-
-  <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-      <div class="flex items-center pl-3">
-          <input id="angular-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-          <label for="angular-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Angular</label>
-      </div>
-  </li>
-
-  <li class="w-full dark:border-gray-600">
-      <div class="flex items-center pl-3">
-          <input id="laravel-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-          <label for="laravel-checkbox-list" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Laravel</label>
-      </div>
-  </li>
-
-
-
-</ul>
-
-</div> -->
-
-<br>
+  <br />
   <!-- botones -->
 
   <button
@@ -475,8 +272,7 @@
     type="button"
     (click)="guardarEntrega()"
     class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-
-    >
+  >
     <i class="far fa-save"></i> Guardar
   </button>
 </div>
@@ -515,13 +311,15 @@
               class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
             >
               <tr>
-                <th scope="col" class="px-6 py-3 text-center">Id</th>
+                <th scope="col" class="px-6 py-3 text-center">Id Alquiler</th>
                 <th scope="col" class="px-6 py-3 text-center">Usuario</th>
                 <th scope="col" class="px-6 py-3 text-center">Fecha</th>
                 <th scope="col" class="px-6 py-3 text-center">IdCliente</th>
                 <th scope="col" class="px-6 py-3 text-center">Nombre</th>
                 <th scope="col" class="px-6 py-3 text-center">Idvehiculo</th>
                 <th scope="col" class="px-6 py-3 text-center">Costo/Día</th>
+                <th scope="col" class="px-6 py-3 text-center">Entrega</th>
+                <th scope="col" class="px-6 py-3 text-center">devolucion</th>
                 <th scope="col" class="px-6 py-3 text-center">Inicia</th>
                 <th scope="col" class="px-6 py-3 text-center">Termina</th>
                 <th scope="col" class="px-6 py-3 text-center">Total/Días</th>
@@ -606,6 +404,26 @@
                     (click)="seleccionarRenta(txt)"
                   >
                     {{ txt.precio }}
+                  </button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                    (click)="seleccionarRenta(txt)"
+                  >
+                    {{ txt.lugar_entrega }}
+                  </button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                    data-toggle="modal"
+                    data-target="#modalCliente"
+                    (click)="seleccionarRenta(txt)"
+                  >
+                    {{ txt.lugar_recibir }}
                   </button>
                 </td>
 

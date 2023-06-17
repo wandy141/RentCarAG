@@ -6,16 +6,15 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-cliente',
   templateUrl: './cliente.component.html',
-  styleUrls: ['./cliente.component.css']
- 
+  styleUrls: ['./cliente.component.css'],
 })
 export class ClienteComponent {
-  idclientetxt: number = 0 ;
+  idclientetxt: number = 0;
   nombretxt: string = '';
   correotxt: string = '';
   cedulatxt: string = '';
-
-
+  telefono: string = '';
+  direccion: string = '';
 
   listaClientes: Array<cliente> = [];
 
@@ -42,6 +41,8 @@ export class ClienteComponent {
     clientetmp.nombre = this.nombretxt;
     clientetmp.correo = this.correotxt;
     clientetmp.cedula = this.cedulatxt;
+    clientetmp.telefono = this.telefono;
+    clientetmp.direccion = this.direccion;
 
     if (this.idclientetxt == null || this.idclientetxt == undefined) {
       this.msgNulo();
@@ -49,6 +50,16 @@ export class ClienteComponent {
     }
 
     if (this.nombretxt == '') {
+      this.msgNulo();
+      return;
+    }
+
+    if (this.telefono == '') {
+      this.msgNulo();
+      return;
+    }
+
+    if (this.direccion == '') {
       this.msgNulo();
       return;
     }
@@ -63,19 +74,17 @@ export class ClienteComponent {
       return;
     }
 
-  
-
-    this.servicio.insertarCliente(clientetmp).subscribe((resultado: boolean) => {
-      if (resultado) {
-        this.limpiar();
-        this.getClientes();
-        this.msgExitoGuardar(clientetmp.nombre);
-      } else if (resultado == false) {
-        this.msgFail();
-      }
-    });
-
-    
+    this.servicio
+      .insertarCliente(clientetmp)
+      .subscribe((resultado: boolean) => {
+        if (resultado) {
+          this.limpiar();
+          this.getClientes();
+          this.msgExitoGuardar(clientetmp.nombre);
+        } else if (resultado == false) {
+          this.msgFail();
+        }
+      });
   }
 
   llenarCliente(idcliente: number) {
@@ -87,6 +96,8 @@ export class ClienteComponent {
         this.nombretxt = resultado.nombre;
         this.correotxt = resultado.correo;
         this.cedulatxt = resultado.cedula;
+        this.telefono = resultado.telefono;
+        this.direccion = resultado.direccion;
       }
     });
   }
@@ -95,7 +106,9 @@ export class ClienteComponent {
     this.idclientetxt = 0;
     this.nombretxt = '';
     this.correotxt = '';
-    this.cedulatxt = "";
+    this.cedulatxt = '';
+    this.telefono = '';
+    this.direccion = '';
   }
 
   eliminar(usuarioid: string) {
@@ -123,11 +136,7 @@ export class ClienteComponent {
   }
 
   msgFallo() {
-    Swal.fire(
-      'Oops...',
-      '¡Verifique si los campos estan vacios!',
-      'error'
-    );
+    Swal.fire('Oops...', '¡Verifique si los campos estan vacios!', 'error');
   }
 
   msgFail() {
@@ -163,7 +172,6 @@ export class ClienteComponent {
       }
     });
   }
-
 
   capitalize(texto: string) {
     return texto.charAt(0).toUpperCase() + texto.slice(1);

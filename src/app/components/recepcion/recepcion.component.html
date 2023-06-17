@@ -3,7 +3,7 @@
     <header class="masthead mb-auto">
       <div class="inner">
         <nav class="nav nav-masthead justify-content-center">
-          <a class="nav-link " routerLink="/dashboard/rentar" >Dashboard</a>
+          <a class="nav-link" routerLink="/dashboard/rentar">Dashboard</a>
           <a class="nav-link" routerLink="/carro">Carros</a>
           <a class="nav-link" routerLink="/carroC">Consulta Carro</a>
         </nav>
@@ -11,189 +11,276 @@
     </header>
     <main role="main" class="inner cover">
       <h1 class="cover-heading">Rent Cars Nuñez</h1>
-      <p class="lead">"Descubre nuestro excepcional servicio de alquiler de coches con precios sonrientes, donde cada sonrisa es el reflejo de la satisfacción de nuestros clientes. 
+      <p class="lead">
+        "Descubre nuestro excepcional servicio de alquiler de coches con precios
+        sonrientes, donde cada sonrisa es el reflejo de la satisfacción de
+        nuestros clientes.
       </p>
       <p class="lead">
         <a class="fancy" routerLink="/carroC">
-<span class="top-key"></span>
-<span class="text">Ver Autos</span>
-<span class="bottom-key-1"></span>
-<span class="bottom-key-2"></span>
-</a>
+          <span class="top-key"></span>
+          <span class="text">Ver Autos</span>
+          <span class="bottom-key-1"></span>
+          <span class="bottom-key-2"></span>
+        </a>
       </p>
     </main>
 
     <footer class="mastfoot mt-auto">
-      <div class="inner">
-      </div>
+      <div class="inner"></div>
     </footer>
   </div>
 </div>
 
-
-
-
-<div style="display: inline-block; width: 100%;">
-
-  <div class="signupFrm" style="float: right; width: -50; margin-right: 32%; margin-top: 2%;">
-   
+<div style="display: inline-block; width: 100%">
+  <div
+    class="signupFrm"
+    style="float: right; width: -50; margin-right: 32%; margin-top: 2%"
+  >
     <form action="" class="form">
-
       <h4 class="title">Datos del cliente</h4>
       <div class="flex gap-10">
-
-        <div class="inputContainer"> 
-          <input type="number" class="input" placeholder="a" id="idcliente" name="idcliente"  [(ngModel)]="idcliente"  >
-          <label for="idcliente" class="label">idcliente</label>
-
-        </div>
         <div class="inputContainer">
-          <input type="text" class="input" placeholder="a" id="nombre" name="nombre" [(ngModel)]="nombre" >
-          <label for="nombre" class="label">nombre</label>
+          <input
+            type="text"
+            class="input"
+            placeholder="a"
+            id="nombre"
+            name="nombre"
+            [(ngModel)]="nombre"
+          />
+          <label for="nombre" class="label">Nombre Completo:</label>
         </div>
-  
+
         <div class="inputContainer">
-          <input type="text" class="input" placeholder="a" id="correo" name="correo" [(ngModel)]="correo"  >
-          <label for="correo" class="label">correo</label>
+          <input
+            type="text"
+            class="input"
+            placeholder="a"
+            id="correo"
+            name="correo"
+            [(ngModel)]="correo"
+          />
+          <label for="correo" class="label">Correo</label>
         </div>
-  
-        </div> <div class="flex gap-10">
+      </div>
+      <div class="flex gap-10">
+        <div class="inputContainer">
+          <input
+            type="text"
+            class="input"
+            placeholder="a"
+            id="cedula"
+            name="cedula"
+            [(ngModel)]="cedula"
+            required=""
+          />
+          <label for="cedula" class="label">Cedula</label>
+        </div>
 
-          <div class="inputContainer"> 
-            <input type="text" class="input" placeholder="a" id="cedula" name="cedula" [(ngModel)]="cedula"  >
-            <label for="cedula" class="label">cedula</label>
+        <div class="inputContainer">
+          <input
+            type="text"
+            class="input"
+            placeholder="a"
+            id="direccion"
+            name="direccion"
+            [(ngModel)]="direccion"
+          />
+          <label for="direccion" class="label">Dirección</label>
+        </div>
 
-          </div>
-    
-          <div class="inputContainer">
-            <input type="text" class="input" placeholder="a" id="direccion" name="direccion" [(ngModel)]="direccion" >
-            <label for="direccion" class="label">direccion</label>
-          </div>
-    
-          <div class="inputContainer " >
-            <input type="text" class="input" placeholder="a" id="nacionalidad" name="nacionalidad" [(ngModel)]="nacionalidad"  >
-            <label for="nacionalidad" class="label">nacionalidad</label>
-          </div>
-    
-          </div>
+        <input
+          class="form-control w-5/12 h-[3.2rem]"
+          list="datalistOptions"
+          id="exampleDataList"
+          [(ngModel)]="selectedNacionalidad"
+          (input)="filterNacionalidades()"
+          placeholder="Nacionalidad"
+        />
+        <datalist id="datalistOptions">
+          <option
+            [value]="option"
+            *ngFor="let option of filteredNacionalidades"
+            (click)="selectNacionalidad(option)"
+          ></option>
+        </datalist>
+      </div>
       <h4 class="title">Datos para rentar vehiculo</h4>
+      <div class="flex gap-10"></div>
       <div class="flex gap-10">
-
-      <div class="inputContainer"> 
-        <input type="number" id="idalquiler" name="idalquiler" class="input" placeholder="a" [(ngModel)]="idalquiler"  >
-        <label for="idalquiler" class="label">idalquiler</label>
-
-      </div>
-
-      <div class="inputContainer">
-        <input type="text" class="input" placeholder="a" id="usuario" name="usuario" [(ngModel)]="usuario" >
-        <label for="usuario" class="label">usuario</label>
-      </div>
-
-      <div class="inputContainer">
-        <input type="number" class="input" placeholder="a" id="idcleinte" name="idcliente" [(ngModel)]="idcliente"  >
-        <label for="idcliente" class="label">idcliente</label>
-
-      </div>
-
-      </div>
-      <div class="flex gap-10">
-
-        <div class="inputContainer"> 
-          <input type="text" id="lugardeentrega" name="lugardeentrega" class="input" placeholder="a" [(ngModel)]="lugardeentrega"  >
-          <label for="lugardeentrega" class="label">lugardeentrega</label>
-        </div>
-  
         <div class="inputContainer">
-          <input type="text" class="input" placeholder="a"  id="lugardedevolucion" name="lugardedevolucion" [(ngModel)]="lugardedevolucion"> 
-          <label for="lugardedevolucion" class="label">lugardedevolucion</label>
+          <input
+            type="text"
+            id="lugardeentrega"
+            name="lugardeentrega"
+            class="input"
+            placeholder="a"
+            [(ngModel)]="lugardeentrega"
+            disabled=""
+          />
+          <label for="lugardeentrega" class="label">Lugar de entrega</label>
         </div>
 
+        <div class="inputContainer">
+          <input
+            type="text"
+            class="input"
+            placeholder="a"
+            id="lugardedevolucion"
+            name="lugardedevolucion"
+            [(ngModel)]="lugardedevolucion"
+            disabled=""
+          />
+          <label for="lugardedevolucion" class="label"
+            >Lugar de devolucion
+          </label>
         </div>
+      </div>
+      <div class="flex gap-10"></div>
       <div class="flex gap-10">
-      <div class="inputContainer">
-        <input type="text" class="input" placeholder="a" id="nombrecliente" name="nombrecliente"   [(ngModel)]="nombrecliente"  >
-        <label for="nombrecliente" class="label">nombrecliente</label>
-      </div>
-      <div class="inputContainer">
-        <input type="datetime-local" class="input" placeholder="a" id="fecha" name="fecha" [(ngModel)]="fecha"  >
-        <label for="fecha" class="label">fecha</label>
-      </div>
-      <div class="inputContainer">
-        <input type="number" class="input" placeholder="a" id="vehiculo" name="idvehiculo" [(ngModel)]="idvehiculo"  >
-        <label for="idvehiculo" class="label">idvehiculo</label>
+        <div class="inputContainer">
+          <ul
+        class="items-center w-full text-sm font-medium h-[3.2rem] text-gray-900 bg-gray-50 border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+      >
+        <li
+          class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600"
+        >
+          <div class="flex items-center pl-3">
+            <input
+              id="horizontal-list-radio-license"
+              type="radio"
+              [(ngModel)]="seguroSi"
+              (ngModelChange)="seguro()"
+              value="full"
+              name="list-radio"
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+            />
+            <label
+              for="horizontal-list-radio-license"
+              class="w-full py-3 ml-2 text-sm font-semibold text-gray-500 dark:text-gray-300"
+              >Seguro Full</label
+            >
+          </div>
+        </li>
 
-      </div>
-    </div>
-    <div class="flex gap-10">
+        <li class="w-full dark:border-gray-600">
+          <div class="flex items-center pl-3">
+            <input
+              id="horizontal-list-radio-passport"
+              type="radio"
+              value="normal"
+              name="list-radio"
+              [(ngModel)]="seguroSi"
+              (ngModelChange)="seguro()"
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+            />
+            <label
+              for="horizontal-list-radio-passport"
+              class="w-full py-3 ml-2 text-sm font-semibold text-gray-500 dark:text-gray-300"
+              >Seguro Normal</label
+            >
+          </div>
+        </li>
+      </ul>
+        </div>
 
-      <div class="inputContainer">
-        <input type="checkbox" class="input" placeholder="a"  >
-        <label for="seguro" class="label">seguro</label>
+        <div class="inputContainer">
+          <input
+            type="datetime-local"
+            class="input"
+            placeholder="a"
+            id="fechaini"
+            name="fechaini"
+            [(ngModel)]="fechaini"
+            disabled=""
+          />
+          <label for="fechaini" class="label">Fecha Inicial:</label>
+        </div>
       </div>
-      <div class="inputContainer">
-        <input type="number" class="input" placeholder="a" id="precio" name="precio" [(ngModel)]="precio" >
-        <label for="precio" class="label">precio</label>
+      <div class="flex gap-10">
+        <div class="inputContainer">
+          <input
+            type="datetime-local"
+            class="input"
+            placeholder="a"
+            id="fechafin"
+            name="fechafin"
+            [(ngModel)]="fechafin"
+            disabled=""
+          />
+          <label for="" class="label">Fecha Final:</label>
+        </div>
+        <div class="inputContainer">
+          <input
+            type="number"
+            class="input"
+            placeholder="a"
+            id="dias"
+            name="dias"
+            [(ngModel)]="dias"
+            disabled=""
+          />
+          <label for="dias" class="label">Días Totales:</label>
+        </div>
+        <div class="inputContainer">
+          <input
+            type="number"
+            class="input"
+            placeholder="a"
+            id="total"
+            name="total"
+       [value]="getTotal()"            
+            disabled=""
+          />
+          <label for="total" class="label">Total:</label>
+        </div>
       </div>
-      <div class="inputContainer">
-        <input type="datetime-local" class="input" placeholder="a" id="fechaini" name="fechaini" [(ngModel)]="fechaini"  > 
-        <label for="fechaini" class="label">fechaini</label>
 
+      <div
+        *ngIf="alerta"
+        class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
+        role="alert"
+      >
+        <span class="font-medium">Auto Reservado Exitosamente</span> 
       </div>
-    </div>
-    <div class="flex gap-10">
 
-      <div class="inputContainer">
-        <input type="datetime-local" class="input" placeholder="a" id="fechafin" name="fechafin"  [(ngModel)]="fechafin">
-        <label for="" class="label">fechafin</label>
-
-      </div>
-      <div class="inputContainer">
-        <input type="number" class="input" placeholder="a" id="dias" name="dias" [(ngModel)]="dias"  >
-        <label for="dias" class="label">dias</label>
-      </div>
-      <div class="inputContainer">
-        <input type="number" class="input" placeholder="a"  id="total" name="total"  [(ngModel)]="total"  >
-        <label for="total" class="label">total</label>
-
-      </div>
-    </div>
-  
-    <div *ngIf="alerta" class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
-      <span class="font-medium">Success alert!</span> Change a few things up and try submitting again.
-    </div>
-
-      <input type="submit" class="submitBtn justify-center" value="Reservar " (click)="guardartodo()">
+      <input
+        type="submit"
+        class="submitBtn justify-center"
+        value="Reservar "
+        (click)="guardartodo()"
+      />
     </form>
-
   </div>
 
-
-<div class="vertical-line"></div>
+  <div class="vertical-line"></div>
 
   <div class="form-container">
-
-
-
-  <div class=" blog-card" style="float: right; width: 50; margin-right: -100%; margin-top: -140%;">
-    <div class="meta">
-      <div class="photo" style="background-image: url(/assets/{{data.imagen}})"></div>
-    </div>
-    <div class="description"> 
-      <h1>{{ data.marca + ' ' + data.modelo }}</h1>
-      <h2>{{ data.ano }} </h2>
-      <p>
-        {{ getDescripcionTipo(data.tipo) }} <br>
-        <i class="fas fa-users"></i> {{ data.asiento }} Personas <br>
-        <i class="fas fa-spray-can"></i> {{ data.color }} <br>
-        <i class="fas fa-gas-pump"></i> {{ data.combustible }} <br> <br>
-      </p>
-      <p class="read-more">
-     
-
-      </p>
-      <div class="price"> <span class="dinero"><i class="fas fa-dollar-sign"></i> {{data.precio}}/Day</span> </div>
+    <div
+      class="blog-card"
+      style="float: right; width: 50; margin-right: -100%; margin-top: -140%"
+    >
+      <div class="meta">
+        <img src="/assets/{{ data.imagen }}" alt="" class="photo" />
+      </div>
+      <div class="description">
+        <h1>{{ data.marca + " " + data.modelo }}</h1>
+        <h2>{{ data.ano }}</h2>
+        <p>
+          {{ getDescripcionTipo(data.tipo) }} <br />
+          <i class="fas fa-users"></i> {{ data.asiento }} Personas <br />
+          <i class="fas fa-spray-can"></i> {{ data.color }} <br />
+          <i class="fas fa-gas-pump"></i> {{ data.combustible }} <br />
+          <br />
+        </p>
+        <p class="read-more"></p>
+        <div class="price">
+          <span class="dinero"
+            ><i class="fas fa-dollar-sign"></i> {{ data.precio }}/Day</span
+          >
+        </div>
+      </div>
     </div>
   </div>
-
 </div>

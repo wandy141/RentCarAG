@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { alquiler } from 'src/app/clasebd/alquiler';
 import { cliente } from 'src/app/clasebd/cliente';
@@ -12,14 +13,13 @@ import { ApiDBService } from 'src/app/services/api-db.service';
 export class RecepcionComponent implements OnInit{
   data: any;
   listaVehiculos:Array<vehiculo> = [];
-  idalquiler: number= 0;
+  // idalquiler: number= 0;
   usuario: string='';
-  idcliente: number= 0;
-  nombrecliente: string='';
+  // idcliente: number= 0;
+  // nombrecliente: string='';
   fecha: string='';
-  idvehiculo: number= 0;
-  seguro: string='';
-  precio: number= 0;
+  // idvehiculo: number= 0;
+  // precio: number= 0;
   fechaini:string='';
   fechafin:string='';
   dias: number=0 ;
@@ -32,39 +32,79 @@ export class RecepcionComponent implements OnInit{
   lugardeentrega:string='';
   lugardedevolucion:string='';
   diferenciaDias: number = 0;
-  
+  nationalities: Array<string> = [];
+  selectedNacionalidad: string = '';
+  filteredNacionalidades: Array<string> = [];
+  seguroValue:number = 20;
+  seguroSi: string = 'normal';
+  seleccionadoSi: boolean = false;
+  seleccionadoNo: boolean = false;
+  seguro() {
+    if (this.seguroSi == 'full') {
+      this.seguroValue = 40;
+    } else {
+      this.seguroValue = 20;
+    }
+  }
+
+  getTotal() {
+    return this.total + this.seguroValue;
+  }
 
 constructor(private servicio: ApiDBService){
   this.data = this.servicio.getData();
 }
+
 ngOnInit(): void {
  const fechas = this.servicio.getInputValue();
- console.log(fechas.fechaIni);
- console.log(fechas.fechaFin);
- 
  this.fechaini = fechas.fechaIni;
  this.fechafin = fechas.fechaFin;
-    
+ this.lugardeentrega = fechas.entrega;
+ this.lugardedevolucion = fechas.devolucion;
+
+ this.servicio.getNombreUser().subscribe((nombre) => {
+  this.usuario = nombre;
+});
+
+const today = new Date();
+const yyyy = today.getFullYear();
+const mm = String(today.getMonth() + 1).padStart(2, '0');
+const dd = String(today.getDate()).padStart(2, '0');
+const hora = String(today.getHours()).padStart(2, '0');
+const minutos = String(today.getMinutes()).padStart(2, '0');
+
+this.fecha = `${yyyy}-${mm}-${dd} ${hora}:${minutos}`;
+this.dias = this.servicio.getDias();
+
+this.nationality();
+this.filteredNacionalidades = this.nationalities;
+this.calcular();
+
 }
 
 alerta:boolean = false;
 
 entrarAlquiler() {
+ setTimeout(() => {
+  
+  
+const idalquiler = 0;
   let alquilerTemp: alquiler = new alquiler();
+  alquilerTemp.idalquiler = idalquiler;
   alquilerTemp.usuario = this.usuario;
   alquilerTemp.fecha = this.fecha;
-  alquilerTemp.idcliente = this.idcliente;
-  alquilerTemp.nombrecliente = this.nombrecliente;
-  alquilerTemp.idvehiculo = this.idvehiculo;
-  alquilerTemp.seguro = this.seguro;
-  alquilerTemp.precio = this.precio;
+  alquilerTemp.idcliente = this.idcli;
+  alquilerTemp.nombrecliente = this.nombre;
+  alquilerTemp.idvehiculo = this.data.idvehiculo;
+  alquilerTemp.seguro = this.seguroSi;
+  alquilerTemp.precio = this.data.precio;
   alquilerTemp.fechaini = this.fechaini;
   alquilerTemp.fechafin = this.fechafin;
   alquilerTemp.dias = this.dias;
   alquilerTemp.total = this.total;
   alquilerTemp.lugar_entrega = this.lugardeentrega;
   alquilerTemp.lugar_recibir = this.lugardedevolucion;
-  
+
 
 
 
@@ -78,16 +118,18 @@ entrarAlquiler() {
       }, 3000);
     }
   });
+ }, 3000);
+
 }
+
+calcular() {
+  this.total = this.data.precio * this.dias;
+}
+
+
 limpiar() {
-  this.idcliente = 0;
   this.usuario = '';
-  this.idalquiler = 0;
-  this.nombrecliente = '';
   this.fecha = '';
-  this.idvehiculo = 0;
-  this.seguro = '';
-  this.precio = 0;
   this.fechaini = '';
   this.fechafin = '';
   this.dias = 0;
@@ -104,34 +146,28 @@ limpiar() {
 guardartodo(){
   this.guardarCliente();
   this.entrarAlquiler();
-
 }
 guardarCliente() {
+  const idcliente = 0;
   let clientetmp: cliente = new cliente();
-  clientetmp.idcliente = this.idcliente;
+  clientetmp.idcliente = idcliente;
   clientetmp.nombre = this.nombre;
   clientetmp.correo = this.correo;
   clientetmp.cedula = this.cedula;
   clientetmp.telefono = this.cedula;
   clientetmp.direccion = this.cedula;
+  clientetmp.nacionalidad = this.cedula;
 
-  this.servicio.insertarCliente(clientetmp).subscribe((resultado: boolean) => {
-    if (resultado) {
-      this.limpiar();
+  this.servicio.insertarCliente(clientetmp).subscribe((resultado: any) => {
+    if (resultado.resultado) {
+     this.idcli =  resultado.idcliente
+     
     }
   });
 
-  
+
 }
-calculateDays() {
-  if (this.fechaini && this.fechafin) {
-    const start = new Date(this.fechaini);
-    const end = new Date(this.fechafin);
-    const timeDiff = Math.abs(end.getTime() - start.getTime());
-    this.diferenciaDias = Math.ceil(timeDiff / (1000 * 3600 * 24));
-    this.dias = this.diferenciaDias;
-  }
-}
+idcli:number = 0;
 
 getDescripcionTipo(tipo: number) {
   let retorno: string = 'tipo';
@@ -150,17 +186,55 @@ getDescripcionTipo(tipo: number) {
       case 4:
         retorno = 'Premium';
         break;
-  
+
       case 5:
         retorno = 'Lujo';
         break;
-  
+
       case 6:
         retorno = 'Camion';
         break;
     }
     return retorno;
   }
+
+
   
+
+ 
+  nationality(){
+    this.servicio.nation().subscribe(response => {
+        this.nationalities = response.map(country => country.name.common);
+  this.nacionalidad = '0';
+      }, error => {
+        console.error('Error al obtener las nacionalidades:', error);
+      });
   }
   
+ 
+
+ 
+
+  
+  filterNacionalidades() {
+    this.filteredNacionalidades = this.nationalities.filter(nacionalidad =>
+      nacionalidad.toLowerCase().includes(this.selectedNacionalidad.toLowerCase())
+    );
+  }
+  
+  selectNacionalidad(nacionalidad: string) {
+    this.selectedNacionalidad = nacionalidad;
+    this.filteredNacionalidades = [];
+  }
+
+}
+
+
+
+
+
+
+
+
+  
+

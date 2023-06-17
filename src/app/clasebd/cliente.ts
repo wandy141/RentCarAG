@@ -5,6 +5,7 @@ correo:string;
 cedula:string;
 direccion:string;
 telefono:string;
+nacionalidad:string;
 
 constructor(){
     this.idcliente = 0;
@@ -13,6 +14,7 @@ constructor(){
     this.cedula = '';
     this.direccion = '';
     this.telefono = '';
+    this.nacionalidad = '';
 }
 
 
