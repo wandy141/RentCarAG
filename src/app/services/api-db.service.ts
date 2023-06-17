@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { vehiculo } from '../clasebd/vehiculo';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { tipoVehiculo } from '../clasebd/tipoVehiculo';
 import { usuarios } from '../clasebd/usuarios';
 import {
@@ -358,5 +358,26 @@ fechafin:string = '';
     return this.entreDias;
   }
 
+
+
+
+
+
+  private fechasSubject = new Subject<any>();
+
+  fechas$ = this.fechasSubject.asObservable();
+
+  actualizarFechas(fechas: any) {
+    this.fechasSubject.next(fechas);
+  }
+
+
+
+  buscarAutosDisponibles(fechaini: string, fechafin: string): Observable<any> {
+    const url = this.server + 'buscarAutosDisponibles'; 
+    const body = { fechaini, fechafin };
+    
+    return this.http.post(url, body);
+  }
 
 }

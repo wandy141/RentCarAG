@@ -207,6 +207,12 @@ p {
     }
 }
 
+#texto{
+  font-weight: 800;
+  margin-top: 5%;
+  text-align: center;
+  font-size: 30px;
+}
 
 @media (min-width: 640px) {
   .blog-card {

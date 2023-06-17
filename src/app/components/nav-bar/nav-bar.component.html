@@ -14,9 +14,11 @@
 
     <main role="main" class="flex flex-col items-center justify-center  h-96 w-full  border-red-600">
       <div class="max-w-4xl px-6 py-8">
+        <h1 class="justify-center text-white mb-6 text-xl bg-black rounded-md p-2 font-semibold">Favor llenar todos los campos para habilitar boton de rentar</h1>
+
         <div class="md:flex md:items-center md:justify-between">
           <div class="mb-3 md:w-1/2">
-            <label for="fechaini" class="block text-base font-medium text-white text-center mb-1">
+            <label for="fechaini" class="block text-base font-normal  text-white text-center mb-1">
               Fecha y hora de entrega
             </label>
             <input
@@ -27,6 +29,7 @@
               placeholder="Fecha y hora de entrega"
               [(ngModel)]="fechaini"
               (input)="onClickEnviarValores()"
+              (input)="actualizarFechasSeleccionadas()"
             />
           </div>
           <div class="mb-3 md:w-1/2">
@@ -41,6 +44,8 @@
               placeholder="Fecha y hora de devolución"
               [(ngModel)]="fechafin"
               (input)="onClickEnviarValores()"
+              (input)="actualizarFechasSeleccionadas()"
+              
             />
           </div>
         </div>
@@ -58,6 +63,7 @@
               placeholder="Lugar de Entrega"
               [(ngModel)]="entrega"
               (input)="onClickEnviarValores()"
+              (input)="actualizarFechasSeleccionadas()"
             />
           </div>
           <div class="mb-3 md:w-1/2">
@@ -72,6 +78,7 @@
               placeholder="Lugar de Devolución"
               [(ngModel)]="devolucion"
               (input)="onClickEnviarValores()"
+              (input)="actualizarFechasSeleccionadas()"
             />
           </div>
         </div>

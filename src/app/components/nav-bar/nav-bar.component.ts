@@ -1,15 +1,31 @@
-import { Component} from '@angular/core';
+import { Component,OnInit} from '@angular/core';
 import { ApiDBService } from 'src/app/services/api-db.service';
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
-export class NavBarComponent   {
+export class NavBarComponent  implements OnInit  {
 
-constructor(private servicio:ApiDBService){
+constructor(private servicio:ApiDBService) {
 
 }
+ngOnInit(): void {
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  const dia = String(today.getDate() + 2).padStart(2, '0');
+  const hora = String(today.getHours()).padStart(2, '0');
+
+  const minutos = String(today.getMinutes()).padStart(2, '0');
+
+  this.fechaini = `${yyyy}-${mm}-${dd} ${hora}:${minutos}`;
+  this.fechafin = `${yyyy}-${mm}-${dia} ${hora}:${minutos}`;
+
+}
+
+
 fechaini:string = '';
 fechafin:string = '';
 entrega:string = '';
@@ -34,7 +50,15 @@ calculateDays() {
     this.dias = Math.ceil(timeDiff / (1000 * 3600 * 24) + 1);
   }
 }
+actualizarFechasSeleccionadas() {
+const fechas = {
+  fechaIni: this.fechaini,
+  fechaFin: this.fechafin,
+  entrega: this.entrega,
+  devolucion:this.devolucion
+};
 
-
+this.servicio.actualizarFechas(fechas);
+}
 
 }
