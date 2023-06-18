@@ -16,6 +16,7 @@ import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotr
 import { RecepcionComponent } from './components/recepcion/recepcion.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DevolucionComponent } from './components/devolucion/devolucion.component';
+import { ErrorComponent } from './components/error/error.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import { DevolucionComponent } from './components/devolucion/devolucion.componen
     RecepcionComponent,
     DevolucionComponent,
     FooterComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,

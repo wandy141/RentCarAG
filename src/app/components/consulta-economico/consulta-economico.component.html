@@ -1,7 +1,9 @@
+<app-nav-bar></app-nav-bar>
+<h2 id="texto" class="mb-6">Vehiculos disponibles en estas fechas</h2>
 <div class="contenedor">
   <div class=" blog-card" *ngFor="let item of lista">
     <div class="meta">
-      <div class="photo" style="background-image: url(/assets/crv\ 2021.jpg)"></div>
+      <div class="photo" style="background-image: url(/assets/{{item.imagen}})"></div>
     </div>
     <div class="description">
       <h1>{{ item.marca + ' ' + item.modelo }}</h1>
@@ -10,13 +12,18 @@
         {{ getDescripcionTipo(item.tipo) }} <br>
         <i class="fas fa-users"></i> {{ item.asiento }} Personas <br>
         <i class="fas fa-spray-can"></i> {{ item.color }} <br>
-        <i class="fas fa-gas-pump"></i> {{ item.combustible }} <br> <br>
-      </p>
-      <p class="read-more">
-     <a >Ver</a>
+        <i class="fas fa-gas-pump"></i> {{ item.combustible }} <br>
+      <i class="price mt-4"> <span class="dinero"><i class="fas fa-dollar-sign"></i> {{item.precio}}/Día</span> </i>
 
       </p>
-      <div class="price"> <span class="dinero"><i class="fas fa-dollar-sign"></i> {{item.precio}}/Day</span> </div>
+
+      <div class="read-more">
+
+       <button  *ngIf="acceso"  type="button" (click)="visualizar(item)" class="text-white bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-3.5 py-2 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 ">
+        Rentar
+       </button>
+      </div>
+      
     </div>
   </div>
 </div>

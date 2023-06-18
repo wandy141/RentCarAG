@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiDBService } from 'src/app/services/api-db.service';
 import Swal from 'sweetalert2';
-
+import 'flowbite';
 @Component({
   selector: 'app-slide-bar',
   templateUrl: './slide-bar.component.html',

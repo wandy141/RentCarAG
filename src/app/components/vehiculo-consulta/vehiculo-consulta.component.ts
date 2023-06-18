@@ -80,7 +80,7 @@ export class VehiculoConsultaComponent implements OnInit {
         break;
 
       case 3:
-        retorno = 'Tamaño Normal';
+        retorno = 'Deportivo';
         break;
 
       case 4:
@@ -92,7 +92,7 @@ export class VehiculoConsultaComponent implements OnInit {
         break;
 
       case 6:
-        retorno = 'Camion';
+        retorno = 'SUV';
         break;
     }
     return retorno;
