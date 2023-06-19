@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {  NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -14,11 +14,13 @@ import { ApiDBService } from './services/api-db.service';
 import { ConsultaEconomicoComponent } from './components/consulta-economico/consulta-economico.component';
 import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotros.component';
 import { RecepcionComponent } from './components/recepcion/recepcion.component';
-import { RecibirComponent } from './components/recibir/recibir.component';
-import { MantenimientoComponent } from './components/mantenimiento/mantenimiento.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RegistroComponent } from './registro/registro.component';
+import { DevolucionComponent } from './components/devolucion/devolucion.component';
+import { ErrorComponent } from './components/error/error.component';
+
 @NgModule({
+ 
   declarations: [
     AppComponent,
     RegitroComponent,
@@ -29,17 +31,17 @@ import { RegistroComponent } from './registro/registro.component';
     ConsultaEconomicoComponent,
     SobreNosotrosComponent,
     RecepcionComponent,
-    RecibirComponent,
-    MantenimientoComponent,
+    DevolucionComponent,
     FooterComponent,
     RegistroComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
   providers: [
     ApiDBService

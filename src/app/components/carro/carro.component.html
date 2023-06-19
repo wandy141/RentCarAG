@@ -48,11 +48,29 @@
             >
               <li>
                 <button
-                  (click)="llenarTabla()"
+                (click)="llenarTabla()"
                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full text-center text-sm"
                   (click)="despliega()"
                 >
-                  Todos
+                  Activos
+                </button>
+              </li>
+              <li>
+                <button
+                (click)="inactivo()"
+                  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full text-center text-sm"
+                  (click)="despliega()"
+                >
+                  Inactivos
+                </button>
+              </li>
+              <li>
+                <button
+                  (click)="manteniemiento()"
+                  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full text-center text-sm"
+                  (click)="despliega()"
+                >
+                  Mantenimiento
                 </button>
               </li>
               <li>
@@ -154,7 +172,7 @@
                   data-target="#exampleModalCenter"
                 >
                   <img
-                  src=     "/assets/{{ txt.imagen }}" alt="">
+                  src="/assets/{{ txt.imagen }}" alt="">
                 </button>
               </td>
 
@@ -465,6 +483,7 @@
                     </option>
                     <option value="1">Activo</option>
                     <option value="0">inactivo</option>
+                    <option value="2">Mantenimiento</option>
                   </select>
                 </div>
 

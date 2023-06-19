@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { vehiculo } from 'src/app/clasebd/vehiculo';
 import { ApiDBService } from 'src/app/services/api-db.service';
 
@@ -10,15 +10,85 @@ import { ApiDBService } from 'src/app/services/api-db.service';
 })
 export class ConsultaEconomicoComponent implements OnInit {
   lista: Array<vehiculo> = [];
-  constructor(public servicio: ApiDBService, public route: ActivatedRoute) {
+  fechaInicio:string = '';
+  fechaFinal:string = '';
+  entrega:string = '';
+  devolucion:string = '';
+  acceso:boolean = false;
+  constructor(private servicio: ApiDBService, private route: ActivatedRoute, private router: Router) {
 
   }
+  
+
   ngOnInit(): void {
+   
+
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const dd = String(today.getDate() ).padStart(2, '0');
+    const dia = String(today.getDate() + 2).padStart(2, '0');
+    const hora = String(today.getHours()).padStart(2, '0');
+  
+    const minutos = String(today.getMinutes()).padStart(2, '0');
+  
+    this.fechaInicio = `${yyyy}-${mm}-${dd} ${hora}:${minutos}`;
+    this.fechaFinal = `${yyyy}-${mm}-${dia} ${hora}:${minutos}`;
+  
+  
+  
+
+    this.servicio.fechas$.subscribe((fechas) => {
+      this.fechaInicio = fechas.fechaIni;
+      this.fechaFinal = fechas.fechaFin;
+      this.entrega = fechas.entrega;
+      this.devolucion = fechas.devolucion;
+      this.verificar();
+      this.route.params.subscribe((data: any) => {
+        this.getvalueserve(data?.data)
+      });
+  
+     this.lista;
+    });
+  
+    
+
     this.route.params.subscribe((data: any) => {
-      console.log(data)
       this.getvalueserve(data?.data)
-    })
+    });
+
   }
+
+
+  
+  verificar() {
+
+    if (
+      this.fechaInicio !== '' &&
+      this.fechaFinal !== '' &&
+      this.entrega.length > 0 &&
+      this.entrega !== '' &&
+      this.devolucion.length > 0 &&
+      this.devolucion !== ''
+    ) {
+      this.acceso = true;
+    } else {
+      this.acceso = false;
+    }
+  }
+
+
+//   buscarAutos() {
+//     if (
+//       this.fechaInicio !== '' &&
+//       this.fechaFinal !== '' ){
+//     this.servicio.buscarAutosDisponibles(this.fechaInicio, this.fechaFinal)
+//       .subscribe((response) => {
+//         this.lista = response;
+//       });
+//     }
+
+// }
 
 
   getDescripcionTipo(tipo: number) {
@@ -45,7 +115,7 @@ export class ConsultaEconomicoComponent implements OnInit {
         break;
 
       case 6:
-        retorno = 'Camion'
+        retorno = 'SUV'
         break;
 
     }
@@ -62,8 +132,9 @@ export class ConsultaEconomicoComponent implements OnInit {
       case 'lujo':
         this.todoLujo();
         break;
-      case 'camion':
+      case 'suv':
         this.todoCamion();
+      
         break;
       case 'compacto':
         this.todoCompacto();
@@ -80,43 +151,112 @@ export class ConsultaEconomicoComponent implements OnInit {
   }
 
 
+ 
+
+
+
+
+
+
+
   todoLujo() {
-    this.servicio.lujo().subscribe(resultado => {
-      this.lista = resultado
-    });
+    
+    if (
+      this.fechaInicio !== '' &&
+      this.fechaFinal !== '' ){
+    this.servicio.lujoWeb(this.fechaInicio, this.fechaFinal).subscribe(
+      (   response: any) => {
+        this.lista = response;
+      },
+      (      error: any) => {
+        console.error(error);
+      }
+    );
+      }
 
   }
 
   todoEconomico() {
-    this.servicio.economico().subscribe(resultado => {
-      this.lista = resultado
-    });
+    if (
+      this.fechaInicio !== '' &&
+      this.fechaFinal !== '' ){
+    this.servicio.camionWeb(this.fechaInicio, this.fechaFinal).subscribe(
+      (   response: any) => {
+        this.lista = response;
+      },
+      (      error: any) => {
+        console.error(error);
+      }
+    );
+      }
   }
 
   todoCompacto() {
-    this.servicio.compacto().subscribe(resultado => {
-      this.lista = resultado
-    });
+    if (
+      this.fechaInicio !== '' &&
+      this.fechaFinal !== '' ){
+    this.servicio.compactoWeb(this.fechaInicio, this.fechaFinal).subscribe(
+      (   response: any) => {
+        this.lista = response;
+      },
+      (      error: any) => {
+        console.error(error);
+      }
+    );
+      }
   }
 
   todoNormal() {
-    this.servicio.normal().subscribe(resultado => {
-      this.lista = resultado
-    });
+    
+    if (
+      this.fechaInicio !== '' &&
+      this.fechaFinal !== '' ){
+    this.servicio.normalWeb(this.fechaInicio, this.fechaFinal).subscribe(
+      (   response: any) => {
+        
+        this.lista = response;
+      },
+      (      error: any) => {
+        console.error(error);
+      }
+    );
+      }
   }
 
   todoPremium() {
-    this.servicio.premium().subscribe(resultado => {
-      this.lista = resultado
-    });
+    if (
+      this.fechaInicio !== '' &&
+      this.fechaFinal !== '' ){
+    this.servicio.premiumWeb(this.fechaInicio, this.fechaFinal).subscribe(
+      (   response: any) => {
+        this.lista = response;
+      },
+      (      error: any) => {
+        console.error(error);
+      }
+    );
+      }
   }
 
   todoCamion() {
-    this.servicio.camion().subscribe(resultado => {
-      this.lista = resultado
-    });
+    if (
+      this.fechaInicio !== '' &&
+      this.fechaFinal !== '' ){
+    this.servicio.camionWeb(this.fechaInicio, this.fechaFinal).subscribe(
+      (   response: any) => {
+        this.lista = response;
+      },
+      (      error: any) => {
+        console.error(error);
+      }
+    );
+      }
   }
 
 
   
+  visualizar(obj: any) {
+    this.servicio.setData(obj);
+    this.router.navigate(['recepcion']);
+  }
 }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { vehiculo } from '../clasebd/vehiculo';
 import { Observable, map } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { tipoVehiculo } from '../clasebd/tipoVehiculo';
 import { usuarios } from '../clasebd/usuarios';
 import {
@@ -16,7 +17,7 @@ import { entrega } from '../clasebd/entrega';
 import { recibir } from '../clasebd/recibir';
 import { mantenimiento } from '../clasebd/mantenimiento';
 import { registro } from '../clasebd/registro';
-
+import { pago } from '../clasebd/pago';
 @Injectable({
   providedIn: 'root',
 })
@@ -127,7 +128,18 @@ export class ApiDBService {
   //vehiculo
 
   getTodosVehiculos(): Observable<Array<vehiculo>> {
-    return this.http.post<Array<vehiculo>>(this.server + 'allVehiculo', {});
+    return this.http.get<Array<vehiculo>>(this.server + 'allVehiculo', {});
+  }
+
+  vehiManteniemiento(): Observable<Array<vehiculo>> {
+    return this.http.get<Array<vehiculo>>(
+      this.server + 'vehiculoMantenimiento',
+      {}
+    );
+  }
+
+  vehiInactivo(): Observable<Array<vehiculo>> {
+    return this.http.get<Array<vehiculo>>(this.server + 'vehiculoInactivo', {});
   }
 
   insertarVehiculos(vehiculotmp: vehiculo): Observable<boolean> {
@@ -136,7 +148,10 @@ export class ApiDBService {
     });
   }
 
-  insertarVehiculosImagen(vehiculotmp: vehiculo, data: FormData): Observable<any> {
+  insertarVehiculosImagen(
+    vehiculotmp: vehiculo,
+    data: FormData
+  ): Observable<any> {
     // return this.http.post<boolean>(this.server + 'storeVehiculos', data, {
     //   vehiculo: vehiculotmp,
     // });
@@ -144,7 +159,8 @@ export class ApiDBService {
     //   vehiculo: vehiculotmp,
     // });
     return this.http.post<any>(this.server + 'storeVehiculos', {
-      data, vehiculotmp
+      data,
+      vehiculotmp,
     });
   }
 
@@ -223,13 +239,11 @@ export class ApiDBService {
     return this.http.post<Array<tipoVehiculo>>(this.server + 'tipoAll', {});
   }
   //cliente
-  insertarCliente(clientetmp: cliente): Observable<boolean> {
-    return this.http.post<boolean>(this.server + 'cliente', {
+  insertarCliente(clientetmp: cliente): Observable<any> {
+    return this.http.post<any>(this.server + 'cliente', {
       cliente: clientetmp,
     });
   }
-
-
 
   insertarEntrega(entregatmp: entrega): Observable<boolean> {
     return this.http.post<boolean>(this.server + 'InsertEntrega', {
@@ -242,9 +256,6 @@ export class ApiDBService {
       recibir: recibirtmp,
     });
   }
-
-
-
 
   mostrarCliente(): Observable<Array<cliente>> {
     return this.http.get<Array<cliente>>(this.server + 'todoCliente', {});
@@ -291,11 +302,11 @@ export class ApiDBService {
     return this.http.delete(this.server + 'eliminarAlquiler/' + idalquiler, {});
   }
 
-  setData(data: any){
+  setData(data: any) {
     localStorage.setItem('data', JSON.stringify(data));
   }
 
-  getData(): any{
+  getData(): any {
     let valor: any = localStorage.getItem('data');
     let data: any = JSON.parse(valor);
     return data;
@@ -305,11 +316,10 @@ export class ApiDBService {
   //   localStorage.removeItem(key);
   // }
   public subirImagen(formData: FormData) {
-
     return this.http.post<any>(this.server + 'Imagen', formData, {
-        reportProgress: true,
-        observe: 'events'
-      });
+      reportProgress: true,
+      observe: 'events',
+    });
   }
 
   todoRecibir(): Observable<Array<entrega>> {
@@ -317,7 +327,10 @@ export class ApiDBService {
   }
 
   todoMantenimiento(): Observable<Array<mantenimiento>> {
-    return this.http.get<Array<mantenimiento>>(this.server + 'todoMantenimiento', {});
+    return this.http.get<Array<mantenimiento>>(
+      this.server + 'todoMantenimiento',
+      {}
+    );
   }
 
   insertarMantenimiento(mantenimientotmp: mantenimiento): Observable<boolean> {
@@ -325,20 +338,6 @@ export class ApiDBService {
       mantenimiento: mantenimientotmp,
     });
   }
-
-  // verificarUsuarioExistente(correo: string): Observable<boolean> {
-  //   // Realizar una consulta a la base de datos para verificar si el usuario existe
-  //   const query = `SELECT COUNT(*) AS count FROM usuarios WHERE correo = '${correo}'`;
-  //   const url = `${this.apiUrl}/consulta`; // URL de tu endpoint para consultas
-
-  //   return this.http.get<{ count: number }>(url, { params: { query } }).pipe(
-  //     map((response) => {
-  //       const count = response.count;
-  //       return count > 0; // Devuelve true si el conteo es mayor que cero, indicando que el usuario existe
-  //     })
-  //   );
-  // }
-
 
   insertarRegistro(registrotmp: registro, usuariostmp:usuarios): Observable<boolean> {
 
@@ -354,4 +353,105 @@ export class ApiDBService {
       idcliente: correo,
     });
   }
+  nation() {
+    return this.http.get<any[]>('https://restcountries.com/v3.1/all');
+   }
+  private fechas: { fechaIni: string; fechaFin: string, entrega:string, devolucion:string } = {
+    fechaIni: '',
+    fechaFin: '',
+    entrega: '',
+    devolucion: '',
+  };
+  private entreDias: number = 0;
+
+fechafin:string = '';
+  setInputValue(value1: string, value2: string,value3:string,value4:string) {
+    this.fechas.fechaIni = value1;
+    this.fechas.fechaFin = value2;
+    this.fechas.entrega = value3;
+    this.fechas.devolucion = value4;
+  }
+
+  getInputValue() {
+    return this.fechas;
+  }
+
+  setDias(value1: number) {
+    this.entreDias = value1;
+  }
+
+  getDias() {
+    return this.entreDias;
+  }
+
+
+
+
+
+
+  private fechasSubject = new Subject<any>();
+
+  fechas$ = this.fechasSubject.asObservable();
+
+  actualizarFechas(fechas: any) {
+    this.fechasSubject.next(fechas);
+  }
+
+
+
+  buscarAutosDisponibles(fechaini: string, fechafin: string): Observable<any> {
+    const url = this.server + 'buscarAutosDisponibles'; 
+    const body = { fechaini, fechafin };
+    
+    return this.http.post(url, body);
+  }
+  economicoWeb(fechaini: string, fechafin: string): Observable<any> {
+    const url = this.server + 'economicoWeb';
+    const body = { fechaini, fechafin };
+  
+    return this.http.post(url, body)
+  }
+  
+  compactoWeb(fechaini: string, fechafin: string): Observable<any> {
+    const url = this.server + 'compactoWeb';
+    const body = { fechaini, fechafin };
+  
+    return this.http.post(url, body)
+  }
+
+  premiumWeb(fechaini: string, fechafin: string): Observable<any> {
+    const url = this.server + 'premiumWeb';
+    const body = { fechaini, fechafin };
+  
+    return this.http.post(url, body)
+  }
+
+  lujoWeb(fechaini: string, fechafin: string): Observable<any> {
+    const url = this.server + 'lujoWeb';
+    const body = { fechaini, fechafin };
+  
+    return this.http.post(url, body)
+  }
+
+  normalWeb(fechaini: string, fechafin: string): Observable<any> {
+    const url = this.server + 'normalWeb';
+    const body = { fechaini, fechafin };
+  
+    return this.http.post(url, body)
+  }
+
+  camionWeb(fechaini: string, fechafin: string): Observable<any> {
+    const url = this.server + 'camionWeb';
+    const body = { fechaini, fechafin };
+  
+    return this.http.post(url, body)
+  }
+
+  insertarPago(pagotmp: pago): Observable<boolean> {
+    return this.http.post<boolean>(this.server + 'insertarPago', {
+      pago: pagotmp,
+    });
+  }
+
 }
+

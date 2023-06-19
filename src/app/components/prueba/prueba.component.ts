@@ -32,7 +32,7 @@ despliega() {
 
 
 
-  constructor(public servicio: ApiDBService){
+  constructor(private servicio: ApiDBService){
     this.tablaAlquiler();
   }
 

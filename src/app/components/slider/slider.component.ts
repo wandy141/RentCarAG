@@ -11,7 +11,7 @@ export class SliderComponent {
   nombreUsuario:string = '';
 
 
-  constructor(public servicio: ApiDBService){
+  constructor(private servicio: ApiDBService){
 
     this.servicio.getNombreUser().subscribe(nombre =>{
       this.nombreUsuario = nombre;

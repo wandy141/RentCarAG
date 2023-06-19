@@ -21,10 +21,12 @@
             class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
           >
             <tr>
-              <th scope="col" class="px-6 py-3">IdCliente</th>
-              <th scope="col" class="px-6 py-3">Nombre</th>
-              <th scope="col" class="px-6 py-3">Correo</th>
-              <th scope="col" class="px-6 py-3">Cedula</th>
+              <th scope="col" class="px-6 py-3 text-center">IdCliente</th>
+              <th scope="col" class="px-6 py-3 text-center">Nombre</th>
+              <th scope="col" class="px-6 py-3 text-center">Correo</th>
+              <th scope="col" class="px-6 py-3 text-center">Cedula</th>
+              <th scope="col" class="px-6 py-3 text-center">Telefono</th>
+              <th scope="col" class="px-6 py-3 text-center">Dirección</th>
             </tr>
           </thead>
           <tbody>
@@ -34,7 +36,8 @@
             >
               <th
                 scope="row"
-                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center"
+                
               >
                 <button
                   (click)="seleccionarCliente(cliente)"
@@ -44,7 +47,7 @@
                   {{ cliente.idcliente }}
                 </button>
               </th>
-              <td class="px-6 py-4">
+              <td class="px-6 py-4 text-center">
                 <button
                   (click)="seleccionarCliente(cliente)"
                   data-toggle="modal"
@@ -53,7 +56,7 @@
                   {{ cliente.nombre }}
                 </button>
               </td>
-              <td class="px-6 py-4">
+              <td class="px-6 py-4 text-center">
                 <button
                   (click)="seleccionarCliente(cliente)"
                   data-toggle="modal"
@@ -63,13 +66,31 @@
                 </button>
               </td>
 
-              <td class="px-6 py-4">
+              <td class="px-6 py-4 text-center">
                 <button
                   (click)="seleccionarCliente(cliente)"
                   data-toggle="modal"
                   data-target="#exampleModalCenter"
                 >
                   {{ cliente.cedula }}
+                </button>
+              </td>
+              <td class="px-6 py-4 text-center">
+                <button
+                  (click)="seleccionarCliente(cliente)"
+                  data-toggle="modal"
+                  data-target="#exampleModalCenter"
+                >
+                  {{ cliente.telefono }}
+                </button>
+              </td>
+              <td class="px-6 py-4 text-center">
+                <button
+                  (click)="seleccionarCliente(cliente)"
+                  data-toggle="modal"
+                  data-target="#exampleModalCenter"
+                >
+                  {{ cliente.direccion }}
                 </button>
               </td>
             </tr>
@@ -111,7 +132,7 @@
                 <label
                   for="idclientetxt"
                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
-                  >Cliente</label
+                  >ID Cliente</label
                 >
                 <input
                   id="idclientetxt"
@@ -136,7 +157,7 @@
                   name="nombretxt"
                   type="text"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="nombretxt"
+                  placeholder="nombre"
                   [(ngModel)]="nombretxt"
                   (ngModelChange)="nombretxt = capitalize($event)"
                 />
@@ -174,6 +195,39 @@
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Cedula/Pasaporte"
                   [(ngModel)]="cedulatxt"
+                />
+              </div>
+            </div>
+            <div class="grid gap-6 mb-6 md:grid-cols-2">
+              <div>
+                <label
+                  for="Telefono"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+                  >Telefono</label
+                >
+                <input
+                  id="Telefono"
+                  name="Telefono"
+                  type="text"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Telefono"
+                  [(ngModel)]="telefono"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="direccion"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+                  >Direccion</label
+                >
+                <input
+                  id="direccion"
+                  name="direccion"
+                  type="text"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="direccion"
+                  [(ngModel)]="direccion"
                 />
               </div>
             </div>
