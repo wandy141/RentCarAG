@@ -380,6 +380,53 @@ fechafin:string = '';
     
     return this.http.post(url, body);
   }
+  economicoWeb(fechaini: string, fechafin: string): Observable<any> {
+    const url = this.server + 'economicoWeb';
+    const body = { fechaini, fechafin };
+  
+    return this.http.post(url, body)
+  }
+  
+  compactoWeb(fechaini: string, fechafin: string): Observable<any> {
+    const url = this.server + 'compactoWeb';
+    const body = { fechaini, fechafin };
+  
+    return this.http.post(url, body)
+  }
+
+  premiumWeb(fechaini: string, fechafin: string): Observable<any> {
+    const url = this.server + 'premiumWeb';
+    const body = { fechaini, fechafin };
+  
+    return this.http.post(url, body)
+  }
+
+  lujoWeb(fechaini: string, fechafin: string): Observable<any> {
+    const url = this.server + 'lujoWeb';
+    const body = { fechaini, fechafin };
+  
+    return this.http.post(url, body)
+  }
+
+  normalWeb(fechaini: string, fechafin: string): Observable<any> {
+    const url = this.server + 'normalWeb';
+    const body = { fechaini, fechafin };
+  
+    return this.http.post(url, body)
+  }
+
+  camionWeb(fechaini: string, fechafin: string): Observable<any> {
+    const url = this.server + 'camionWeb';
+    const body = { fechaini, fechafin };
+  
+    return this.http.post(url, body)
+  }
+
+  insertarPago(pagotmp: pago): Observable<boolean> {
+    return this.http.post<boolean>(this.server + 'insertarPago', {
+      pago: pagotmp,
+    });
+  }
 
 }
 
