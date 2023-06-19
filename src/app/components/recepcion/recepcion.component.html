@@ -1,3 +1,4 @@
+
 <div class="todo">
   <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
     <header class="masthead mb-auto">
@@ -32,7 +33,157 @@
   </div>
 </div>
 
-<div style="display: inline-block; width: 100%">
+
+
+<form>
+  <h2 class="title"  style="float: right; width: -130; margin-right: 55%; margin-top: 1%">Datos del cliente</h2>
+
+  <div class="grid gap-6 mb-6 md:grid-cols-3 "  style="float: right; width: -50; margin-right: 40%; margin-top: 2%">
+
+      <div>
+          <label for="nombre" class="input">Nombre</label>
+          <input type="text"  name="nombre" id="nombre" [(ngModel)]="nombre" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nombre" required>
+      </div>
+      <div>
+          <label for="correo" class="input">Correo</label>
+          <input type="text" id="correo" name="correo" [(ngModel)]="correo" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Correo" required>
+      </div>
+      <div>
+          <label for="telefono" class="input">Telefono</label>
+          <input type="text" id="telefono" name="telefono" [(ngModel)]="telefono" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Telefono" required>
+      </div>  
+      <div>
+          <label for="cedula" class="input">Cedula</label>
+          <input type="text" id="cedula" name="cedula" [(ngModel)]="cedula" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Cedula" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
+      </div>
+      <div>
+          <label for="direccion" class="input"> Direccion</label>
+          <input type="text" id="direccion" name="direccion" [(ngModel)]="direccion" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Direccion" required>
+      </div>
+      <div>
+          <label for="selectedNacionalidad" class="input">Nacionalidad</label>
+          <input type="text" id="selectedNacionalidad" name="selectedNacionalidad" [(ngModel)]="selectedNacionalidad" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nacionalidad" required>
+      </div>
+    </div>
+
+    
+
+
+
+    <h4 class="title"  style="float: right; width: -50; margin-right: 50%; margin-top: 4%;">Datos para rentar vehiculo</h4>
+
+    <div class="grid gap-6 mb-6 md:grid-cols-3 "  style="float: right; width: -50; margin-right: 37%; margin-top:  2%">
+
+      <div>
+        <label for="selectedNacionalidad" class="input">Lugar de entrega</label>
+        <input type="text" id="lugardeentrega" name="lugardeentrega" disabled="" [(ngModel)]="lugardeentrega" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Lugar de entrega" required>
+    </div>
+    <div>
+      <label for="selectedNacionalidad" class="input">Lugar de devolucion</label>
+      <input type="text" id="lugardedevolucion" name="lugardedevolucion" disabled="" [(ngModel)]="lugardedevolucion" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Lugar de devolucion" required>
+  </div>
+
+  <div>
+    <label for="fechaini" class="input">Fecha inicial</label>
+    <input type="datetime-local" id="fechaini" name="fechaini" disabled="" [(ngModel)]="fechaini" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Fecha inicial" required>
+</div>
+
+  <div>
+    <label for="fechafin" class="input">Fecha final</label>
+    <input type="datetime-local" id="fechafin" name="fechafin" disabled="" [(ngModel)]="fechafin" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Fecha final" required>
+</div>
+
+<li
+          class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600"
+        >
+          <div class="flex items-center pl-3">
+            <input
+              id="horizontal-list-radio-license"
+              type="radio"
+              [(ngModel)]="seguroSi"
+              (ngModelChange)="seguro()"
+              value="full"
+              name="list-radio"
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+            />
+            <label
+              for="horizontal-list-radio-license"
+              class="w-full py-3 ml-2 text-sm font-semibold text-gray-500 dark:text-gray-300"
+              >Seguro Full</label
+            >
+          </div>
+        </li>
+
+        <li class="w-full dark:border-gray-600">
+          <div class="flex items-center pl-3">
+            <input
+              id="horizontal-list-radio-passport"
+              type="radio"
+              value="normal"
+              name="list-radio"
+              [(ngModel)]="seguroSi"
+              (ngModelChange)="seguro()"
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+            />
+            <label
+              for="horizontal-list-radio-passport"
+              class="w-full py-3 ml-2 text-sm font-semibold text-gray-500 dark:text-gray-300"
+              >Seguro Normal</label
+            >
+          </div>
+        </li>
+        
+
+<div>
+  <label for="dias" class="input">Dias totales</label>
+  <input type="number" id="dias" name="dias" disabled="" [(ngModel)]="dias" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Dia totales" required>
+</div>
+</div>
+
+<div class="vertical-line"></div>
+
+    <div class="form-container">
+      <div
+        class="blog-card"
+        style="float: right; width: 10; margin-right: -100%; margin-top: -130%"
+      >
+        <div class="meta">
+          <img src="/assets/{{ data.imagen }}" alt="" class="photo" />
+        </div>
+        <div class="description">
+          <h1>{{ data.marca + " " + data.modelo }}</h1>
+          <h2>{{ data.ano }}</h2>
+          <p>
+            {{ getDescripcionTipo(data.tipo) }} <br />
+            <i class="fas fa-users"></i> {{ data.asiento }} Personas <br />
+            <i class="fas fa-spray-can"></i> {{ data.color }} <br />
+            <i class="fas fa-gas-pump"></i> {{ data.combustible }} <br />
+            <br />
+          </p>
+          <p class="read-more"></p>
+          <div class="price">
+            <span class="dinero"
+              ><i class="fas fa-dollar-sign"></i> {{ data.precio }}/Day</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+ 
+
+
+  
+  <button type="submit"
+  data-toggle="modal"
+  data-target="#exampleModalCenter" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"  style="float: right; width: -50; margin-right: 28%; margin-top: 2%">Reservar</button>
+  
+
+</form>
+
+<!-- <div style="display: inline-block; width: 100%">
   <div
     class="signupFrm"
     style="float: right; width: -50; margin-right: 32%; margin-top: 2%"
@@ -255,38 +406,9 @@
       data-toggle="modal"
       data-target="#exampleModalCenter">Reservar</button>
     </form>
-  </div>
+  </div> -->
 
-  <div class="vertical-line"></div>
-
-  <div class="form-container">
-    <div
-      class="blog-card"
-      style="float: right; width: 50; margin-right: -100%; margin-top: -140%"
-    >
-      <div class="meta">
-        <img src="/assets/{{ data.imagen }}" alt="" class="photo" />
-      </div>
-      <div class="description">
-        <h1>{{ data.marca + " " + data.modelo }}</h1>
-        <h2>{{ data.ano }}</h2>
-        <p>
-          {{ getDescripcionTipo(data.tipo) }} <br />
-          <i class="fas fa-users"></i> {{ data.asiento }} Personas <br />
-          <i class="fas fa-spray-can"></i> {{ data.color }} <br />
-          <i class="fas fa-gas-pump"></i> {{ data.combustible }} <br />
-          <br />
-        </p>
-        <p class="read-more"></p>
-        <div class="price">
-          <span class="dinero"
-            ><i class="fas fa-dollar-sign"></i> {{ data.precio }}/Day</span
-          >
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- </div> -->
 <div
 class="modal fade"
 id="exampleModalCenter"
@@ -401,9 +523,9 @@ aria-hidden="true"
            
           </div>
           
-          <button data-dismiss="modal" (click)="guardartodo()">Reservar</button>
+          <button data-dismiss="modal" (click)="guardartodo()" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Reservar</button>
       </div>
     </div>
   </div>
 
-
+</div>

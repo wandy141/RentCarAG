@@ -2,26 +2,12 @@
     box-sizing: border-box;
   }
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  .signupFrm {
+  .title {
+    font-size: 25px;
+    margin-bottom: 50px;
+    color: rgb(0, 0, 0);
+  }
+  /* .signupFrm {
     display: flex;
     justify-content: start;
     height: 100%;
@@ -68,7 +54,7 @@
     background: none;
     z-index: 1;
   }
- 
+  */
   /* Hide the placeholder texts (a) */
   
   .input::placeholder {
@@ -138,7 +124,7 @@
     height: 140%;
     background-color: #606060;
     position: absolute;
-    left: 69%;
+    left: 74%;
     top: 10;
     transform: translateX(-50%);
   }
@@ -146,8 +132,8 @@
   .form-container {
     width: 45%;
     float: left;
-    margin-left: 5%;
-    margin-top: 5%;
+    margin-left: 9%;
+    margin-top: 9%;
     position: relative;
   }
   
@@ -578,4 +564,20 @@ margin-bottom: 10px;
 
 .fancy{
  margin: 0 auto;
+}
+@media (max-width: 700px) {
+  .form-container {
+    margin-top: -198%;
+    
+  }
+
+  .vertical-line{
+
+    height: 198%;
+    left: 63%;
+  }
+  .blog-card{
+    width: 75%;
+  }
+  
 }
