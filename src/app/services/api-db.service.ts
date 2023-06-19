@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { vehiculo } from '../clasebd/vehiculo';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { tipoVehiculo } from '../clasebd/tipoVehiculo';
 import { usuarios } from '../clasebd/usuarios';
 import {
@@ -109,8 +109,17 @@ export class ApiDBService {
   }
 
   login(usuarioid: string, contrasena: string) {
+    console.log(usuarioid, contrasena);
     return this.http.post<any>(this.server + 'login', {
+
       usuarioid: usuarioid,
+      contrasena: contrasena,
+    });
+  }
+
+  registrar(idcliente: string, contrasena: string) {
+    return this.http.post<any>(this.server + 'registrar', {
+      idcliente: idcliente,
       contrasena: contrasena,
     });
   }
@@ -317,9 +326,32 @@ export class ApiDBService {
     });
   }
 
-  insertarRegistro(registrotmp: registro): Observable<boolean> {
+  // verificarUsuarioExistente(correo: string): Observable<boolean> {
+  //   // Realizar una consulta a la base de datos para verificar si el usuario existe
+  //   const query = `SELECT COUNT(*) AS count FROM usuarios WHERE correo = '${correo}'`;
+  //   const url = `${this.apiUrl}/consulta`; // URL de tu endpoint para consultas
+
+  //   return this.http.get<{ count: number }>(url, { params: { query } }).pipe(
+  //     map((response) => {
+  //       const count = response.count;
+  //       return count > 0; // Devuelve true si el conteo es mayor que cero, indicando que el usuario existe
+  //     })
+  //   );
+  // }
+
+
+  insertarRegistro(registrotmp: registro, usuariostmp:usuarios): Observable<boolean> {
+
     return this.http.post<boolean>(this.server + 'insertarRegistro', {
+
       registro: registrotmp,
+      usuarios:usuariostmp
+    });
+  }
+
+  verificarUsuarioExistente(correo: string): Observable<boolean> {
+    return this.http.post<boolean>(this.server + 'verificarUsuarioExistente', {
+      idcliente: correo,
     });
   }
 }

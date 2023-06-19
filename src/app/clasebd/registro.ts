@@ -1,13 +1,15 @@
 export class registro{
+    idcliente: string;
     nombreCom:string;
     correo:string;
-    contraseña:string;
+    contrasena:string;
     confirmacionContra:string;
 
       constructor(){
+        this.idcliente = '';
     this.nombreCom = '';
     this.correo = '';
-    this.contraseña = '';
+    this.contrasena = '';
     this.confirmacionContra = '';
       }
 }
