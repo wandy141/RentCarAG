@@ -185,15 +185,15 @@ limpiar() {
 
 alertaVacio:boolean = false;
 guardartodo(){
-// if (this.nombre == '' || this.correo == '' || this.cedula == '' || this.telefono == '' || this.direccion == '' || this.selectedNacionalidad == '') {
-//   this.alertaVacio = true;
+if (this.nombre == '' || this.correo == '' || this.cedula == '' || this.telefono == '' || this.direccion == '' || this.selectedNacionalidad == '') {
+  this.alertaVacio = true;
 
-//   setTimeout(() => {
-//     this.alertaVacio = false;
-//   }, 3000);
+  setTimeout(() => {
+    this.alertaVacio = false;
+  }, 3000);
 
-//   return;
-// }
+  return;
+}
 
 if( this.lugardeentrega == '' || this.dias == 0){
   this.router.navigate(['carroC']);
@@ -217,6 +217,7 @@ guardarCliente() {
   this.servicio.insertarCliente(clientetmp).subscribe((resultado: any) => {
     if (resultado.resultado) {
      this.idcli =  resultado.idcliente
+     console.log(this.idcli,resultado.idcleinte);
      
     }
   });
