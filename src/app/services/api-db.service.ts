@@ -15,6 +15,7 @@ import { cliente } from '../clasebd/cliente';
 import { entrega } from '../clasebd/entrega';
 import { recibir } from '../clasebd/recibir';
 import { mantenimiento } from '../clasebd/mantenimiento';
+import { pago } from '../clasebd/pago';
 
 @Injectable({
   providedIn: 'root',
@@ -379,5 +380,10 @@ fechafin:string = '';
     
     return this.http.post(url, body);
   }
-
+  insertarPago(pagotmp: pago): Observable<boolean> {
+   return this.http.post<boolean>(this.server + 'insertarPago', {
+     pago: pagotmp,
+   });
+ }
 }
+

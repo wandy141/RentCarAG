@@ -2,8 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { alquiler } from 'src/app/clasebd/alquiler';
 import { cliente } from 'src/app/clasebd/cliente';
+import { pago } from 'src/app/clasebd/pago';
 import { vehiculo } from 'src/app/clasebd/vehiculo';
 import { ApiDBService } from 'src/app/services/api-db.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-recepcion',
@@ -39,6 +41,30 @@ export class RecepcionComponent implements OnInit{
   seguroSi: string = 'normal';
   seleccionadoSi: boolean = false;
   seleccionadoNo: boolean = false;
+  codigocv: number = 0;
+  ano: number = 0;
+   mes: string = ''; 
+   numerodetarjeta: number = 0;
+   nombretj: string = '';
+years: number[] = [];
+
+
+months: string[] = [
+  'Enero',
+  'Febrero',
+  'Marzo',
+  'Abril',
+  'Mayo',
+  'Junio',
+  'Julio',
+  'Agosto',
+  'Septiembre',
+  'Octubre',
+  'Noviembre',
+  'Diciembre'
+];
+
+
   seguro() {
     if (this.seguroSi == 'full') {
       this.seguroValue = 40;
@@ -47,12 +73,23 @@ export class RecepcionComponent implements OnInit{
     }
   }
 
+
+  
+
   getTotal() {
     return this.total + this.seguroValue;
   }
 
 constructor(private servicio: ApiDBService){
   this.data = this.servicio.getData();
+
+
+  const currentYear = new Date().getFullYear();
+  const startYear = currentYear - 10; // Puedes ajustar el rango según tus necesidades
+
+  for (let year = startYear; year <= currentYear; year++) {
+    this.years.push(year);
+  }
 }
 
 ngOnInit(): void {
@@ -146,6 +183,7 @@ limpiar() {
 guardartodo(){
   this.guardarCliente();
   this.entrarAlquiler();
+  this.guardarPago();
 }
 guardarCliente() {
   const idcliente = 0;
@@ -226,6 +264,72 @@ getDescripcionTipo(tipo: number) {
     this.selectedNacionalidad = nacionalidad;
     this.filteredNacionalidades = [];
   }
+
+
+  guardarPago() {
+    if (this.nombretj == '') {
+      this.msgFallo();
+      return;
+    }
+
+    if (this.numerodetarjeta == undefined) {
+      this.msgFallo();
+      return;
+    }
+
+    if (this.mes ==  '') {
+      this.msgFallo();
+      return;
+    }
+
+    if (this.ano == undefined) {
+      this.msgFallo();
+      return;
+    }
+    
+    if (this.codigocv == undefined) {
+      this.msgFallo();
+      return;
+    }
+
+    if (this.total == undefined) {
+      this.msgFallo();
+      return;
+    }
+
+
+    const idpago = 0;
+    let pagotmp: pago = new pago();
+    pagotmp.idpago = idpago;
+    pagotmp.idcliente = this.idcli;
+    pagotmp.nombretj = this.nombretj;
+    pagotmp.numerodetarjeta = this.numerodetarjeta;
+    pagotmp.mes = this.mes;
+    pagotmp.ano = this.ano ;
+    pagotmp.codigocv = this.codigocv;
+    pagotmp.total = this.total;
+  
+
+    this.servicio.insertarPago(pagotmp).subscribe((resultado) => {
+      if (resultado) {
+        this.limpiar();
+  
+        
+      } else if (resultado == false) {
+        
+      }
+    });
+  }
+
+
+  msgFallo() {
+    Swal.fire(
+      'Oops...',
+      '¡El usuario no existe y/o los campos estan vacios!',
+      'error'
+    );
+  }
+
 
 }
 
