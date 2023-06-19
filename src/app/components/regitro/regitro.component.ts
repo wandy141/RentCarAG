@@ -16,18 +16,19 @@ export class RegitroComponent {
   acceder: boolean = true;
   carga: boolean = false;
   msgError: boolean = false;
-  constructor(public router: Router, public servicio: ApiDBService) {}
+  constructor(private router: Router, private servicio: ApiDBService) {}
 
   mesajeError() {
-    if (this.accediendo) {
-      return;
-    }
-
     this.msgPassword = false;
     this.accediendo = false;
     this.hayerrores = false;
     this.acceder = true;
     this.carga = false;
+    if (this.accediendo) {
+      return;
+    }
+
+   
 
     if (this.usuario == '') {
       this.msgPassword = true;
@@ -54,11 +55,11 @@ export class RegitroComponent {
     this.servicio
       .login(this.usuario, this.password)
       .subscribe((retorno: any) => {
-        this.accediendo = false;
-
         if (retorno.resultado == true) {
           this.servicio.token = retorno.token;
           localStorage.setItem('token', retorno.token);
+         
+          
             if (retorno.estado == 1) {
                this.router.navigate(['dashboard/grafico']);
             } else {

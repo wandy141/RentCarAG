@@ -8,6 +8,7 @@ import { SlideBarComponent } from './components/slide-bar/slide-bar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ApiDBService } from './services/api-db.service';
 import { RecepcionComponent } from './components/recepcion/recepcion.component';
+import { ErrorComponent } from './components/error/error.component';
 
 
 const routes: Routes = [
@@ -19,13 +20,14 @@ const routes: Routes = [
   {path: 'slide', component :SlideBarComponent },
   {path: 'recepcion', component :RecepcionComponent },
   {path: 'dashboard', component :DashboardComponent},
+  {path: 'error', component :ErrorComponent},
 
   {
     path: 'dashboard',
     loadChildren: () => import('./components/dashboard/dashboard.module').then(m => m.DashboardModule)
     , canActivate: [ApiDBService]
   },
-  { path: '**', redirectTo: 'login'}
+  { path: '**', redirectTo: 'error'}
 
 ];
 

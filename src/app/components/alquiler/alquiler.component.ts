@@ -70,7 +70,7 @@ export class AlquilerComponent implements OnInit {
     this.calculateDays();
   }
 
-  constructor(public servicio: ApiDBService) {
+  constructor(private servicio: ApiDBService) {
     this.llenarTabla();
     this.getClientes();
   }

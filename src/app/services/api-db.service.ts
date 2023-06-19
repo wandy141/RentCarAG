@@ -380,10 +380,6 @@ fechafin:string = '';
     
     return this.http.post(url, body);
   }
-  insertarPago(pagotmp: pago): Observable<boolean> {
-   return this.http.post<boolean>(this.server + 'insertarPago', {
-     pago: pagotmp,
-   });
- }
+
 }
 

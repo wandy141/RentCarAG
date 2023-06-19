@@ -20,7 +20,7 @@ export class TipoVehiculoComponent {
  
   
 tablaTipo:Array<tipoVehiculo> = [];
-  constructor( public servicio: ApiDBService) {
+  constructor( private servicio: ApiDBService) {
     this.llenarTabla();
 
   }

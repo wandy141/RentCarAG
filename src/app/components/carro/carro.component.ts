@@ -35,7 +35,7 @@ export class CarroComponent {
 
   @ViewChild("file_input") file_input: ElementRef | undefined;
 
-  constructor(public servicio: ApiDBService, private router: Router) {
+  constructor(private servicio: ApiDBService, private router: Router) {
 
     let time = new Date();
     for (let index = time.getFullYear(); index > 2000; index--) {

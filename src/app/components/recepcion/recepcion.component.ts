@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { alquiler } from 'src/app/clasebd/alquiler';
 import { cliente } from 'src/app/clasebd/cliente';
 import { pago } from 'src/app/clasebd/pago';
@@ -47,6 +47,7 @@ export class RecepcionComponent implements OnInit{
    numerodetarjeta: number = 0;
    nombretj: string = '';
 years: number[] = [];
+telefono:string = '';
 
 
 months: string[] = [
@@ -65,6 +66,7 @@ months: string[] = [
 ];
 
 
+
   seguro() {
     if (this.seguroSi == 'full') {
       this.seguroValue = 40;
@@ -80,7 +82,7 @@ months: string[] = [
     return this.total + this.seguroValue;
   }
 
-constructor(private servicio: ApiDBService){
+constructor(private servicio: ApiDBService, private router: Router){
   this.data = this.servicio.getData();
 
 
@@ -153,6 +155,7 @@ const idalquiler = 0;
       setTimeout(() => {
       this.alerta=false;
       }, 3000);
+    
     }
   });
  }, 3000);
@@ -170,7 +173,6 @@ limpiar() {
   this.fechaini = '';
   this.fechafin = '';
   this.dias = 0;
-  this.dias = 0;
   this.nombre = '';
   this.correo = '';
   this.cedula = '';
@@ -180,7 +182,23 @@ limpiar() {
   this.lugardedevolucion = '';
 
 }
+
+alertaVacio:boolean = false;
 guardartodo(){
+if (this.nombre == '' || this.correo == '' || this.cedula == '' || this.telefono == '' || this.direccion == '' || this.selectedNacionalidad == '') {
+  this.alertaVacio = true;
+
+  setTimeout(() => {
+    this.alertaVacio = false;
+  }, 3000);
+
+  return;
+}
+
+if( this.lugardeentrega == '' || this.dias == 0){
+  this.router.navigate(['carroC']);
+  return;
+}
   this.guardarCliente();
   this.entrarAlquiler();
   this.guardarPago();
@@ -192,9 +210,9 @@ guardarCliente() {
   clientetmp.nombre = this.nombre;
   clientetmp.correo = this.correo;
   clientetmp.cedula = this.cedula;
-  clientetmp.telefono = this.cedula;
-  clientetmp.direccion = this.cedula;
-  clientetmp.nacionalidad = this.cedula;
+  clientetmp.telefono = this.telefono;
+  clientetmp.direccion = this.direccion;
+  clientetmp.nacionalidad = this.selectedNacionalidad;
 
   this.servicio.insertarCliente(clientetmp).subscribe((resultado: any) => {
     if (resultado.resultado) {
@@ -219,7 +237,7 @@ getDescripcionTipo(tipo: number) {
       break;
 
     case 3:
-      retorno = 'Tamaño Normal';
+      retorno = 'Deportivo';
       break;
       case 4:
         retorno = 'Premium';
@@ -230,7 +248,7 @@ getDescripcionTipo(tipo: number) {
         break;
 
       case 6:
-        retorno = 'Camion';
+        retorno = 'SUV';
         break;
     }
     return retorno;

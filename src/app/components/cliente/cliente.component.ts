@@ -18,7 +18,7 @@ export class ClienteComponent {
 
   listaClientes: Array<cliente> = [];
 
-  constructor(public servicio: ApiDBService) {
+  constructor(private servicio: ApiDBService) {
     this.getClientes();
   }
 
@@ -144,7 +144,6 @@ export class ClienteComponent {
       title: 'Oops...',
       text: 'Se produjo algun Error',
       icon: 'warning',
-      iconColor: 'red',
       confirmButtonText: 'OK',
     });
   }

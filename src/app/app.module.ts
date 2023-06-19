@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {  NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -16,7 +16,10 @@ import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotr
 import { RecepcionComponent } from './components/recepcion/recepcion.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DevolucionComponent } from './components/devolucion/devolucion.component';
+import { ErrorComponent } from './components/error/error.component';
+
 @NgModule({
+ 
   declarations: [
     AppComponent,
     RegitroComponent,
@@ -29,13 +32,14 @@ import { DevolucionComponent } from './components/devolucion/devolucion.componen
     RecepcionComponent,
     DevolucionComponent,
     FooterComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
   providers: [
     ApiDBService

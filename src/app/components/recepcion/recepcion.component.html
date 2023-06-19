@@ -54,7 +54,7 @@
 
         <div class="inputContainer">
           <input
-            type="text"
+            type="email"
             class="input"
             placeholder="a"
             id="correo"
@@ -63,6 +63,20 @@
           />
           <label for="correo" class="label">Correo</label>
         </div>
+
+        <div class="inputContainer">
+          <input
+            type="text"
+            class="input"
+            placeholder="a"
+            id="telefono"
+            name="telefono"
+            [(ngModel)]="telefono"
+          />
+          <label for="telefono" class="label">Telefono</label>
+        </div>
+
+
       </div>
       <div class="flex gap-10">
         <div class="inputContainer">
@@ -225,10 +239,13 @@
         </div>
         
       </div>
+      <div *ngIf="alertaVacio" class="p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-100 dark:bg-gray-800 dark:text-yellow-300 items-center" role="alert">
+        <span class="font-medium ">Warning alert!</span> Change a few things up and try submitting again.
+      </div>
 
       <div
         *ngIf="alerta"
-        class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
+        class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-500 dark:bg-gray-800 dark:text-green-400"
         role="alert"
       >
         <span class="font-medium">Auto Reservado Exitosamente</span> 
