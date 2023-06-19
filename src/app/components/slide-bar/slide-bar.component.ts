@@ -12,7 +12,7 @@ export class SlideBarComponent  implements OnInit{
   sele:boolean = false;
   burger:boolean = true;
   administrador: string = '';
-  constructor(public router: Router, public servicio:ApiDBService){
+  constructor(private router: Router, private servicio:ApiDBService){
 
   }
 
@@ -39,7 +39,6 @@ this.burger = !this.burger;
     Swal.fire({
       title: '¿Deseas salir?',
       icon: 'warning',
-      iconColor: '#FF0000',
       showCancelButton: true,
       confirmButtonText: 'salir',
       confirmButtonColor: '#FF0000',

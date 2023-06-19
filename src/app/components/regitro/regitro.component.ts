@@ -16,7 +16,7 @@ export class RegitroComponent {
   acceder: boolean = true;
   carga: boolean = false;
   msgError: boolean = false;
-  constructor(public router: Router, public servicio: ApiDBService) {}
+  constructor(private router: Router, private servicio: ApiDBService) {}
 
   mesajeError() {
     this.msgPassword = false;

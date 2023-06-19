@@ -140,7 +140,6 @@ export class UsuarioComponent {
       title: 'Oops...',
       text: 'Se produjo algun Error',
       icon: 'warning',
-      iconColor: 'red',
       confirmButtonText: 'OK',
     });
   }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {  NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,7 +17,9 @@ import { RecepcionComponent } from './components/recepcion/recepcion.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DevolucionComponent } from './components/devolucion/devolucion.component';
 import { ErrorComponent } from './components/error/error.component';
+
 @NgModule({
+ 
   declarations: [
     AppComponent,
     RegitroComponent,
@@ -37,7 +39,7 @@ import { ErrorComponent } from './components/error/error.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
   providers: [
     ApiDBService

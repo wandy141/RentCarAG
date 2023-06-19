@@ -15,7 +15,7 @@ export class ConsultaEconomicoComponent implements OnInit {
   entrega:string = '';
   devolucion:string = '';
   acceso:boolean = false;
-  constructor(public servicio: ApiDBService, public route: ActivatedRoute, public router: Router) {
+  constructor(private servicio: ApiDBService, private route: ActivatedRoute, private router: Router) {
 
   }
   

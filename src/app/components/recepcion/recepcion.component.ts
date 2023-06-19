@@ -53,7 +53,7 @@ telefono:string = '';
     return this.total + this.seguroValue;
   }
 
-constructor(private servicio: ApiDBService, public router: Router){
+constructor(private servicio: ApiDBService, private router: Router){
   this.data = this.servicio.getData();
 }
 
