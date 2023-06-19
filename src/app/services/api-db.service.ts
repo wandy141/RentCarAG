@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { vehiculo } from '../clasebd/vehiculo';
-import { Observable, map } from 'rxjs';
+import {  map } from 'rxjs';
 import { Observable, Subject } from 'rxjs';
 import { tipoVehiculo } from '../clasebd/tipoVehiculo';
 import { usuarios } from '../clasebd/usuarios';
