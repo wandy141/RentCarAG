@@ -185,15 +185,15 @@ limpiar() {
 
 alertaVacio:boolean = false;
 guardartodo(){
-if (this.nombre == '' || this.correo == '' || this.cedula == '' || this.telefono == '' || this.direccion == '' || this.selectedNacionalidad == '') {
-  this.alertaVacio = true;
+// if (this.nombre == '' || this.correo == '' || this.cedula == '' || this.telefono == '' || this.direccion == '' || this.selectedNacionalidad == '') {
+//   this.alertaVacio = true;
 
-  setTimeout(() => {
-    this.alertaVacio = false;
-  }, 3000);
+//   setTimeout(() => {
+//     this.alertaVacio = false;
+//   }, 3000);
 
-  return;
-}
+//   return;
+// }
 
 if( this.lugardeentrega == '' || this.dias == 0){
   this.router.navigate(['carroC']);
@@ -331,11 +331,13 @@ getDescripcionTipo(tipo: number) {
     this.servicio.insertarPago(pagotmp).subscribe((resultado) => {
       if (resultado) {
         this.limpiar();
-  
+         this.msgExicto();
         
       } else if (resultado == false) {
-        
+       this.msgFallo();  
       }
+
+      
     });
   }
 
@@ -347,7 +349,13 @@ getDescripcionTipo(tipo: number) {
       'error'
     );
   }
-
+  msgExicto() {
+    Swal.fire(
+      'Bien..',
+      '¡El Usuario se ha registrado correctamente ',
+      'success'
+    );
+  }
 
 }
 
