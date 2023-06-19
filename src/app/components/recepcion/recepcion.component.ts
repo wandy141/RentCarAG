@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { alquiler } from 'src/app/clasebd/alquiler';
 import { cliente } from 'src/app/clasebd/cliente';
+import { pago } from 'src/app/clasebd/pago';
 import { vehiculo } from 'src/app/clasebd/vehiculo';
 import { ApiDBService } from 'src/app/services/api-db.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-recepcion',
@@ -39,7 +41,31 @@ export class RecepcionComponent implements OnInit{
   seguroSi: string = 'normal';
   seleccionadoSi: boolean = false;
   seleccionadoNo: boolean = false;
+  codigocv: number = 0;
+  ano: number = 0;
+   mes: string = ''; 
+   numerodetarjeta: number = 0;
+   nombretj: string = '';
+years: number[] = [];
 telefono:string = '';
+
+
+months: string[] = [
+  'Enero',
+  'Febrero',
+  'Marzo',
+  'Abril',
+  'Mayo',
+  'Junio',
+  'Julio',
+  'Agosto',
+  'Septiembre',
+  'Octubre',
+  'Noviembre',
+  'Diciembre'
+];
+
+
 
   seguro() {
     if (this.seguroSi == 'full') {
@@ -49,12 +75,23 @@ telefono:string = '';
     }
   }
 
+
+  
+
   getTotal() {
     return this.total + this.seguroValue;
   }
 
 constructor(private servicio: ApiDBService, private router: Router){
   this.data = this.servicio.getData();
+
+
+  const currentYear = new Date().getFullYear();
+  const startYear = currentYear - 10; // Puedes ajustar el rango según tus necesidades
+
+  for (let year = startYear; year <= currentYear; year++) {
+    this.years.push(year);
+  }
 }
 
 ngOnInit(): void {
@@ -148,15 +185,15 @@ limpiar() {
 
 alertaVacio:boolean = false;
 guardartodo(){
-if (this.nombre == '' || this.correo == '' || this.cedula == '' || this.telefono == '' || this.direccion == '' || this.selectedNacionalidad == '') {
-  this.alertaVacio = true;
+// if (this.nombre == '' || this.correo == '' || this.cedula == '' || this.telefono == '' || this.direccion == '' || this.selectedNacionalidad == '') {
+//   this.alertaVacio = true;
 
-  setTimeout(() => {
-    this.alertaVacio = false;
-  }, 3000);
+//   setTimeout(() => {
+//     this.alertaVacio = false;
+//   }, 3000);
 
-  return;
-}
+//   return;
+// }
 
 if( this.lugardeentrega == '' || this.dias == 0){
   this.router.navigate(['carroC']);
@@ -164,6 +201,7 @@ if( this.lugardeentrega == '' || this.dias == 0){
 }
   this.guardarCliente();
   this.entrarAlquiler();
+  this.guardarPago();
 }
 guardarCliente() {
   const idcliente = 0;
@@ -243,6 +281,80 @@ getDescripcionTipo(tipo: number) {
   selectNacionalidad(nacionalidad: string) {
     this.selectedNacionalidad = nacionalidad;
     this.filteredNacionalidades = [];
+  }
+
+
+  guardarPago() {
+    if (this.nombretj == '') {
+      this.msgFallo();
+      return;
+    }
+
+    if (this.numerodetarjeta == undefined) {
+      this.msgFallo();
+      return;
+    }
+
+    if (this.mes ==  '') {
+      this.msgFallo();
+      return;
+    }
+
+    if (this.ano == undefined) {
+      this.msgFallo();
+      return;
+    }
+    
+    if (this.codigocv == undefined) {
+      this.msgFallo();
+      return;
+    }
+
+    if (this.total == undefined) {
+      this.msgFallo();
+      return;
+    }
+
+
+    const idpago = 0;
+    let pagotmp: pago = new pago();
+    pagotmp.idpago = idpago;
+    pagotmp.idcliente = this.idcli;
+    pagotmp.nombretj = this.nombretj;
+    pagotmp.numerodetarjeta = this.numerodetarjeta;
+    pagotmp.mes = this.mes;
+    pagotmp.ano = this.ano ;
+    pagotmp.codigocv = this.codigocv;
+    pagotmp.total = this.total;
+  
+
+    this.servicio.insertarPago(pagotmp).subscribe((resultado) => {
+      if (resultado) {
+        this.limpiar();
+         this.msgExicto();
+        
+      } else if (resultado == false) {
+       this.msgFallo();  
+      }
+
+      
+    });
+  }
+
+
+  msgFallo() {
+    Swal.fire(
+      'Oops...',
+      '¡El usuario no existe y/o los campos estan vacios!',
+      'error'
+    );
+  }
+  msgExicto() {
+    Swal.fire(
+      'Bien..',
+      '¡El Usuario se ha registrado correctamente ',
+      'success'
+    );
   }
 
 }
