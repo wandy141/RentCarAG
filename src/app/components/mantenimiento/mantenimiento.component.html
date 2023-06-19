@@ -13,11 +13,17 @@
               class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
             >
               <tr>
-                <th scope="col" class="px-6 py-3 text-center ">Id del mantenimiento</th>
-                <th scope="col" class="px-6 py-3 text-center ">Id de recibir</th>
-                <th scope="col" class="px-6 py-3 text-center ">Id del vehiculo</th>
-                <th scope="col" class="px-6 py-3 text-center ">Costo extra</th>
-                <th scope="col" class="px-6 py-3 text-center ">Comentario</th>
+                <th scope="col" class="px-6 py-3 text-center ">Id del Vehiculo</th>
+                <th scope="col" class="px-6 py-3 text-center ">Imagen</th>
+                <th scope="col" class="px-6 py-3 text-center ">Marca</th>
+                <th scope="col" class="px-6 py-3 text-center ">Modelo</th>
+                <th scope="col" class="px-6 py-3 text-center ">Color</th>
+                <th scope="col" class="px-6 py-3 text-center ">No. de Asientos</th>
+                <th scope="col" class="px-6 py-3 text-center ">Tipo de Combustible</th>
+                <th scope="col" class="px-6 py-3 text-center ">Año</th>
+                <th scope="col" class="px-6 py-3 text-center ">Placa</th>
+                <th scope="col" class="px-6 py-3 text-center ">Precio</th>
+                <th scope="col" class="px-6 py-3 text-center ">Mantenimiento</th>
               </tr>
             </thead>
             <tbody>
@@ -35,7 +41,7 @@
                 data-target="#exampleModalCenter"
                 (click)="seleccionarMantenimiento(txt)"
                 
-                > {{ txt.idmantenimiento }}</button>
+                > {{ txt.idvehiculo }}</button>
 
                 </th>
 
@@ -44,7 +50,7 @@
                   data-toggle="modal"
                   data-target="#exampleModalCenter"
                   (click)="seleccionarMantenimiento(txt)"
-                  > {{ txt.id_recibir }}</button>
+                  > {{ txt.imagen }}</button>
                 </td>
 
                 <td class="text-center">
@@ -52,7 +58,15 @@
                   data-toggle="modal"
                   data-target="#exampleModalCenter"
                   (click)="seleccionarMantenimiento(txt)"
-                  > {{ txt.id_vehiculo }}</button>
+                  > {{ txt.marca }}</button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                  data-toggle="modal"
+                  data-target="#exampleModalCenter"
+                  (click)="seleccionarMantenimiento(txt)"
+                  > {{ txt.modelo }}</button>
 
                 </td>
 
@@ -61,7 +75,7 @@
                   data-toggle="modal"
                   data-target="#exampleModalCenter"
                   (click)="seleccionarMantenimiento(txt)"
-                  > {{ txt.costo_extra }}</button>
+                  > {{ txt.color }}</button>
                 </td>
 
                 <td class="text-center">
@@ -69,7 +83,47 @@
                   data-toggle="modal"
                   data-target="#exampleModalCenter"
                   (click)="seleccionarMantenimiento(txt)"
-                  > {{ txt.comentario }}</button>
+                  > {{ txt.asiento }}</button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                  data-toggle="modal"
+                  data-target="#exampleModalCenter"
+                  (click)="seleccionarMantenimiento(txt)"
+                  > {{ txt.combustible }}</button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                  data-toggle="modal"
+                  data-target="#exampleModalCenter"
+                  (click)="seleccionarMantenimiento(txt)"
+                  > {{ txt.ano }}</button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                  data-toggle="modal"
+                  data-target="#exampleModalCenter"
+                  (click)="seleccionarMantenimiento(txt)"
+                  > {{ txt.placa }}</button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                  data-toggle="modal"
+                  data-target="#exampleModalCenter"
+                  (click)="seleccionarMantenimiento(txt)"
+                  > {{ txt.precio }}</button>
+                </td>
+
+                <td class="text-center">
+                  <button
+                  data-toggle="modal"
+                  data-target="#exampleModalCenter"
+                  (click)="seleccionarMantenimiento(txt)"
+                  > {{ txt.mantenimiento }}</button>
                 </td>
 
               </tr>
@@ -121,43 +175,28 @@
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="ID Mantenimiento"
                   [(ngModel)]="idmantenimiento"
-                
+                  disabled=""
                 />
-              </div>
-
-              <div>
-                <label
-                  for="Recibir"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
-                  >ID Recibir</label
-                >
-                <input
-                id="Recibir"
-                name="Recibir"
-                  type="number"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="ID Recibir"
-                  [(ngModel)]="id_recibir"
-                />
-              </div>
+                </div>
+                <div>
+                  <label
+                    for="Vehiculo"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
+                    >ID Vehiculo</label
+                  >
+                  <input
+                  id="Vehiculo"
+                  name="Vehiculo"
+                    type="number"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="ID Vehiculo"
+                    [(ngModel)]="id_vehiculo"
+                  />
+                </div>
             </div>
 
             <div class="grid gap-6 mb-6 md:grid-cols-2">
-              <div>
-                <label
-                  for="Vehiculo"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left"
-                  >ID Vehiculo</label
-                >
-                <input
-                id="Vehiculo"
-                name="Vehiculo"
-                  type="number"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="ID Vehiculo"
-                  [(ngModel)]="id_vehiculo"
-                />
-              </div>
+              
               <div>
                 <label
                   for="Costo_Extra"
@@ -173,8 +212,6 @@
                   [(ngModel)]="costo_extra"
                 />
               </div>
-
-            </div>
               <div>
                 <label
                   for="Comentario"
@@ -190,6 +227,8 @@
                   [(ngModel)]="comentario"
                 />
               </div>
+            </div>
+              
 <br>
               <div class="up flex justify-center">
                 <button
