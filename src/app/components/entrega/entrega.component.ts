@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { alquiler } from 'src/app/clasebd/alquiler';
 import { entrega } from 'src/app/clasebd/entrega';
 import { ApiDBService } from 'src/app/services/api-db.service';
+import Swal from 'sweetalert2';
 
 @Component({
   templateUrl: './entrega.component.html',
@@ -50,7 +51,9 @@ export class EntregaComponent {
     this.error = false;
     const identrega = 0;
     let entregatmp: entrega = new entrega();
+
     entregatmp.identrega = identrega;
+    entregatmp.idvehiculo = this.idVehiculotxt;
     entregatmp.idalquiler = this.idAlquilertxt;
     entregatmp.fechahora = this.fechahoratxt;
     entregatmp.persona_recibe = this.personatxt;
@@ -65,8 +68,8 @@ export class EntregaComponent {
     this.servicio
       .insertarEntrega(entregatmp)
       .subscribe((resultado: boolean) => {
-        console.log(resultado);
         if (resultado) {
+          this.msgExitoGuardar();
           this.llenarAlquilerActivos();
           this.limpiar();
         } else if (!resultado) {
@@ -74,10 +77,14 @@ export class EntregaComponent {
       });
   }
 
-llavesBox:boolean = false;
-ok(){
-console.log(this.llavesBox);
 
+
+msgExitoGuardar() {
+  Swal.fire(
+    'Éxito',
+    '¡Se a Registrado el cliente!',
+    'success'
+  );
 }
 
   limpiar() {
@@ -96,10 +103,5 @@ console.log(this.llavesBox);
     this.fechafintxt = '';
   }
 
-menuCheckbox:boolean = false;
-  despliegaCheckbox(){
-    console.log('hola');
-this.menuCheckbox = !this.menuCheckbox;
-  }
 
 }

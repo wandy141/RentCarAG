@@ -27,13 +27,6 @@ export class RecibirComponent {
     guardarEntrega() {
       if (this.idrecibir == null) {
         this.msgFail(
-    
-    
-    
-    
-    
-    
-          
         );
         return;
       }
@@ -68,7 +61,7 @@ export class RecibirComponent {
       recibirtmp.NombreCli = this.nombreCliente;
       recibirtmp.FechHoraDev = this.fechaDevolucion;
       recibirtmp.Comentarios = this.comentarios;
-  
+      recibirtmp.idvehiculo = this.idvehiculo;
       if (this.error) {
         return;
       }
@@ -76,7 +69,13 @@ export class RecibirComponent {
       this.servicio
         .insertarRecibir(recibirtmp)
         .subscribe((resultado: boolean) => {
-        console.log('se hizo');
+          if (resultado) {
+            this.msgExitoGuardar();
+            this.limpiar();
+            this.llenarAlquilerActivos();
+          } else if (resultado == false) {
+            this.msgRecibir();
+          }
         });
     }
 
@@ -84,11 +83,6 @@ export class RecibirComponent {
     llenarAlquilerActivos() {
       this.servicio.todoRecibir().subscribe((resultado) => {
         this.arrayEntrega = resultado;
-        if (resultado) {
-          this.msgExitoGuardar();
-        } else if (resultado == false) {
-          this.msgRecibir();
-        }
       });
     }
 
@@ -115,11 +109,12 @@ export class RecibirComponent {
         'error'
       );
     }
-
+idvehiculo: number =0;
     seleccionarEntrega(objEntrega: entrega) {
-      this.idalquiler = objEntrega.identrega;
+      this.idalquiler = objEntrega.idalquiler;
       this.nombreCliente = objEntrega.persona_recibe;
-      this.Idcliente = objEntrega.idalquiler;
+      this.Idcliente = objEntrega.identrega;
+      this.idvehiculo = objEntrega.idvehiculo;
     }
 
     limpiar() {

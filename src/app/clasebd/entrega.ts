@@ -6,6 +6,7 @@ persona_recibe:string;
 cedula_persona:string;
 kilometraje:number;
 nota:string;
+idvehiculo: number;
 
   constructor(){
 this.identrega = 0;
@@ -15,6 +16,7 @@ this.persona_recibe = '';
 this.cedula_persona = '';
 this.kilometraje = 0;
 this.nota = '';
+this.idvehiculo = 0;
   }
 
 

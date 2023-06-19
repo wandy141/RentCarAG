@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { mantenimiento } from 'src/app/clasebd/mantenimiento';
+import { vehiculo } from 'src/app/clasebd/vehiculo';
 import { ApiDBService } from 'src/app/services/api-db.service';
 import Swal from 'sweetalert2';
 
@@ -18,23 +19,19 @@ export class MantenimientoComponent {
   error: boolean = false;
 
 
-mantenimientos: Array<mantenimiento> = [];
+mantenimientos: Array<vehiculo> = [];
 constructor(private servicio: ApiDBService) {
   this.MostrarMantenimiento();
 }
 
 
-seleccionarMantenimiento(objMantenimiento: mantenimiento) {
-  this.idmantenimiento = objMantenimiento.idmantenimiento;
-  this.costo_extra = objMantenimiento.costo_extra;
-  this.comentario = objMantenimiento.comentario;
-  this.id_recibir = objMantenimiento.id_recibir;
-  this.id_vehiculo = objMantenimiento.id_vehiculo;
+seleccionarMantenimiento(objMantenimiento: vehiculo) {
+  this.id_vehiculo = objMantenimiento.idvehiculo;
 }
 
 
 MostrarMantenimiento() {
-  this.servicio.todoMantenimiento().subscribe((resultado) => {
+  this.servicio.vehiManteniemiento().subscribe((resultado) => {
     this.mantenimientos = resultado;
   });
 }
@@ -52,10 +49,6 @@ guardarMantenimiento() {
     );
     return;
   }
-  if (this.id_recibir == undefined) {
-    this.msgFail();
-    return;
-  }
   if (this.id_vehiculo == undefined || this.id_vehiculo == null) {
     this.msgFail();
     return;
@@ -71,7 +64,6 @@ guardarMantenimiento() {
 
   let mantenimientotmp: mantenimiento = new mantenimiento();
   mantenimientotmp.idmantenimiento = this.idmantenimiento;
-  mantenimientotmp.id_recibir = this.id_recibir;
   mantenimientotmp.id_vehiculo = this.id_vehiculo;
   mantenimientotmp.costo_extra = this.costo_extra;
   mantenimientotmp.comentario = this.comentario;
@@ -81,6 +73,7 @@ guardarMantenimiento() {
     .subscribe((resultado: boolean) => {
       if (resultado) {
         this.msgExitoGuardar();
+        this.MostrarMantenimiento();
       } else if (resultado == false) {
         this.msgMantenido();
       }
@@ -108,7 +101,7 @@ msgFail() {
 msgMantenido() {
   Swal.fire(
     'Oops...',
-    '¡Este vehiculo ya ha sido mantenido!',
+    '¡Ocurrio un Error!',
     'error'
   );
 }
