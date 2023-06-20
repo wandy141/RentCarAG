@@ -15,6 +15,7 @@ import { ConsultaEconomicoComponent } from './components/consulta-economico/cons
 import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotros.component';
 import { RecepcionComponent } from './components/recepcion/recepcion.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { RegistroComponent } from './registro/registro.component';
 import { DevolucionComponent } from './components/devolucion/devolucion.component';
 import { ErrorComponent } from './components/error/error.component';
 
@@ -32,6 +33,7 @@ import { ErrorComponent } from './components/error/error.component';
     RecepcionComponent,
     DevolucionComponent,
     FooterComponent,
+    RegistroComponent,
     ErrorComponent,
   ],
   imports: [

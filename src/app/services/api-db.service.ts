@@ -15,8 +15,8 @@ import { cliente } from '../clasebd/cliente';
 import { entrega } from '../clasebd/entrega';
 import { recibir } from '../clasebd/recibir';
 import { mantenimiento } from '../clasebd/mantenimiento';
+import { registro } from '../clasebd/registro';
 import { pago } from '../clasebd/pago';
-
 @Injectable({
   providedIn: 'root',
 })
@@ -109,8 +109,17 @@ export class ApiDBService {
   }
 
   login(usuarioid: string, contrasena: string) {
+    console.log(usuarioid, contrasena);
     return this.http.post<any>(this.server + 'login', {
+
       usuarioid: usuarioid,
+      contrasena: contrasena,
+    });
+  }
+
+  registrar(idcliente: string, contrasena: string) {
+    return this.http.post<any>(this.server + 'registrar', {
+      idcliente: idcliente,
       contrasena: contrasena,
     });
   }
@@ -326,6 +335,21 @@ export class ApiDBService {
   insertarMantenimiento(mantenimientotmp: mantenimiento): Observable<boolean> {
     return this.http.post<boolean>(this.server + 'insertarMantenimiento', {
       mantenimiento: mantenimientotmp,
+    });
+  }
+
+  insertarRegistro(registrotmp: registro, usuariostmp:usuarios): Observable<boolean> {
+
+    return this.http.post<boolean>(this.server + 'insertarRegistro', {
+
+      registro: registrotmp,
+      usuarios:usuariostmp
+    });
+  }
+
+  verificarUsuarioExistente(correo: string): Observable<boolean> {
+    return this.http.post<boolean>(this.server + 'verificarUsuarioExistente', {
+      idcliente: correo,
     });
   }
   nation() {

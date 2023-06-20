@@ -1,3 +1,4 @@
+import { mantenimiento } from './mantenimiento';
 export class vehiculo {
 
   idvehiculo:any;
@@ -11,6 +12,7 @@ export class vehiculo {
   placa:string;
   precio:any ;
   imagen:any;
+  mantenimiento: number;
   estado:number;
 
   constructor() {
@@ -25,6 +27,7 @@ export class vehiculo {
     this.placa = '';
     this.precio = undefined;
     this.imagen = ''
+    this.mantenimiento = 0;
     this.estado = 0;
   }
 }
